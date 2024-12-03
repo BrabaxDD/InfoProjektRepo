@@ -1,0 +1,68 @@
+ <!DOCTYPE html>
+<html>
+<body>
+<canvas id="myCanvas"></canvas>
+    <script>
+        // JavaScript für das animierte Canvas
+        const canvas = document.getElementById('myCanvas');
+        const ctx = canvas.getContext('2d');
+
+        // Setze die Canvas-Größe auf die Fenstergröße
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        // Kreisobjekt für die Animation
+        let circle = {
+            x: canvas.width / 2,
+            y: canvas.height / 2,
+            radius: 50,
+            dx: 2,
+            dy: 2,
+            color: 'blue'
+        };
+
+        // Zeichne einen Kreis
+        function drawCircle() {
+            ctx.beginPath();
+            ctx.arc(circle.x, circle.y, circle.radius, 0, Math.PI * 2);
+            ctx.fillStyle = circle.color;
+            ctx.fill();
+            ctx.closePath();
+        }
+
+        // Animation aktualisieren
+        function update() {
+            // Bildschirm löschen
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Kreis zeichnen
+            drawCircle();
+
+            // Bewegung berechnen
+            circle.x += circle.dx;
+            circle.y += circle.dy;
+
+            // Kollision mit den Rändern
+            if (circle.x + circle.radius > canvas.width || circle.x - circle.radius < 0) {
+                circle.dx *= -1;
+                circle.color = getRandomColor(); // Ändere die Farbe bei Kollision
+            }
+            if (circle.y + circle.radius > canvas.height || circle.y - circle.radius < 0) {
+                circle.dy *= -1;
+                circle.color = getRandomColor(); // Ändere die Farbe bei Kollision
+            }
+
+            // Animation wiederholen
+            requestAnimationFrame(update);
+        }
+
+        // Zufällige Farbe generieren
+        function getRandomColor() {
+            return `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)})`;
+        }
+
+        // Animation starten
+        update();
+    </script>
+</body>
+</html> 
