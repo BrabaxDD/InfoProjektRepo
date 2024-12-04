@@ -53,7 +53,6 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = "Infoproject.urls"
-ASGI_APPLICATION = "Infoproject.asgi.application"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
@@ -72,6 +71,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "Infoproject.wsgi.application"
 
+ASGI_APPLICATION = "Infoproject.asgi.application"
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases

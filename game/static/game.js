@@ -1,9 +1,10 @@
-function sayHello(){
-    alert("Hello I am an alert Bow!")
-}
-
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
+const webSocket = new WebSocket('ws://' + window.location.host + '/ws/server')
+webSocket.onmessage = function(e) {const data = JSON.parse(e.data)
+        character.x = data.positionx 
+        character.y = data.positiony 
+}
 
 // Canvas dimensions
 const canvasWidth = canvas.width;
@@ -48,7 +49,7 @@ function drawCharacter() {
     ctx.fillStyle = character.color;
     ctx.fillRect(character.x, character.y, character.width, character.height);
 }
-
+function websocket(){}
 
 function gameLoop() {
     ctx.clearRect(0, 0, canvasWidth, canvasHeight); // Clear the canvas
@@ -61,4 +62,7 @@ function gameLoop() {
 gameLoop();
 
 
+function sayHello(){
+    webSocket.send(JSON.stringify({'positionx': character.x,'positiony': character.y}))
+}
 
