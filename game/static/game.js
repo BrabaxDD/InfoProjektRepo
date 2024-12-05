@@ -1,6 +1,6 @@
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
-const webSocket = new WebSocket('ws://' + window.location.host + '/ws/server')
+const webSocket = new WebSocket('ws://' + window.location.host + '/game')
 webSocket.onmessage = function(e) {const data = JSON.parse(e.data)
         character.x = data.positionx 
         character.y = data.positiony 

@@ -1,5 +1,5 @@
 from django.urls import re_path
-
+from channels.routing import URLRouter
 from .consumers import gameServer
 
-websocket_urlpatterns = [re_path("ws/server", gameServer.gameServer.as_asgi())]
+app = gameServer.gameServer.as_asgi()

@@ -12,10 +12,11 @@ from channels.routing import ProtocolTypeRouter, URLRouter
 from django.core.asgi import get_asgi_application
 from channels.auth import AuthMiddlewareStack
 import game.routing
-
+from django.urls import re_path
+import Infoproject.routing
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "Infoproject.settings")
 application = ProtocolTypeRouter({
     "http": get_asgi_application(),
-    "websocket": AuthMiddlewareStack(URLRouter(game.routing.websocket_urlpatterns))
+    "websocket": Infoproject.routing.router
 })
