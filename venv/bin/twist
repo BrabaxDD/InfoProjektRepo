@@ -1,4 +1,4 @@
-#!/home/olli/InfoProjekt/venv/bin/python
+#!/home/olli/InfoProjektRepo/venv/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys
