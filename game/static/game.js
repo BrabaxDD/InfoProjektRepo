@@ -1,11 +1,11 @@
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
-const webSocket = new WebSocket('ws://' + window.location.host + '/game')
+const webSocket = new WebSocket('ws://' + window.location.host + '/game/login')
 webSocket.onmessage = function(e) {const data = JSON.parse(e.data)
         character.x = data.positionx 
         character.y = data.positiony 
 }
-
+i = 0
 // Canvas dimensions
 const canvasWidth = canvas.width;
 const canvasHeight = canvas.height;
@@ -52,9 +52,11 @@ function drawCharacter() {
 function websocket(){}
 
 function gameLoop() {
+    i = i + 1
     ctx.clearRect(0, 0, canvasWidth, canvasHeight); // Clear the canvas
     moveCharacter(); // Update character position
     drawCharacter(); // Draw the character
+    if (i % 60 === 0) {sayHello()}
     requestAnimationFrame(gameLoop); // Call the next frame
 }
 
