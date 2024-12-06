@@ -1,11 +1,12 @@
 import Player from './Player.js'; 
+import Scene from './Scene.js';
 
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
 const webSocket = new WebSocket('ws://' + window.location.host + '/game')
 webSocket.onmessage = function(e) {const data = JSON.parse(e.data)
-    getPlayer().x = data.positionx 
-    getPlayer().y = data.positiony 
+    scene.gameObjects[0].x = data.positionx 
+    scene.gameObjects[0].y = data.positiony 
 }
 
 // Canvas dimensions
@@ -30,22 +31,22 @@ function websocket(){}
 
 function gameLoop() {
     ctx.clearRect(0, 0, canvasWidth, canvasHeight); // Clear the canvas
-    getPlayer().moveCharacter(keys); // Update character position
-    getPlayer().drawCharacter(ctx); // Draw the character
+    scene.process()
+    scene.render()
+    //getPlayer().render(ctx); // Draw the character
     requestAnimationFrame(gameLoop); // Call the next frame
 }
 
-let player = new Player(100,100,20,20, "blue", 5, canvas)
+let player = new Player(100,100,20,20, 'blue', 5, canvas, keys)
+let scene = new Scene()
+scene.addObject(player)
 // Start the game loop
 gameLoop();
 
 
 function sayHello(){
-    webSocket.send(JSON.stringify({'positionx': getPlayer().x,'positiony': getPlayer().y}))
+    webSocket.send(JSON.stringify({'positionx': scene.gameObjects[0].x,'positiony': scene.gameObjects[0].y}))
 }
 
-function getPlayer(){
-    return player
-}
 
 document.getElementById('clickMeButton').addEventListener('click', sayHello);
