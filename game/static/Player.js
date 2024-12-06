@@ -1,7 +1,7 @@
 export default class Player {
     constructor(x, y, width,height, color, speed, canvas, keys) {
-      this.yPos = x
-      this.yPos = y
+      this.posx = x
+      this.posy = y
       this.width = width
       this.height = height
       this.color = color
@@ -12,23 +12,24 @@ export default class Player {
     }
 
     process() {
-        if (this.keys['ArrowUp'] && this.y > 0) {
-            this.y -= this.speed; // Move up
+        console.log("proccesing Player")
+        if (this.keys['ArrowUp'] && this.posy > 0) {
+            this.posy -= this.speed; // Move up
         }
-        if (this.keys['ArrowDown'] && this.y < this.canvas.height - this.height) {
-            this.y += this.speed; // Move down
+        if (this.keys['ArrowDown'] && this.posy < this.canvas.height - this.height) {
+            this.posy += this.speed; // Move down
         }
-        if (this.keys['ArrowLeft'] && this.x > 0) {
-            this.x -= this.speed; // Move left
+        if (this.keys['ArrowLeft'] && this.posx > 0) {
+            this.posx -= this.speed; // Move left
         }
-        if (this.keys['ArrowRight'] && this.x < this.canvas.width - this.width) {
-            this.x += this.speed; // Move right
+        if (this.keys['ArrowRight'] && this.posx < this.canvas.width - this.width) {
+            this.posx += this.speed; // Move right
         }
     }
 
     render() {
         this.ctx.fillStyle = "blue";
-        this.ctx.fillRect(this.x, this.y, this.width, this.height);
+        this.ctx.fillRect(this.posx, this.posy, this.width, this.height);
     }
     
   }

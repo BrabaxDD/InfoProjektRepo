@@ -1,12 +1,11 @@
 import Player from './Player.js'; 
 import Scene from './Scene.js';
-
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
-const webSocket = new WebSocket('ws://' + window.location.host + '/game')
+const webSocket = new WebSocket('ws://' + window.location.host + '/game/login')
 webSocket.onmessage = function(e) {const data = JSON.parse(e.data)
-    scene.gameObjects[0].x = data.positionx 
-    scene.gameObjects[0].y = data.positiony 
+    scene.gameObjects[0].posx = data.posx 
+    scene.gameObjects[0].posy = data.posy 
 }
 
 // Canvas dimensions
@@ -45,7 +44,7 @@ gameLoop();
 
 
 function sayHello(){
-    webSocket.send(JSON.stringify({'positionx': scene.gameObjects[0].x,'positiony': scene.gameObjects[0].y}))
+    webSocket.send(JSON.stringify({'posx':scene.gameObjects[0].posx, 'posy': scene.gameObjects[0].posy}))
 }
 
 
