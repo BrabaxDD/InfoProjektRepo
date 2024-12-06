@@ -5,6 +5,7 @@ import random
 
 class gameServer(WebsocketConsumer):
     def __init__(self):
+        super().__init__()
         self.tmpGroupName = "test"
 
     def connect(self):
