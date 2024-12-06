@@ -1,8 +1,11 @@
+import GameSceneFactory from './GameSceneFactory.js';
 import Player from './Player.js'; 
 import Scene from './Scene.js';
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
 const webSocket = new WebSocket('ws://' + window.location.host + '/game/login')
+//const webSocketServer = new WebSocket('ws://' + window.location.host + '/game/server')
+
 webSocket.onmessage = function(e) {const data = JSON.parse(e.data)
     scene.gameObjects[0].posx = data.posx 
     scene.gameObjects[0].posy = data.posy 
@@ -32,12 +35,12 @@ function gameLoop() {
     ctx.clearRect(0, 0, canvasWidth, canvasHeight); // Clear the canvas
     scene.process()
     scene.render()
-    //getPlayer().render(ctx); // Draw the character
     requestAnimationFrame(gameLoop); // Call the next frame
 }
 
+let factory = new GameSceneFactory(canvas,keys)
 let player = new Player(100,100,20,20, 'blue', 5, canvas, keys)
-let scene = new Scene()
+let scene = factory.buildGameScene("mainMenu")
 scene.addObject(player)
 // Start the game loop
 gameLoop();
@@ -45,6 +48,7 @@ gameLoop();
 
 function sayHello(){
     webSocket.send(JSON.stringify({'posx':scene.gameObjects[0].posx, 'posy': scene.gameObjects[0].posy}))
+    webSocket.send(JSON.stringify({'login':true, 'server_id': input}))
 }
 
 
