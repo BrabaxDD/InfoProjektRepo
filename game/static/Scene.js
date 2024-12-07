@@ -12,17 +12,19 @@ export default class Scene{
     }
 
     render(){
-      for(let i = 0; i<this.gameObjects.length; i++){
+      let len = this.gameObjects.length;
+      for(let i = 0; i<len; i++){
           this.gameObjects[i].render();
       }
     }
     
     process(){
-      for(let i = 0; i<this.gameObjects.length; i++){
+      let len = this.gameObjects.length
+      for(let i = 0; i< len; i++){
           this.gameObjects[i].process();
       }
 
-
+      
       if(this.toDelete.length != 0){          
           this.gameObjects = this.gameObjects.filter( function( el ) {
             return toDelete.indexOf( el ) < 0;
@@ -30,8 +32,9 @@ export default class Scene{
           this.toDelete = [];
       }
 
-      if(this.toAdd.length != 0){
-        for(let i = 0; i<this.toAdd.length; i++){
+      let len_add = this.toAdd.length
+      if(len_add != 0){
+        for(let i = 0; i<len_add; i++){
             this.gameObjects.push(this.toAdd[i]);
         }
         this.toAdd = [];

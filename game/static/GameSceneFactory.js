@@ -12,7 +12,8 @@ export default class GameSceneFactory{
         switch (wichSceneToRender) {
             case "mainMenu":
             case 0:
-                scene.addObject(new Player(100,100,20,20, 'blue', 5, this.canvas, this.keys))
+                let player = new Player(100,100,20,20, 'blue', 5, this.canvas, this.keys)
+                scene.addObject(player)
                 break;
         }
         return scene

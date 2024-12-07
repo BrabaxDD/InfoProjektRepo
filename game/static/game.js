@@ -41,7 +41,6 @@ function gameLoop() {
 let factory = new GameSceneFactory(canvas,keys)
 let player = new Player(100,100,20,20, 'blue', 5, canvas, keys)
 let scene = factory.buildGameScene("mainMenu")
-scene.addObject(player)
 // Start the game loop
 gameLoop();
 
