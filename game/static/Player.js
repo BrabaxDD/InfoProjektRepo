@@ -12,7 +12,6 @@ export default class Player {
     }
 
     process() {
-        console.log("proccesing Player")
         if (this.keys['ArrowUp'] && this.posy > 0) {
             this.posy -= this.speed; // Move up
         }

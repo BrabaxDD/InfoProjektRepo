@@ -3,10 +3,11 @@ import Player from './Player.js';
 import Scene from './Scene.js';
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
-const webSocket = new WebSocket('ws://' + window.location.host + '/game/login')
-//const webSocketServer = new WebSocket('ws://' + window.location.host + '/game/server')
+//const webSocket = new WebSocket('ws://' + window.location.host + '/game/login')
+const webSocket = new WebSocket('ws://' + window.location.host + '/game/server')
 
 webSocket.onmessage = function(e) {const data = JSON.parse(e.data)
+
     scene.gameObjects[0].posx = data.posx 
     scene.gameObjects[0].posy = data.posy 
 }
@@ -47,7 +48,7 @@ gameLoop();
 
 function sayHello(){
     webSocket.send(JSON.stringify({'posx':scene.gameObjects[0].posx, 'posy': scene.gameObjects[0].posy}))
-    webSocket.send(JSON.stringify({'login':true, 'server_id': input}))
+//    webSocket.send(JSON.stringify({'login':true, 'server_id': input}))
 }
 
 
