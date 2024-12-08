@@ -1,5 +1,9 @@
+import EventBus from "./EventBus.js"
+
+
 export default class Scene {
     constructor(canvasObjectScene) {
+        this.eventBus = new EventBus()
         this.gameObjects = []
         this.toAdd = []
         this.toDelete = []

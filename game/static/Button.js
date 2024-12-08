@@ -11,6 +11,10 @@ export default class ButtonGameObject extends GameObject {
         this.ctx = this.scene.canvas.getContext("2d")
     }
     process() {
+        if (this.scene.mousex >  this.posx && this.scene.mousex < this.posx + this.widhtButton && 
+            this.scene.mousey >  this.posy && this.scene.mousey < this.posy + this.heightButton){
+            this.scene.eventBus.triggerEvent("test",null)
+        } 
 
 
     }
