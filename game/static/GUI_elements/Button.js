@@ -15,8 +15,8 @@ export default class ButtonGameObject extends GameObject {
         this.text = text
         this.textSize = 60
         this.textColor = "black"
-        text.ButtonPrimaryColor = "green"
-        
+        this.ButtonPrimaryColor = "green"
+        this.ButtonScondaryColor = "yellow"
 
     }
     process() {
@@ -71,7 +71,7 @@ export default class ButtonGameObject extends GameObject {
     }
 
     setButtonColorSecondary(color){
-        this.ButtonScondaryColor
+        this.ButtonScondaryColor = color
     }
 
 }
