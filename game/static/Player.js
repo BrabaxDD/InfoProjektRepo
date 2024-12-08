@@ -14,20 +14,39 @@ export default class Player extends GameObject {
         this.ctx = this.scene.canvas.getContext("2d")
         this.keys = keys
         this.scene.eventBus.registerListner("test", this)
+        this.up = false
+        this.down = false
+        this.left = false
+        this.right = false
     }
 
     process() {
-        if (this.keys['ArrowUp'] && this.posy > 0) {
-            this.posy -= this.speed; // Move up
+        if (this.keys['ArrowUp']) {
+            this.up = true
+            if (this.posy > 0){
+                this.posy -= this.speed; // Move up
         }
-        if (this.keys['ArrowDown'] && this.posy < this.canvas.height - this.height) {
-            this.posy += this.speed; // Move down
+            
         }
-        if (this.keys['ArrowLeft'] && this.posx > 0) {
-            this.posx -= this.speed; // Move left
+        if (this.keys['ArrowDown'] ) {
+            this.down = true
+            if (this.posy < this.canvas.height - this.height){
+                this.posy += this.speed; // Move down
+                }
         }
-        if (this.keys['ArrowRight'] && this.posx < this.canvas.width - this.width) {
-            this.posx += this.speed; // Move right
+        if (this.keys['ArrowLeft'] ) {
+            this.left = true
+            if (this.posx > 0){
+                this.posx -= this.speed; // Move left
+            }
+            
+        }
+        if (this.keys['ArrowRight']) {
+            this.right = true
+            if (this.posx < this.canvas.width - this.width){
+                this.posx += this.speed; // Move right
+            }
+            
         }
     }
 

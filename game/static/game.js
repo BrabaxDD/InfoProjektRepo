@@ -1,6 +1,8 @@
 import GameSceneFactory from './GameSceneFactory.js';
 import Player from './Player.js';
 import Scene from './Scene.js';
+import SceneSwitcher from './SceneSwitcher.js';
+
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
 //const webSocket = new WebSocket('ws://' + window.location.host + '/game/login')
@@ -41,8 +43,10 @@ function gameLoop() {
     requestAnimationFrame(gameLoop); // Call the next frame
 }
 
+
 let factory = new GameSceneFactory(canvas, keys)
 let scene = factory.buildGameScene("mainMenu")
+//loginToServer()
 // Start the game loop
 gameLoop();
 
@@ -58,3 +62,17 @@ document.getElementById('clickMeButton').addEventListener('click', sayHello);
 canvas.addEventListener('click',(event) => {
     scene.eventBus.triggerEvent("click_on_canvas")
 });
+
+export default function switchScene(sceneToSwitch){
+    console.log("NEW SCENE")
+    scene = factory.buildGameScene(sceneToSwitch) 
+}
+
+
+function updateToServer(){
+    webSocket.send(JSON.stringify({ 'type': "action", 'up': scene.gameObjects[0].up, 'down': scene.gameObjects[0].down, 'left': scene.gameObjects[0].left, 'right': scene.gameObjects[0].right}))
+}
+
+function loginToServer(){
+    webSocket.send(JSON.stringify({ 'type': "login", "ID":1000}))
+}

@@ -1,9 +1,11 @@
 import EventBus from "./EventBus.js"
+import SceneSwitcher from "./SceneSwitcher.js"
 
 
 export default class Scene {
     constructor(canvasObjectScene) {
         this.eventBus = new EventBus()
+        this.sceneSwitcher = new SceneSwitcher(this)
         this.gameObjects = []
         this.toAdd = []
         this.toDelete = []
