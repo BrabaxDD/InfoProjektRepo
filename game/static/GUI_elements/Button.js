@@ -1,13 +1,16 @@
 import GameObject from "../GameObject.js"
 
 export default class ButtonGameObject extends GameObject {
-    constructor(posx, posy, widthButton, heightButton, eventString, scene, text) {
+    constructor(posx, posy, widthButton, heightButton,eventString ,eventObject, scene, text) {
         super(scene)
         this.posx = posx
         this.posy = posy
         this.widhtButton = widthButton
         this.heightButton = heightButton
+
+        this.eventObject = eventObject
         this.eventString = eventString
+
         this.canvas = this.scene.canvas
         this.ctx = this.scene.canvas.getContext("2d")
         this.scene.eventBus.registerListner("click_on_canvas", this)
@@ -17,6 +20,7 @@ export default class ButtonGameObject extends GameObject {
         this.textColor = "black"
         this.ButtonPrimaryColor = "green"
         this.ButtonScondaryColor = "yellow"
+        this.eventObject = eventObject
 
     }
     process() {
@@ -31,6 +35,7 @@ export default class ButtonGameObject extends GameObject {
 
 
     }
+
     render() {
         this.ctx.fillStyle = this.ButtonPrimaryColor;
         if (this.is_hovered == true){
@@ -48,14 +53,20 @@ export default class ButtonGameObject extends GameObject {
         //this.ctx.strokeText(text, this.posx+(this.widhtButton / 2), this.posy+(this.heightButton / 2));
     }
 
-    buttonPresed(){
-        this.scene.eventBus.triggerEvent("test",null)
+    buttonPresed(eventObject){
+        //this.scene.eventBus.triggerEvent("test",null)
+        if (this.eventString == "switchScene"){
+            this.scene.eventBus.triggerEvent("switchScene",eventObject)
+            console.log(eventObject.sceneToSwitch)
+        }
     }
 
     event(eventString, eventObject){
         if (eventString == "click_on_canvas" && this.is_hovered == true) {
-            this.buttonPresed()
+            this.buttonPresed(this.eventObject)
         }
+        
+            
     }
 
     setTextSize(size){
