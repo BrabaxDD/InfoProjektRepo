@@ -65,6 +65,9 @@ canvas.addEventListener('click',(event) => {
 export function switchScene(sceneToSwitch){
     console.log("NEW SCENE")
     scene = factory.buildGameScene(sceneToSwitch) 
+    //webSocketHost = new WebSocket('ws://' + window.location.host + '/game/server')
+    //webSocket = new WebSocket('ws://' + window.location.host + '/game/login')
+
 }
 
 

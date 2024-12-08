@@ -2,6 +2,7 @@ import Player from "./Player.js";
 import Scene from "./Scene.js";
 import ButtonGameObject from "./GUI_elements/Button.js"
 import GameObject from "./GameObject.js";
+import CanvasTextInput from "./GUI_elements/TextInput.js";
 
 export default class GameSceneFactory extends GameObject{
     constructor (canvas, keys,sceneObject){
@@ -25,11 +26,14 @@ export default class GameSceneFactory extends GameObject{
                 scene.addObject(logBut)
                 scene.addObject(button)
                 scene.addObject(logButHost)
+                
                 break;
             case "optionsMenu":
             case 1:
                 let b2 = new ButtonGameObject(this.canvas.width/2,this.canvas.width/2,100,50,"switchScene",{sceneToSwitch:0},scene,"Andere Scene")
                 scene.addObject(b2)
+                let input = new CanvasTextInput(scene)
+                scene.addObject(input)
                 break;
         }
         return scene

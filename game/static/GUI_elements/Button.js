@@ -64,9 +64,6 @@ export default class ButtonGameObject extends GameObject {
         if (this.eventString == "loginToServer"){
             loginToServer()
         }
-        if (this.eventString == "loginToServer"){
-            loginToServer()
-        }
         if (this.eventString == "loginToServerHost"){
             loginToServerHost()
         }
