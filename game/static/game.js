@@ -54,3 +54,7 @@ function sayHello() {
 
 
 document.getElementById('clickMeButton').addEventListener('click', sayHello);
+
+canvas.addEventListener('click',(event) => {
+    scene.eventBus.triggerEvent("click_on_canvas")
+});

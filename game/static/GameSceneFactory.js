@@ -1,6 +1,6 @@
 import Player from "./Player.js";
 import Scene from "./Scene.js";
-import ButtonGameObject from "./Button.js"
+import ButtonGameObject from "./GUI_elements/Button.js"
 
 export default class GameSceneFactory{
     constructor (canvas, keys){
