@@ -27,10 +27,6 @@ class gameServer(WebsocketConsumer):
             self.running = True
             self.serverThreat.start()
         data_json = json.loads(text_data)
-        self.send(json.dumps(
-            {"positionx": random.random()*100,
-             "positiony": random.random()*100
-             }))
 
     def updatePosition(self, ID, posx, posy):
         async_to_sync(self.channel_layer.group_send)(
@@ -38,17 +34,19 @@ class gameServer(WebsocketConsumer):
             {"type": "position",
              "ID": ID,
              "posx": posx,
-             "posy":posy})
+             "posy": posy})
         pass
 
     def action(self, event):
-        self.serverThreat.playerActionUpdate(event)
-        print("received action Update")
-        print(event)
         pass
+#        self.serverThreat.playerActionUpdate(event)
+#        print("received action Update")
+#        print(event)
+#        pass
+#
 
     def login(self, event):
-        self.serverThreat.login(event["ID"])
+        #        self.serverThreat.login(event["ID"])
         print("received loginrequest")
         print(event)
         pass

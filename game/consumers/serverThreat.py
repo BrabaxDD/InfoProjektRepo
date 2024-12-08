@@ -33,6 +33,7 @@ class serverThreat(threading.Thread):
         self.world.eventBus.playerAction(action)
 
     def login(self, ID):
-        self.world.objects.append(Player(ID))
-    def broadcastPlayerPosition(self,ID,posx,posy):
-        self.gameServerSocket.updatePosition(ID,posx,posy)
+        self.world.objects.append(Player(ID, self.world))
+
+    def broadcastPlayerPosition(self, ID, posx, posy):
+        self.gameServerSocket.updatePosition(ID, posx, posy)
