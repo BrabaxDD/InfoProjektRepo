@@ -1,15 +1,17 @@
 import GameSceneFactory from './GameSceneFactory.js';
-import Player from './Player.js'; 
+import Player from './Player.js';
 import Scene from './Scene.js';
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
 //const webSocket = new WebSocket('ws://' + window.location.host + '/game/login')
 const webSocket = new WebSocket('ws://' + window.location.host + '/game/server')
 
-webSocket.onmessage = function(e) {const data = JSON.parse(e.data)
 
-    scene.gameObjects[0].posx = data.posx 
-    scene.gameObjects[0].posy = data.posy 
+webSocket.onmessage = function(e) {
+    const data = JSON.parse(e.data)
+
+    scene.gameObjects[0].posx = data.posx
+    scene.gameObjects[0].posy = data.posy
 }
 
 // Canvas dimensions
@@ -30,7 +32,7 @@ window.addEventListener('keyup', (e) => {
 
 
 
-function websocket(){}
+function websocket() { }
 
 function gameLoop() {
     ctx.clearRect(0, 0, canvasWidth, canvasHeight); // Clear the canvas
@@ -39,16 +41,15 @@ function gameLoop() {
     requestAnimationFrame(gameLoop); // Call the next frame
 }
 
-let factory = new GameSceneFactory(canvas,keys)
-let player = new Player(100,100,20,20, 'blue', 5, canvas, keys)
+let factory = new GameSceneFactory(canvas, keys)
 let scene = factory.buildGameScene("mainMenu")
 // Start the game loop
 gameLoop();
 
 
-function sayHello(){
-    webSocket.send(JSON.stringify({'posx':scene.gameObjects[0].posx, 'posy': scene.gameObjects[0].posy}))
-//    webSocket.send(JSON.stringify({'login':true, 'server_id': input}))
+function sayHello() {
+    webSocket.send(JSON.stringify({ 'posx': scene.gameObjects[0].posx, 'posy': scene.gameObjects[0].posy }))
+    //    webSocket.send(JSON.stringify({'login':true, 'server_id': input}))
 }
 
 

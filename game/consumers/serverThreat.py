@@ -22,6 +22,6 @@ class serverThreat(threading.Thread):
                 running = False
             last = now
             now = time.perf_counter()
-            time.sleep(1)
+            time.sleep(0.01)
             delta = now - last
             self.gameServerSocket.update()

@@ -1,14 +1,18 @@
-export default class Player {
-    constructor(x, y, width,height, color, speed, canvas, keys) {
-      this.posx = x
-      this.posy = y
-      this.width = width
-      this.height = height
-      this.color = color
-      this.speed = speed
-      this.canvas = canvas
-      this.ctx = this.canvas.getContext("2d")
-      this.keys = keys
+import GameObject from "./GameObject.js"
+
+
+export default class Player extends GameObject {
+    constructor(x, y, width, height, color, speed, keys, scene) {
+        super(scene)
+        this.posx = x
+        this.posy = y
+        this.width = width
+        this.height = height
+        this.color = color
+        this.speed = speed
+        this.canvas = this.scene.canvas
+        this.ctx = this.scene.canvas.getContext("2d")
+        this.keys = keys
     }
 
     process() {
@@ -30,5 +34,5 @@ export default class Player {
         this.ctx.fillStyle = "blue";
         this.ctx.fillRect(this.posx, this.posy, this.width, this.height);
     }
-    
-  }
+
+}
