@@ -78,7 +78,7 @@ export default class ButtonGameObject extends GameObject {
     }
 
     setTextSize(size){
-        this.text
+        this.textSize = size
     }
 
     setTextColor(color){

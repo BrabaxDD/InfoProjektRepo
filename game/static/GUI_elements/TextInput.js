@@ -1,18 +1,19 @@
 import GameObject from "../GameObject.js";
 
 export default class CanvasTextInput extends GameObject{
-    constructor(scene) {
+    constructor(scene, posx, posy, widthButton, heightButton) {
         super(scene)
         this.canvas = this.scene.canvas;
         this.ctx = this.canvas.getContext('2d');
         this.inputText = ''; 
         this.isFocused = false;
         this.storedText = null; 
+        this.textSize = 60;
         
-        this.posx = 100
-        this.posy = 50
-        this.widthBox = 200
-        this.heightBox = 30;
+        this.posx = posx//100
+        this.posy = posy//50
+        this.widthBox = widthButton//200
+        this.heightBox = heightButton//30;
 
         this.scene.eventBus.registerListner("click_on_canvas",this)
         
@@ -23,7 +24,6 @@ export default class CanvasTextInput extends GameObject{
     event(eventString, eventObject) {
         if (eventString == "click_on_canvas"){
             this.isFocused = true;
-            console.log("CKUCJE")
             if (this.scene.mousex >  this.posx && this.scene.mousex < this.posx + this.widthBox && 
                 this.scene.mousey >  this.posy && this.scene.mousey < this.posy + this.heightBox){
                 this.isFocused = true;
@@ -63,7 +63,7 @@ export default class CanvasTextInput extends GameObject{
         this.ctx.strokeRect(this.posx, this.posy, this.widthBox, this.heightBox);
         
 
-        this.ctx.font = '16px Arial';
+        this.ctx.font = this.textSize;
         this.ctx.fillStyle = 'black';
         this.ctx.textBaseline = 'middle';
         this.ctx.fillText(this.inputText, this.posx + (this.widthBox/2), this.posy + (this.heightBox / 2));
