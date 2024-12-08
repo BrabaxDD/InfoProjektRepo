@@ -38,12 +38,8 @@ class gameServer(WebsocketConsumer):
         pass
 
     def action(self, event):
+        self.serverThreat.playerActionUpdate(event)
         pass
-#        self.serverThreat.playerActionUpdate(event)
-#        print("received action Update")
-#        print(event)
-#        pass
-#
 
     def login(self, event):
         #        self.serverThreat.login(event["ID"])
@@ -53,3 +49,6 @@ class gameServer(WebsocketConsumer):
 
     def getRunning(self):
         return self.running
+
+    def position(self, event):
+        pass
