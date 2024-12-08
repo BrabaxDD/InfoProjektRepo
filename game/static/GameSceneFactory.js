@@ -24,6 +24,13 @@ export default class GameSceneFactory extends GameObject{
                 let button2 = new ButtonGameObject(this.canvas.width/2-100,this.canvas.height/3 * 2-28,200,56,"switchScene",{sceneToSwitch:"optionsMenu"},scene,"Options")
                 scene.addObject(button2)
 
+
+                let lotTest = new ButtonGameObject(this.canvas.width/3-100,this.canvas.height/5-28,200,56,"loginToServer",{},scene,"Login (test for message)")
+                scene.addObject(lotTest)
+
+                let HostTest = new ButtonGameObject(this.canvas.width/3*2-100,this.canvas.height/5 -28,200,56,"loginToServerHost",{},scene,"Login as host ((test for message))")
+                scene.addObject(HostTest)
+
                 console.log(button.eventObject.sceneToSwitch)
                 
                 break;
@@ -46,9 +53,9 @@ export default class GameSceneFactory extends GameObject{
                 let input = new CanvasTextInput(scene, this.canvas.width/2-100, this.canvas.height/2 - 15,200,30)
                 scene.addObject(input)
 
-                let logBut = new ButtonGameObject(this.canvas.width/3-100,this.canvas.height/5*4-28,200,56, "loginToServer",{}, scene, "Login")
+                let logBut = new ButtonGameObject(this.canvas.width/3-100,this.canvas.height/5*4-28,200,56, "switchScene",{sceneToSwitch:2}, scene, "Login (to game)")
                 scene.addObject(logBut)
-                let logButHost = new ButtonGameObject(this.canvas.width/3*2-100,this.canvas.height/5*4-28,200,56, "loginToServerHost",{}, scene, "Host")
+                let logButHost = new ButtonGameObject(this.canvas.width/3*2-100,this.canvas.height/5*4-28,200,56, "switchScene",{sceneToSwitch:2}, scene, "Host (to game)")
                 scene.addObject(logButHost)
         }
         return scene
