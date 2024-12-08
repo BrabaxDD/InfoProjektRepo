@@ -46,7 +46,7 @@ function gameLoop() {
 
 let factory = new GameSceneFactory(canvas, keys)
 let scene = factory.buildGameScene("mainMenu")
-//loginToServer()
+loginToServer()
 // Start the game loop
 gameLoop();
 
