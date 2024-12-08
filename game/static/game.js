@@ -70,9 +70,9 @@ export default function switchScene(sceneToSwitch){
 
 
 function updateToServer(){
-    webSocket.send(JSON.stringify({ 'type': "action", 'up': scene.gameObjects[0].up, 'down': scene.gameObjects[0].down, 'left': scene.gameObjects[0].left, 'right': scene.gameObjects[0].right}))
+    webSocket.send(JSON.stringify({ type: "action", up: scene.gameObjects[0].up, down: scene.gameObjects[0].down, left: scene.gameObjects[0].left, right: scene.gameObjects[0].right}))
 }
 
 function loginToServer(){
-    webSocket.send(JSON.stringify({ 'type': "login", "ID":1000}))
+    webSocket.send(JSON.stringify({ type: "login", ID:1000}))
 }
