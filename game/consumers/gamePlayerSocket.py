@@ -9,10 +9,11 @@ class gamePlayerSocketConsumer(WebsocketConsumer):
         self.firstMessage = True
         self.gameServerName = ""
         self.tmpGroupName = "test"
+        self.player_ID = "opfer"
 
     def connect(self):
         async_to_sync(self.channel_layer.group_add)(
-                    self.tmpGroupName, self.channel_name)
+            self.tmpGroupName, self.channel_name)
         self.accept()
 
     def disconnect(self, close_code):
@@ -21,17 +22,24 @@ class gamePlayerSocketConsumer(WebsocketConsumer):
             self.tmpGroupName, self.channel_name)
 
     def receive(self, text_data):
-#        if self.firstMessage:
         text_data_json = json.loads(text_data)
-#            self.gameServerName = text_data_json["serverName"]
-        posx = text_data_json["posx"]
-        posy = text_data_json["posy"]
+        messageType = text_data_json["type"] 
+        if messageType == "action":
+            up = text_data_json["up"]
+            down = text_data_json["down"]
+            left = text_data_json["left"]
+            right = text_data_json["right"]
+
+
         async_to_sync(self.channel_layer.group_send)(
             self.tmpGroupName,
             {
-                "type": "position",
-                "posx": posx,
-                "posy": posy
+                "type": "action",
+                "ID": self.player_ID,
+                "up": up,
+                "down": down,
+                "left": left,
+                "right": right,
             }
         )
 
@@ -39,6 +47,8 @@ class gamePlayerSocketConsumer(WebsocketConsumer):
         posx = event["posx"]
         posy = event["posy"]
         self.send(text_data=json.dumps({
+            "type": "position",
+            "ID": self.player_ID,
             "posx": posx,
             "posy": posy,
         }))
