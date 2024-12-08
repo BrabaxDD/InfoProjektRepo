@@ -32,12 +32,22 @@ class gameServer(WebsocketConsumer):
              "positiony": random.random()*100
              }))
 
-    def update(self):
+    def updatePosition(self, ID, posx, posy):
+        async_to_sync(self.channel_layer.group_send)(
+            self.tmpGroupName,
+            {"type": "position",
+             "ID": ID
+             "posx": posx
+             "posy":posy})
+        pass
 
-        self.send(json.dumps(
-            {"posx": 10,
-             "posy": 10
-             }))
+    def action(self, event):
+        self.serverThreat.playerActionUpdate(event)
+        pass
+
+    def login(self, event):
+        self.serverThreat.login(event["ID"])
+        pass
 
     def getRunning(self):
         return self.running
