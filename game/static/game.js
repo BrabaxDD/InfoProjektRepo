@@ -6,7 +6,7 @@ import SceneSwitcher from './SceneSwitcher.js';
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
 //const webSocket = new WebSocket('ws://' + window.location.host + '/game/login')
-const webSocket = new WebSocket('ws://' + window.location.host + '/game/server')
+const webSocket = new WebSocket('ws://' + window.location.host + '/game/login')
 
 
 webSocket.onmessage = function(e) {

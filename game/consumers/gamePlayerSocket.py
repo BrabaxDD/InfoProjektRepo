@@ -43,6 +43,7 @@ class gamePlayerSocketConsumer(WebsocketConsumer):
             )
         if messageType == "login":
             ID = text_data_json["ID"]
+            self.player_ID = ID
             async_to_sync(self.channel_layer.group_send)(self.tmpGroupName,{"type": "login","ID": ID})
 
     def position(self, event):

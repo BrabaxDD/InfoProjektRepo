@@ -28,7 +28,6 @@ class serverThreat(threading.Thread):
             time.sleep(0.01)
             delta = now - last
             self.world.process(delta)
-            self.gameServerSocket.updatePosition()
 
     def playerActionUpdate(self, action):
         self.world.eventBus.playerAction(action)
