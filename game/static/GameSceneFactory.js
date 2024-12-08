@@ -20,9 +20,11 @@ export default class GameSceneFactory extends GameObject{
                 let button = new ButtonGameObject(200,200,50,50,"switchScene",{sceneToSwitch:"optionsMenu"},scene,"Test Button")
                 console.log(button.eventObject.sceneToSwitch)
                 let logBut = new ButtonGameObject(100,100,50,50, "loginToServer",{}, scene, "Login")
+                let logButHost = new ButtonGameObject(200,100,50,50, "loginToServerHost",{}, scene, "LoginHost")
                 scene.addObject(player)
                 scene.addObject(logBut)
                 scene.addObject(button)
+                scene.addObject(logButHost)
                 break;
             case "optionsMenu":
             case 1:

@@ -1,5 +1,6 @@
 import GameObject from "../GameObject.js"
 import {loginToServer} from "../game.js"
+import {loginToServerHost} from "../game.js"
 
 export default class ButtonGameObject extends GameObject {
     constructor(posx, posy, widthButton, heightButton,eventString ,eventObject, scene, text) {
@@ -62,6 +63,12 @@ export default class ButtonGameObject extends GameObject {
         }
         if (this.eventString == "loginToServer"){
             loginToServer()
+        }
+        if (this.eventString == "loginToServer"){
+            loginToServer()
+        }
+        if (this.eventString == "loginToServerHost"){
+            loginToServerHost()
         }
     }
 

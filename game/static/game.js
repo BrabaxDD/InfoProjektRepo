@@ -5,7 +5,7 @@ import SceneSwitcher from './SceneSwitcher.js';
 
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
-//const webSocket = new WebSocket('ws://' + window.location.host + '/game/login')
+const webSocketHost = new WebSocket('ws://' + window.location.host + '/game/server')
 const webSocket = new WebSocket('ws://' + window.location.host + '/game/login')
 
 
@@ -74,4 +74,8 @@ function updateToServer(){
 
 export function loginToServer(){
     webSocket.send(JSON.stringify({type: "login", ID:1000}))
+}
+
+export function loginToServerHost(){
+    webSocketHost.send(JSON.stringify({}))
 }
