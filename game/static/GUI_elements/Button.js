@@ -1,4 +1,5 @@
 import GameObject from "../GameObject.js"
+import {loginToServer} from "../game.js"
 
 export default class ButtonGameObject extends GameObject {
     constructor(posx, posy, widthButton, heightButton,eventString ,eventObject, scene, text) {
@@ -58,6 +59,9 @@ export default class ButtonGameObject extends GameObject {
         if (this.eventString == "switchScene"){
             this.scene.eventBus.triggerEvent("switchScene",eventObject)
             console.log(eventObject.sceneToSwitch)
+        }
+        if (this.eventString == "loginToServer"){
+            loginToServer()
         }
     }
 

@@ -1,5 +1,5 @@
 import GameSceneFactory from "./GameSceneFactory.js";
-import switchScene from "./game.js";
+import {switchScene} from "./game.js";
 
 export default class SceneSwitcher{
     constructor(scene){

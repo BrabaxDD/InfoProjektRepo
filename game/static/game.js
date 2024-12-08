@@ -46,7 +46,6 @@ function gameLoop() {
 
 let factory = new GameSceneFactory(canvas, keys)
 let scene = factory.buildGameScene("mainMenu")
-loginToServer()
 // Start the game loop
 gameLoop();
 
@@ -63,16 +62,16 @@ canvas.addEventListener('click',(event) => {
     scene.eventBus.triggerEvent("click_on_canvas")
 });
 
-export default function switchScene(sceneToSwitch){
+export function switchScene(sceneToSwitch){
     console.log("NEW SCENE")
     scene = factory.buildGameScene(sceneToSwitch) 
 }
 
 
 function updateToServer(){
-    webSocket.send(JSON.stringify({ type: "action", up: scene.gameObjects[0].up, down: scene.gameObjects[0].down, left: scene.gameObjects[0].left, right: scene.gameObjects[0].right}))
+    webSocket.send(JSON.stringify({type: "action", up: scene.gameObjects[0].up, down: scene.gameObjects[0].down, left: scene.gameObjects[0].left, right: scene.gameObjects[0].right}))
 }
 
-function loginToServer(){
-    webSocket.send(JSON.stringify({ type: "login", ID:1000}))
+export function loginToServer(){
+    webSocket.send(JSON.stringify({type: "login", ID:1000}))
 }
