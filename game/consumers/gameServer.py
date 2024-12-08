@@ -36,17 +36,21 @@ class gameServer(WebsocketConsumer):
         async_to_sync(self.channel_layer.group_send)(
             self.tmpGroupName,
             {"type": "position",
-             "ID": ID
-             "posx": posx
+             "ID": ID,
+             "posx": posx,
              "posy":posy})
         pass
 
     def action(self, event):
         self.serverThreat.playerActionUpdate(event)
+        print("received action Update")
+        print(event)
         pass
 
     def login(self, event):
         self.serverThreat.login(event["ID"])
+        print("received loginrequest")
+        print(event)
         pass
 
     def getRunning(self):

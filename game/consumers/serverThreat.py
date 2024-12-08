@@ -8,7 +8,7 @@ from game.ServerClasses.Player import Player
 class serverThreat(threading.Thread):
     def __init__(self, thread_name, thread_ID, gameServerSocket: gameServer):
         threading.Thread.__init__(self)
-        self.world = World.World()
+        self.world = World.World(self)
         self.thread_name = thread_name
         self.thread_ID = thread_ID
         self.gameServerSocket: gameServer = gameServerSocket

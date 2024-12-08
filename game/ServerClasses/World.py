@@ -1,9 +1,8 @@
 from game.ServerClasses import EventBus
-from game.consumers import serverThreat
 
 
 class World:
-    def __init__(self, threat: serverThreat.serverThreat):
+    def __init__(self, threat):
         self.eventBus = EventBus.EventBus()
         self.objects = []
         self.threat = threat
