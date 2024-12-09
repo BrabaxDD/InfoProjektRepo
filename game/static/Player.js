@@ -23,13 +23,13 @@ export default class Player extends GameObject {
     process() {
         if (this.keys['ArrowUp']) {
             this.up = true
-            if (this.posy > 0){
+            if (this.posy > 0){}
                 //this.posy -= this.speed; // Move up
         } else{
             this.up = false
         }
             
-        }
+        
         if (this.keys['ArrowDown'] ) {
             this.down = true
             if (this.posy < this.canvas.height - this.height){
