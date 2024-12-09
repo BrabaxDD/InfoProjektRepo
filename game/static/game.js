@@ -13,8 +13,10 @@ const webSocket = new WebSocket('ws://' + window.location.host + '/game/login')
 webSocket.onmessage = function(e) {
     const data = JSON.parse(e.data)
 
-    scene.gameObjects[0].posx = data.posx
-    scene.gameObjects[0].posy = data.posy
+    if(data.type == "position"){
+        scene.gameObjects[0].posx = data.posx
+        scene.gameObjects[0].posy = data.posy
+    }
 }
 
 // Canvas dimensions
@@ -47,6 +49,7 @@ function gameLoop() {
 
 let factory = new GameSceneFactory(canvas, keys)
 let scene = factory.buildGameScene("mainMenu")
+let playerID = 1000
 // Start the game loop
 gameLoop();
 

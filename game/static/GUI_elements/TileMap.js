@@ -2,6 +2,7 @@ import GameObject from "../GameObject.js";
 
 export default class extends GameObject{
     constructor(scene, tileSize){
+        super(scene)
         this.tileSize = tileSize
         this.scene = scene
         this.canvas = this.scene.canvas
@@ -27,7 +28,7 @@ export default class extends GameObject{
 
     #image(fileName) {
         const img = new Image();
-        img.src = `../images/${fileName}`;
+        img.src = `/images/${fileName}`;
         return img;
       }
 
@@ -35,31 +36,33 @@ export default class extends GameObject{
 
     
 
-      process(){
-        console.log("Is Here")
-      }
+    process(){
+    console.log("Is Here")
+    }
 
-      render(){
-            for (let row = 0; row < this.map.length; row++) {
-                for (let column = 0; column < this.map[row].length; column++) {
-                    const tile = this.map[row][column];
-                    let image = null;
-                    switch (tile) {
-                        case 0:
-                            image = this.wall;
-                            break;
-                        
-                        }
+    render(){
+        let length = this.map.length
+        for (let row = 0; row < length; row++) {
+            let width = this.map[row].length
+            for (let column = 0; column < width; column++) {
+                const tile = this.map[row][column];
+                let image = null;
+                switch (tile) {
+                    case 0:
+                        image = this.wall;
+                        break;
+                    
+                    }
 
-                    if (image != null)
-                    ctx.drawImage(
-                        image,
-                        column * this.tileSize,
-                        row * this.tileSize,
-                        this.tileSize,
-                        this.tileSize
-                    );
-                }
-            }  
-      }
+                if (image != null)
+                    this.ctx.drawImage(
+                    image,
+                    column * this.tileSize,
+                    row * this.tileSize,
+                    this.tileSize,
+                    this.tileSize
+                );
+            }
+        }  
+    }
 }

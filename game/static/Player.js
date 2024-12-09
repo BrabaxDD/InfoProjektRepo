@@ -24,27 +24,27 @@ export default class Player extends GameObject {
         if (this.keys['ArrowUp']) {
             this.up = true
             if (this.posy > 0){
-                this.posy -= this.speed; // Move up
+                //this.posy -= this.speed; // Move up
         }
             
         }
         if (this.keys['ArrowDown'] ) {
             this.down = true
             if (this.posy < this.canvas.height - this.height){
-                this.posy += this.speed; // Move down
+                //this.posy += this.speed; // Move down
                 }
         }
         if (this.keys['ArrowLeft'] ) {
             this.left = true
             if (this.posx > 0){
-                this.posx -= this.speed; // Move left
+                //this.posx -= this.speed; // Move left
             }
             
         }
         if (this.keys['ArrowRight']) {
             this.right = true
             if (this.posx < this.canvas.width - this.width){
-                this.posx += this.speed; // Move right
+                //this.posx += this.speed; // Move right
             }
             
         }

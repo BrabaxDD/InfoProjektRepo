@@ -3,6 +3,7 @@ import Scene from "./Scene.js";
 import ButtonGameObject from "./GUI_elements/Button.js"
 import GameObject from "./GameObject.js";
 import CanvasTextInput from "./GUI_elements/TextInput.js";
+import TileMap from "./GUI_elements/TileMap.js";
 
 export default class GameSceneFactory extends GameObject{
     constructor (canvas, keys,sceneObject){
@@ -25,13 +26,17 @@ export default class GameSceneFactory extends GameObject{
                 scene.addObject(button2)
 
 
-                let lotTest = new ButtonGameObject(this.canvas.width/3-100,this.canvas.height/5-28,200,56,"loginToServer",{},scene,"Login (test for message)")
+                let lotTest = new ButtonGameObject(this.canvas.width/3-100,this.canvas.height/5-28,200,56,"loginToServer",{sceneToSwitch:2},scene,"Login (test for message)")
                 scene.addObject(lotTest)
 
                 let HostTest = new ButtonGameObject(this.canvas.width/3*2-100,this.canvas.height/5 -28,200,56,"loginToServerHost",{},scene,"Login as host ((test for message))")
                 scene.addObject(HostTest)
 
                 console.log(button.eventObject.sceneToSwitch)
+
+                let map = new TileMap(scene, 32)
+                //scene.addObject(map)
+                console.log("Fertige Scene")
                 
                 break;
 
