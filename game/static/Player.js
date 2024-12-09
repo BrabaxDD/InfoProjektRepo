@@ -25,6 +25,8 @@ export default class Player extends GameObject {
             this.up = true
             if (this.posy > 0){
                 //this.posy -= this.speed; // Move up
+        } else{
+            this.up = false
         }
             
         }
@@ -33,20 +35,25 @@ export default class Player extends GameObject {
             if (this.posy < this.canvas.height - this.height){
                 //this.posy += this.speed; // Move down
                 }
+        }else{
+            this.down = false
         }
+
         if (this.keys['ArrowLeft'] ) {
             this.left = true
             if (this.posx > 0){
                 //this.posx -= this.speed; // Move left
             }
-            
-        }
+        }else{this.left = false}
+
         if (this.keys['ArrowRight']) {
             this.right = true
             if (this.posx < this.canvas.width - this.width){
                 //this.posx += this.speed; // Move right
-            }
-            
+            }    
+        }
+        else{
+            this.right = false
         }
     }
 
