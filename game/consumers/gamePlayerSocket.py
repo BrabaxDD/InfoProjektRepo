@@ -8,20 +8,23 @@ class gamePlayerSocketConsumer(WebsocketConsumer):
         super().__init__()
         self.firstMessage = True
         self.gameServerName = ""
-        self.tmpGroupName = "test"
         self.player_ID = "opfer"
+        self.serverID = ""
 
     def connect(self):
         async_to_sync(self.channel_layer.group_add)(
-            self.tmpGroupName, self.channel_name)
+            self.serverID, self.channel_name)
         self.accept()
 
     def disconnect(self, close_code):
         pass
         async_to_sync(self.channel_layer.group_discard)(
-            self.tmpGroupName, self.channel_name)
+            self.serverID, self.channel_name)
 
     def receive(self, text_data):
+        print("log: received Package by client to " +
+              str(self.player_ID) + " with the following content:")
+        print(text_data)
         text_data_json = json.loads(text_data)
         messageType = text_data_json["type"]
         if messageType == "action":
@@ -31,7 +34,7 @@ class gamePlayerSocketConsumer(WebsocketConsumer):
             right = text_data_json["right"]
 
             async_to_sync(self.channel_layer.group_send)(
-                self.tmpGroupName,
+                self.serverID,
                 {
                     "type": "action",
                     "ID": self.player_ID,
@@ -43,9 +46,11 @@ class gamePlayerSocketConsumer(WebsocketConsumer):
             )
         if messageType == "login":
             ID = text_data_json["ID"]
+            serverID = text_data_json["serverID"]
+            self.serverID = serverID
             self.player_ID = ID
             async_to_sync(self.channel_layer.group_send)(
-                self.tmpGroupName, {"type": "login", "ID": ID})
+                self.serverID, {"type": "login", "ID": ID})
 
     def position(self, event):
         if event["ID"] == self.player_ID:
@@ -57,7 +62,9 @@ class gamePlayerSocketConsumer(WebsocketConsumer):
                 "posx": posx,
                 "posy": posy,
             }))
-    def login(self,event):
+
+    def login(self, event):
         pass
-    def action(self,event):
+
+    def action(self, event):
         pass
