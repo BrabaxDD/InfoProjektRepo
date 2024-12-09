@@ -17,4 +17,4 @@ class World:
             gameObject.broadcast()
 
     def broadcastPlayerPosition(self, ID, posx, posy):
-        self.threat.broadcastPosition(ID, posx, posy)
+        self.threat.broadcastPlayerPosition(ID, posx, posy)

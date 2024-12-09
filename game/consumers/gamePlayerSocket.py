@@ -53,6 +53,8 @@ class gamePlayerSocketConsumer(WebsocketConsumer):
                 self.serverID, {"type": "login", "ID": ID})
 
     def position(self, event):
+        print("log: sending position information to Player with ID: " + str(self.player_ID) +
+              " the position is: " + str(event["posx"]) + " " + str(event["posy"]))
         if event["ID"] == self.player_ID:
             posx = event["posx"]
             posy = event["posy"]
