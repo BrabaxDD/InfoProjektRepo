@@ -7,11 +7,12 @@ class Player:
         self.world = world
         self.posx = 0
         self.posy = 0
-        self.velocity = 50
+        self.velocity = 290
         self.up = False
         self.down = False
         self.left = False
         self.right = False
+        self.world.eventBus.registerPlayerActionListner(self)
 
     def playerAction(self, action):
         if action["ID"] == self.ID:
@@ -19,16 +20,17 @@ class Player:
             self.down = action["down"]
             self.right = action["right"]
             self.left = action["left"]
-            pass
+            print("log: updating Player Actions of Player: " + str(self.ID) + " to " +
+                  str(self.up) + str(self.down) + str(self.right) + str(self.left))
 
     def process(self, delta):
-        if self.up:
-            self.posx = delta*self.velocity + self.posx
-        if self.down:
-            self.posx = delta*self.velocity*(-1) + self.posx
         if self.right:
-            self.posy = delta*self.velocity + self.posy
+            self.posx = delta*self.velocity + self.posx
         if self.left:
+            self.posx = delta*self.velocity*(-1) + self.posx
+        if self.down:
+            self.posy = delta*self.velocity + self.posy
+        if self.up:
             self.posy = delta*self.velocity*(-1) + self.posy
 
     def broadcast(self):
