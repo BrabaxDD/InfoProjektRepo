@@ -77,9 +77,9 @@ function updateToServer(){
 }
 
 export function loginToServer(){
-    webSocket.send(JSON.stringify({type: "login", ID:1000, serverID:1}))
+    webSocket.send(JSON.stringify({type: "login", ID:1000, serverID:"Server1"}))
 }
 
 export function loginToServerHost(){
-    webSocketHost.send(JSON.stringify({type : "startserver", name : "test"}))
+    webSocketHost.send(JSON.stringify({type : "startserver", serverID : "Server1"}))
 }

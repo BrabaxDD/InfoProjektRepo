@@ -12,8 +12,6 @@ class gamePlayerSocketConsumer(WebsocketConsumer):
         self.serverID = ""
 
     def connect(self):
-        async_to_sync(self.channel_layer.group_add)(
-            self.serverID, self.channel_name)
         self.accept()
 
     def disconnect(self, close_code):
@@ -48,6 +46,8 @@ class gamePlayerSocketConsumer(WebsocketConsumer):
             ID = text_data_json["ID"]
             serverID = text_data_json["serverID"]
             self.serverID = serverID
+            async_to_sync(self.channel_layer.group_add)(
+                self.serverID, self.channel_name)
             self.player_ID = ID
             async_to_sync(self.channel_layer.group_send)(
                 self.serverID, {"type": "login", "ID": ID})
