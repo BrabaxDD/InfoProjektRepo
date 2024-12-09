@@ -43,6 +43,18 @@ function gameLoop() {
     ctx.clearRect(0, 0, canvasWidth, canvasHeight); // Clear the canvas
     scene.process()
     scene.render()
+    if (isStarted){
+        if(isDelayed == true){
+            if (frameCount >= 5){
+                updateToServer()
+                frameCount = 0
+            }
+        }
+        if (frameCount >= 200){
+            isDelayed = true
+        }
+        frameCount += 1
+    }
     requestAnimationFrame(gameLoop); // Call the next frame
 }
 
@@ -50,6 +62,9 @@ function gameLoop() {
 let factory = new GameSceneFactory(canvas, keys)
 let scene = factory.buildGameScene("mainMenu")
 let playerID = 1000
+var frameCount = 0
+var isDelayed = false
+var isStarted = false
 // Start the game loop
 gameLoop();
 
@@ -76,13 +91,17 @@ export function switchScene(sceneToSwitch){
 
 
 function updateToServer(){
+    console.log("Server update")
     webSocket.send(JSON.stringify({type: "action", up: scene.gameObjects[0].up, down: scene.gameObjects[0].down, left: scene.gameObjects[0].left, right: scene.gameObjects[0].right}))
 }
 
 export function loginToServer(){
     webSocket.send(JSON.stringify({type: "login", ID:1000, serverID:"Server1"}))
+    isStarted = true
 }
 
 export function loginToServerHost(){
     webSocketHost.send(JSON.stringify({type : "startserver", serverID : "Server1"}))
+    
 }
+
