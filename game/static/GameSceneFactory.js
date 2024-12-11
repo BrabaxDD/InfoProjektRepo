@@ -14,11 +14,11 @@ export default class GameSceneFactory extends GameObject{
     }
 
     buildGameScene(wichSceneToRender ){ //Das ist das Startfeld
-        let scene = new Scene(this.canvas);
+        let scene = null
         switch (wichSceneToRender) {
             case "mainMenu":
             case 0:
-                
+                scene = new Scene(this.canvas,"");
                 let button = new ButtonGameObject(this.canvas.width/2-100,this.canvas.height/3-28,200,56,"switchScene",{sceneToSwitch:"hostOrLogin"},scene,"Play")
                 scene.addObject(button)
 
@@ -41,6 +41,7 @@ export default class GameSceneFactory extends GameObject{
 
             case "optionsMenu":
             case 1:
+                scene = new Scene(this.canvas,"");
                 let b2 = new ButtonGameObject(this.canvas.width/2-100,this.canvas.height/3 * 2-28,200,56,"switchScene",{sceneToSwitch:0},scene,"Back To Main Menu")
                 scene.addObject(b2)
 
@@ -48,6 +49,7 @@ export default class GameSceneFactory extends GameObject{
 
             case "game":
             case 2:
+                scene = new Scene(this.canvas,"GameMap.txt");
                 let player = new Player(100,100,20,20, 'blue', 5, this.keys,scene)
                 scene.addObject(player)
                 
@@ -55,6 +57,7 @@ export default class GameSceneFactory extends GameObject{
             
             case "hostOrLogin":
             case 3:
+                scene = new Scene(this.canvas,"");
                 let input = new CanvasTextInput(scene, this.canvas.width/2-100, this.canvas.height/2 - 15,200,30)
                 scene.addObject(input)
 

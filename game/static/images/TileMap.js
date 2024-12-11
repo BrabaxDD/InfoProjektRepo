@@ -2,30 +2,34 @@ import GameObject from "../GameObject.js";
 import ImageLoader from "./ImageLoader.js"
 
 export default class TileMap extends GameObject {
-    constructor(scene, tileSize) {
+    constructor(scene, tileSize, mapName) {
         super(scene);
         this.tileSize = tileSize;
         this.scene = scene;
         this.canvas = this.scene.canvas;
         this.ctx = this.scene.canvas.getContext("2d");
+        this.fileName = mapName
 
         // Initialize the image loader
         this.imageLoader = new ImageLoader();
 
         // Define the tile-to-file mapping
         this.tileMap = {
-            0: "Wand.png", // Example tiles
+            0: "Wand.png", // All Tiles
             1: "Floor.png",
+            2: "Water.png",
         };
 
-        // Initialize the map
-        this.map = [
-            [0, 0],
-            [1, 0],
-            [1, 1],
-        ];
-        // Annehmen, wir haben eine Datei "example.txt" im selben Verzeichnis
-        this.map = this.loadMap("Map.txt")
+        // Initialize the map. Example map
+        // this.map = [
+        //    [0, 0],
+        //    [1, 0],
+        //    [1, 1],
+        //];
+        
+        if (this.mapName != ""){
+            this.map = this.loadMap(mapName)
+        }
         console.log(this.map)
                 
                 

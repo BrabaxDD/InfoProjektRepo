@@ -3,7 +3,7 @@ import SceneSwitcher from "./SceneSwitcher.js"
 import TileMap from "./images/TileMap.js"
 
 export default class Scene {
-    constructor(canvasObjectScene) {
+    constructor(canvasObjectScene, mapName) {
         this.eventBus = new EventBus()
         this.sceneSwitcher = new SceneSwitcher(this)
         this.gameObjects = []
@@ -15,7 +15,7 @@ export default class Scene {
                 
         this.playerIndex = -1
         
-        this.map = new TileMap(this, 32)
+        this.map = new TileMap(this, 32, mapName)
         
 
         this.canvas.addEventListener('mousemove', (event) => {
