@@ -3,7 +3,7 @@ import Scene from "./Scene.js";
 import ButtonGameObject from "./GUI_elements/Button.js"
 import GameObject from "./GameObject.js";
 import CanvasTextInput from "./GUI_elements/TextInput.js";
-import TileMap from "./GUI_elements/TileMap.js";
+import TileMap from "./images/TileMap.js";
 
 export default class GameSceneFactory extends GameObject{
     constructor (canvas, keys,sceneObject){
@@ -34,8 +34,7 @@ export default class GameSceneFactory extends GameObject{
 
                 console.log(button.eventObject.sceneToSwitch)
 
-                let map = new TileMap(scene, 32)
-                //scene.addObject(map)
+                
                 console.log("Fertige Scene")
                 
                 break;
@@ -51,6 +50,7 @@ export default class GameSceneFactory extends GameObject{
             case 2:
                 let player = new Player(100,100,20,20, 'blue', 5, this.keys,scene)
                 scene.addObject(player)
+                
                 break;
             
             case "hostOrLogin":

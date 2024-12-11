@@ -1,6 +1,6 @@
 import EventBus from "./EventBus.js"
 import SceneSwitcher from "./SceneSwitcher.js"
-
+import TileMap from "./images/TileMap.js"
 
 export default class Scene {
     constructor(canvasObjectScene) {
@@ -12,6 +12,12 @@ export default class Scene {
         this.mousex = 0
         this.mousey = 0
         this.canvas = canvasObjectScene
+                
+        this.playerIndex = -1
+        
+        this.map = new TileMap(this, 32)
+        
+
         this.canvas.addEventListener('mousemove', (event) => {
             // Get the bounding rectangle of the canvas
             const rect = this.canvas.getBoundingClientRect();
@@ -28,12 +34,25 @@ export default class Scene {
     addObject(object) {
         this.toAdd.push(object);
         console.log("objekt zu sap hinzugeügt: " + object);
+        if (object.constructor.name == "Player"){
+            this.playerIndex = this.gameObjects.length-1
+        }
     }
 
-    render() {
+    render() {   
+        this.map.render()
+
+        if (this.playerIndex != -1){
+            this.gameObjects[this.playerIndex].render()
+            return
+        }
+
         let len = this.gameObjects.length;
         for (let i = 0; i < len; i++) {
-            this.gameObjects[i].render();
+            //if (i != this.playerIndex && i!= this.tileMapIndex){
+                this.gameObjects[i].render();
+            //}
+            
         }
     }
 
