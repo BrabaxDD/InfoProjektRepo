@@ -26,8 +26,7 @@ export default class GameSceneFactory extends GameObject{
                 scene.addObject(button2)
 
 
-                //let lotTest = new ButtonGameObject(this.canvas.width/3-100,this.canvas.height/5-28,200,56,"loginToServer",{sceneToSwitch:2},scene,"Login (test for message)")
-                //scene.addObject(lotTest)
+                
 //
                 //let HostTest = new ButtonGameObject(this.canvas.width/3*2-100,this.canvas.height/5 -28,200,56,"loginToServerHost",{},scene,"Login as host ((test for message))")
                 //scene.addObject(HostTest)
@@ -52,6 +51,9 @@ export default class GameSceneFactory extends GameObject{
                 scene = new Scene(this.canvas,"GameMap.txt");
                 let player = new Player(100,100,20,20, 'blue', 5, this.keys,scene)
                 scene.addObject(player)
+
+                let lotTest = new ButtonGameObject(this.canvas.width/3-100,this.canvas.height/5-28,200,56,"generateItem",{itemID: "erstes Item"},scene,"Generate erstes Item")
+                scene.addObject(lotTest)
                 
                 break;
             
