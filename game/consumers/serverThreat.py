@@ -12,7 +12,7 @@ class serverThreat(threading.Thread):
         self.thread_name = thread_name
         self.thread_ID = thread_ID
         self.gameServerSocket: gameServer = gameServerSocket
-        print("server Worker Threat started")
+        print("server Worker Threat started eith ID: " + self.gameServerSocket.serverID) 
 
     def run(self):
         running = True

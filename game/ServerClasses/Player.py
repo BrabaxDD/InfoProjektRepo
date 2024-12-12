@@ -13,6 +13,7 @@ class Player:
         self.left = False
         self.right = False
         self.world.eventBus.registerPlayerActionListner(self)
+        self.Inventory = None
 
     def playerAction(self, action):
         if action["ID"] == self.ID:
