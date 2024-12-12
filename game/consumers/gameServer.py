@@ -40,8 +40,21 @@ class gameServer(WebsocketConsumer):
              "ID": ID,
              "posx": posx,
              "posy": posy})
-        pass
 
+    def updateInventory(self, ID, Invetory):
+        async_to_sync(self.channel_layer.group_send)(
+            {"type": "inventoryUpdate",
+             "ID": ID,
+             "Inventory": json.dumps(Invetory.__dict__())
+             }
+
+
+        )
+
+    def generateItem(self, event):
+        self.serverThreat.playerGenerateItem(event)
+    def inventoryUpdate(self,event):
+        pass
     def action(self, event):
         self.serverThreat.playerActionUpdate(event)
         pass

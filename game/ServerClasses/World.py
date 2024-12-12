@@ -18,3 +18,5 @@ class World:
 
     def broadcastPlayerPosition(self, ID, posx, posy):
         self.threat.broadcastPlayerPosition(ID, posx, posy)
+    def broadcastPlayerInventoryUpdate(self,ID,Inventory):
+        self.threat.broadcastPlayerInventoryUpdate(ID,Inventory)

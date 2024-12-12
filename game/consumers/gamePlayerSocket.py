@@ -51,6 +51,11 @@ class gamePlayerSocketConsumer(WebsocketConsumer):
             self.player_ID = ID
             async_to_sync(self.channel_layer.group_send)(
                 self.serverID, {"type": "login", "ID": ID})
+#            self.send(text_data=json.dumps({"type":"loginSucessfull"}))
+        if messageType == "generateItem":
+            itemID = text_data_json["itemID"]
+            async_to_sync(self.channel_layer.group_send)(
+                self.serverID, {"type": "generateItem", "itemID": itemID, "ID": self.player_ID})
 
     def position(self, event):
         print("log: sending position information to Player with ID: " + str(self.player_ID) + " to server with ID " + self.serverID +
@@ -65,8 +70,15 @@ class gamePlayerSocketConsumer(WebsocketConsumer):
                 "posy": posy,
             }))
 
+    def generateItem(self, event):
+        pass
+
     def login(self, event):
         pass
 
     def action(self, event):
         pass
+
+    def updateInventory(self, event):
+        self.send(text_data=({"type": "InventoryUpdate",
+                  "ID": event["ID"], "Inventory": event["Inventory"]}))

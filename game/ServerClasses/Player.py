@@ -1,4 +1,5 @@
 from game.ServerClasses import World
+from game.ServerClasses import Inventory,ItemsStack
 
 
 class Player:
@@ -13,7 +14,8 @@ class Player:
         self.left = False
         self.right = False
         self.world.eventBus.registerPlayerActionListner(self)
-        self.Inventory = None
+        self.world.eventBus.registerPlayerGenerateItemListner(self)
+        self.Inventory = Inventory.Inventory()
 
     def playerAction(self, action):
         if action["ID"] == self.ID:
@@ -23,6 +25,10 @@ class Player:
             self.left = action["left"]
             print("log: updating Player Actions of Player: " + str(self.ID) + " to " +
                   str(self.up) + str(self.down) + str(self.right) + str(self.left))
+    def playerGenerateItem(self,action):
+        if action["ID"] == self.ID:
+            self.Inventory.addItem(ItemsStack.ItemStack(action["itemID",1]))
+            self.world.broadcastPlayerInventoryUpdate(self.ID,self.Inventorself.ID,self.Inventory)
 
     def process(self, delta):
         if self.right:

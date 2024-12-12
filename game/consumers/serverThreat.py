@@ -38,3 +38,7 @@ class serverThreat(threading.Thread):
 
     def broadcastPlayerPosition(self, ID, posx, posy):
         self.gameServerSocket.updatePosition(ID, posx, posy)
+    def playerGenerateItem(self,event):
+        self.world.eventBus.playerGenerateItem(event)
+    def broadcastPlayerInventoryUpdate(self,ID,Inventory):
+        self.gameServerSocket.updateInventory(ID,Inventory)
