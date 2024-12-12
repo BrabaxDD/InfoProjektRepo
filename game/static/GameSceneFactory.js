@@ -52,7 +52,7 @@ export default class GameSceneFactory extends GameObject{
                 let player = new Player(100,100,20,20, 'blue', 5, this.keys,scene)
                 scene.addObject(player)
 
-                let lotTest = new ButtonGameObject(this.canvas.width/3-100,this.canvas.height/5-28,200,56,"generateItem",{itemID: "erstes Item"},scene,"Generate erstes Item")
+                let lotTest = new ButtonGameObject(this.canvas.width/3-100,this.canvas.height/5-28,200,56,"generateItem","erstes Item",scene,"Generate erstes Item")
                 scene.addObject(lotTest)
                 
                 break;

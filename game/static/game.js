@@ -111,5 +111,5 @@ export function loginToServerHost(serverName){
 
 export function generateItem(object){
     console.log("Generating Item: "+ object)
-    webSocket.send(JSON.stringify({type : "generateItem", itemStack : object}))
+    webSocket.send(JSON.stringify({type : "generateItem", itemID : object}))
 }
