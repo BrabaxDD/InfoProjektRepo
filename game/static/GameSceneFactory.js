@@ -19,11 +19,11 @@ export default class GameSceneFactory extends GameObject{
             case "mainMenu":
             case 0:
                 scene = new Scene(this.canvas,"");
-                let button = new ButtonGameObject(this.canvas.width/2-100,this.canvas.height/3-28,200,56,"switchScene",{sceneToSwitch:"hostOrLogin"},scene,"Play")
-                scene.addObject(button)
+                //let button = new ButtonGameObject(this.canvas.width/2-100,this.canvas.height/3-28,200,56,"switchScene",{sceneToSwitch:"hostOrLogin"},scene,"Play")
+                //scene.addObject(button)
 
-                let button2 = new ButtonGameObject(this.canvas.width/2-100,this.canvas.height/3 * 2-28,200,56,"switchScene",{sceneToSwitch:"optionsMenu"},scene,"Options")
-                scene.addObject(button2)
+                //let button2 = new ButtonGameObject(this.canvas.width/2-100,this.canvas.height/3 * 2-28,200,56,"switchScene",{sceneToSwitch:"optionsMenu"},scene,"Options")
+                //scene.addObject(button2)
 
 
                 let lotTest = new ButtonGameObject(this.canvas.width/3-100,this.canvas.height/5-28,200,56,"loginToServer",{sceneToSwitch:2},scene,"Login (test for message)")
