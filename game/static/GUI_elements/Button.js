@@ -16,6 +16,7 @@ export default class ButtonGameObject extends GameObject {
         this.canvas = this.scene.canvas
         this.ctx = this.scene.canvas.getContext("2d")
         this.scene.eventBus.registerListner("click_on_canvas", this)
+        this.scene.eventBus.registerListner("textInputfinished",this)
         this.is_hovered = false
         this.text = text
         this.textSize = 60
@@ -23,6 +24,7 @@ export default class ButtonGameObject extends GameObject {
         this.ButtonPrimaryColor = "green"
         this.ButtonScondaryColor = "yellow"
         this.eventObject = eventObject
+        this.textOfTextField = ""
 
     }
     process() {
@@ -62,17 +64,31 @@ export default class ButtonGameObject extends GameObject {
             console.log(eventObject.sceneToSwitch)
         }
         if (this.eventString == "loginToServer"){
-            loginToServer()
-            this.scene.eventBus.triggerEvent("switchScene",eventObject)
+            if (self.textOfTextField != ""){
+                loginToServer(this.textOfTextField)
+                this.scene.eventBus.triggerEvent("switchScene",eventObject)
+            }
+            else{
+                loginToServer("TESTSERVER")
+            }
+            
         }
         if (this.eventString == "loginToServerHost"){
-            loginToServerHost()
+            if (self.textOfTextField != ""){
+                loginToServerHost(this.textOfTextField)
+            }
+            else{
+                loginToServerHost("TESTSERVER")
+            }
         }
     }
 
     event(eventString, eventObject){
         if (eventString == "click_on_canvas" && this.is_hovered == true) {
             this.buttonPresed(this.eventObject)
+        }
+        if (eventString == "textInputfinished"){
+            this.textOfTextField = eventObject.storedText
         }
         
             

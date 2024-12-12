@@ -12,11 +12,10 @@ const webSocket = new WebSocket('ws://' + window.location.host + '/game/login')
 
 webSocket.onmessage = function(e) {
     const data = JSON.parse(e.data)
-
-    if(data.type == "position"){
-        scene.gameObjects[0].posx = data.posx
-        scene.gameObjects[0].posy = data.posy
-    }
+        if(data.type == "position"){
+            scene.gameObjects[0].posx = data.posx
+            scene.gameObjects[0].posy = data.posy
+        }
 }
 
 // Canvas dimensions
@@ -95,13 +94,17 @@ function updateToServer(){
     webSocket.send(JSON.stringify({type: "action", up: scene.gameObjects[0].up, down: scene.gameObjects[0].down, left: scene.gameObjects[0].left, right: scene.gameObjects[0].right}))
 }
 
-export function loginToServer(){
-    webSocket.send(JSON.stringify({type: "login", ID:1000, serverID:"Server1"}))
+export function loginToServer(serverName){
+    let d = new Date()
+    playerID = d.getTime().toString()
+    console.log("PLAYER ID:")
+    console.log(playerID)
+    console.log("LOGGIN IN TO SERVER: "+serverName)
+    webSocket.send(JSON.stringify({type: "login", ID:playerID, serverID:serverName}))
     isStarted = true
 }
 
-export function loginToServerHost(){
-    webSocketHost.send(JSON.stringify({type : "startserver", serverID : "Server1"}))
-    
+export function loginToServerHost(serverName){
+    console.log("SETTUING UP NEW SERVER: "+serverName)
+    webSocketHost.send(JSON.stringify({type : "startserver", serverID : serverName}))
 }
-

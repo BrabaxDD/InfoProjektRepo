@@ -31,6 +31,7 @@ export default class CanvasTextInput extends GameObject{
             } 
             else{
                 this.isFocused = false;
+                this.inputText = this.storedText
             }
         }
         
@@ -46,7 +47,8 @@ export default class CanvasTextInput extends GameObject{
         if (event.key === 'Enter') {
             this.storedText = this.inputText; 
             console.log('Stored Text:', this.storedText);
-            this.inputText = ''; 
+            //this.inputText = ''; 
+            this.scene.eventBus.triggerEvent("textInputfinished",{storedText:this.storedText})
         } else if (event.key === 'Backspace') {
             this.inputText = this.inputText.slice(0, -1); 
         } else if (event.key.length === 1) {

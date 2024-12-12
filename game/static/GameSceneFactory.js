@@ -61,9 +61,9 @@ export default class GameSceneFactory extends GameObject{
                 let input = new CanvasTextInput(scene, this.canvas.width/2-100, this.canvas.height/2 - 15,200,30)
                 scene.addObject(input)
 
-                let logBut = new ButtonGameObject(this.canvas.width/3-100,this.canvas.height/5*4-28,200,56, "switchScene",{sceneToSwitch:2}, scene, "Login (to game)")
+                let logBut = new ButtonGameObject(this.canvas.width/3-100,this.canvas.height/5*4-28,200,56, "loginToServer",{sceneToSwitch:2}, scene, "Login (to game)")
                 scene.addObject(logBut)
-                let logButHost = new ButtonGameObject(this.canvas.width/3*2-100,this.canvas.height/5*4-28,200,56, "switchScene",{sceneToSwitch:2}, scene, "Host (to game)")
+                let logButHost = new ButtonGameObject(this.canvas.width/3*2-100,this.canvas.height/5*4-28,200,56, "loginToServerHost",{}, scene, "Host (to game)")
                 scene.addObject(logButHost)
         }
         return scene
