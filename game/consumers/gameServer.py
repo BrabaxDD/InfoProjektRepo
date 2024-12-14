@@ -3,6 +3,7 @@ import json
 from asgiref.sync import async_to_sync
 from game.consumers import serverThreat
 import threading
+from game.ServerClasses import jsonSerializer
 
 
 class gameServer(WebsocketConsumer):
@@ -42,19 +43,19 @@ class gameServer(WebsocketConsumer):
              "posy": posy})
 
     def updateInventory(self, ID, Invetory):
-        async_to_sync(self.channel_layer.group_send)(
-            {"type": "inventoryUpdate",
-             "ID": ID,
-             "Inventory": json.dumps(Invetory.__dict__())
-             }
-
-
-        )
+        async_to_sync(self.channel_layer.group_send)(self.serverID,
+                                                     {"type": "inventoryUpdate",
+                                                      "ID": ID,
+                                                      "Inventory": json.dumps(Invetory, default=jsonSerializer.asDict)
+                                                      }
+                                                     )
 
     def generateItem(self, event):
         self.serverThreat.playerGenerateItem(event)
-    def inventoryUpdate(self,event):
+
+    def inventoryUpdate(self, event):
         pass
+
     def action(self, event):
         self.serverThreat.playerActionUpdate(event)
         pass
