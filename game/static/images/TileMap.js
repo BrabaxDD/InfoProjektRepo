@@ -74,7 +74,6 @@ export default class TileMap extends GameObject {
 
     render() {
         const length = this.map.length;
-        console.log("Amount of rows" + length + length)
 
         for (let row = 0; row < length; row++) {
             const width = this.map[row].length;
@@ -82,7 +81,6 @@ export default class TileMap extends GameObject {
             for (let column = 0; column < width; column++) {
                 const tile = this.map[row][column];
                 const fileName = this.tileMap[tile]; // Get file name based on tile type
-                console.log("Rendering Tile: " + row + " "  + column)
                 if (fileName) {
 
                     this.imageLoader.load(
