@@ -91,7 +91,7 @@ export default class ButtonGameObject extends GameObject {
         if (eventString == "click_on_canvas" && this.is_hovered == true) {
             this.buttonPresed(this.eventObject)
         }
-        if (eventString == "textInputfinished"){
+        if (eventString == "textInputFinished"){
             this.textOfTextField = eventObject.storedText
         }
         
