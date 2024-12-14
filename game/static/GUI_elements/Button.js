@@ -17,7 +17,7 @@ export default class ButtonGameObject extends GameObject {
         this.canvas = this.scene.canvas
         this.ctx = this.scene.canvas.getContext("2d")
         this.scene.eventBus.registerListner("click_on_canvas", this)
-        this.scene.eventBus.registerListner("textInputfinished",this)
+        this.scene.eventBus.registerListner("textInputFinished",this)
         this.is_hovered = false
         this.text = text
         this.textSize = 60

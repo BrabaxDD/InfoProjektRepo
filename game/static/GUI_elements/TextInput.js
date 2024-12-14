@@ -48,7 +48,7 @@ export default class CanvasTextInput extends GameObject{
             this.storedText = this.inputText; 
             console.log('Stored Text:', this.storedText);
             //this.inputText = ''; 
-            this.scene.eventBus.triggerEvent("textInputfinished",{storedText:this.storedText})
+            this.scene.eventBus.triggerEvent("textInputFinished",{storedText:this.storedText})
         } else if (event.key === 'Backspace') {
             this.inputText = this.inputText.slice(0, -1); 
         } else if (event.key.length === 1) {
