@@ -1,13 +1,11 @@
 from game.ServerClasses import World
 from game.ServerClasses import Inventory, ItemsStack
+from game.ServerClasses import GameObject
 
-
-class Player:
+class Player(GameObject.GameObject):
     def __init__(self, ID, world: World.World):
+        super().__init__(world,0,0)
         self.ID = ID
-        self.world = world
-        self.posx = 0
-        self.posy = 0
         self.velocity = 290
         self.up = False
         self.down = False
@@ -44,4 +42,4 @@ class Player:
             self.posy = delta*self.velocity*(-1) + self.posy
 
     def broadcast(self):
-        self.world.broadcastPlayerPosition(self.ID, self.posx, self.posy)
+        self.world.broadcastPlayerPosition(self.ID, self.posx, self.posy, "Player")

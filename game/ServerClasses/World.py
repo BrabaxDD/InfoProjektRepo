@@ -1,4 +1,5 @@
 from game.ServerClasses import EventBus
+from game.ServerClasses import Tree
 
 
 class World:
@@ -6,6 +7,7 @@ class World:
         self.eventBus = EventBus.EventBus()
         self.objects = []
         self.threat = threat
+        self.objects.append(Tree.Tree(self))
         pass
 
     def process(self, delta):
@@ -16,7 +18,8 @@ class World:
         for gameObject in self.objects:
             gameObject.broadcast()
 
-    def broadcastPlayerPosition(self, ID, posx, posy):
-        self.threat.broadcastPlayerPosition(ID, posx, posy)
-    def broadcastPlayerInventoryUpdate(self,ID,Inventory):
-        self.threat.broadcastPlayerInventoryUpdate(ID,Inventory)
+    def broadcastPlayerPosition(self, ID, posx, posy, entityType):
+        self.threat.broadcastPlayerPosition(ID, posx, posy, entityType)
+
+    def broadcastPlayerInventoryUpdate(self, ID, Inventory):
+        self.threat.broadcastPlayerInventoryUpdate(ID, Inventory)

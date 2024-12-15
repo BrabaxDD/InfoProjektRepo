@@ -63,15 +63,16 @@ class gamePlayerSocketConsumer(WebsocketConsumer):
     def position(self, event):
         print("log: sending position information to Player with ID: " + str(self.player_ID) + " to server with ID " + self.serverID +
               " the position is: " + str(event["posx"]) + " " + str(event["posy"]))
-        if event["ID"] == self.player_ID:
-            posx = event["posx"]
-            posy = event["posy"]
-            self.send(text_data=json.dumps({
-                "type": "position",
-                "ID": self.player_ID,
-                "posx": posx,
-                "posy": posy,
-            }))
+        posx = event["posx"]
+        posy = event["posy"]
+        entityType = event["entityType"]
+        self.send(text_data=json.dumps({
+            "type": "position",
+            "ID": self.player_ID,
+            "posx": posx,
+            "posy": posy,
+            "entityType": entityType
+        }))
 
     def generateItem(self, event):
         pass

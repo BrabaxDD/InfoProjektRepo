@@ -12,7 +12,8 @@ class serverThreat(threading.Thread):
         self.thread_name = thread_name
         self.thread_ID = thread_ID
         self.gameServerSocket: gameServer = gameServerSocket
-        print("server Worker Threat started eith ID: " + self.gameServerSocket.serverID) 
+        print("server Worker Threat started eith ID: " +
+              self.gameServerSocket.serverID)
 
     def run(self):
         running = True
@@ -36,9 +37,11 @@ class serverThreat(threading.Thread):
     def login(self, ID):
         self.world.objects.append(Player(ID, self.world))
 
-    def broadcastPlayerPosition(self, ID, posx, posy):
-        self.gameServerSocket.updatePosition(ID, posx, posy)
-    def playerGenerateItem(self,event):
+    def broadcastPlayerPosition(self, ID, posx, posy, entityType):
+        self.gameServerSocket.updatePosition(ID, posx, posy, entityType)
+
+    def playerGenerateItem(self, event):
         self.world.eventBus.playerGenerateItem(event)
-    def broadcastPlayerInventoryUpdate(self,ID,Inventory):
-        self.gameServerSocket.updateInventory(ID,Inventory)
+
+    def broadcastPlayerInventoryUpdate(self, ID, Inventory):
+        self.gameServerSocket.updateInventory(ID, Inventory)

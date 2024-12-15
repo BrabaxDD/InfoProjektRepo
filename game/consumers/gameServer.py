@@ -34,13 +34,14 @@ class gameServer(WebsocketConsumer):
                 async_to_sync(self.channel_layer.group_add)(
                     self.serverID, self.channel_name)
 
-    def updatePosition(self, ID, posx, posy):
+    def updatePosition(self, ID, posx, posy,entityType):
         async_to_sync(self.channel_layer.group_send)(
             self.serverID,
             {"type": "position",
              "ID": ID,
              "posx": posx,
-             "posy": posy})
+             "posy": posy,
+             "entityType": entityType})
 
     def updateInventory(self, ID, Invetory):
         async_to_sync(self.channel_layer.group_send)(self.serverID,
