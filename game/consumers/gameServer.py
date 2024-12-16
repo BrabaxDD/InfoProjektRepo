@@ -34,7 +34,7 @@ class gameServer(WebsocketConsumer):
                 async_to_sync(self.channel_layer.group_add)(
                     self.serverID, self.channel_name)
 
-    def updatePosition(self, ID, posx, posy,entityType):
+    def updatePosition(self, ID, posx, posy, entityType):
         async_to_sync(self.channel_layer.group_send)(
             self.serverID,
             {"type": "position",
@@ -50,6 +50,9 @@ class gameServer(WebsocketConsumer):
                                                       "Inventory": json.dumps(Invetory, default=jsonSerializer.asDict)
                                                       }
                                                      )
+
+    def hitRequestFromClient(self, event):
+        pass
 
     def generateItem(self, event):
         self.serverThreat.playerGenerateItem(event)
