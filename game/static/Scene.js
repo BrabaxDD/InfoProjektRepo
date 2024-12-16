@@ -2,6 +2,7 @@ import EventBus from "./EventBus.js"
 import SceneSwitcher from "./SceneSwitcher.js"
 import TileMap from "./images/TileMap.js"
 import ImageLoader from "./images/ImageLoader.js"
+import websocketGameObjectClient from "./WebsocketGameObject.js"
 
 export default class Scene {
     constructor(canvasObjectScene, mapName) {
@@ -16,6 +17,8 @@ export default class Scene {
                 
         this.playerIndex = -1
 
+        this.eventBus.registerListner("keydown", this)
+
         // Initialize the image loader
         this.imageLoader = new ImageLoader();
         
@@ -23,7 +26,7 @@ export default class Scene {
         this.mainPlayerID = -1
 
         
-        this.eventBus.registerListner("keydown", this)
+        
 
         this.canvas.addEventListener('mousemove', (event) => {
             // Get the bounding rectangle of the canvas
@@ -36,6 +39,7 @@ export default class Scene {
 
         this.keys = {}; // Object to track key states
 
+        this.websocketGameObjectClient = new websocketGameObjectClient(this)
     }
 
     addObject(object) {

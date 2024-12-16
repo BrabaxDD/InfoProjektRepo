@@ -1,7 +1,4 @@
 import GameObject from "../GameObject.js"
-import {loginToServer} from "../game.js"
-import {loginToServerHost} from "../game.js"
-import { generateItem } from "../game.js"
 
 export default class ButtonGameObject extends GameObject {
     constructor(posx, posy, widthButton, heightButton,eventString ,eventObject, scene, text) {
@@ -67,23 +64,23 @@ export default class ButtonGameObject extends GameObject {
         if (this.eventString == "loginToServer"){
             if (self.textOfTextField != ""){
                 this.scene.eventBus.triggerEvent("switchScene",eventObject)
-                loginToServer(this.textOfTextField)
+                this.scene.websocketGameObjectClient.loginToServer(this.textOfTextField)
             }
             else{
-                loginToServer("TESTSERVER")
+                this.scene.websocketGameObjectClient.loginToServer("TESTSERVER")
             }
             
         }
         if (this.eventString == "loginToServerHost"){
             if (self.textOfTextField != ""){
-                loginToServerHost(this.textOfTextField)
+                this.scene.websocketGameObjectClient.loginToServerHost(this.textOfTextField)
             }
             else{
-                loginToServerHost("TESTSERVER")
+                this.scene.websocketGameObjectClient.loginToServerHost("TESTSERVER")
             }
         }
         if(this.eventString == "generateItem"){
-            generateItem(eventObject)
+            this.scene.websocketGameObjectClient.generateItem(eventObject)
         }
     }
 

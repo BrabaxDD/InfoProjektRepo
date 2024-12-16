@@ -2,15 +2,16 @@ import GameSceneFactory from './GameSceneFactory.js';
 import Player from './Player.js';
 import Scene from './Scene.js';
 import SceneSwitcher from './SceneSwitcher.js';
+import WebsocketGameObjectClient from './WebsocketGameObject.js';
 
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
 ctx.font = 60
-const webSocketHost = new WebSocket('ws://' + window.location.host + '/game/server')
-const webSocket = new WebSocket('ws://' + window.location.host + '/game/login')
+//const webSocketHost = new WebSocket('ws://' + window.location.host + '/game/server')
+//const webSocket = new WebSocket('ws://' + window.location.host + '/game/login')
 
 
-webSocket.onmessage = function(e) {
+/*webSocket.onmessage = function(e) {
     const data = JSON.parse(e.data)
     //console.log("")
     //console.log(data)
@@ -23,8 +24,9 @@ webSocket.onmessage = function(e) {
     /*if(data.type == "position" && data.entityType == "Player"){
         scene.gameObjects[scene.playerIndex].posx = data.posx
         scene.gameObjects[scene.playerIndex].posy = data.posy
-    }*/
-}
+    }
+}*/
+
 
 // Canvas dimensions
 const canvasWidth = canvas.width;
@@ -53,15 +55,10 @@ function gameLoop() {
     scene.process()
     scene.render()
     if (isStarted){
-        if(isDelayed == true){
             if (frameCount >= 1){
-                updateToServer()
+                websocketGameObjectClient.updateToServer()
                 frameCount = 0
             }
-        }
-        if (frameCount >= 200){
-            isDelayed = true
-        }
         frameCount += 1
     }
     requestAnimationFrame(gameLoop); // Call the next frame
@@ -90,6 +87,17 @@ canvas.addEventListener('click',(event) => {
     scene.eventBus.triggerEvent("click_on_canvas")
 });
 
+
+
+
+
+
+
+
+export function getMainPlayerID(){
+    return scene.mainPlayerID
+}
+
 export function switchScene(sceneToSwitch){
     console.log("NEW SCENE")
     scene = factory.buildGameScene(sceneToSwitch) 
@@ -98,31 +106,6 @@ export function switchScene(sceneToSwitch){
 
 }
 
-
-function updateToServer(){
-    //console.log("Server update")
-    webSocket.send(JSON.stringify({type: "action", up: scene.gameObjects[0].up, down: scene.gameObjects[0].down, left: scene.gameObjects[0].left, right: scene.gameObjects[0].right, actiontype: "movement"}))
-}
-
-export function loginToServer(serverName){
-    
-    console.log("PLAYER ID:")
-    console.log(scene.mainPlayerID)
-    console.log("LOGGIN IN TO SERVER: "+serverName)
-    webSocket.send(JSON.stringify({type: "login", ID:scene.mainPlayerID, serverID:serverName}))
+export function start(){
     isStarted = true
-}
-
-export function loginToServerHost(serverName){
-    console.log("SETTUING UP NEW SERVER: "+serverName)
-    webSocketHost.send(JSON.stringify({type : "startserver", serverID : serverName}))
-}
-
-export function generateItem(object){
-    console.log("Generating Item: "+ object)
-    webSocket.send(JSON.stringify({type : "generateItem", itemID : object}))
-}
-
-export function getMainPlayerID(){
-    return scene.mainPlayerID
 }

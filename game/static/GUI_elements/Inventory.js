@@ -6,7 +6,7 @@ export default class Inventory extends GameObject{
         this.canvas = this.scene.canvas
         this.ctx = this.scene.canvas.getContext("2d")
 
-        this.content = [{itemID:1,size:3,tags:{}}, {itemID:2, size:5, tags:{}}] //All item stacks
+        this.content = []//[{itemID:1,size:3,tags:{}}, {itemID:2, size:5, tags:{}}] //All item stacks
         this.scene.eventBus.registerListner("inventory",this)
 
         this.isVisible = false
