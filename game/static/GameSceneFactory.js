@@ -4,6 +4,7 @@ import ButtonGameObject from "./GUI_elements/Button.js"
 import GameObject from "./GameObject.js";
 import CanvasTextInput from "./GUI_elements/TextInput.js";
 import TileMap from "./images/TileMap.js";
+import Tree from "./tree.js"
 
 export default class GameSceneFactory extends GameObject{
     constructor (canvas, keys,sceneObject){
@@ -52,8 +53,11 @@ export default class GameSceneFactory extends GameObject{
                 let player = new Player(100,100,20,20, 'blue', 5, this.keys,scene)
                 scene.addObject(player)
 
-                let lotTest = new ButtonGameObject(this.canvas.width/3-100,this.canvas.height/5-28,200,56,"generateItem","erstes Item",scene,"Generate erstes Item")
-                scene.addObject(lotTest)
+                let tree = new Tree(scene)
+                scene.addObject(tree)
+
+                //let lotTest = new ButtonGameObject(this.canvas.width/3-100,this.canvas.height/5-28,200,56,"generateItem","erstes Item",scene,"Generate erstes Item")
+                //scene.addObject(lotTest)
                 
                 break;
             

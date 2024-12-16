@@ -33,19 +33,16 @@ export default class Scene {
 
     addObject(object) {
         this.toAdd.push(object);
-        console.log("objekt zu sap hinzugeügt: " + object);
+        console.log("objekt zu sap hinzugeügt: " + object.constructor.name);
         if (object.constructor.name == "Player"){
             this.playerIndex = 0
         }
     }
 
-    render() {   
+    render() {
+        //console.log(this.gameObjects)
         this.map.render()
 
-        if (this.playerIndex != -1){
-            this.gameObjects[this.playerIndex].render()
-            return
-        }
 
         let len = this.gameObjects.length;
         for (let i = 0; i < len; i++) {

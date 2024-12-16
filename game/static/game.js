@@ -12,13 +12,17 @@ const webSocket = new WebSocket('ws://' + window.location.host + '/game/login')
 
 webSocket.onmessage = function(e) {
     const data = JSON.parse(e.data)
-    console.log("")
-    console.log(data)
+    //console.log("")
+    //console.log(data)
+    if (!isStarted){
+        return
+    }
     if (data.ID === playerID){
-            if(data.type == "position" && data.entityType == "Player"){
+            scene.eventBus.triggerEvent("position", {type:data.entityType , posx:data.posx , posy:data.posy})
+            /*if(data.type == "position" && data.entityType == "Player"){
                 scene.gameObjects[scene.playerIndex].posx = data.posx
                 scene.gameObjects[scene.playerIndex].posy = data.posy
-            }
+            }*/
     }
 }
 

@@ -14,6 +14,7 @@ export default class Player extends GameObject {
         this.ctx = this.scene.canvas.getContext("2d")
         this.keys = keys
         //this.scene.eventBus.registerListner("test", this)
+        this.scene.eventBus.registerListner("position", this)
         this.up = false
         this.down = false
         this.left = false
@@ -61,10 +62,10 @@ export default class Player extends GameObject {
         this.ctx.fillStyle = "blue";
         this.ctx.fillRect(this.posx, this.posy, this.width, this.height);
     }
-   /*event(eventString, eventObject) {
-        if (eventString == "test") {
-            this.posx = 400
-            this.posy = 400
+   event(eventString, eventObject) {
+        if (eventString == "position" && eventObject.type == "Player") {
+            this.posx = eventObject.posx
+            this.posy = eventObject.posy
         }
-    }*/
+    }
 }

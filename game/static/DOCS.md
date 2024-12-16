@@ -27,6 +27,9 @@
 - "textInputFinished"
 - outputs eventObject with {storedText:*x*}
 
+### position
+{type;posX; posY}
+
 ### Inventory
 #### To recieve the whole inventory from the server:
 - "inventory"
