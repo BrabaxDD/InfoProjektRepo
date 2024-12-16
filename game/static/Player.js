@@ -1,5 +1,5 @@
 import GameObject from "./GameObject.js"
-
+import { hit } from "./game.js"
 
 export default class Player extends GameObject {
     constructor(x, y, width, height, color, speed, scene, playerID) {
@@ -20,6 +20,7 @@ export default class Player extends GameObject {
         this.left = false
         this.right = false
         this.playerID = playerID
+        this.onCooldown = 0
     }
 
     process() {
@@ -56,6 +57,16 @@ export default class Player extends GameObject {
         }
         else {
             this.right = false
+        }
+
+        if(this.scene.keys['h'] == true){
+            if (this.onCooldown >= 10){
+                hit()
+                this.onCooldown = 0
+            }
+            
+            this.onCooldown ++
+            
         }
     }
 

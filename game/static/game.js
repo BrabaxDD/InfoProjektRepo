@@ -126,3 +126,8 @@ export function generateItem(object){
 export function getMainPlayerID(){
     return scene.mainPlayerID
 }
+
+export function hit(){
+    console.log("HIT")
+    webSocket.send(JSON.stringify({type:"action", actiontype:"hit",direction:100}))
+}
