@@ -12,10 +12,12 @@ const webSocket = new WebSocket('ws://' + window.location.host + '/game/login')
 
 webSocket.onmessage = function(e) {
     const data = JSON.parse(e.data)
+    console.log("")
+    console.log(data)
     if (data.ID === playerID){
-            if(data.type == "position"){
+            if(data.type == "position" && data.entityType == "Player"){
                 scene.gameObjects[scene.playerIndex].posx = data.posx
-                scene.gameObjects[scene.playerIndey].posy = data.posy
+                scene.gameObjects[scene.playerIndex].posy = data.posy
             }
     }
 }
