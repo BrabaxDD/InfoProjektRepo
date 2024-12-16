@@ -17,7 +17,7 @@ webSocket.onmessage = function(e) {
     if (!isStarted){
         return
     }
-    console.log(data)
+    //console.log(data)
 
     scene.eventBus.triggerEvent("position", {type:data.entityType, ID: data.ID , posx:data.posx , posy:data.posy})
     /*if(data.type == "position" && data.entityType == "Player"){
@@ -98,7 +98,7 @@ export function switchScene(sceneToSwitch){
 
 
 function updateToServer(){
-    console.log("Server update")
+    //console.log("Server update")
     webSocket.send(JSON.stringify({type: "action", up: scene.gameObjects[0].up, down: scene.gameObjects[0].down, left: scene.gameObjects[0].left, right: scene.gameObjects[0].right, actiontype: "movement"}))
 }
 

@@ -34,7 +34,7 @@ export default class Scene {
 
     addObject(object) {
         this.toAdd.push(object);
-        console.log("objekt zu sap hinzugeügt: " + object.constructor.name);
+        console.log("added object to scene: " + object.constructor.name);
         if (object.constructor.name == "Player" && this.gameObjects.length <= 1){
             this.mainPlayerID = object.playerID
             this.playerIndex = 0
