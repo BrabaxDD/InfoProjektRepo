@@ -16,7 +16,7 @@ export default class Scene {
         this.playerIndex = -1
         
         this.map = new TileMap(this, 32, mapName)
-        this.playerID = -1
+        this.mainPlayerID = -1
         
 
         this.canvas.addEventListener('mousemove', (event) => {
@@ -35,8 +35,8 @@ export default class Scene {
     addObject(object) {
         this.toAdd.push(object);
         console.log("objekt zu sap hinzugeügt: " + object.constructor.name);
-        if (object.constructor.name == "Player"){
-            this.playerID = object.playerID
+        if (object.constructor.name == "Player" && this.gameObjects.length <= 1){
+            this.mainPlayerID = object.playerID
             this.playerIndex = 0
         }
     }
@@ -84,6 +84,6 @@ export default class Scene {
     }
 
     setMainPlayerID(ID){
-        this.playerID = ID
+        this.mainPlayerID = ID
     }
 }

@@ -105,9 +105,9 @@ function updateToServer(){
 export function loginToServer(serverName){
     
     console.log("PLAYER ID:")
-    console.log(scene.playerID)
+    console.log(scene.mainPlayerID)
     console.log("LOGGIN IN TO SERVER: "+serverName)
-    webSocket.send(JSON.stringify({type: "login", ID:scene.playerID, serverID:serverName}))
+    webSocket.send(JSON.stringify({type: "login", ID:scene.mainPlayerID, serverID:serverName}))
     isStarted = true
 }
 
@@ -122,5 +122,5 @@ export function generateItem(object){
 }
 
 export function getMainPlayerID(){
-    return scene.playerID
+    return scene.mainPlayerID
 }
