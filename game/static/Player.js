@@ -63,13 +63,8 @@ export default class Player extends GameObject {
         this.ctx.fillStyle = "blue";
         this.ctx.fillRect(this.posx, this.posy, this.width, this.height);
     }
-<<<<<<< HEAD
-    event(eventString, eventObject) {
-        if (eventString == "position" && eventObject.type == "Player") {// && eventObject.ID == this.ID) { 
-=======
    event(eventString, eventObject) {
         if (eventString == "position" && eventObject.type == "Player" && eventObject.ID == this.playerID) {
->>>>>>> db45aadda7c4cea752f25152b5464f0ea36c6ef7
             this.posx = eventObject.posx
             this.posy = eventObject.posy
         }
