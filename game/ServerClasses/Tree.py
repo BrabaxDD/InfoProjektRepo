@@ -12,9 +12,10 @@ class Tree(GameObject.GameObject):
 
     def process(self, delta):
         pass
-    def playerHit(self,action):
+
+    def playerHit(self, action):
         direction = action["direction"]
         playerID = action["ID"]
         player = action["player"]
         if (player.posx - self.posx)**2 + (player.posy - self.posy)**2 < 2500:
-            player.treeHit(self) 
+            player.treeHit(self)

@@ -47,9 +47,8 @@ class gamePlayerSocketConsumer(WebsocketConsumer):
                 )
             elif actiontype == "hit":
                 direction = text_data_json["direction"]
-                async_to_sync(self.channel_layer.group_send)(self.serverID, {"type": "hitRequestFromClient","direction":direction,"ID":self.player_ID})
-
-
+                async_to_sync(self.channel_layer.group_send)(self.serverID, {
+                    "type": "hitRequestFromClient", "direction": direction, "ID": self.player_ID})
 
         if messageType == "login":
             ID = text_data_json["ID"]
@@ -68,7 +67,8 @@ class gamePlayerSocketConsumer(WebsocketConsumer):
             print("log: Got generateItem Request from client with ID: " + self.player_ID +
                   "giving it to server with ID: " + self.serverID + "giving it to server with ID: " + self.serverID + " the content is: ")
             print(text_data_json)
-    def hitRequestFromClient(self,event):
+
+    def hitRequestFromClient(self, event):
         pass
 
     def position(self, event):
