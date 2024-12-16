@@ -72,8 +72,8 @@ class gamePlayerSocketConsumer(WebsocketConsumer):
         pass
 
     def position(self, event):
-        print("log: sending position information to Player with ID: " + str(self.player_ID) + " from server with ID " + self.serverID + " the position is: " +
-              str(event["posx"]) + " " + str(event["posy"]) + " the entity type is " + str(event["entityType"]) + " the entity ID is: " + str(event["ID"]))
+        #print("log: sending position information to Player with ID: " + str(self.player_ID) + " from server with ID " + self.serverID + " the position is: " +
+        #      str(event["posx"]) + " " + str(event["posy"]) + " the entity type is " + str(event["entityType"]) + " the entity ID is: " + str(event["ID"]))
         posx = event["posx"]
         posy = event["posy"]
         ID = event["ID"]

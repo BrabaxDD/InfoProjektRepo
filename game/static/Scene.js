@@ -18,6 +18,7 @@ export default class Scene {
         this.map = new TileMap(this, 32, mapName)
         this.mainPlayerID = -1
         
+        this.eventBus.registerListner("keydown", this)
 
         this.canvas.addEventListener('mousemove', (event) => {
             // Get the bounding rectangle of the canvas
@@ -28,7 +29,7 @@ export default class Scene {
             this.mousey = event.clientY - rect.top;
         });
 
-
+        this.keys = {}; // Object to track key states
 
     }
 
@@ -86,4 +87,11 @@ export default class Scene {
     setMainPlayerID(ID){
         this.mainPlayerID = ID
     }
+
+    event(eventString, eventObject){
+        if(eventString == "keydown"){
+            this.keys[eventObject.key] = eventObject.status;
+        }
+    }
+    
 }

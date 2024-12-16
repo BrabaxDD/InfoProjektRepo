@@ -2,7 +2,7 @@ import GameObject from "./GameObject.js"
 
 
 export default class Player extends GameObject {
-    constructor(x, y, width, height, color, speed, keys, scene, playerID) {
+    constructor(x, y, width, height, color, speed, scene, playerID) {
         super(scene)
         this.posx = x
         this.posy = y
@@ -12,7 +12,7 @@ export default class Player extends GameObject {
         this.speed = speed
         this.canvas = this.scene.canvas
         this.ctx = this.scene.canvas.getContext("2d")
-        this.keys = keys
+        //this.keys = keys
         //this.scene.eventBus.registerListner("test", this)
         this.scene.eventBus.registerListner("position", this)
         this.up = false
@@ -23,7 +23,7 @@ export default class Player extends GameObject {
     }
 
     process() {
-        if (this.keys['ArrowUp']) {
+        if (this.scene.keys['ArrowUp']) {
             this.up = true
             if (this.posy > 0) { }
             //this.posy -= this.speed; // Move up
@@ -32,7 +32,7 @@ export default class Player extends GameObject {
         }
 
 
-        if (this.keys['ArrowDown']) {
+        if (this.scene.keys['ArrowDown']) {
             this.down = true
             if (this.posy < this.canvas.height - this.height) {
                 //this.posy += this.speed; // Move down
@@ -41,14 +41,14 @@ export default class Player extends GameObject {
             this.down = false
         }
 
-        if (this.keys['ArrowLeft']) {
+        if (this.scene.keys['ArrowLeft']) {
             this.left = true
             if (this.posx > 0) {
                 //this.posx -= this.speed; // Move left
             }
         } else { this.left = false }
 
-        if (this.keys['ArrowRight']) {
+        if (this.scene.keys['ArrowRight']) {
             this.right = true
             if (this.posx < this.canvas.width - this.width) {
                 //this.posx += this.speed; // Move right
