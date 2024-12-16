@@ -18,8 +18,8 @@ class World:
         for gameObject in self.objects:
             gameObject.broadcast()
 
-    def broadcastPlayerPosition(self, ID, posx, posy, entityType):
-        self.threat.broadcastPlayerPosition(ID, posx, posy, entityType)
+    def broadcastPosition(self, ID, posx, posy, entityType):
+        self.threat.broadcastPosition(ID, posx, posy, entityType)
 
     def broadcastPlayerInventoryUpdate(self, ID, Inventory):
         self.threat.broadcastPlayerInventoryUpdate(ID, Inventory)

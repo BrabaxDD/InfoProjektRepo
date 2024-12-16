@@ -7,7 +7,7 @@ class Tree(GameObject.GameObject):
         super().__init__(world, random()*300, random()*300)
 
     def broadcast(self):
-        self.world.broadcastPlayerPosition("TestTree", self.posx, self.posy, "Tree")
+        self.world.broadcastPosition("TestTree", self.posx, self.posy, "Tree")
 
     def process(self, delta):
         pass

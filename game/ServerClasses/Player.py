@@ -42,4 +42,4 @@ class Player(GameObject.GameObject):
             self.posy = delta*self.velocity*(-1) + self.posy
 
     def broadcast(self):
-        self.world.broadcastPlayerPosition(self.ID, self.posx, self.posy, "Player")
+        self.world.broadcastPosition(self.ID, self.posx, self.posy, "Player")

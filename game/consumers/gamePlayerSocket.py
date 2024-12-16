@@ -65,10 +65,11 @@ class gamePlayerSocketConsumer(WebsocketConsumer):
               " the position is: " + str(event["posx"]) + " " + str(event["posy"]))
         posx = event["posx"]
         posy = event["posy"]
+        ID = event["ID"]
         entityType = event["entityType"]
         self.send(text_data=json.dumps({
             "type": "position",
-            "ID": self.player_ID,
+            "ID": ID,
             "posx": posx,
             "posy": posy,
             "entityType": entityType

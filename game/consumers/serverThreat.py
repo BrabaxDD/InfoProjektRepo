@@ -37,7 +37,7 @@ class serverThreat(threading.Thread):
     def login(self, ID):
         self.world.objects.append(Player(ID, self.world))
 
-    def broadcastPlayerPosition(self, ID, posx, posy, entityType):
+    def broadcastPosition(self, ID, posx, posy, entityType):
         self.gameServerSocket.updatePosition(ID, posx, posy, entityType)
 
     def playerGenerateItem(self, event):
