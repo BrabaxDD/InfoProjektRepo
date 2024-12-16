@@ -11,8 +11,12 @@ export default class EventBus {
     }
     triggerEvent(eventString, eventObject) {
         if (eventString in this.listners) {
-            for (let i = 0; i < this.listners[eventString].length; i++) {
-                this.listners[eventString][i].event(eventString,eventObject)
+            try {
+               for (let i = 0; i < this.listners[eventString].length; i++) {
+                    this.listners[eventString][i].event(eventString,eventObject)
+                }
+            } catch (error) {
+              console.error(error);
             }
         }
     }
