@@ -10,8 +10,9 @@ export default class TileMap extends GameObject {
         this.ctx = this.scene.canvas.getContext("2d");
         this.fileName = mapName
 
-        // Initialize the image loader
-        this.imageLoader = new ImageLoader();
+        
+        this.imageLoader = this.scene.imageLoader
+        console.log("IMAGE LOADER: "+this.imageLoader)
 
         // Define the tile-to-file mapping
         this.tileMap = {
