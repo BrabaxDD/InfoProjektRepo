@@ -5,6 +5,7 @@ import GameObject from "./GameObject.js";
 import CanvasTextInput from "./GUI_elements/TextInput.js";
 import TileMap from "./images/TileMap.js";
 import Tree from "./tree.js"
+import { getMainPlayerID } from "./game.js";
 
 export default class GameSceneFactory extends GameObject{
     constructor (canvas, keys,sceneObject){
@@ -50,7 +51,11 @@ export default class GameSceneFactory extends GameObject{
             case "game":
             case 2:
                 scene = new Scene(this.canvas,"GameMap.txt");
-                let player = new Player(100,100,20,20, 'blue', 5, this.keys,scene)
+                
+                let d = new Date()
+                let playerID = d.getTime().toString()
+
+                let player = new Player(100,100,20,20, 'blue', 5, this.keys,scene, playerID)
                 scene.addObject(player)
 
                 let tree = new Tree(scene)
@@ -72,6 +77,7 @@ export default class GameSceneFactory extends GameObject{
                 let logButHost = new ButtonGameObject(this.canvas.width/3*2-100,this.canvas.height/5*4-28,200,56, "loginToServerHost",{}, scene, "Host (to game)")
                 scene.addObject(logButHost)
         }
+        console.log(scene.gameObjects)
         return scene
     }
 

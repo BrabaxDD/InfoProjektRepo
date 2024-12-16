@@ -17,13 +17,13 @@ webSocket.onmessage = function(e) {
     if (!isStarted){
         return
     }
-    if (data.ID === playerID){
-            scene.eventBus.triggerEvent("position", {type:data.entityType , posx:data.posx , posy:data.posy})
-            /*if(data.type == "position" && data.entityType == "Player"){
-                scene.gameObjects[scene.playerIndex].posx = data.posx
-                scene.gameObjects[scene.playerIndex].posy = data.posy
-            }*/
-    }
+    console.log(data)
+
+    scene.eventBus.triggerEvent("position", {type:data.entityType, ID: data.ID , posx:data.posx , posy:data.posy})
+    /*if(data.type == "position" && data.entityType == "Player"){
+        scene.gameObjects[scene.playerIndex].posx = data.posx
+        scene.gameObjects[scene.playerIndex].posy = data.posy
+    }*/
 }
 
 // Canvas dimensions
@@ -99,16 +99,15 @@ export function switchScene(sceneToSwitch){
 
 function updateToServer(){
     console.log("Server update")
-    webSocket.send(JSON.stringify({type: "action", up: scene.gameObjects[0].up, down: scene.gameObjects[0].down, left: scene.gameObjects[0].left, right: scene.gameObjects[0].right}))
+    webSocket.send(JSON.stringify({type: "action", up: scene.gameObjects[0].up, down: scene.gameObjects[0].down, left: scene.gameObjects[0].left, right: scene.gameObjects[0].right, actiontype: "movement"}))
 }
 
 export function loginToServer(serverName){
-    let d = new Date()
-    playerID = d.getTime().toString()
+    
     console.log("PLAYER ID:")
-    console.log(playerID)
+    console.log(scene.playerID)
     console.log("LOGGIN IN TO SERVER: "+serverName)
-    webSocket.send(JSON.stringify({type: "login", ID:playerID, serverID:serverName}))
+    webSocket.send(JSON.stringify({type: "login", ID:scene.playerID, serverID:serverName}))
     isStarted = true
 }
 
@@ -120,4 +119,8 @@ export function loginToServerHost(serverName){
 export function generateItem(object){
     console.log("Generating Item: "+ object)
     webSocket.send(JSON.stringify({type : "generateItem", itemID : object}))
+}
+
+export function getMainPlayerID(){
+    return scene.playerID
 }

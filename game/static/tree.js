@@ -11,6 +11,7 @@ export default class Tree extends GameObject{
     render(){
         this.ctx.fillStyle = "green";
         this.ctx.fillRect(this.posx, this.posy, 10, 10);
+        
     }
 
     process(){}
