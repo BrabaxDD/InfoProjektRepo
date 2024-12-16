@@ -1,6 +1,7 @@
 import EventBus from "./EventBus.js"
 import SceneSwitcher from "./SceneSwitcher.js"
 import TileMap from "./images/TileMap.js"
+import ImageLoader from "./images/ImageLoader.js"
 
 export default class Scene {
     constructor(canvasObjectScene, mapName) {
@@ -14,10 +15,15 @@ export default class Scene {
         this.canvas = canvasObjectScene
                 
         this.playerIndex = -1
+
+        // Initialize the image loader
+        this.imageLoader = new ImageLoader();
         
         this.map = new TileMap(this, 32, mapName)
         this.mainPlayerID = -1
+
         
+        this.eventBus.registerListner("keydown", this)
 
         this.canvas.addEventListener('mousemove', (event) => {
             // Get the bounding rectangle of the canvas
@@ -28,7 +34,7 @@ export default class Scene {
             this.mousey = event.clientY - rect.top;
         });
 
-
+        this.keys = {}; // Object to track key states
 
     }
 
@@ -86,4 +92,11 @@ export default class Scene {
     setMainPlayerID(ID){
         this.mainPlayerID = ID
     }
+
+    event(eventString, eventObject){
+        if(eventString == "keydown"){
+            this.keys[eventObject.key] = eventObject.status;
+        }
+    }
+    
 }

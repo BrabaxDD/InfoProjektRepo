@@ -6,6 +6,7 @@ import CanvasTextInput from "./GUI_elements/TextInput.js";
 import TileMap from "./images/TileMap.js";
 import Tree from "./tree.js"
 import { getMainPlayerID } from "./game.js";
+import Inventory from "./GUI_elements/Inventory.js";
 
 export default class GameSceneFactory extends GameObject{
     constructor (canvas, keys,sceneObject){
@@ -55,8 +56,11 @@ export default class GameSceneFactory extends GameObject{
                 let d = new Date()
                 let playerID = d.getTime().toString()
 
-                let player = new Player(100,100,20,20, 'blue', 5, this.keys,scene, playerID)
+                let player = new Player(100,100,20,20, 'blue', 5,scene, playerID)
                 scene.addObject(player)
+
+                let inv = new Inventory(scene)
+                scene.addObject(inv)
 
                 let tree = new Tree(scene)
                 scene.addObject(tree)
