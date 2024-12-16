@@ -47,7 +47,7 @@ class gamePlayerSocketConsumer(WebsocketConsumer):
                 )
             elif actiontype == "hit":
                 direction = text_data_json["direction"]
-                async_to_sync(self.channel_layer.group_send)(self.serverID, {"type": "hitRequestFromClient","direction":direction})
+                async_to_sync(self.channel_layer.group_send)(self.serverID, {"type": "hitRequestFromClient","direction":direction,"ID":self.player_ID})
 
 
 

@@ -44,3 +44,7 @@ class serverThreat(threading.Thread):
 
     def broadcastPlayerInventoryUpdate(self, ID, Inventory):
         self.gameServerSocket.updateInventory(ID, Inventory)
+
+    def hitRequestFromPlayer(self, ID, direction):
+        self.world.eventBus.playerRequestHit(
+            {"ID": ID, "direction": direction})

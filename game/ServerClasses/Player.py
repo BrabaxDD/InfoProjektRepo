@@ -1,10 +1,12 @@
 from game.ServerClasses import World
 from game.ServerClasses import Inventory, ItemsStack
+import time
 from game.ServerClasses import GameObject
+
 
 class Player(GameObject.GameObject):
     def __init__(self, ID, world: World.World):
-        super().__init__(world,0,0)
+        super().__init__(world, 0, 0)
         self.ID = ID
         self.velocity = 290
         self.up = False
@@ -13,7 +15,9 @@ class Player(GameObject.GameObject):
         self.right = False
         self.world.eventBus.registerPlayerActionListner(self)
         self.world.eventBus.registerPlayerGenerateItemListner(self)
+        self.world.eventBus.registerPlayerRequestHitListner(self)
         self.Inventory = Inventory.Inventory()
+        self.lastHit = time.perf_counter()
 
     def playerAction(self, action):
         if action["ID"] == self.ID:
@@ -31,6 +35,13 @@ class Player(GameObject.GameObject):
                 ItemsStack.ItemStack(action["itemID"], 1), 0)
             self.world.broadcastPlayerInventoryUpdate(self.ID, self.Inventory)
 
+    def playerRequestHit(self, action):
+        if action["ID"] == self.ID:
+            if time.perf_counter() - self.lastHit > 1:
+                self.lastHit = time.perf_counter()
+                self.world.eventBus.playerHit(
+                    {"ID": self.ID, "Player": self, "direction": action["direction"]})
+
     def process(self, delta):
         if self.right:
             self.posx = delta*self.velocity + self.posx
@@ -43,3 +54,7 @@ class Player(GameObject.GameObject):
 
     def broadcast(self):
         self.world.broadcastPosition(self.ID, self.posx, self.posy, "Player")
+
+    def treeHit(self, tree):
+        self.Inventory.addItem(ItemsStack.ItemStack("Wood", 2), 0)
+        self.world.broadcastPlayerInventoryUpdate(self.ID, self.Inventory)

@@ -8,6 +8,7 @@ class World:
         self.objects = []
         self.threat = threat
         self.objects.append(Tree.Tree(self))
+
         pass
 
     def process(self, delta):
@@ -23,3 +24,4 @@ class World:
 
     def broadcastPlayerInventoryUpdate(self, ID, Inventory):
         self.threat.broadcastPlayerInventoryUpdate(ID, Inventory)
+

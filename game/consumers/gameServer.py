@@ -52,6 +52,7 @@ class gameServer(WebsocketConsumer):
                                                      )
 
     def hitRequestFromClient(self, event):
+        self.serverThreat.hitRequestFromPlayer(event["ID"],event["direction"])
         pass
 
     def generateItem(self, event):
