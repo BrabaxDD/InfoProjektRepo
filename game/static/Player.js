@@ -19,41 +19,42 @@ export default class Player extends GameObject {
         this.down = false
         this.left = false
         this.right = false
+        this.ID = 0
     }
 
     process() {
         if (this.keys['ArrowUp']) {
             this.up = true
-            if (this.posy > 0){}
-                //this.posy -= this.speed; // Move up
-        } else{
+            if (this.posy > 0) { }
+            //this.posy -= this.speed; // Move up
+        } else {
             this.up = false
         }
-            
-        
-        if (this.keys['ArrowDown'] ) {
+
+
+        if (this.keys['ArrowDown']) {
             this.down = true
-            if (this.posy < this.canvas.height - this.height){
+            if (this.posy < this.canvas.height - this.height) {
                 //this.posy += this.speed; // Move down
-                }
-        }else{
+            }
+        } else {
             this.down = false
         }
 
-        if (this.keys['ArrowLeft'] ) {
+        if (this.keys['ArrowLeft']) {
             this.left = true
-            if (this.posx > 0){
+            if (this.posx > 0) {
                 //this.posx -= this.speed; // Move left
             }
-        }else{this.left = false}
+        } else { this.left = false }
 
         if (this.keys['ArrowRight']) {
             this.right = true
-            if (this.posx < this.canvas.width - this.width){
+            if (this.posx < this.canvas.width - this.width) {
                 //this.posx += this.speed; // Move right
-            }    
+            }
         }
-        else{
+        else {
             this.right = false
         }
     }
@@ -62,8 +63,8 @@ export default class Player extends GameObject {
         this.ctx.fillStyle = "blue";
         this.ctx.fillRect(this.posx, this.posy, this.width, this.height);
     }
-   event(eventString, eventObject) {
-        if (eventString == "position" && eventObject.type == "Player") {
+    event(eventString, eventObject) {
+        if (eventString == "position" && eventObject.type == "Player") {// && eventObject.ID == this.ID) { 
             this.posx = eventObject.posx
             this.posy = eventObject.posy
         }
