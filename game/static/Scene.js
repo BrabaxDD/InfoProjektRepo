@@ -79,4 +79,8 @@ export default class Scene {
         }
 
     }
+
+    getPlayerIndex(){
+        return this.playerIndex
+    }
 }

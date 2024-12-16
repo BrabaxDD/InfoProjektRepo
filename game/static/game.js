@@ -12,10 +12,12 @@ const webSocket = new WebSocket('ws://' + window.location.host + '/game/login')
 
 webSocket.onmessage = function(e) {
     const data = JSON.parse(e.data)
-        if(data.type == "position"){
-            scene.gameObjects[0].posx = data.posx
-            scene.gameObjects[0].posy = data.posy
-        }
+    if (data.ID === playerID){
+            if(data.type == "position"){
+                scene.gameObjects[scene.playerIndex].posx = data.posx
+                scene.gameObjects[scene.playerIndey].posy = data.posy
+            }
+    }
 }
 
 // Canvas dimensions
