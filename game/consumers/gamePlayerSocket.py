@@ -20,9 +20,10 @@ class gamePlayerSocketConsumer(WebsocketConsumer):
             self.serverID, self.channel_name)
 
     def receive(self, text_data):
-        print("log: received Package by client to " +
-              str(self.player_ID) + " with the following content:")
-        print(text_data)
+        True
+#        print("log: received Package by client to " +
+#              str(self.player_ID) + " with the following content:")
+#        print(text_data)
         text_data_json = json.loads(text_data)
         messageType = text_data_json["type"]
         if messageType == "action":

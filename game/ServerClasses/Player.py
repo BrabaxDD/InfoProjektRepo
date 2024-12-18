@@ -25,15 +25,16 @@ class Player(GameObject.GameObject):
             self.down = action["down"]
             self.right = action["right"]
             self.left = action["left"]
-            print("log: updating Player Actions of Player: " + str(self.ID) + " to " +
-                  str(self.up) + str(self.down) + str(self.right) + str(self.left))
+#            print("log: updating Player Actions of Player: " + str(self.ID) + " to " +
+#                  str(self.up) + str(self.down) + str(self.right) + str(self.left))
 
     def playerGenerateItem(self, action):
-        print("log: Generating Player Item: " + str(action))
+        print("log: Generating Player Item: " + str(action))        
         if action["ID"] == self.ID:
             self.Inventory.addItem(
                 ItemsStack.ItemStack(action["itemID"], 1), 0)
             self.world.broadcastPlayerInventoryUpdate(self.ID, self.Inventory)
+            
 
     def playerRequestHit(self, action):
         if action["ID"] == self.ID:
