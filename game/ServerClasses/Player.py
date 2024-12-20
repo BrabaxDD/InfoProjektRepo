@@ -6,7 +6,7 @@ from game.ServerClasses import GameObject
 
 class Player(GameObject.GameObject):
     def __init__(self, ID, world: World.World):
-        super().__init__(world, 0, 0,ID)
+        super().__init__(world, 0, 0, ID, "Player")
         self.velocity = 290
         self.up = False
         self.down = False
@@ -28,12 +28,11 @@ class Player(GameObject.GameObject):
 #                  str(self.up) + str(self.down) + str(self.right) + str(self.left))
 
     def playerGenerateItem(self, action):
-        print("log: Generating Player Item: " + str(action))        
+        print("log: Generating Player Item: " + str(action))
         if action["ID"] == self.ID:
             self.Inventory.addItem(
                 ItemsStack.ItemStack(action["itemID"], 1), 0)
             self.world.broadcastPlayerInventoryUpdate(self.ID, self.Inventory)
-            
 
     def playerRequestHit(self, action):
         if action["ID"] == self.ID:

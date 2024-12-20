@@ -1,9 +1,10 @@
 class GameObject:
-    def __init__(self,world, posx, posy,ID):
+    def __init__(self,world, posx, posy,ID,entityType):
         self.world = world
         self.posx = posx
         self.posy = posy
         self.ID = ID
+        self.entityType = entityType
 
 
     def process(self,process):
