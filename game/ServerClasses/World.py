@@ -27,3 +27,4 @@ class World:
 
     def addGameobject(self, obj):
         self.objects.append(obj)
+        self.threat.gameServerSocket.broadcastNewObject(obj.entityType, obj.ID)
