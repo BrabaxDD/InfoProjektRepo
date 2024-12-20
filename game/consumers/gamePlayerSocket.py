@@ -73,7 +73,7 @@ class gamePlayerSocketConsumer(WebsocketConsumer):
         pass
 
     def position(self, event):
-        #print("log: sending position information to Player with ID: " + str(self.player_ID) + " from server with ID " + self.serverID + " the position is: " +
+        # print("log: sending position information to Player with ID: " + str(self.player_ID) + " from server with ID " + self.serverID + " the position is: " +
         #      str(event["posx"]) + " " + str(event["posy"]) + " the entity type is " + str(event["entityType"]) + " the entity ID is: " + str(event["ID"]))
         posx = event["posx"]
         posy = event["posy"]
@@ -101,9 +101,8 @@ class gamePlayerSocketConsumer(WebsocketConsumer):
               "for server with ID: " + self.serverID + "and with content: ")
         print(event["Inventory"])
         self.send(text_data=json.dumps({"type": "InventoryUpdate",
-                                        "ID": event["ID"], "Inventory": event["Inventory"]}))
+                                        "ID": event["ID"], "Inventory":   json.loads(event["Inventory"])}))
 
-
-    def newGameObeject(self,event):
+    def newGameObeject(self, event):
 
         pass
