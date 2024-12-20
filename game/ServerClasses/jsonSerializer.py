@@ -4,6 +4,6 @@ from game.ServerClasses import ItemsStack
 
 def asDict(obj):
     if isinstance(obj, Inventory.Inventory):
-        return {"items": obj.items}
+        return obj.__dict__
     elif isinstance(obj, ItemsStack.ItemStack):
-        return {"size": obj.size, "itemID": obj.itemID, "tags": obj.tags}
+        return obj.__dict__
