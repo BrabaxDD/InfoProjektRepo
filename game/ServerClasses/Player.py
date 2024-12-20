@@ -50,6 +50,8 @@ class Player(GameObject.GameObject):
             self.posy = delta*self.velocity + self.posy
         if self.up:
             self.posy = delta*self.velocity*(-1) + self.posy
+        self.world.eventBus.playerPositionUpdate(
+            {"posx": self.posx, "posy": self.posy, "ID": self.ID})
 
     def broadcast(self):
         self.world.broadcastPosition(self.ID, self.posx, self.posy, "Player")

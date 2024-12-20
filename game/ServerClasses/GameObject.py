@@ -7,7 +7,7 @@ class GameObject:
         self.entityType = entityType
 
 
-    def process(self,process):
+    def process(self,delta):
         pass
     def broadcast(self):
         pass
