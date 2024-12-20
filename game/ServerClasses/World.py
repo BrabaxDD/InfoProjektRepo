@@ -7,7 +7,7 @@ class World:
         self.eventBus = EventBus.EventBus()
         self.objects = []
         self.threat = threat
-        self.objects.append(Tree.Tree(self))
+        self.addGameobject(Tree.Tree(self))
 
         pass
 
@@ -25,3 +25,5 @@ class World:
     def broadcastPlayerInventoryUpdate(self, ID, Inventory):
         self.threat.broadcastPlayerInventoryUpdate(ID, Inventory)
 
+    def addGameobject(self, obj):
+        self.objects.append(obj)

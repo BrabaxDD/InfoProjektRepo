@@ -1,10 +1,12 @@
 from game.ServerClasses import GameObject
 from random import random
+import uuid
 
 
 class Tree(GameObject.GameObject):
     def __init__(self, world):
-        super().__init__(world, random()*300, random()*300)
+        ID = uuid.uuid4() 
+        super().__init__(world, random()*300, random()*300,ID)
         self.world.eventBus.registerPlayerHitListner(self)
 
     def broadcast(self):

@@ -6,8 +6,7 @@ from game.ServerClasses import GameObject
 
 class Player(GameObject.GameObject):
     def __init__(self, ID, world: World.World):
-        super().__init__(world, 0, 0)
-        self.ID = ID
+        super().__init__(world, 0, 0,ID)
         self.velocity = 290
         self.up = False
         self.down = False

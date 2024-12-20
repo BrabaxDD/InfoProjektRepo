@@ -51,8 +51,12 @@ class gameServer(WebsocketConsumer):
                                                       }
                                                      )
 
+    def broadcastNewObject(self, entityType, ID):
+        async_to_sync(self.channel_layer.group_send)(self.serverID, {
+            "type": "newGameObject", "ID": ID, "entityType": entityType})
+
     def hitRequestFromClient(self, event):
-        self.serverThreat.hitRequestFromPlayer(event["ID"],event["direction"])
+        self.serverThreat.hitRequestFromPlayer(event["ID"], event["direction"])
         pass
 
     def generateItem(self, event):
@@ -74,4 +78,7 @@ class gameServer(WebsocketConsumer):
         return self.running
 
     def position(self, event):
+        pass
+
+    def newGameObeject(self, event):
         pass

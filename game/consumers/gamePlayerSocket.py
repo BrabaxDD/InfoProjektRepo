@@ -102,3 +102,8 @@ class gamePlayerSocketConsumer(WebsocketConsumer):
         print(event["Inventory"])
         self.send(text_data=json.dumps({"type": "InventoryUpdate",
                                         "ID": event["ID"], "Inventory": event["Inventory"]}))
+
+
+    def newGameObeject(self,event):
+
+        pass

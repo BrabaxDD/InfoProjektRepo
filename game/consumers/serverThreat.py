@@ -12,7 +12,7 @@ class serverThreat(threading.Thread):
         self.thread_name = thread_name
         self.thread_ID = thread_ID
         self.gameServerSocket: gameServer = gameServerSocket
-        print("server Worker Threat started eith ID: " +
+        print("server Worker Threat started with ID: " +
               self.gameServerSocket.serverID)
 
     def run(self):
@@ -34,7 +34,7 @@ class serverThreat(threading.Thread):
         self.world.eventBus.playerAction(action)
 
     def login(self, ID):
-        self.world.objects.append(Player(ID, self.world))
+        self.world.addGameobject(Player(ID,self.world))
 
     def broadcastPosition(self, ID, posx, posy, entityType):
         self.gameServerSocket.updatePosition(ID, posx, posy, entityType)
