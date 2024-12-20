@@ -62,8 +62,8 @@ export default class GameSceneFactory extends GameObject{
                 let inv = new Inventory(scene)
                 scene.addObject(inv)
 
-                let tree = new Tree(scene)
-                scene.addObject(tree)
+                //let tree = new Tree(scene)
+                //scene.addObject(tree)
 
                 //let lotTest = new ButtonGameObject(this.canvas.width/3-100,this.canvas.height/5-28,200,56,"generateItem","erstes Item",scene,"Generate erstes Item")
                 //scene.addObject(lotTest)

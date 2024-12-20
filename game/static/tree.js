@@ -1,11 +1,12 @@
 import GameObject from "./GameObject.js"
 
 export default class Tree extends GameObject{
-    constructor(scene){
+    constructor(scene, ID){
         super(scene)
         this.canvas = this.scene.canvas
         this.ctx = this.scene.canvas.getContext("2d")
         this.scene.eventBus.registerListner("position", this)
+        this.ID = ID
     }
 
     render(){
@@ -17,7 +18,7 @@ export default class Tree extends GameObject{
     process(){}
 
     event(eventString, eventObject){
-        if (eventString == "position" && eventObject.type == "Tree") {
+        if (eventString == "position" && eventObject.type == "Tree" && eventObject.ID == this.ID) {
             this.posx = eventObject.posx
             this.posy = eventObject.posy
         }

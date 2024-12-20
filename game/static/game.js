@@ -2,6 +2,7 @@ import GameSceneFactory from './GameSceneFactory.js';
 import Player from './Player.js';
 import Scene from './Scene.js';
 import SceneSwitcher from './SceneSwitcher.js';
+import Tree from './tree.js';
 
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
@@ -27,6 +28,12 @@ webSocket.onmessage = function(e) {
 
     if (data.type == "position"){
         scene.eventBus.triggerEvent("position", {type:data.entityType, ID: data.ID , posx:data.posx , posy:data.posy})
+    }
+
+    if (data.type == "newGameObject"){
+        if (data.entityType == "Tree"){
+            scene.addObject(Tree(scene,data.ID))
+        }
     }
     
     /*if(data.type == "position" && data.entityType == "Player"){
