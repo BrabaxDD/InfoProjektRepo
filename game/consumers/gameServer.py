@@ -47,7 +47,7 @@ class gameServer(WebsocketConsumer):
         async_to_sync(self.channel_layer.group_send)(self.serverID,
                                                      {"type": "inventoryUpdate",
                                                       "ID": ID,
-                                                      "Inventory": json.dumps(Invetory, default=jsonSerializer.asDict)
+                                                      "Inventory": json.dumps(Invetory)#, default=jsonSerializer.asDict)
                                                       }
                                                      )
 
