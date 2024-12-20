@@ -1,5 +1,7 @@
 import GameObject from "./GameObject.js"
 import { hit } from "./game.js"
+import { addTestInv } from "./game.js"
+
 
 export default class Player extends GameObject {
     constructor(x, y, width, height, color, speed, scene, playerID) {
@@ -62,6 +64,7 @@ export default class Player extends GameObject {
         if(this.scene.keys['h'] == true){
             if (this.onCooldown >= 10){
                 hit()
+                //addTestInv()
                 this.onCooldown = 0
             }
             

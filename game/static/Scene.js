@@ -24,6 +24,7 @@ export default class Scene {
 
         
         this.eventBus.registerListner("keydown", this)
+        this.eventBus.registerListner("mouseDown", this)
 
         this.canvas.addEventListener('mousemove', (event) => {
             // Get the bounding rectangle of the canvas
@@ -35,7 +36,7 @@ export default class Scene {
         });
 
         this.keys = {}; // Object to track key states
-
+        this.mouseDown = false
     }
 
     addObject(object) {
@@ -96,6 +97,9 @@ export default class Scene {
     event(eventString, eventObject){
         if(eventString == "keydown"){
             this.keys[eventObject.key] = eventObject.status;
+        }
+        if(eventString == "mouseDown"){
+            this.mouseDown = eventObject.status
         }
     }
     
