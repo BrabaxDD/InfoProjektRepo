@@ -1,3 +1,7 @@
+from dataclasses import dataclass
+
+
+@dataclass
 class ItemStack:
     def __init__(self, ID, size):
 
