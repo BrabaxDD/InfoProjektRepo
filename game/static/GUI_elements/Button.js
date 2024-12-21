@@ -86,6 +86,9 @@ export default class ButtonGameObject extends GameObject {
         if(this.eventString == "generateItem"){
             generateItem(eventObject)
         }
+        if(this.eventString == "combineStacks"){
+            this.scene.eventBus.triggerEvent("combineStacks",eventObject)
+        }
     }
 
     event(eventString, eventObject){

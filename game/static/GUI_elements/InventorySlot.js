@@ -8,12 +8,15 @@ export default class InventorySlot extends GameObject{
         this.canvas = this.scene.canvas
         this.ctx = this.scene.canvas.getContext("2d")
 
+        this.scene.eventBus.registerListner("click_on_canvas", this)
+
         this.posx = posx
         this.posy = posy
         this.size = size
 
         this.image = image
 
+        this.isSelected = false
         this.itemStack = itemStack
         console.log(this.image)
     }
@@ -47,11 +50,24 @@ export default class InventorySlot extends GameObject{
             this.ctx.globalAlpha = 1;
         }
 
+        if (this.isSelected){
+            this.ctx.fillStyle = "red";
+            this.ctx.lineWidth = 7
+            this.ctx.strokeRect(this.posx, this.posy, this.size, this.size);
+        }
+
         this.ctx.fillStyle = 'yellow';
         this.ctx.textBaseline = 'left';
         this.ctx.font = font;
         this.ctx.fillText(this.itemStack.size, this.posx + this.size-5,this.posy+ this.size);
             
+    }
+
+    event(eventString, eventObject){
+        if(eventString == "click_on_canvas" && this.isHovered){
+            console.log("clicked on itemstack: " + this.itemStack)
+            this.isSelected = !this.isSelected
+        }
     }
 
 }

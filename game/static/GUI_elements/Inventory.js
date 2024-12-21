@@ -1,6 +1,7 @@
 import GameObject from "../GameObject.js"
 import { font } from "../game.js"
 import InventorySlot from "./InventorySlot.js"
+import { addTestInv } from "../game.js"
 
 export default class Inventory extends GameObject{
     constructor(scene){
@@ -8,8 +9,9 @@ export default class Inventory extends GameObject{
         this.canvas = this.scene.canvas
         this.ctx = this.scene.canvas.getContext("2d")
 
-        this.content = [{itemID:"Stick",size:3,tags:{}}, {itemID:2, size:5, tags:{}}] //All item stacks
+        this.content = [{itemID:"Stick",size:7,tags:{}}, {itemID:"Stick",size:3,tags:{}}, {itemID:2, size:5, tags:{}}] //All item stacks
         this.scene.eventBus.registerListner("inventory",this)
+        this.scene.eventBus.registerListner("combineStacks",this)
         this.scene.eventBus.registerListner("mouseJustDown",this)
         //this.scene.eventBus.registerListner("click_on_canvas",this)
 
@@ -62,7 +64,7 @@ export default class Inventory extends GameObject{
     
         this.images =  await this.loadAllImages(this.imagesIndex)
         console.log(this.images)
-        this.updateButtons()
+        this.updateButtons(this.content)
         console.log(this.images);
          
     }
@@ -100,9 +102,14 @@ export default class Inventory extends GameObject{
         if (eventString == "inventory"){
             console.log("eventObject: " + eventObject.items)
             this.content = eventObject.items
+            this.updateButtons()
         }
         if (eventString == "mouseJustDown"){
             this.mouseJustDown = true
+        }
+        if (eventString == "combineStacks"){
+            console.log("Combining")
+            this.combineSelected()
         }
     }
 
@@ -144,6 +151,49 @@ export default class Inventory extends GameObject{
             }
         }
         return is
+    }
+
+    combineSelected(){
+        let selected = []
+        let buttonsCopy = []
+        let len = this.buttons.length
+        for (let i = 0; i<len; i++){
+            if (this.buttons[i].isSelected){
+                selected.push(this.buttons[i])
+                this.content = this.content.filter(e => e !== this.buttons[i].itemStack)
+            }else{
+                buttonsCopy.push(this.buttons[i])
+            }
+        }
+        len = selected.length
+        for (let i = 0; i<len; i++){
+            selected[i].isSelected = false
+        }
+        let s = {}
+        len = selected.length
+
+        for (let i = 0; i<len; i++){
+            if (s[selected[i].itemStack.itemID]){
+                s[selected[i].itemStack.itemID] += selected[i].itemStack.size
+            }else{
+                s[selected[i].itemStack.itemID] = selected[i].itemStack.size
+            }
+        }
+        console.log(s)
+        console.log(buttonsCopy)
+        len = s.length
+
+        const keys = Object.keys(s)
+        keys.forEach(element => {
+            console.log(keys)
+            this.content.push({itemID:element, size: s[element], tags:{}})
+            
+        });
+        this.buttons = {}
+        this.buttons = buttonsCopy
+        this.updateButtons()
+
+
     }
 
     render(){
@@ -202,6 +252,10 @@ export default class Inventory extends GameObject{
         else{
             this.isVisible = false
         }
+        if (this.scene.keys["t"] == true){
+            addTestInv()
+        }
+
         if(this.isVisible){
             this.processButtons()
             let len = this.buttons.length

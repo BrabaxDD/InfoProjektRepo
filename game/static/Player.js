@@ -1,6 +1,5 @@
 import GameObject from "./GameObject.js"
 
-
 export default class Player extends GameObject {
     constructor(x, y, width, height, color, speed, scene, playerID) {
         super(scene)
@@ -57,6 +56,7 @@ export default class Player extends GameObject {
         else {
             this.right = false
         }
+
     }
 
     render() {
