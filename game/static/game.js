@@ -2,6 +2,7 @@ import GameSceneFactory from './GameSceneFactory.js';
 import Player from './Player.js';
 import Scene from './Scene.js';
 import SceneSwitcher from './SceneSwitcher.js';
+import Tree from './tree.js';
 
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
@@ -19,7 +20,22 @@ webSocket.onmessage = function(e) {
     }
     //console.log(data)
 
-    scene.eventBus.triggerEvent("position", {type:data.entityType, ID: data.ID , posx:data.posx , posy:data.posy})
+    if (data.type == "InventoryUpdate"){
+        console.log(e)
+        console.log(data)
+        scene.eventBus.triggerEvent("inventory",data.Inventory)
+    }
+
+    if (data.type == "position"){
+        scene.eventBus.triggerEvent("position", {type:data.entityType, ID: data.ID , posx:data.posx , posy:data.posy})
+    }
+
+    if (data.type == "newGameObject"){
+        if (data.entityType == "Tree"){
+            scene.addObject(Tree(scene,data.ID))
+        }
+    }
+    
     /*if(data.type == "position" && data.entityType == "Player"){
         scene.gameObjects[scene.playerIndex].posx = data.posx
         scene.gameObjects[scene.playerIndex].posy = data.posy
@@ -90,6 +106,13 @@ canvas.addEventListener('click',(event) => {
     scene.eventBus.triggerEvent("click_on_canvas")
 });
 
+canvas.addEventListener("mousedown", (event) => {
+    scene.eventBus.triggerEvent("mouseDown",{status:true})
+});
+canvas.addEventListener("mouseup", (event) => {
+    scene.eventBus.triggerEvent("mouseDown",{status:false})
+});
+
 export function switchScene(sceneToSwitch){
     console.log("NEW SCENE")
     scene = factory.buildGameScene(sceneToSwitch) 
@@ -125,4 +148,13 @@ export function generateItem(object){
 
 export function getMainPlayerID(){
     return scene.mainPlayerID
+}
+
+export function hit(){
+    console.log("HIT")
+    webSocket.send(JSON.stringify({type:"action", actiontype:"hit",direction:100}))
+}
+
+export function addTestInv(){
+    scene.eventBus.triggerEvent("inventory",{"items": [{"size": 2, "itemID": "Wood", "tags": []}]})
 }

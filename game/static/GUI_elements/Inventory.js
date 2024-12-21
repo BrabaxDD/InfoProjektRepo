@@ -8,10 +8,18 @@ export default class Inventory extends GameObject{
 
         this.content = [{itemID:1,size:3,tags:{}}, {itemID:2, size:5, tags:{}}] //All item stacks
         this.scene.eventBus.registerListner("inventory",this)
+        this.scene.eventBus.registerListner("mouseJustDown",this)
+        //this.scene.eventBus.registerListner("click_on_canvas",this)
 
         this.isVisible = false
 
         this.imageLoader = this.scene.imageLoader
+
+        this.posx = 0
+        this.posy = 0
+
+        this.invWidth = 400
+        this.invHeight = 200
 
         this.imageLoader.load(
             "blankItem.png",
@@ -24,11 +32,22 @@ export default class Inventory extends GameObject{
                 console.error(`Error loading tile image: ${fileName}`, error);
             }
         );
+
+        this.isHovered = false
+
+        this.atackPosx = 0
+        this.atackPosy = 0
     }
 
     event(eventString, eventObject){
         if (eventString == "inventory"){
+            console.log("eventObject: " + eventObject.items)
             this.content = eventObject.items
+        }
+        if (eventString == "mouseJustDown"){
+            console.log("mouseDown")
+            this.mouseJustDown = true
+            console.log(this.mouseJustDown)
         }
     }
 
@@ -42,29 +61,52 @@ export default class Inventory extends GameObject{
     render(){
         if (this.isVisible){
             this.ctx.fillStyle = "green";
-            this.ctx.fillRect(0, 100, 400, 200);
+            this.ctx.fillRect(this.posx, this.posy, this.invWidth, this.invHeight);
             this.ctx.font = this.textSize;
             this.ctx.fillStyle = 'black';
             this.ctx.textBaseline = 'middle';
-            this.ctx.fillText(this.content, 0 + (400/2), 100 + (200 / 2));
+            this.ctx.fillText(this.content, this.posx + (this.invWidth/2), this.posy + (this.invHeight / 2));
             let len = this.content.length
             for (let i = 0; i<len; i++){
                 this.ctx.drawImage(
                     this.dummyItem,
-                    i * 32,
-                    100 + 32,
+                    this.posx + i * 32,
+                    this.posy + 32,
                     32,
                     32
                 );
                 this.ctx.fillStyle = 'yellow';
                 this.ctx.textBaseline = 'left';
                 this.ctx.font = this.textSize*3;
-                this.ctx.fillText(this.content[i].size, 30 * (i+1), 100 + 60);
+                this.ctx.fillText(this.content[i].size, this.posx + 30 * (i+1), this.posy + 100 + 60);
             }
         }
     }
 
     process(){
+        if (this.isVisible && this.scene.mousex >  this.posx && this.scene.mousex < this.posx + this.invWidth && 
+            this.scene.mousey >  this.posy && this.scene.mousey < this.posy + this.invHeight){
+            this.isHovered = true
+            
+        } 
+
+        if(this.mouseJustDown){
+            this.atackPosx = this.scene.mousex-this.posx
+            this.atackPosy = this.scene.mousey-this.posy
+            console.log("attackPosX: " + this.atackPosx)
+            console.log("attackPosY: " + this.atackPosy)
+            this.mouseJustDown = false
+            console.log("MOSUEDOWN")
+        }
+
+        if (this.isHovered && this.scene.mouseDown){
+                this.posx = this.scene.mousex - this.atackPosx
+                this.posy = this.scene.mousey - this.atackPosy
+        }
+
+        else{
+            this.isHovered = false
+        }
         if (this.scene.keys["e"] == true){
             this.isVisible = true
         }
