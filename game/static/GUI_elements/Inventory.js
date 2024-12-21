@@ -1,4 +1,5 @@
 import GameObject from "../GameObject.js"
+import { font } from "../game.js"
 
 export default class Inventory extends GameObject{
     constructor(scene){
@@ -6,7 +7,7 @@ export default class Inventory extends GameObject{
         this.canvas = this.scene.canvas
         this.ctx = this.scene.canvas.getContext("2d")
 
-        this.content = [{itemID:1,size:3,tags:{}}, {itemID:2, size:5, tags:{}}] //All item stacks
+        this.content = [{itemID:"Stick",size:3,tags:{}}, {itemID:2, size:5, tags:{}}] //All item stacks
         this.scene.eventBus.registerListner("inventory",this)
         this.scene.eventBus.registerListner("mouseJustDown",this)
         //this.scene.eventBus.registerListner("click_on_canvas",this)
@@ -20,12 +21,12 @@ export default class Inventory extends GameObject{
 
         this.invWidth = 400
         this.invHeight = 200
+        this.borderWidth = 10
+        this.bufferSize = 10
 
         this.imageLoader.load(
             "blankItem.png",
-
             (image) => {
-                // Draw the image once it's loaded
                 this.dummyItem = image
             },
             (error) => {
@@ -33,11 +34,61 @@ export default class Inventory extends GameObject{
             }
         );
 
+        this.textSize = font
+        
+        this.imageSize = 64
+
         this.isHovered = false
 
         this.atackPosx = 0
         this.atackPosy = 0
+
+        this.initializeImages()
+
+        this.images = this.loadAllImages(this.imagesIndex)
+
+        console.log(this.imagesIndex)
+
     }
+
+    async initializeImages() {
+        this.imagesIndex = {
+            Stick: "stick.png"
+        };
+    
+        this.images = await this.loadAllImages(this.imagesIndex); // Wait for images to load
+        console.log("Images loaded:", this.images);
+    }
+
+    async loadAllImages(imagesIndex) {
+        const images = {};
+        const keys = Object.keys(imagesIndex);
+    
+        const loadPromises = keys.map(key => {
+            return new Promise((resolve, reject) => {
+                this.imageLoader.load(
+                    imagesIndex[key],
+                    (image) => {
+                        images[key] = image;
+                        resolve(); // Resolve this image's loading
+                    },
+                    (error) => {
+                        console.error(`Error loading image: ${imagesIndex[key]}`, error);
+                        reject(error); // Reject if there is an error
+                    }
+                );
+            });
+        });
+    
+        // Wait for all the images to be loaded
+        await Promise.all(loadPromises);
+    
+        console.log(images); // Log all loaded images
+        console.log("images Stick:", images.Stick);
+    
+        return images; // Return the loaded images object
+    }
+    
 
     event(eventString, eventObject){
         if (eventString == "inventory"){
@@ -45,9 +96,7 @@ export default class Inventory extends GameObject{
             this.content = eventObject.items
         }
         if (eventString == "mouseJustDown"){
-            console.log("mouseDown")
             this.mouseJustDown = true
-            console.log(this.mouseJustDown)
         }
     }
 
@@ -65,20 +114,30 @@ export default class Inventory extends GameObject{
             this.ctx.font = this.textSize;
             this.ctx.fillStyle = 'black';
             this.ctx.textBaseline = 'middle';
-            this.ctx.fillText(this.content, this.posx + (this.invWidth/2), this.posy + (this.invHeight / 2));
+
             let len = this.content.length
             for (let i = 0; i<len; i++){
+                let image = this.dummyItem
+                
+                try{
+                    let c = this.content[i].itemID; // Get the item ID
+                    if (this.images[c]) {
+                        image = this.images[c];
+                    }
+                }
+                catch(error){
+                }
                 this.ctx.drawImage(
-                    this.dummyItem,
-                    this.posx + i * 32,
-                    this.posy + 32,
-                    32,
-                    32
+                    image,
+                    this.posx + (i * this.imageSize) + this.bufferSize*i + this.borderWidth,
+                    this.posy + this.borderWidth,
+                    this.imageSize,
+                    this.imageSize
                 );
                 this.ctx.fillStyle = 'yellow';
                 this.ctx.textBaseline = 'left';
                 this.ctx.font = this.textSize*3;
-                this.ctx.fillText(this.content[i].size, this.posx + 30 * (i+1), this.posy + 100 + 60);
+                this.ctx.fillText(this.content[i].size, this.borderWidth + this.posx + (this.imageSize * (i+1)+ (i*this.bufferSize))-5, this.posy + this.borderWidth + this.imageSize);
             }
         }
     }
@@ -93,10 +152,7 @@ export default class Inventory extends GameObject{
         if(this.mouseJustDown){
             this.atackPosx = this.scene.mousex-this.posx
             this.atackPosy = this.scene.mousey-this.posy
-            console.log("attackPosX: " + this.atackPosx)
-            console.log("attackPosY: " + this.atackPosy)
             this.mouseJustDown = false
-            console.log("MOSUEDOWN")
         }
 
         if (this.isHovered && this.scene.mouseDown){

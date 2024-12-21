@@ -1,4 +1,5 @@
 import GameObject from "../GameObject.js";
+import { font } from "../game.js";
 
 export default class CanvasTextInput extends GameObject{
     constructor(scene, posx, posy, widthButton, heightButton) {
@@ -8,7 +9,7 @@ export default class CanvasTextInput extends GameObject{
         this.inputText = ''; 
         this.isFocused = false;
         this.storedText = null; 
-        this.textSize = 60;
+        this.textSize = font;
         
         this.posx = posx//100
         this.posy = posy//50

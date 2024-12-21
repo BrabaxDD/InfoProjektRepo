@@ -4,9 +4,11 @@ import Scene from './Scene.js';
 import SceneSwitcher from './SceneSwitcher.js';
 import Tree from './tree.js';
 
+export const font = "20px Arial"
+
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
-ctx.font = 60
+ctx.font = font
 const webSocketHost = new WebSocket('ws://' + window.location.host + '/game/server')
 const webSocket = new WebSocket('ws://' + window.location.host + '/game/login')
 

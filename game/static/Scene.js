@@ -13,6 +13,7 @@ export default class Scene {
         this.mousex = 0
         this.mousey = 0
         this.canvas = canvasObjectScene
+        
                 
         this.playerIndex = -1
 
