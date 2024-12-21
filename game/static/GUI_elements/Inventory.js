@@ -1,5 +1,6 @@
 import GameObject from "../GameObject.js"
 import { font } from "../game.js"
+import InventorySlot from "./InventorySlot.js"
 
 export default class Inventory extends GameObject{
     constructor(scene){
@@ -16,13 +17,16 @@ export default class Inventory extends GameObject{
 
         this.imageLoader = this.scene.imageLoader
 
-        this.posx = 0
-        this.posy = 0
+        
 
         this.invWidth = 400
         this.invHeight = 200
         this.borderWidth = 10
         this.bufferSize = 10
+        this.textBoderSize = 40
+
+        this.posx = 0
+        this.posy = 0 + this.textBoderSize
 
         this.imageLoader.load(
             "blankItem.png",
@@ -42,22 +46,25 @@ export default class Inventory extends GameObject{
 
         this.atackPosx = 0
         this.atackPosy = 0
-
+        this.buttons = []
+        this.isALLInizialised = false
         this.initializeImages()
 
-        this.images = this.loadAllImages(this.imagesIndex)
-
-        console.log(this.imagesIndex)
+        
 
     }
+
 
     async initializeImages() {
         this.imagesIndex = {
             Stick: "stick.png"
         };
     
-        this.images = await this.loadAllImages(this.imagesIndex); // Wait for images to load
-        console.log("Images loaded:", this.images);
+        this.images =  await this.loadAllImages(this.imagesIndex)
+        console.log(this.images)
+        this.updateButtons()
+        console.log(this.images);
+         
     }
 
     async loadAllImages(imagesIndex) {
@@ -83,10 +90,9 @@ export default class Inventory extends GameObject{
         // Wait for all the images to be loaded
         await Promise.all(loadPromises);
     
-        console.log(images); // Log all loaded images
-        console.log("images Stick:", images.Stick);
+        console.log(images);
     
-        return images; // Return the loaded images object
+        return images
     }
     
 
@@ -100,6 +106,28 @@ export default class Inventory extends GameObject{
         }
     }
 
+    updateButtons(){
+        this.buttons = []
+        let len = this.content.length
+        for (let i = 0; i<len; i++){
+            let image = this.dummyItem
+
+            let c = this.content[i].itemID; // Get the item ID
+            if (this.images[c]) {
+                image = this.images[c];
+            }
+            this.buttons.push(new InventorySlot(this.scene, this.posx,this.posy, this.imageSize, image, this.content[i]))
+        }
+    }
+
+    processButtons(){
+        let len = this.buttons.length
+        for (let i = 0; i<len; i++){
+            this.buttons[i].posx = this.posx + (i * this.imageSize) + this.bufferSize*i + this.borderWidth
+            this.buttons[i].posy = this.posy + this.borderWidth
+        }
+    }
+
     printInventory(){
         let leng = this.content.length
         for (let i = 0; i<= leng; i++){
@@ -107,44 +135,49 @@ export default class Inventory extends GameObject{
         }
     }
 
+    areButtonsHovered(){
+        let is = false
+        let len = this.buttons.length
+        for (let i = 0; i<len; i++){
+            if (this.buttons[i].isHovered){
+                is = true
+            }
+        }
+        return is
+    }
+
     render(){
         if (this.isVisible){
-            this.ctx.fillStyle = "green";
+            if (!this.isHovered){
+                this.ctx.fillStyle = "green";
+            }
+            else{
+                this.ctx.fillStyle = "yellow"
+            }
+            this.ctx.globalAlpha = 0.4;
             this.ctx.fillRect(this.posx, this.posy, this.invWidth, this.invHeight);
+            this.ctx.globalAlpha = 1;
+            this.ctx.fillStyle = "red";
+            this.ctx.globalAlpha = 0.4;
+            this.ctx.fillRect(this.posx, this.posy-this.textBoderSize, this.invWidth, this.textBoderSize);
+            this.ctx.globalAlpha = 1;
             this.ctx.font = this.textSize;
             this.ctx.fillStyle = 'black';
             this.ctx.textBaseline = 'middle';
+            
+            this.ctx.fillText("Inventory",this.posx + this.invWidth/2,this.posy-15);
 
-            let len = this.content.length
+            let len = this.buttons.length
             for (let i = 0; i<len; i++){
-                let image = this.dummyItem
-                
-                try{
-                    let c = this.content[i].itemID; // Get the item ID
-                    if (this.images[c]) {
-                        image = this.images[c];
-                    }
-                }
-                catch(error){
-                }
-                this.ctx.drawImage(
-                    image,
-                    this.posx + (i * this.imageSize) + this.bufferSize*i + this.borderWidth,
-                    this.posy + this.borderWidth,
-                    this.imageSize,
-                    this.imageSize
-                );
-                this.ctx.fillStyle = 'yellow';
-                this.ctx.textBaseline = 'left';
-                this.ctx.font = this.textSize*3;
-                this.ctx.fillText(this.content[i].size, this.borderWidth + this.posx + (this.imageSize * (i+1)+ (i*this.bufferSize))-5, this.posy + this.borderWidth + this.imageSize);
+                this.buttons[i].render()    
             }
         }
     }
 
     process(){
+        //In the are of the 
         if (this.isVisible && this.scene.mousex >  this.posx && this.scene.mousex < this.posx + this.invWidth && 
-            this.scene.mousey >  this.posy && this.scene.mousey < this.posy + this.invHeight){
+            this.scene.mousey >  this.posy - this.textBoderSize && this.scene.mousey < this.posy + this.invHeight && !this.areButtonsHovered()){
             this.isHovered = true
             
         } 
@@ -168,6 +201,13 @@ export default class Inventory extends GameObject{
         }
         else{
             this.isVisible = false
+        }
+        if(this.isVisible){
+            this.processButtons()
+            let len = this.buttons.length
+            for (let i = 0; i<len; i++){
+                this.buttons[i].process()    
+            }
         }
     }
 
