@@ -14,7 +14,7 @@ class serverThreat(threading.Thread):
         print("server Worker Threat started with ID: " +
               self.gameServerSocket.serverID)
 
-
+        self.firstplayer = False
         self.world = World.World(self)
 
     def run(self):
@@ -36,6 +36,9 @@ class serverThreat(threading.Thread):
         self.world.eventBus.playerAction(action)
 
     def login(self, ID):
+        if not self.firstplayer:
+            self.world.generate()
+        self.firstplayer = True
         self.world.addGameobject(Player(ID,self.world))
 
     def broadcastPosition(self, ID, posx, posy, entityType):
