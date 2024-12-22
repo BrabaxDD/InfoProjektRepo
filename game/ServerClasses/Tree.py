@@ -5,7 +5,7 @@ import uuid
 
 class Tree(GameObject.GameObject):
     def __init__(self, world):
-        ID = uuid.uuid4()
+        ID = uuid.uuid4().int
         super().__init__(world, random()*300, random()*300, ID, "Tree")
         self.world.eventBus.registerPlayerHitListner(self)
 

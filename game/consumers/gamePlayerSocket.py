@@ -21,9 +21,9 @@ class gamePlayerSocketConsumer(WebsocketConsumer):
 
     def receive(self, text_data):
         True
-#        print("log: received Package by client to " +
-#              str(self.player_ID) + " with the following content:")
-#        print(text_data)
+        print("log: received Package by client to " +
+              str(self.player_ID) + " with the following content:")
+        print(text_data)
         text_data_json = json.loads(text_data)
         messageType = text_data_json["type"]
         if messageType == "action":
@@ -103,7 +103,7 @@ class gamePlayerSocketConsumer(WebsocketConsumer):
         self.send(text_data=json.dumps({"type": "InventoryUpdate",
                                         "ID": event["ID"], "Inventory":   json.loads(event["Inventory"])}))
 
-    def newGameObeject(self, event):
+    def newGameObject(self, event):
         self.send(text_data=json.dumps(
             {"type": "newGameObject", "ID": event["ID"], "entityType": event["entityType"]}))
         pass
