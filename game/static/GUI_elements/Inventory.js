@@ -13,6 +13,7 @@ export default class Inventory extends GameObject{
         this.content = [{"size": 99, "itemID": "Stick", "tags": []}, {itemID:"Stick",size:3,tags:{}}, {itemID:2, size:5, tags:{}}, {itemID:"Stick", size:5, tags:{}}, {itemID:"Stick", size:8, tags:{}},{"size": 99, "itemID": "Stick", "tags": []}, {itemID:"Stick",size:3,tags:{}}, {itemID:2, size:5, tags:{}}, {itemID:"Stick", size:5, tags:{}}, {itemID:"Stick", size:8, tags:{}}] //All item stacks
         this.scene.eventBus.registerListner("inventory",this)
         this.scene.eventBus.registerListner("combineStacks",this)
+        this.scene.eventBus.registerListner("selectAll",this)
         this.scene.eventBus.registerListner("mouseJustDown",this)
         //this.scene.eventBus.registerListner("click_on_canvas",this)
 
@@ -53,6 +54,7 @@ export default class Inventory extends GameObject{
         this.initializeImages()
 
         this.combineSelectedButton =  new ButtonGameObject(this.posx, this.posy+this.invHeight, this.invWidth,40,"combineStacks",{},this.scene, "COMBINE SELECTED")
+        this.selectAllButton =  new ButtonGameObject(this.posx, this.posy+this.invHeight+40, this.invWidth,40,"selectAll",{},this.scene, "SELECT ALL")
 
     }
 
@@ -112,6 +114,12 @@ export default class Inventory extends GameObject{
             console.log("Combining")
             this.combineSelected()
         }
+        if (eventString == "selectAll"){
+            let len = this.buttons.length
+            for (let i = 0; i<len;i++){
+                this.buttons[i].isSelected = true
+            }
+        }
     }
 
     //regenerates the inventory slot buttons according to the content of the inv 
@@ -140,6 +148,9 @@ export default class Inventory extends GameObject{
         }
         this.combineSelectedButton.posx = this.posx
         this.combineSelectedButton.posy = this.posy+this.invHeight
+
+        this.selectAllButton.posx = this.posx
+        this.selectAllButton.posy = this.posy+this.invHeight+40
     }
 
     printInventory(){
@@ -230,6 +241,7 @@ export default class Inventory extends GameObject{
             }
 
             this.combineSelectedButton.render()
+            this.selectAllButton.render()
         }
     }
 
@@ -275,6 +287,7 @@ export default class Inventory extends GameObject{
                 this.buttons[i].process()    
             }
             this.combineSelectedButton.process()
+            this.selectAllButton.process()
 
         }
     }

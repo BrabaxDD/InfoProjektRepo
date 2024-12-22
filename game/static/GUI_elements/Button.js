@@ -89,6 +89,9 @@ export default class ButtonGameObject extends GameObject {
         if(this.eventString == "combineStacks"){
             this.scene.eventBus.triggerEvent("combineStacks",eventObject)
         }
+        if(this.eventString == "selectAll"){
+            this.scene.eventBus.triggerEvent("selectAll", eventObject)
+        }
     }
 
     event(eventString, eventObject){
