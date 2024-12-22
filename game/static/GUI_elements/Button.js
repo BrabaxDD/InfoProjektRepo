@@ -2,6 +2,7 @@ import GameObject from "../GameObject.js"
 import {loginToServer} from "../game.js"
 import {loginToServerHost} from "../game.js"
 import { generateItem } from "../game.js"
+import { font } from "../game.js"
 
 export default class ButtonGameObject extends GameObject {
     constructor(posx, posy, widthButton, heightButton,eventString ,eventObject, scene, text) {
@@ -20,7 +21,7 @@ export default class ButtonGameObject extends GameObject {
         this.scene.eventBus.registerListner("textInputFinished",this)
         this.is_hovered = false
         this.text = text
-        this.textSize = 60
+        this.textSize = font
         this.textColor = "black"
         this.ButtonPrimaryColor = "green"
         this.ButtonScondaryColor = "yellow"
@@ -84,6 +85,9 @@ export default class ButtonGameObject extends GameObject {
         }
         if(this.eventString == "generateItem"){
             generateItem(eventObject)
+        }
+        if(this.eventString == "combineStacks"){
+            this.scene.eventBus.triggerEvent("combineStacks",eventObject)
         }
     }
 
