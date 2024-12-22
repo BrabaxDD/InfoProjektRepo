@@ -158,5 +158,5 @@ export function hit(){
 }
 
 export function addTestInv(){
-    scene.eventBus.triggerEvent("inventory",{"items": [{"size": 99, "itemID": "Stick", "tags": []}]})
+    scene.eventBus.triggerEvent("inventory",{"items": [{"size": 99, "itemID": "Stick", "tags": []}, {itemID:"Stick",size:3,tags:{}}, {itemID:2, size:5, tags:{}}, {itemID:"Stick", size:5, tags:{}}, {itemID:"Stick", size:8, tags:{}},{"size": 99, "itemID": "Stick", "tags": []}, {itemID:"Stick",size:3,tags:{}}, {itemID:2, size:5, tags:{}}, {itemID:"Stick", size:5, tags:{}}, {itemID:"Stick", size:8, tags:{}}]})
 }

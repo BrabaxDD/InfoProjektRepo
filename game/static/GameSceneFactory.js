@@ -65,9 +65,6 @@ export default class GameSceneFactory extends GameObject{
                 //let tree = new Tree(scene)
                 //scene.addObject(tree)
 
-                let Button = new ButtonGameObject(this.canvas.width/2, this.canvas.height/2, 200,56,"combineStacks",{},scene, "COMBINE STACKS")
-                scene.addObject(Button)
-
                 //let lotTest = new ButtonGameObject(this.canvas.width/3-100,this.canvas.height/5-28,200,56,"generateItem","erstes Item",scene,"Generate erstes Item")
                 //scene.addObject(lotTest)
                 

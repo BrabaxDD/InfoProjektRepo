@@ -2,6 +2,7 @@ import GameObject from "../GameObject.js"
 import { font } from "../game.js"
 import InventorySlot from "./InventorySlot.js"
 import { addTestInv } from "../game.js"
+import ButtonGameObject from "./Button.js"
 
 export default class Inventory extends GameObject{
     constructor(scene){
@@ -9,7 +10,7 @@ export default class Inventory extends GameObject{
         this.canvas = this.scene.canvas
         this.ctx = this.scene.canvas.getContext("2d")
 
-        this.content = [{itemID:"Stick",size:7,tags:{}}, {itemID:"Stick",size:3,tags:{}}, {itemID:2, size:5, tags:{}}] //All item stacks
+        this.content = [{"size": 99, "itemID": "Stick", "tags": []}, {itemID:"Stick",size:3,tags:{}}, {itemID:2, size:5, tags:{}}, {itemID:"Stick", size:5, tags:{}}, {itemID:"Stick", size:8, tags:{}},{"size": 99, "itemID": "Stick", "tags": []}, {itemID:"Stick",size:3,tags:{}}, {itemID:2, size:5, tags:{}}, {itemID:"Stick", size:5, tags:{}}, {itemID:"Stick", size:8, tags:{}}] //All item stacks
         this.scene.eventBus.registerListner("inventory",this)
         this.scene.eventBus.registerListner("combineStacks",this)
         this.scene.eventBus.registerListner("mouseJustDown",this)
@@ -18,17 +19,6 @@ export default class Inventory extends GameObject{
         this.isVisible = false
 
         this.imageLoader = this.scene.imageLoader
-
-        
-
-        this.invWidth = 400
-        this.invHeight = 200
-        this.borderWidth = 10
-        this.bufferSize = 10
-        this.textBoderSize = 40
-
-        this.posx = 0
-        this.posy = 0 + this.textBoderSize
 
         this.imageLoader.load(
             "blankItem.png",
@@ -44,6 +34,16 @@ export default class Inventory extends GameObject{
         
         this.imageSize = 64
 
+                
+        this.borderWidth = 15
+        this.bufferSize = 10
+        this.textBoderSize = 40
+        this.widthInSLots = 5
+        this.updateDimensions(this.widthInSLots)
+
+        this.posx = 0
+        this.posy = 0 + this.textBoderSize
+
         this.isHovered = false
 
         this.atackPosx = 0
@@ -52,7 +52,7 @@ export default class Inventory extends GameObject{
         this.isALLInizialised = false
         this.initializeImages()
 
-        
+        this.combineSelectedButton =  new ButtonGameObject(this.posx, this.posy+this.invHeight, this.invWidth,40,"combineStacks",{},this.scene, "COMBINE SELECTED")
 
     }
 
@@ -103,6 +103,7 @@ export default class Inventory extends GameObject{
             console.log("eventObject: " + eventObject.items)
             this.content = eventObject.items
             this.updateButtons()
+            this.updateDimensions(this.widthInSLots)
         }
         if (eventString == "mouseJustDown"){
             this.mouseJustDown = true
@@ -113,6 +114,7 @@ export default class Inventory extends GameObject{
         }
     }
 
+    //regenerates the inventory slot buttons according to the content of the inv 
     updateButtons(){
         this.buttons = []
         let len = this.content.length
@@ -125,14 +127,19 @@ export default class Inventory extends GameObject{
             }
             this.buttons.push(new InventorySlot(this.scene, this.posx,this.posy, this.imageSize, image, this.content[i]))
         }
+        this.updateDimensions(this.widthInSLots)
     }
 
+    //updates the Position and checks status of buttons
     processButtons(){
         let len = this.buttons.length
-        for (let i = 0; i<len; i++){
-            this.buttons[i].posx = this.posx + (i * this.imageSize) + this.bufferSize*i + this.borderWidth
-            this.buttons[i].posy = this.posy + this.borderWidth
+        for (let i = 1; i<=len; i++){
+            let level = Math.ceil(i/this.widthInSLots)
+            this.buttons[i-1].posx = this.posx + ((i-1) * this.imageSize) + this.bufferSize*(i-1) + this.borderWidth - (level-1) * ((this.invWidth)-2*this.bufferSize)
+            this.buttons[(i-1)].posy = this.posy + this.borderWidth + (level-1) * this.imageSize + this.bufferSize * (level-1)
         }
+        this.combineSelectedButton.posx = this.posx
+        this.combineSelectedButton.posy = this.posy+this.invHeight
     }
 
     printInventory(){
@@ -221,6 +228,8 @@ export default class Inventory extends GameObject{
             for (let i = 0; i<len; i++){
                 this.buttons[i].render()    
             }
+
+            this.combineSelectedButton.render()
         }
     }
 
@@ -257,12 +266,24 @@ export default class Inventory extends GameObject{
         }
 
         if(this.isVisible){
+            //update Positions
             this.processButtons()
+
+            //check status of buttons
             let len = this.buttons.length
             for (let i = 0; i<len; i++){
                 this.buttons[i].process()    
             }
+            this.combineSelectedButton.process()
+
         }
+    }
+
+    updateDimensions(widthInSLots){
+        this.invWidth = this.imageSize*widthInSLots  +  this.bufferSize*(widthInSLots-1)  +  2*this.borderWidth
+        // Damit auf den nächst größeren Int runden 
+        let heightInSlots = Math.ceil(this.content.length/widthInSLots)
+        this.invHeight = this.imageSize*heightInSlots + this.bufferSize*(heightInSlots-1) + 2*this.borderWidth 
     }
 
 }
