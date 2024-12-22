@@ -14,6 +14,7 @@ export default class Inventory extends GameObject{
         this.scene.eventBus.registerListner("inventory",this)
         this.scene.eventBus.registerListner("combineStacks",this)
         this.scene.eventBus.registerListner("selectAll",this)
+        this.scene.eventBus.registerListner("splitStack",this)
         this.scene.eventBus.registerListner("mouseJustDown",this)
         //this.scene.eventBus.registerListner("click_on_canvas",this)
 
@@ -54,8 +55,8 @@ export default class Inventory extends GameObject{
         this.initializeImages()
 
         this.combineSelectedButton =  new ButtonGameObject(this.posx, this.posy+this.invHeight, this.invWidth,40,"combineStacks",{},this.scene, "COMBINE SELECTED")
-        this.selectAllButton =  new ButtonGameObject(this.posx, this.posy+this.invHeight+40, this.invWidth,40,"selectAll",{},this.scene, "SELECT ALL")
-
+        this.selectAllButton =  new ButtonGameObject(this.posx, this.posy+this.invHeight+40, this.invWidth,40,"selectAll",{},this.scene, "ALL")
+        this.splitButton =  new ButtonGameObject(this.posx, this.posy+this.invHeight+80, this.invWidth,40,"splitStack",{},this.scene, "SPLIT SELECTED STACK")
     }
 
 
@@ -117,7 +118,14 @@ export default class Inventory extends GameObject{
         if (eventString == "selectAll"){
             let len = this.buttons.length
             for (let i = 0; i<len;i++){
-                this.buttons[i].isSelected = true
+                this.buttons[i].isSelected = !this.buttons[i].isSelected
+            }
+        }
+        if (eventString == "splitStack"){
+            let sel = this.getSelected()
+            if (sel.length == 1){
+            console.log("Splitting Stack")
+            this.splitStack(sel[0].itemStack)
             }
         }
     }
@@ -151,6 +159,9 @@ export default class Inventory extends GameObject{
 
         this.selectAllButton.posx = this.posx
         this.selectAllButton.posy = this.posy+this.invHeight+40
+
+        this.splitButton.posx = this.posx
+        this.splitButton.posy = this.posy+this.invHeight+80
     }
 
     printInventory(){
@@ -169,6 +180,18 @@ export default class Inventory extends GameObject{
             }
         }
         return is
+    }
+
+    splitStack(stack){
+        //Takes an Item stack as input
+        this.content = this.content.filter(e => e !== stack)
+        const size1 = Math.ceil(stack.size/2)
+        const size2 = stack.size-size1
+        this.content.push({itemID:stack.itemID, size: size1, tags:{}})
+        if (size2 > 0){
+            this.content.push({itemID:stack.itemID, size: size2, tags:{}})
+        }
+        this.updateButtons()
     }
 
     combineSelected(){
@@ -242,6 +265,13 @@ export default class Inventory extends GameObject{
 
             this.combineSelectedButton.render()
             this.selectAllButton.render()
+            if(this.getSelected().length != 1){
+                this.splitButton.setButtonColorPrimary("grey")
+            }
+            else{
+                this.splitButton.setButtonColorPrimary("green")
+            }
+            this.splitButton.render()
         }
     }
 
@@ -288,6 +318,7 @@ export default class Inventory extends GameObject{
             }
             this.combineSelectedButton.process()
             this.selectAllButton.process()
+            this.splitButton.process()
 
         }
     }
@@ -297,6 +328,17 @@ export default class Inventory extends GameObject{
         // Damit auf den nächst größeren Int runden 
         let heightInSlots = Math.ceil(this.content.length/widthInSLots)
         this.invHeight = this.imageSize*heightInSlots + this.bufferSize*(heightInSlots-1) + 2*this.borderWidth 
+    }
+
+    getSelected(){
+        let selected = []
+        let len = this.buttons.length
+        for (let i = 0; i<len; i++){
+            if (this.buttons[i].isSelected){
+                selected.push(this.buttons[i])
+            }
+        }
+        return selected
     }
 
 }

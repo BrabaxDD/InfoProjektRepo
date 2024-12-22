@@ -92,6 +92,9 @@ export default class ButtonGameObject extends GameObject {
         if(this.eventString == "selectAll"){
             this.scene.eventBus.triggerEvent("selectAll", eventObject)
         }
+        if(this.eventString == "splitStack"){
+            this.scene.eventBus.triggerEvent("splitStack", eventObject)
+        }
     }
 
     event(eventString, eventObject){
