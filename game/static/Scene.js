@@ -39,7 +39,6 @@ export default class Scene {
 
         this.keys = {}; // Object to track key states
 
-        this.websocketGameObjectClient = new websocketGameObjectClient(this)
     }
 
     addObject(object) {

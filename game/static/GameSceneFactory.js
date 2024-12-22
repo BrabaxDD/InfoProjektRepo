@@ -7,6 +7,8 @@ import TileMap from "./images/TileMap.js";
 import Tree from "./tree.js"
 import { getMainPlayerID } from "./game.js";
 import Inventory from "./GUI_elements/Inventory.js";
+import WebsocketGameObjectClient from "./WebsocketGameObject.js";
+import { websocketGameObjectClient } from "./game.js";
 
 export default class GameSceneFactory extends GameObject{
     constructor (canvas, keys,sceneObject){
@@ -82,6 +84,7 @@ export default class GameSceneFactory extends GameObject{
                 scene.addObject(logButHost)
         }
         console.log(scene.gameObjects)
+        websocketGameObjectClient.setScene(scene)
         return scene
     }
 

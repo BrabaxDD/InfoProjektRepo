@@ -1,13 +1,13 @@
 import { start } from "./game.js"
-import GameObject from "./GameObject.js"
 
-export default class WebsocketGameObjectClient extends GameObject{
+export default class WebsocketGameObjectClient{
     constructor(scene) {
-        super(scene)
 
+        this.scene = scene
         this.webSocketHost = new WebSocket('ws://' + window.location.host + '/game/server')
         this.webSocket = new WebSocket('ws://' + window.location.host + '/game/login')
-        this.webSocket.onmessage = function(e) {
+        if (this.scene != null)
+        {this.webSocket.onmessage = function(e) {
             let data = JSON.parse(e.data)
             let type = data.type
             if(type == "position"){
@@ -15,7 +15,20 @@ export default class WebsocketGameObjectClient extends GameObject{
             }
             
 
-        }
+        }}
+    }
+
+    setScene(scene) {
+        console.log(scene);
+        this.scene = scene;
+        console.log("diese Scene: " + this.scene);
+        this.webSocket.onmessage = (e) => {
+            let data = JSON.parse(e.data);
+            let type = data.type;
+            if (type == "position") {
+                this.scene.eventBus.triggerEvent("position", {type: data.entityType, ID: data.ID, posx: data.posx, posy: data.posy});
+            }
+        };
     }
 
     updateToServer(){

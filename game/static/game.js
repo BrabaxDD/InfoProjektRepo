@@ -35,15 +35,6 @@ const canvasHeight = canvas.height;
 
 
 
-window.addEventListener('keydown', (e) => {
-    //keys[e.key] = true;
-    scene.eventBus.triggerEvent("keydown", {key:e.key, status:true})
-});
-
-window.addEventListener('keyup', (e) => {
-    //keys[e.key] = false;
-    scene.eventBus.triggerEvent("keydown", {key:e.key, status:false})
-});
 
 
 
@@ -66,6 +57,7 @@ function gameLoop() {
 
 
 let factory = new GameSceneFactory(canvas, null)
+export var websocketGameObjectClient = new WebsocketGameObjectClient(null)
 let scene = factory.buildGameScene("mainMenu")
 let playerID = 1000
 var frameCount = 0
@@ -74,6 +66,16 @@ var isStarted = false
 // Start the game loop
 gameLoop();
 
+
+window.addEventListener('keydown', (e) => {
+    //keys[e.key] = true;
+    scene.eventBus.triggerEvent("keydown", {key:e.key, status:true})
+});
+
+window.addEventListener('keyup', (e) => {
+    //keys[e.key] = false;
+    scene.eventBus.triggerEvent("keydown", {key:e.key, status:false})
+});
 
 function sayHello() {
     webSocket.send(JSON.stringify({ 'posx': scene.gameObjects[0].posx, 'posy': scene.gameObjects[0].posy }))
