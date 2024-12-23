@@ -14,8 +14,7 @@ export default class Scene {
         this.mousey = 0
         this.canvas = canvasObjectScene
         
-                
-        this.playerIndex = -1
+
 
         // Initialize the image loader
         this.imageLoader = new ImageLoader();
@@ -44,11 +43,16 @@ export default class Scene {
     addObject(object) {
         this.toAdd.push(object);
         console.log("added object to scene: " + object.constructor.name);
-        if (object.constructor.name == "Player" && this.gameObjects.length <= 1){
+        if (object.constructor.name == "Player" && this.mainPlayerID == -1){
             this.mainPlayerID = object.playerID
-            this.playerIndex = 0
+            this.playerIndex = this.gameObjects.length + this.toAdd.length - 1
+            console.log(object)
+            console.log(object.playerID)
+            console.log("Main Player ID: "+this.mainPlayerID + "  Player Index in Game objects: " + this.playerIndex
+            )
+            console.log(this.gameObjects)
         }
-        console.log(this.gameObjects)
+        console.log(this.toAdd)
     }
 
     render() {
@@ -87,10 +91,6 @@ export default class Scene {
             this.toAdd = [];
         }
 
-    }
-
-    getPlayerIndex(){
-        return this.playerIndex
     }
 
     setMainPlayerID(ID){

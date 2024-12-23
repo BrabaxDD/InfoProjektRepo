@@ -52,15 +52,8 @@ export default class GameSceneFactory extends GameObject{
             case "game":
             case 2:
                 scene = new Scene(this.canvas,"GameMap.txt");
-                
-                let d = new Date()
-                let playerID = d.getTime().toString()
 
-                let player = new Player(100,100,20,20, 'blue', 5,scene, playerID)
-                scene.addObject(player)
-
-                let inv = new Inventory(scene)
-                scene.addObject(inv)
+            
 
                 //let tree = new Tree(scene)
                 //scene.addObject(tree)

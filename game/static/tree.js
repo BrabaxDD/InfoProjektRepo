@@ -7,6 +7,8 @@ export default class Tree extends GameObject{
         this.ctx = this.scene.canvas.getContext("2d")
         this.scene.eventBus.registerListner("position", this)
         this.ID = ID
+        this.posx = 0
+        this.posy = 0
     }
 
     render(){

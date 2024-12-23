@@ -1,6 +1,7 @@
 import GameObject from "./GameObject.js"
 import { hit } from "./game.js"
 import { addTestInv } from "./game.js"
+import Inventory from "./GUI_elements/Inventory.js"
 
 
 export default class Player extends GameObject {
@@ -23,6 +24,9 @@ export default class Player extends GameObject {
         this.right = false
         this.playerID = playerID
         this.onCooldown = 0
+
+        this.inventory = new Inventory(this.scene)
+        this.scene.addObject(this.inventory)
     }
 
     process() {
@@ -78,7 +82,7 @@ export default class Player extends GameObject {
         this.ctx.fillRect(this.posx, this.posy, this.width, this.height);
     }
    event(eventString, eventObject) {
-        if (eventString == "position" && eventObject.type == "Player" && eventObject.ID == this.playerID) {
+        if (eventString == "position" && eventObject.type == "Player" && eventObject.ID == this.playerID ) {
             this.posx = eventObject.posx
             this.posy = eventObject.posy
         }

@@ -17,10 +17,7 @@ webSocket.onmessage = function(e) {
     const data = JSON.parse(e.data)
     //console.log("")
     //console.log(data)
-    if (!isStarted){
-        return
-    }
-    //console.log(data)
+
 
     if (data.type == "InventoryUpdate"){
         console.log(e)
@@ -33,10 +30,15 @@ webSocket.onmessage = function(e) {
     }
 
     if (data.type == "newGameObject"){
+        
         if (data.entityType == "Tree"){
             const t = new Tree(scene,data.ID)
             scene.addObject(t)
             console.log(scene.gameObjects)
+        }
+        if (data.entityType == "Player"){
+            let player = new Player(100,100,20,20, 'blue', 5,scene, data.ID)
+            scene.addObject(player)
         }
         
     }
@@ -91,7 +93,7 @@ function gameLoop() {
 
 let factory = new GameSceneFactory(canvas, null)
 let scene = factory.buildGameScene("mainMenu")
-let playerID = 1000
+let loginID = -100
 var frameCount = 0
 var isDelayed = false
 var isStarted = false
@@ -122,7 +124,7 @@ export function switchScene(sceneToSwitch){
 
 function updateToServer(){
     //console.log("Server update")
-    webSocket.send(JSON.stringify({type: "action", up: scene.gameObjects[0].up, down: scene.gameObjects[0].down, left: scene.gameObjects[0].left, right: scene.gameObjects[0].right, actiontype: "movement"}))
+    webSocket.send(JSON.stringify({type: "action", up: scene.gameObjects[scene.playerIndex].up, down: scene.gameObjects[scene.playerIndex].down, left: scene.gameObjects[scene.playerIndex].left, right: scene.gameObjects[scene.playerIndex].right, actiontype: "movement"}))
 }
 
 export function loginToServer(serverName){
@@ -130,7 +132,9 @@ export function loginToServer(serverName){
     console.log("PLAYER ID:")
     console.log(scene.mainPlayerID)
     console.log("LOGGIN IN TO SERVER: "+serverName)
-    webSocket.send(JSON.stringify({type: "login", ID:scene.mainPlayerID, serverID:serverName}))
+    let d = new Date()
+    loginID = d.getTime()
+    webSocket.send(JSON.stringify({type: "login", ID:loginID, serverID:serverName}))
     isStarted = true
 }
 
