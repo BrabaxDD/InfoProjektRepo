@@ -48,6 +48,7 @@ export default class Scene {
             this.mainPlayerID = object.playerID
             this.playerIndex = 0
         }
+        console.log(this.gameObjects)
     }
 
     render() {

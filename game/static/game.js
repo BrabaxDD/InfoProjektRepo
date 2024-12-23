@@ -34,8 +34,11 @@ webSocket.onmessage = function(e) {
 
     if (data.type == "newGameObject"){
         if (data.entityType == "Tree"){
-            scene.addObject(Tree(scene,data.ID))
+            const t = new Tree(scene,data.ID)
+            scene.addObject(t)
+            console.log(scene.gameObjects)
         }
+        
     }
     
     /*if(data.type == "position" && data.entityType == "Player"){
@@ -96,13 +99,6 @@ var isStarted = false
 gameLoop();
 
 
-function sayHello() {
-    webSocket.send(JSON.stringify({ 'posx': scene.gameObjects[0].posx, 'posy': scene.gameObjects[0].posy }))
-    //    webSocket.send(JSON.stringify({'login':true, 'server_id': input}))
-}
-
-
-document.getElementById('clickMeButton').addEventListener('click', sayHello);
 
 canvas.addEventListener('click',(event) => {
     scene.eventBus.triggerEvent("click_on_canvas")
