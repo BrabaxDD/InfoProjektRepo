@@ -10,7 +10,7 @@ class Tree(GameObject.GameObject):
         self.world.eventBus.registerPlayerHitListner(self)
 
     def broadcast(self):
-        self.world.broadcastPosition("TestTree", self.posx, self.posy, "Tree")
+        self.world.broadcastPosition(self.ID, self.posx, self.posy, "Tree")
 
     def process(self, delta):
         pass
