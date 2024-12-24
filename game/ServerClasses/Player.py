@@ -7,7 +7,7 @@ from game.ServerClasses import GameObject
 class Player(GameObject.GameObject):
     def __init__(self, ID, world: World.World):
         super().__init__(world, 0, 0, ID, "Player")
-        self.velocity = 290
+        self.velocity = 310
         self.up = False
         self.down = False
         self.left = False
@@ -17,7 +17,7 @@ class Player(GameObject.GameObject):
         self.world.eventBus.registerPlayerRequestHitListner(self)
         self.Inventory = Inventory.Inventory()
         self.lastHit = time.perf_counter()
-        self.HP = 100
+        self.HP = 200
         self.world.broadcastHealth(self.ID, self.HP, "Player")
 
     def playerAction(self, action):
