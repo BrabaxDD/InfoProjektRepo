@@ -53,3 +53,5 @@ class serverThreat(threading.Thread):
     def hitRequestFromPlayer(self, ID, direction):
         self.world.eventBus.playerRequestHit(
             {"ID": ID, "direction": direction})
+    def broadcastHealthUpdate(self,ID,entityType,HP):
+        self.gameServerSocket.updateHealth(ID,entityType,HP)

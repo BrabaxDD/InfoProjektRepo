@@ -4,7 +4,7 @@ class EventBus:
         self.playerGenerateItemListners = []
         self.playerRequestHitListners = []
         self.playerHitListners = []
-        self.playerPositionUpdate = []
+        self.playerPositionUpdateListners = []
         pass
 
     def playerAction(self, action):
@@ -36,7 +36,7 @@ class EventBus:
         self.playerHitListners.append(listner)
 
     def playerPositionUpdate(self, action):
-        for listner in self.playerPositionUpdate:
+        for listner in self.playerPositionUpdateListners:
             listner.playerPositionUpdate(action)
 
     def registerPlayerPositionUpdate(self, listner):

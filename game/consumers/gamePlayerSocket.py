@@ -73,8 +73,8 @@ class gamePlayerSocketConsumer(WebsocketConsumer):
         pass
 
     def position(self, event):
-        # print("log: sending position information to Player with ID: " + str(self.player_ID) + " from server with ID " + self.serverID + " the position is: " +
-        #      str(event["posx"]) + " " + str(event["posy"]) + " the entity type is " + str(event["entityType"]) + " the entity ID is: " + str(event["ID"]))
+        print("log: sending position information to Player with ID: " + str(self.player_ID) + " from server with ID " + self.serverID + " the position is: " +
+              str(event["posx"]) + " " + str(event["posy"]) + " the entity type is " + str(event["entityType"]) + " the entity ID is: " + str(event["ID"]))
         posx = event["posx"]
         posy = event["posy"]
         ID = event["ID"]
@@ -104,6 +104,14 @@ class gamePlayerSocketConsumer(WebsocketConsumer):
                                         "ID": event["ID"], "Inventory":   json.loads(event["Inventory"])}))
 
     def newGameObject(self, event):
+        print("log: sending information about new GameObject on Server with ID: " + str(self.serverID) + " to client with ID " +
+              str(self.player_ID) + " the ID of the new Object is " + str(event["ID"]) + " the entity Type is " + event["entityType"])
         self.send(text_data=json.dumps(
             {"type": "newGameObject", "ID": event["ID"], "entityType": event["entityType"]}))
         pass
+
+    def healthUpdate(self, event):
+        print("log: sending information about new Health on Server with ID: " + str(self.serverID) + " to client with ID " + str(self.player_ID) +
+              " the ID of the Updated Object is " + str(event["ID"]) + " the entityType is " + event["entityType"] + " the new hp is " + str(event["HP"]))
+        self.send(text_data=json.dumps(
+            {"type": "healthUpdate", "ID": event["ID"], "entityType": event["entityType"], "HP": event["HP"]}))

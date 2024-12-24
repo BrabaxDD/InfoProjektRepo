@@ -51,6 +51,10 @@ class gameServer(WebsocketConsumer):
                                                       }
                                                      )
 
+    def updateHealth(self, ID, entityType, HP):
+        async_to_sync(self.channel_layer.group_send)(self.serverID, {
+            "type": "healthUpdate", "ID": ID, "entityType": entityType, "HP": HP})
+
     def broadcastNewObject(self, entityType, ID):
         async_to_sync(self.channel_layer.group_send)(self.serverID, {
             "type": "newGameObject", "ID": ID, "entityType": entityType})
@@ -80,5 +84,8 @@ class gameServer(WebsocketConsumer):
     def position(self, event):
         pass
 
-    def newGameObeject(self, event):
+    def newGameObject(self, event):
+        pass
+
+    def healthUpdate(self, event):
         pass
