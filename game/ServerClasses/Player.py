@@ -38,7 +38,7 @@ class Player(GameObject.GameObject):
 
     def playerRequestHit(self, action):
         if action["ID"] == self.ID:
-            if time.perf_counter() - self.lastHit > 1:
+            if time.perf_counter() - self.lastHit > 0.5:
                 self.lastHit = time.perf_counter()
                 self.world.eventBus.playerHit(
                     {"ID": self.ID, "Player": self, "direction": action["direction"]})
