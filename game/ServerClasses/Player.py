@@ -17,6 +17,8 @@ class Player(GameObject.GameObject):
         self.world.eventBus.registerPlayerRequestHitListner(self)
         self.Inventory = Inventory.Inventory()
         self.lastHit = time.perf_counter()
+        self.HP = 100
+        self.world.broadcastHealth(self.ID, self.HP, "Player")
 
     def playerAction(self, action):
         if action["ID"] == self.ID:
