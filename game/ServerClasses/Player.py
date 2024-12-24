@@ -59,5 +59,5 @@ class Player(GameObject.GameObject):
         self.world.broadcastPosition(self.ID, self.posx, self.posy, "Player")
 
     def treeHit(self, tree):
-        self.Inventory.addItem(ItemsStack.ItemStack("Wood", 2), 0)
+        self.Inventory.addItem(ItemsStack.ItemStack("Wood", 3), 0)
         self.world.broadcastPlayerInventoryUpdate(self.ID, self.Inventory)
