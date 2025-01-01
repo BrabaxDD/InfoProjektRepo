@@ -2,6 +2,7 @@ from game.ServerClasses import World
 from game.ServerClasses import Inventory, ItemsStack
 import time
 from game.ServerClasses import GameObject
+import uuid
 
 
 class Player(GameObject.GameObject):
@@ -15,6 +16,7 @@ class Player(GameObject.GameObject):
         self.world.eventBus.registerPlayerActionListner(self)
         self.world.eventBus.registerPlayerGenerateItemListner(self)
         self.world.eventBus.registerPlayerRequestHitListner(self)
+        self.world.eventBus.registerZombieHitListner(self)
         self.Inventory = Inventory.Inventory()
         self.lastHit = time.perf_counter()
         self.HP = 200
@@ -59,5 +61,11 @@ class Player(GameObject.GameObject):
         self.world.broadcastPosition(self.ID, self.posx, self.posy, "Player")
 
     def treeHit(self, tree):
-        self.Inventory.addItem(ItemsStack.ItemStack("Wood", 3), 0)
+        self.Inventory.addItem(ItemsStack.ItemStack(
+            "Wood", 3, str(uuid.uuid4())), 0)
         self.world.broadcastPlayerInventoryUpdate(self.ID, self.Inventory)
+
+    def zombieHit(self, action):
+        if action["PlayerID"] == self.ID:
+            self.HP = self.HP - action["Damage"]
+            self.world.broadcastHealthUpdate(self.ID, self.HP, "Player")

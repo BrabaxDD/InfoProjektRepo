@@ -1,5 +1,6 @@
 from game.ServerClasses import EventBus
 from game.ServerClasses import Tree
+from game.ServerClasses import zombie
 
 
 class World:
@@ -30,6 +31,7 @@ class World:
 
     def generate(self):
         self.addGameobject(Tree.Tree(self))
+        self.addGameobject(zombie.Zombie(self))
 
     def broadcastHealth(self, ID, HP, entityType):
         self.threat.broadcastHealthUpdate(ID, entityType, HP)

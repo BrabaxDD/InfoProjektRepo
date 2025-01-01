@@ -97,8 +97,8 @@ class gamePlayerSocketConsumer(WebsocketConsumer):
         pass
 
     def inventoryUpdate(self, event):
-        print("log: updating Player Inventory with player ID: " + self.player_ID +
-              "for server with ID: " + self.serverID + "and with content: ")
+        print("log: updating Player Inventory with player ID: " + str(self.player_ID) +
+              "for server with ID: " + str(self.serverID) + "and with content: ")
         print(event["Inventory"])
         self.send(text_data=json.dumps({"type": "InventoryUpdate",
                                         "ID": event["ID"], "Inventory":   json.loads(event["Inventory"])}))

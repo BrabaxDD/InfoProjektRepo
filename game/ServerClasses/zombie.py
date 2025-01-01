@@ -12,8 +12,14 @@ class Zombie(GameObject.GameObject):
         self.nearestPlayerPosy = 0
 
     def process(self, delta):
-        self.posx = ((self.nearestPlayerPosx - self.posx) / self.nearestPlayerDistance * self.velocity) + self.posx
-        self.posy = ((self.nearestPlayerPosy - self.posy) / self.nearestPlayerDistance * self.velocity) + self.posy
+        self.posx = ((self.nearestPlayerPosx - self.posx) /
+                     self.nearestPlayerDistance * self.velocity) + self.posx
+        self.posy = ((self.nearestPlayerPosy - self.posy) /
+                     self.nearestPlayerDistance * self.velocity) + self.posy
+        if self.nearestPlayerDistance < 400:
+            self.world.eventBus.zombieHit(
+                {"PlayerID": self.nearestPlayerID, "Damage": 50, "Zombie": self})
+            pass
         pass
 
     def broadcast(self):
