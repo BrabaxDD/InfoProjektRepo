@@ -3,6 +3,7 @@ import Player from './Player.js';
 import Scene from './Scene.js';
 import SceneSwitcher from './SceneSwitcher.js';
 import Tree from './tree.js';
+import Zombie from "./zombie.js";
 
 export const font = "20px Arial"
 
@@ -39,6 +40,12 @@ webSocket.onmessage = function(e) {
         if (data.entityType == "Player"){
             let player = new Player(100,100,20,20, 'blue', 5,scene, data.ID)
             scene.addObject(player)
+        }
+        if (data.entityType == "Zombie"){
+            const z = new Zombie(scene,data.ID)
+            scene.addObject(z)
+            console.log("new Zombie")
+            console.log(scene.gameObjects)
         }
         
     }

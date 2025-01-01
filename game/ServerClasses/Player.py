@@ -68,4 +68,4 @@ class Player(GameObject.GameObject):
     def zombieHit(self, action):
         if action["PlayerID"] == self.ID:
             self.HP = self.HP - action["Damage"]
-            self.world.broadcastHealthUpdate(self.ID, self.HP, "Player")
+            self.world.broadcastHealthUpdate()

@@ -4,7 +4,7 @@ import uuid
 
 class Zombie(GameObject.GameObject):
     def __init__(self, world):
-        super().__init__(world, posx=0, posy=0, ID=uuid.uuid4(), entityType="Zombie")
+        super().__init__(world, posx=0, posy=0, ID=uuid.uuid4().int, entityType="Zombie")
         self.nearestPlayerID = 0
         self.nearestPlayerDistance = 10000000000000
         self.velocity = 100
