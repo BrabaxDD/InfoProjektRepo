@@ -40,8 +40,8 @@ class EventBus:
         for listner in self.playerPositionUpdateListners:
             listner.playerPositionUpdate(action)
 
-    def registerPlayerPositionUpdate(self, listner):
-        self.playerPositionUpdate.append(listner)
+    def registerPlayerPositionUpdateListner(self, listner):
+        self.playerPositionUpdateListners.append(listner)
 
     def zombieHit(self, action):
         for listner in self.zombieHitListners:

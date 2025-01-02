@@ -36,10 +36,10 @@ class serverThreat(threading.Thread):
         self.world.eventBus.playerAction(action)
 
     def login(self, ID):
-        if not self.firstplayer:
-            self.world.generate()
-        self.firstplayer = True
-        self.world.addGameobject(Player(ID,self.world))
+#        if not self.firstplayer:
+        self.world.generate()
+#        self.firstplayer = True
+        self.world.addGameobject(Player(ID, self.world))
 
     def broadcastPosition(self, ID, posx, posy, entityType):
         self.gameServerSocket.updatePosition(ID, posx, posy, entityType)
@@ -53,5 +53,6 @@ class serverThreat(threading.Thread):
     def hitRequestFromPlayer(self, ID, direction):
         self.world.eventBus.playerRequestHit(
             {"ID": ID, "direction": direction})
-    def broadcastHealthUpdate(self,ID,entityType,HP):
-        self.gameServerSocket.updateHealth(ID,entityType,HP)
+
+    def broadcastHealthUpdate(self, ID, entityType, HP):
+        self.gameServerSocket.updateHealth(ID, entityType, HP)
