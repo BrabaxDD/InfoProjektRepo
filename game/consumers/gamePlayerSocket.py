@@ -127,3 +127,15 @@ class gamePlayerSocketConsumer(WebsocketConsumer):
               str(self.player_ID) + " the ID of the new Object is " + str(entityID) + " the entity Type is " + entityType)
 
         pass
+
+    def broadcastGameObjectDeletedChannel(self, event):
+        entityID = event["entityID"]
+        entityType = event["entityType"]
+        print("log: sendfing Information about deleted GameObject on Server with ID:" + str(self.serverID) + " to client with ID: " +
+              str(self.player_ID) + " the deleted entity has the ID: " + str(entityID) + " and the type: " + str(entityType))
+        self.send(text_data=json.dumps(
+            {"type": "deletedGameObject",
+                "entityID": entityID, "entityType": entityType}
+        ))
+
+        pass

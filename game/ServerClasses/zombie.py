@@ -9,6 +9,8 @@ class Zombie(GameObject.GameObject):
         ID = ID % 4001001001
         super().__init__(world, posx=0, posy=0, ID=ID, entityType="Zombie")
         self.world.eventBus.registerPlayerPositionUpdateListner(self)
+        self.world.eventBus.registerPlayerHitListner(self)
+        self.HP = 200
         self.nearestPlayerID = 0
         self.nearestPlayerDistance = 10000000000000
         self.velocity = 200
@@ -58,3 +60,12 @@ class Zombie(GameObject.GameObject):
 #              str(self.nearestPlayerID) + " the distance is " + str(self.nearestPlayerDistance) +
 #              " the Posx is " + str(posx) +
 #              " the Pos y is " + str(posy))
+
+    def playerHit(self, action):
+        direction = action["direction"]
+        playerID = action["ID"]
+        player = action["Player"]
+        if (player.posx - self.posx)**2 + (player.posy - self.posy)**2 < 2500:
+            self.HP -= 50
+        if self.HP < 0:
+            pass

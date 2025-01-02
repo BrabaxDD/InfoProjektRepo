@@ -68,6 +68,16 @@ class gameServer(WebsocketConsumer):
             "entityID": entityID
         })
 
+    def broadcastGameObjectDeleted(self, entityType, entityID):
+        async_to_sync(self.channel_layer.group_send)(self.serverID, {
+            "type": "broadcastGameObjectDeletedChannel",
+            "entityType": entityType,
+            "entityID": entityID,
+        })
+
+    def broadcastGameObjectDeleted(self, entityType, entityID):
+        pass
+
     def hitRequestFromClient(self, event):
         self.serverThreat.hitRequestFromPlayer(event["ID"], event["direction"])
         pass
@@ -92,8 +102,10 @@ class gameServer(WebsocketConsumer):
 
     def position(self, event):
         pass
-    def passLoginInformationChannel(self,event):
+
+    def passLoginInformationChannel(self, event):
         pass
+
     def newGameObject(self, event):
         pass
 
