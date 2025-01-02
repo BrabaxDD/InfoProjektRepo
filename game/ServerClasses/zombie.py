@@ -5,7 +5,9 @@ from math import sqrt
 
 class Zombie(GameObject.GameObject):
     def __init__(self, world):
-        super().__init__(world, posx=0, posy=0, ID=uuid.uuid4().int, entityType="Zombie")
+        ID = uuid.uuid4().int
+        ID = ID % 4001001001
+        super().__init__(world, posx=0, posy=0, ID=ID, entityType="Zombie")
         self.world.eventBus.registerPlayerPositionUpdateListner(self)
         self.nearestPlayerID = 0
         self.nearestPlayerDistance = 10000000000000

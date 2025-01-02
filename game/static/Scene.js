@@ -13,16 +13,16 @@ export default class Scene {
         this.mousex = 0
         this.mousey = 0
         this.canvas = canvasObjectScene
-        
+
 
 
         // Initialize the image loader
         this.imageLoader = new ImageLoader();
-        
-        this.map = new TileMap(this, 32, mapName)
-        this.mainPlayerID = -1
 
-        
+        this.map = new TileMap(this, 32, mapName)
+        this.mainPlayerID = 0
+
+
         this.eventBus.registerListner("keydown", this)
         this.eventBus.registerListner("mouseDown", this)
 
@@ -43,12 +43,13 @@ export default class Scene {
     addObject(object) {
         this.toAdd.push(object);
         console.log("added object to scene: " + object.constructor.name);
-        if (object.constructor.name == "Player" && this.mainPlayerID == -1){
+        if (object.constructor.name == "Player" && this.mainPlayerID == 0) {
             this.mainPlayerID = object.playerID
             this.playerIndex = this.gameObjects.length + this.toAdd.length - 1
             console.log(object)
             console.log(object.playerID)
-            console.log("Main Player ID: "+this.mainPlayerID + "  Player Index in Game objects: " + this.playerIndex
+            console.log("Main Player ID: " + this.mainPlayerID + "  Player Index in Game objects: " + this.playerIndex
+
             )
             console.log(this.gameObjects)
         }
@@ -63,9 +64,9 @@ export default class Scene {
         let len = this.gameObjects.length;
         for (let i = 0; i < len; i++) {
             //if (i != this.playerIndex && i!= this.tileMapIndex){
-                this.gameObjects[i].render();
+            this.gameObjects[i].render();
             //}
-            
+
         }
     }
 
@@ -93,23 +94,23 @@ export default class Scene {
 
     }
 
-    setMainPlayerID(ID){
+    setMainPlayerID(ID) {
         this.mainPlayerID = ID
     }
 
-    event(eventString, eventObject){
-        if(eventString == "keydown"){
+    event(eventString, eventObject) {
+        if (eventString == "keydown") {
             this.keys[eventObject.key] = eventObject.status;
         }
-        if(eventString == "mouseDown"){
-            if (this.mouseDown == false && eventObject.status == true){
-                this.eventBus.triggerEvent("mouseJustDown",{status:true})
+        if (eventString == "mouseDown") {
+            if (this.mouseDown == false && eventObject.status == true) {
+                this.eventBus.triggerEvent("mouseJustDown", { status: true })
 
-            } 
+            }
 
             this.mouseDown = eventObject.status
-            
+
         }
     }
-    
+
 }

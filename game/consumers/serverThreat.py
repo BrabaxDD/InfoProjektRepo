@@ -3,6 +3,7 @@ import time
 from game.consumers import gameServer
 from game.ServerClasses import World
 from game.ServerClasses.Player import Player
+from game.ServerClasses import Tree
 
 
 class serverThreat(threading.Thread):
@@ -53,10 +54,13 @@ class serverThreat(threading.Thread):
         self.gameServerSocket.updateInventory(ID, Inventory)
 
     def hitRequestFromPlayer(self, ID, direction):
+        self.world.addGameobject(Tree.Tree(self.world))
         self.world.eventBus.playerRequestHit(
             {"ID": ID, "direction": direction})
 
     def broadcastHealthUpdate(self, ID, entityType, HP):
         self.gameServerSocket.updateHealth(ID, entityType, HP)
-    def broadcastLoginInformation(self,entityID,playerID,entityType):
-        self.gameServerSocket.passLoginInformation(playerID,entityID=entityID,entityType=entityType)
+
+    def broadcastLoginInformation(self, entityID, playerID, entityType):
+        self.gameServerSocket.passLoginInformation(
+            playerID, entityID=entityID, entityType=entityType)

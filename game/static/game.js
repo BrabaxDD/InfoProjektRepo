@@ -140,7 +140,7 @@ export function loginToServer(serverName){
     console.log(scene.mainPlayerID)
     console.log("LOGGIN IN TO SERVER: "+serverName)
     let d = new Date()
-    loginID = d.getTime()
+    loginID = Math.floor(Math.random() * 3000000001)
     webSocket.send(JSON.stringify({type: "login", ID:loginID, serverID:serverName}))
     isStarted = true
 }
