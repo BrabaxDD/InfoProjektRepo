@@ -73,8 +73,8 @@ class gamePlayerSocketConsumer(WebsocketConsumer):
         pass
 
     def position(self, event):
-#        print("log: sending position information to Player with ID: " + str(self.player_ID) + " from server with ID " + self.serverID + " the position is: " +
-#              str(event["posx"]) + " " + str(event["posy"]) + " the entity type is " + str(event["entityType"]) + " the entity ID is: " + str(event["ID"]))
+        #        print("log: sending position information to Player with ID: " + str(self.player_ID) + " from server with ID " + self.serverID + " the position is: " +
+        #              str(event["posx"]) + " " + str(event["posy"]) + " the entity type is " + str(event["entityType"]) + " the entity ID is: " + str(event["ID"]))
         posx = event["posx"]
         posy = event["posy"]
         ID = event["ID"]
@@ -115,3 +115,15 @@ class gamePlayerSocketConsumer(WebsocketConsumer):
               " the ID of the Updated Object is " + str(event["ID"]) + " the entityType is " + event["entityType"] + " the new hp is " + str(event["HP"]))
         self.send(text_data=json.dumps(
             {"type": "healthUpdate", "ID": event["ID"], "entityType": event["entityType"], "HP": event["HP"]}))
+
+    def passLoginInformationChannel(self, event):
+        playerID = event["playerID"]
+        entityID = event["entityID"]
+        entityType = event["entityType"]
+        if playerID == self.player_ID:
+            self.send(text_data=json.dumps(
+                {"type": "newGameObject", "ID": entityID, "entityType": entityType}))
+        print("log: sending information about new GameObject on Server with ID: " + str(self.serverID) + " to client with ID " +
+              str(self.player_ID) + " the ID of the new Object is " + str(entityID) + " the entity Type is " + entityType)
+
+        pass

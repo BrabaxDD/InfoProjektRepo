@@ -36,3 +36,10 @@ class World:
     def broadcastHealth(self, ID, HP, entityType):
         self.threat.broadcastHealthUpdate(ID, entityType, HP)
         pass
+
+    # do everything the world needs to do if a new player logs in
+    def loginNewPlayer(self, playerID):
+        for obj in self.objects:
+            if obj.ID != playerID:
+                self.threat.broadcastLoginInformation(
+                    entityID=obj.ID, entityType=obj.entityType, playerID=playerID)
