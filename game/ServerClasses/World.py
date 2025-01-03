@@ -46,3 +46,7 @@ class World:
 
     def broadcastDeletedGameObject(self, entityType, entityID):
         self.threat.broadcastDeletedGameObject(entityType, entityID)
+
+    def deleteGameObject(self, gameObject):
+        self.broadcastDeletedGameObject(gameObject.entityType, gameObject.ID)
+        self.objects.remove(gameObject)

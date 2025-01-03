@@ -11,3 +11,5 @@ class GameObject:
         pass
     def broadcast(self):
         pass
+    def deleteSelf(self):
+        self.world.deleteGameObject(self)

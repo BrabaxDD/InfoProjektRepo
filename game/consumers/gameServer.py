@@ -75,7 +75,7 @@ class gameServer(WebsocketConsumer):
             "entityID": entityID,
         })
 
-    def broadcastGameObjectDeleted(self, entityType, entityID):
+    def broadcastGameObjectDeletedChannel(self, event):
         pass
 
     def hitRequestFromClient(self, event):

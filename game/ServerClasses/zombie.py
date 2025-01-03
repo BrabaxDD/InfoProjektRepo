@@ -18,6 +18,9 @@ class Zombie(GameObject.GameObject):
         self.nearestPlayerPosy = 0
         self.timesincelasthit = 0
         self.playerDistances = {}
+    def deleteSelf(self):
+        super().deleteSelf()
+#        self.world.
 
     def process(self, delta):
         self.timesincelasthit += delta
@@ -68,4 +71,5 @@ class Zombie(GameObject.GameObject):
         if (player.posx - self.posx)**2 + (player.posy - self.posy)**2 < 2500:
             self.HP -= 50
         if self.HP < 0:
+            self.deleteSelf()
             pass
