@@ -2,6 +2,7 @@ import GameObject from "./GameObject.js"
 import { hit } from "./game.js"
 import { addTestInv } from "./game.js"
 import Inventory from "./GUI_elements/Inventory.js"
+import { font } from "./game.js"
 
 
 export default class Player extends GameObject {
@@ -18,12 +19,15 @@ export default class Player extends GameObject {
         //this.keys = keys
         //this.scene.eventBus.registerListner("test", this)
         this.scene.eventBus.registerListner("position", this)
+        this.scene.eventBus.registerListner("healthUpdate", this)
         this.up = false
         this.down = false
         this.left = false
         this.right = false
         this.playerID = playerID
         this.onCooldown = 0
+
+        this.hp = 99999
 
         this.inventory = new Inventory(this.scene)
         this.scene.addObject(this.inventory)
@@ -80,11 +84,21 @@ export default class Player extends GameObject {
     render() {
         this.ctx.fillStyle = "blue";
         this.ctx.fillRect(this.posx, this.posy, this.width, this.height);
+
+        
+        this.ctx.font = font;
+        this.ctx.fillStyle = 'black';
+        this.ctx.textBaseline = 'left';
+        
+        this.ctx.fillText("Health: " + this.hp, 0 ,this.canvas.height);
     }
    event(eventString, eventObject) {
         if (eventString == "position" && eventObject.type == "Player" && eventObject.ID == this.playerID ) {
             this.posx = eventObject.posx
             this.posy = eventObject.posy
+        }
+        if(eventString == "healthUpdate" && eventObject.type == "Player" && eventObject.ID == this.playerID){
+            this.hp = eventString.HP
         }
     }
 }

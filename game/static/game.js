@@ -23,10 +23,17 @@ webSocket.onmessage = function(e) {
         console.log(e)
         console.log(data)
         scene.eventBus.triggerEvent("inventory",data.Inventory)
+        return
     }
 
     if (data.type == "position"){
         scene.eventBus.triggerEvent("position", {type:data.entityType, ID: data.ID , posx:data.posx , posy:data.posy})
+        return
+    }
+
+    if (data.type == "healthUpdate"){
+        scene.eventBus.triggerEvent("healthUpdate", {type:data.entityType, ID: data.ID , HP : data.HP})
+        return
     }
 
     if (data.type == "newGameObject"){
@@ -35,13 +42,17 @@ webSocket.onmessage = function(e) {
             const t = new Tree(scene,data.ID)
             scene.addObject(t)
             console.log(scene.gameObjects)
+            return
         }
         if (data.entityType == "Player"){
             let player = new Player(100,100,20,20, 'blue', 5,scene, data.ID)
             scene.addObject(player)
+            return
         }
         
     }
+
+    console.log(data)
     
     /*if(data.type == "position" && data.entityType == "Player"){
         scene.gameObjects[scene.playerIndex].posx = data.posx

@@ -2,6 +2,7 @@ import EventBus from "./EventBus.js"
 import SceneSwitcher from "./SceneSwitcher.js"
 import TileMap from "./images/TileMap.js"
 import ImageLoader from "./images/ImageLoader.js"
+import Camera from "./Camera.js"
 
 export default class Scene {
     constructor(canvasObjectScene, mapName) {
@@ -14,6 +15,7 @@ export default class Scene {
         this.mousey = 0
         this.canvas = canvasObjectScene
         
+        this.camera = new Camera(this)
 
 
         // Initialize the image loader
@@ -48,9 +50,9 @@ export default class Scene {
             this.playerIndex = this.gameObjects.length + this.toAdd.length - 1
             console.log(object)
             console.log(object.playerID)
-            console.log("Main Player ID: "+this.mainPlayerID + "  Player Index in Game objects: " + this.playerIndex
-            )
+            console.log("Main Player ID: "+this.mainPlayerID + "  Player Index in Game objects: " + this.playerIndex)
             console.log(this.gameObjects)
+            this.camera.setLockedPlayer(object)
         }
         console.log(this.toAdd)
     }
@@ -58,6 +60,8 @@ export default class Scene {
     render() {
         //console.log(this.gameObjects)
         this.map.render()
+
+        this.camera.render()
 
 
         let len = this.gameObjects.length;
@@ -90,6 +94,8 @@ export default class Scene {
             }
             this.toAdd = [];
         }
+
+        this.camera.process()
 
     }
 
