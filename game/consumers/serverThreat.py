@@ -54,7 +54,6 @@ class serverThreat(threading.Thread):
         self.gameServerSocket.updateInventory(ID, Inventory)
 
     def hitRequestFromPlayer(self, ID, direction):
-        self.world.addGameobject(Tree.Tree(self.world))
         self.world.eventBus.playerRequestHit(
             {"ID": ID, "direction": direction})
 

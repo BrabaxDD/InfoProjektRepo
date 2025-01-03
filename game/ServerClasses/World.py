@@ -43,5 +43,6 @@ class World:
             if obj.ID != playerID:
                 self.threat.broadcastLoginInformation(
                     entityID=obj.ID, entityType=obj.entityType, playerID=playerID)
-    def broadcastDeletedGameObject(self,entityType,entityID):
-        self.threat.broadcastDeletedGameObject(entityType,entityID)
+
+    def broadcastDeletedGameObject(self, entityType, entityID):
+        self.threat.broadcastDeletedGameObject(entityType, entityID)
