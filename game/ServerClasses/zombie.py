@@ -18,9 +18,11 @@ class Zombie(GameObject.GameObject):
         self.nearestPlayerPosy = 0
         self.timesincelasthit = 0
         self.playerDistances = {}
+
     def deleteSelf(self):
+        self.world.eventBus.deRegisterPlayerPositionUpdateListner(self)
+        self.world.eventBus.deRegisterPlayerHitListner(self)
         super().deleteSelf()
-#        self.world.
 
     def process(self, delta):
         self.timesincelasthit += delta

@@ -63,5 +63,10 @@ class serverThreat(threading.Thread):
     def broadcastLoginInformation(self, entityID, playerID, entityType):
         self.gameServerSocket.passLoginInformation(
             playerID, entityID=entityID, entityType=entityType)
-    def broadcastDeletedGameObject(self,entityType,entityID):
-        self.gameServerSocket.broadcastGameObjectDeleted(entityType,entityID)
+
+    def broadcastDeletedGameObject(self, entityType, entityID):
+        self.gameServerSocket.broadcastGameObjectDeleted(entityType, entityID)
+
+    def broadcastWallInformation(self, posx2, posy2, thickness, ID):
+        self.gameServerSocket.broadcastWallInformation(
+            posx2=posx2, posy2=posy2, thickness=thickness,wallID=ID )

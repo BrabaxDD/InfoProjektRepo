@@ -78,6 +78,18 @@ class gameServer(WebsocketConsumer):
     def broadcastGameObjectDeletedChannel(self, event):
         pass
 
+    def broadcastWallInformation(self, posx2, posy2, thickness, wallID):
+        async_to_sync(self.channel_layer.group_send)(self.serverID, {
+            "type": "broadcastWallInformationChannel",
+            "posx2": posx2,
+            "posy2": posy2,
+            "thickness": thickness,
+            "wallID": wallID
+        })
+
+    def broadcastWallInformationChannel(self, event):
+        pass
+
     def hitRequestFromClient(self, event):
         self.serverThreat.hitRequestFromPlayer(event["ID"], event["direction"])
         pass

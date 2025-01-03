@@ -1,6 +1,7 @@
 from game.ServerClasses import EventBus
 from game.ServerClasses import Tree
 from game.ServerClasses import zombie
+from game.ServerClasses import Wall
 
 
 class World:
@@ -32,6 +33,8 @@ class World:
     def generate(self):
         self.addGameobject(Tree.Tree(self))
         self.addGameobject(zombie.Zombie(self))
+        self.addGameobject(Wall.Wall(self, 100, 0, 100, 300))
+        self.addGameobject(Wall.Wall(self, 0, 400, 300, 400))
 
     def broadcastHealth(self, ID, HP, entityType):
         self.threat.broadcastHealthUpdate(ID, entityType, HP)
@@ -50,3 +53,6 @@ class World:
     def deleteGameObject(self, gameObject):
         self.broadcastDeletedGameObject(gameObject.entityType, gameObject.ID)
         self.objects.remove(gameObject)
+
+    def broadcastWallInformation(self, posx2, posy2, thickness, wallID):
+        self.threat.broadcastWallInformation(posx2, posy2, thickness, wallID)

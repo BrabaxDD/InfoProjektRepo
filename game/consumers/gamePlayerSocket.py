@@ -139,3 +139,12 @@ class gamePlayerSocketConsumer(WebsocketConsumer):
         ))
 
         pass
+
+    def broadcastWallInformationChannel(self, event):
+        posx2 = event["posx2"]
+        posy2 = event["posy2"]
+        thickness = event["thickness"]
+        wallID = event["wallID"]
+        self.send(text_data=json.dumps(
+            {"type": "wallInformation", "posx2": posx2, "posy2": posy2, "thickness": thickness, "wallID": wallID}))
+        pass

@@ -6,7 +6,18 @@ class EventBus:
         self.playerHitListners = []
         self.playerPositionUpdateListners = []
         self.zombieHitListners = []
+        self.playerForbiddenMovementListners = []
         pass
+
+    def playerForbiddenMovement(self, action):
+        for listner in self.playerForbiddenMovementListners:
+            listner.playerForbiddenMovement(action)
+
+    def registerPlayerForbiddenMovementListner(self, listner):
+        self.playerForbiddenMovementListners.append(listner)
+
+    def deRegisterPlayerForbiddenMovementListner(self, listner):
+        self.playerForbiddenMovementListners.remove(listner)
 
     def playerAction(self, action):
         for listner in self.playerActionListners:
@@ -29,6 +40,9 @@ class EventBus:
     def registerPlayerRequestHitListner(self, listner):
         self.playerRequestHitListners.append(listner)
 
+    def deRegisterPlayerRequestHitListner(self, listner):
+        self.playerRequestHitListners.remove(listner)
+
     def playerHit(self, action):
         for listner in self.playerHitListners:
             listner.playerHit(action)
@@ -36,12 +50,18 @@ class EventBus:
     def registerPlayerHitListner(self, listner):
         self.playerHitListners.append(listner)
 
+    def deRegisterPlayerHitListner(self, listner):
+        self.playerHitListners.remove(listner)
+
     def playerPositionUpdate(self, action):
         for listner in self.playerPositionUpdateListners:
             listner.playerPositionUpdate(action)
 
     def registerPlayerPositionUpdateListner(self, listner):
         self.playerPositionUpdateListners.append(listner)
+
+    def deRegisterPlayerPositionUpdateListner(self, listner):
+        self.playerPositionUpdateListners.remove(listner)
 
     def zombieHit(self, action):
         for listner in self.zombieHitListners:

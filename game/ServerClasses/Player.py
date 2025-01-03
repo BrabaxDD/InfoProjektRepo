@@ -17,6 +17,7 @@ class Player(GameObject.GameObject):
         self.world.eventBus.registerPlayerGenerateItemListner(self)
         self.world.eventBus.registerPlayerRequestHitListner(self)
         self.world.eventBus.registerZombieHitListner(self)
+        self.world.eventBus.registerPlayerForbiddenMovementListner(self)
         self.Inventory = Inventory.Inventory()
         self.lastHit = time.perf_counter()
         self.HP = 200
@@ -46,14 +47,21 @@ class Player(GameObject.GameObject):
                     {"ID": self.ID, "Player": self, "direction": action["direction"]})
 
     def process(self, delta):
+        NewPosx = self.posx
+        NewPosy = self.posy
         if self.right:
-            self.posx = delta*self.velocity + self.posx
+            NewPosx = delta*self.velocity + self.posx
         if self.left:
-            self.posx = delta*self.velocity*(-1) + self.posx
+            NewPosx = delta*self.velocity*(-1) + self.posx
         if self.down:
-            self.posy = delta*self.velocity + self.posy
+            NewPosy = delta*self.velocity + self.posy
         if self.up:
-            self.posy = delta*self.velocity*(-1) + self.posy
+            NewPosy = delta*self.velocity*(-1) + self.posy
+        self.newPositon(newPosx=NewPosx, newPosy=NewPosy)
+
+    def newPositon(self, newPosx, newPosy):
+        self.posx = newPosx
+        self.posy = newPosy
         self.world.eventBus.playerPositionUpdate(
             {"posx": self.posx, "posy": self.posy, "ID": self.ID})
 
@@ -69,3 +77,13 @@ class Player(GameObject.GameObject):
         if action["PlayerID"] == self.ID:
             self.HP = self.HP - action["Damage"]
             self.world.broadcastHealth(self.ID, self.HP, "Player")
+
+    def playerForbiddenMovement(self, action):
+        playerID = action["playerID"]
+        if playerID == self.ID:
+            print(
+                "log: Player got Interupted in Movement, the player ID is: " + str(self.ID))
+            print("log: Player got Teleported deltax: " + str(self.posx -
+                  action["lastPosx"]) + " deltay: " + str(self.posy - action["lastPosy"]))
+            self.newPositon(
+                newPosx=action["lastPosx"], newPosy=action["lastPosy"])
