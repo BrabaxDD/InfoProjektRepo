@@ -1,4 +1,5 @@
 import GameObject from "./GameObject.js"
+import { font } from "./game.js"
 
 export default class Tree extends GameObject{
     constructor(scene, ID){
@@ -13,7 +14,11 @@ export default class Tree extends GameObject{
 
     render(){
         this.ctx.fillStyle = "green";
-        this.ctx.fillRect(this.posx, this.posy, 10, 10);
+        this.ctx.fillRect(this.posx - (this.scene.camera.posx - this.scene.camera.cameraWidth/2) , this.posy - (this.scene.camera.posy- this.scene.camera.cameraHeight/2), 10, 10);
+
+        this.ctx.font = font;
+        this.ctx.fillStyle = 'black';
+        this.ctx.textBaseline = 'left';
         
     }
 

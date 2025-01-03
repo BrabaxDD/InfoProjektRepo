@@ -22,7 +22,7 @@ export default class Zombie extends GameObject {
 
     render(){
         this.ctx.fillStyle = "green";
-        this.ctx.fillRect(this.posx, this.posy, 40, 40);
+        this.ctx.fillRect(this.posx - (this.scene.camera.posx - this.scene.camera.cameraWidth/2) , this.posy - (this.scene.camera.posy- this.scene.camera.cameraHeight/2), 40, 40);
         
     }
     process(){}

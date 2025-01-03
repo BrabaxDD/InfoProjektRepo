@@ -86,13 +86,12 @@ export default class TileMap extends GameObject {
 
                     this.imageLoader.load(
                         fileName,
-
                         (image) => {
                             // Draw the image once it's loaded
                             this.ctx.drawImage(
                                 image,
-                                column * this.tileSize,
-                                row * this.tileSize,
+                                (column * this.tileSize) - (this.scene.camera.posx - this.scene.camera.cameraWidth/2),
+                                (row * this.tileSize) - (this.scene.camera.posy- this.scene.camera.cameraHeight/2),
                                 this.tileSize,
                                 this.tileSize
                             );

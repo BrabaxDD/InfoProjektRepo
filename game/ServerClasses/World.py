@@ -31,7 +31,7 @@ class World:
 
     def generate(self):
         self.addGameobject(Tree.Tree(self))
-        self.addGameobject(zombie.Zombie(self))
+        #self.addGameobject(zombie.Zombie(self))
 
     def broadcastHealth(self, ID, HP, entityType):
         self.threat.broadcastHealthUpdate(ID, entityType, HP)
