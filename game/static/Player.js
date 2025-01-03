@@ -27,7 +27,7 @@ export default class Player extends GameObject {
         this.playerID = playerID
         this.onCooldown = 0
 
-        this.hp = 99999
+        this.hp = null
 
         this.inventory = new Inventory(this.scene)
         this.scene.addObject(this.inventory)
@@ -90,15 +90,17 @@ export default class Player extends GameObject {
         this.ctx.fillStyle = 'black';
         this.ctx.textBaseline = 'left';
         
-        this.ctx.fillText("Health: " + this.hp, 0 ,this.canvas.height);
+        this.ctx.fillText("Health: " + this.hp, 100 ,100);
     }
    event(eventString, eventObject) {
         if (eventString == "position" && eventObject.type == "Player" && eventObject.ID == this.playerID ) {
             this.posx = eventObject.posx
             this.posy = eventObject.posy
         }
-        if(eventString == "healthUpdate" && eventObject.type == "Player" && eventObject.ID == this.playerID){
-            this.hp = eventString.HP
+        if(eventString == "healthUpdate"){
+            console.log("HEALTH UUPDATATET" + eventObject.HP)
+            console.log(eventObject)
+            this.hp = eventObject.HP
         }
     }
 }

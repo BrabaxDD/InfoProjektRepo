@@ -33,6 +33,7 @@ webSocket.onmessage = function(e) {
 
     if (data.type == "healthUpdate"){
         scene.eventBus.triggerEvent("healthUpdate", {type:data.entityType, ID: data.ID , HP : data.HP})
+        console.log("Health update IST DAAAA " + data.HP)
         return
     }
 
