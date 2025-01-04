@@ -36,7 +36,6 @@ class World:
         self.addGameobject(zombie.Zombie(self))
         self.addGameobject(Wall.Wall(self, 100, 0, 100, 300))
         self.addGameobject(Wall.Wall(self, 0, 400, 300, 400))
-        time.sleep(5)
 
     def broadcastHealth(self, ID, HP, entityType):
         self.threat.broadcastHealthUpdate(ID, entityType, HP)
