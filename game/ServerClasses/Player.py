@@ -113,7 +113,7 @@ class Player(GameObject.GameObject):
             while needed > 0:
                 stack = self.getItemStackByItemID(itemID)
                 if stack.size > needed:
-                    self.changeStackSize(stack,stack.size - needed)
+                    self.changeStackSize(stack, stack.size - needed)
                     return True
                 elif stack.size == needed:
                     self.removeItemFromInv(stackID=stack.stackID)
@@ -121,9 +121,9 @@ class Player(GameObject.GameObject):
                 elif stack.size < needed:
                     self.removeItemFromInv(stackID=stack.stackID)
                     needed -= stack.size
-            print("log: beim Konsumieren von Items von Spieler: " + str(self.ID) + " ist etwas schiefgegangen")
+            print("log: beim Konsumieren von Items von Spieler: " +
+                  str(self.ID) + " ist etwas schiefgegangen")
             return False
-            
 
     def stackCombinationRequest(self, action):
         playerID = action["playerID"]
@@ -157,19 +157,20 @@ class Player(GameObject.GameObject):
         self.world.broadcastPlayerInventoryUpdate(self.ID, self.Inventory)
 
     def playerRequestCraft(self, action):
-        recipe = action["recipe"]
-        print("log: player with ID: " + str(self.ID) +
-              " trys to craft the recipe: " + recipe)
-        match recipe:
-            case "Sticks":
-                print("log: Player with ID: " + str(self.ID) + " is attempting to craft sticks")
-                if self.consumeItems("Wood", 7):
-                    ID = uuid.uuid4().int
-                    ID = ID % 4001001001
-                    self.addItemToInv(ItemsStack.ItemStack("Stick", 3, str(ID)))
-                pass
-
-        pass
+        playerID = action["playerID"]
+        if playerID == self.ID:
+            recipe = action["recipe"]
+            print("log: player with ID: " + str(self.ID) +
+                  " trys to craft the recipe: " + recipe)
+            match recipe:
+                case "Sticks":
+                    print("log: Player with ID: " + str(self.ID) +
+                          " is attempting to craft sticks")
+                    if self.consumeItems("Wood", 7):
+                        ID = uuid.uuid4().int
+                        ID = ID % 4001001001
+                        self.addItemToInv(
+                            ItemsStack.ItemStack("Stick", 3, str(ID)))
 
     def getItemAmountByItemID(self, itemID):
         current = 0
