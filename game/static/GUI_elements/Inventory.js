@@ -4,6 +4,7 @@ import { sendCombineStacksRequest } from "../game.js"
 import InventorySlot from "./InventorySlot.js"
 import { addTestInv } from "../game.js"
 import ButtonGameObject from "./Button.js"
+import { sendCraftingRequest } from "../game.js"
 
 export default class Inventory extends GameObject {
     constructor(scene) {
@@ -11,12 +12,15 @@ export default class Inventory extends GameObject {
         this.canvas = this.scene.canvas
         this.ctx = this.scene.canvas.getContext("2d")
 
-        this.content = [{ "size": 99, "itemID": "Stick", "tags": [] }, { itemID: "Stick", size: 3, tags: {} }, { itemID: 2, size: 5, tags: {} }, { itemID: "Stick", size: 5, tags: {} }, { itemID: "Stick", size: 8, tags: {} }, { "size": 99, "itemID": "Stick", "tags": [] }, { itemID: "Stick", size: 3, tags: {} }, { itemID: 2, size: 5, tags: {} }, { itemID: "Stick", size: 5, tags: {} }, { itemID: "Stick", size: 8, tags: {} }] //All item stacks
+        //        this.content = [{ "size": 99, "itemID": "Stick", "tags": [] }, { itemID: "Stick", size: 3, tags: {} }, { itemID: 2, size: 5, tags: {} }, { itemID: "Stick", size: 5, tags: {} }, { itemID: "Stick", size: 8, tags: {} }, { "size": 99, "itemID": "Stick", "tags": [] }, { itemID: "Stick", size: 3, tags: {} }, { itemID: 2, size: 5, tags: {} }, { itemID: "Stick", size: 5, tags: {} }, { itemID: "Stick", size: 8, tags: {} }] //All item stacks
+        this.content = []
         this.scene.eventBus.registerListner("inventory", this)
         this.scene.eventBus.registerListner("combineStacks", this)
         this.scene.eventBus.registerListner("selectAll", this)
         this.scene.eventBus.registerListner("splitStack", this)
         this.scene.eventBus.registerListner("mouseJustDown", this)
+        this.scene.eventBus.registerListner("craftsticks", this)
+
         //this.scene.eventBus.registerListner("click_on_canvas",this)
 
         this.isVisible = false
@@ -58,6 +62,7 @@ export default class Inventory extends GameObject {
         this.combineSelectedButton = new ButtonGameObject(this.posx, this.posy + this.invHeight, this.invWidth, 40, "combineStacks", {}, this.scene, "COMBINE SELECTED")
         this.selectAllButton = new ButtonGameObject(this.posx, this.posy + this.invHeight + 40, this.invWidth, 40, "selectAll", {}, this.scene, "ALL")
         this.splitButton = new ButtonGameObject(this.posx, this.posy + this.invHeight + 80, this.invWidth, 40, "splitStack", {}, this.scene, "SPLIT SELECTED STACK")
+        this.craftButton = new ButtonGameObject(this.posx, this.posy + this.invHeight + 120, this.invWidth, 40, "craftsticks", {}, this.scene, "CRAFT STICKS")
     }
 
 
@@ -103,6 +108,8 @@ export default class Inventory extends GameObject {
 
 
     event(eventString, eventObject) {
+        console.log("event gefeuert")
+        console.log(eventString)
         if (eventString == "inventory") {
             console.log("eventObject: " + eventObject.items)
             this.content = eventObject.items
@@ -129,6 +136,13 @@ export default class Inventory extends GameObject {
                 this.splitStack(sel[0].itemStack)
             }
         }
+        if (eventString == "craftsticks") {
+            this.craft("Sticks")
+            console.log("attempting to craft sticks")
+        }
+    }
+    craft(recipe) {
+        sendCraftingRequest(recipe)
     }
 
     //regenerates the inventory slot buttons according to the content of the inv 
@@ -163,6 +177,9 @@ export default class Inventory extends GameObject {
 
         this.splitButton.posx = this.posx
         this.splitButton.posy = this.posy + this.invHeight + 80
+
+        this.craftButton.posx = this.posx
+        this.craftButton.posy = this.posy + this.invHeight + 120
     }
 
     printInventory() {
@@ -271,6 +288,7 @@ export default class Inventory extends GameObject {
 
             this.combineSelectedButton.render()
             this.selectAllButton.render()
+            this.craftButton.render()
             if (this.getSelected().length != 1) {
                 this.splitButton.setButtonColorPrimary("grey")
             }
@@ -325,6 +343,7 @@ export default class Inventory extends GameObject {
             this.combineSelectedButton.process()
             this.selectAllButton.process()
             this.splitButton.process()
+            this.craftButton.process()
 
         }
     }

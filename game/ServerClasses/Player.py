@@ -21,6 +21,7 @@ class Player(GameObject.GameObject):
         self.world.eventBus.registerZombieHitListner(self)
         self.world.eventBus.registerPlayerForbiddenMovementListner(self)
         self.world.eventBus.registerStackCombinationRequestListner(self)
+        self.world.eventBus.registerPlayerRequestCraftListner(self)
         self.Inventory = Inventory.Inventory()
         self.lastHit = time.perf_counter()
         self.HP = 200
@@ -99,12 +100,38 @@ class Player(GameObject.GameObject):
         self.Inventory.removeItem(stackID)
         self.world.broadcastPlayerInventoryUpdate(self.ID, self.Inventory)
 
+    def changeStackSize(self, stack, newSize):
+        stack.size = newSize
+        self.world.broadcastPlayerInventoryUpdate(self.ID, self.Inventory)
+
+    # später mit einer liste von items und mengen sodass alles gemeinsam abgebrochen wrid
+    def consumeItems(self, itemID, amount):
+        if self.getItemAmountByItemID(itemID) < amount:
+            return False
+        else:
+            needed = amount
+            while needed > 0:
+                stack = self.getItemStackByItemID(itemID)
+                if stack.size > needed:
+                    self.changeStackSize(stack,stack.size - needed)
+                    return True
+                elif stack.size == needed:
+                    self.removeItemFromInv(stackID=stack.stackID)
+                    return True
+                elif stack.size < needed:
+                    self.removeItemFromInv(stackID=stack.stackID)
+                    needed -= stack.size
+            print("log: beim Konsumieren von Items von Spieler: " + str(self.ID) + " ist etwas schiefgegangen")
+            return False
+            
+
     def stackCombinationRequest(self, action):
         playerID = action["playerID"]
         if playerID == self.ID:
             stackID1 = action["stackID1"]
             stackID2 = action["stackID2"]
-            print("log: trying to combine stackst the ID are: " + str(stackID1) + " " + str(stackID2))
+            print("log: trying to combine stackst the ID are: " +
+                  str(stackID1) + " " + str(stackID2))
             item1 = None
             item2 = None
             for itemStack in self.Inventory.items:
@@ -120,10 +147,41 @@ class Player(GameObject.GameObject):
                         item1.itemID, item1.size + item2.size, str(ID))
                     newItem.tags = item1.tags
                     print("log: the old items are: ")
-                    print(json.dumps(item1,default=jsonSerializer.asDict))
-                    print(json.dumps(item2,default=jsonSerializer.asDict))
+                    print(json.dumps(item1, default=jsonSerializer.asDict))
+                    print(json.dumps(item2, default=jsonSerializer.asDict))
                     print("log: the new item is: ")
-                    print(json.dumps(newItem,default=jsonSerializer.asDict))
+                    print(json.dumps(newItem, default=jsonSerializer.asDict))
                     self.removeItemFromInv(str(item1.stackID))
                     self.removeItemFromInv(str(item2.stackID))
                     self.addItemToInv(newItem)
+
+    def playerRequestCraft(self, action):
+        recipe = action["recipe"]
+        print("log: player with ID: " + str(self.ID) +
+              " trys to craft the recipe: " + recipe)
+        match recipe:
+            case "Sticks":
+                print("log: Player with ID: " + str(self.ID) + " is attempting to craft sticks")
+                if self.consumeItems("Wood", 7):
+                    ID = uuid.uuid4().int
+                    ID = ID % 4001001001
+                    self.addItemToInv(ItemsStack.ItemStack("Stick", 3, str(ID)))
+                pass
+
+        pass
+
+    def getItemAmountByItemID(self, itemID):
+        current = 0
+        for stack in self.Inventory.items:
+            if stack.itemID == itemID:
+                current += stack.size
+        return current
+
+    def getItemStackByItemID(self, ItemID):
+        currentStack = None
+        for stack in self.Inventory.items:
+            if stack.itemID == ItemID:
+                currentStack = stack
+        return currentStack
+
+        pass

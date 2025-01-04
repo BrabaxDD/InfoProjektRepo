@@ -8,7 +8,18 @@ class EventBus:
         self.zombieHitListners = []
         self.playerForbiddenMovementListners = []
         self.stackCombinationRequesetListners = []
+        self.playerRequestCraftListners = []
         pass
+
+    def playerRequestCraft(self, action):
+        for listner in self.playerRequestCraftListners:
+            listner.playerRequestCraft(action)
+
+    def registerPlayerRequestCraftListner(self, listner):
+        self.playerRequestCraftListners.append(listner)
+
+    def deRegisterPlayerRequestCraftListner(self, listner):
+        self.playerRequestCraftListners.remove(listner)
 
     def playerForbiddenMovement(self, action):
         for listner in self.playerForbiddenMovementListners:

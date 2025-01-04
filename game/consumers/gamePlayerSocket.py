@@ -55,12 +55,22 @@ class gamePlayerSocketConsumer(WebsocketConsumer):
             print(text_data_json)
             stackID1 = text_data_json["stackID1"]
             stackDI2 = text_data_json["stackID2"]
-            async_to_sync(self.channel_layer.group_send)(self.serverID,{
-                "type":"combineStacksRequest",
-                "stackID1":stackID1,
-                "stackID2":stackDI2,
-                "playerID":self.player_ID
-                })
+            async_to_sync(self.channel_layer.group_send)(self.serverID, {
+                "type": "combineStacksRequest",
+                "stackID1": stackID1,
+                "stackID2": stackDI2,
+                "playerID": self.player_ID
+            })
+        if messageType == "craft":
+            print("log: got request to craft with the following content from client with ID: " + str(self.player_ID))
+            recipe = text_data_json["recipe"]
+            async_to_sync(self.channel_layer.group_send)(self.serverID, {
+                "type": "craftChannel",
+                "playerID": self.player_ID,
+                "recipe": recipe
+            }
+
+            )
 
         if messageType == "login":
             ID = text_data_json["ID"]
@@ -159,5 +169,9 @@ class gamePlayerSocketConsumer(WebsocketConsumer):
         self.send(text_data=json.dumps(
             {"type": "wallInformation", "posx2": posx2, "posy2": posy2, "thickness": thickness, "wallID": wallID}))
         pass
-    def combineStacksRequest(self,event):
+
+    def combineStacksRequest(self, event):
+        pass
+
+    def craftChannel(self, event):
         pass

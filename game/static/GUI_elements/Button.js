@@ -95,11 +95,15 @@ export default class ButtonGameObject extends GameObject {
         if(this.eventString == "splitStack"){
             this.scene.eventBus.triggerEvent("splitStack", eventObject)
         }
+        if(this.eventString == "craftsticks"){
+            this.scene.eventBus.triggerEvent("craftsticks",eventObject)
+        }
     }
 
     event(eventString, eventObject){
         if (eventString == "click_on_canvas" && this.is_hovered == true) {
             this.buttonPresed(this.eventObject)
+            console.log("button Pressed")
         }
         if (eventString == "textInputFinished"){
             this.textOfTextField = eventObject.storedText

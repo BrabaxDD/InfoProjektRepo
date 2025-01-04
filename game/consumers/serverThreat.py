@@ -75,3 +75,7 @@ class serverThreat(threading.Thread):
         self.world.eventBus.stackCombinationRequest(
             {"stackID1": stackID1, "stackID2": stackID2, "playerID": playerID})
         pass
+
+    def requestCraft(self, recepi, playerID):
+        self.world.eventBus.playerRequestCraft(
+            {"recipe": recepi, "playerID": playerID})
