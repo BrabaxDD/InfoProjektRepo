@@ -69,4 +69,9 @@ class serverThreat(threading.Thread):
 
     def broadcastWallInformation(self, posx2, posy2, thickness, ID):
         self.gameServerSocket.broadcastWallInformation(
-            posx2=posx2, posy2=posy2, thickness=thickness,wallID=ID )
+            posx2=posx2, posy2=posy2, thickness=thickness, wallID=ID)
+
+    def requestItemStackCombination(self, stackID1, stackID2, playerID):
+        self.world.eventBus.stackCombinationRequest(
+            {"stackID1": stackID1, "stackID2": stackID2, "playerID": playerID})
+        pass

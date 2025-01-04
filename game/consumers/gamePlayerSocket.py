@@ -50,6 +50,17 @@ class gamePlayerSocketConsumer(WebsocketConsumer):
                 direction = text_data_json["direction"]
                 async_to_sync(self.channel_layer.group_send)(self.serverID, {
                     "type": "hitRequestFromClient", "direction": direction, "ID": self.player_ID})
+        if messageType == "combineStacks":
+            print("log: got request to combine stacks with the following content")
+            print(text_data_json)
+            stackID1 = text_data_json["stackID1"]
+            stackDI2 = text_data_json["stackID2"]
+            async_to_sync(self.channel_layer.group_send)(self.serverID,{
+                "type":"combineStacksRequest",
+                "stackID1":stackID1,
+                "stackID2":stackDI2,
+                "playerID":self.player_ID
+                })
 
         if messageType == "login":
             ID = text_data_json["ID"]
@@ -147,4 +158,6 @@ class gamePlayerSocketConsumer(WebsocketConsumer):
         wallID = event["wallID"]
         self.send(text_data=json.dumps(
             {"type": "wallInformation", "posx2": posx2, "posy2": posy2, "thickness": thickness, "wallID": wallID}))
+        pass
+    def combineStacksRequest(self,event):
         pass

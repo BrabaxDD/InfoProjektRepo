@@ -179,6 +179,10 @@ export function generateItem(object) {
     console.log("Generating Item: " + object)
     webSocket.send(JSON.stringify({ type: "generateItem", itemID: object }))
 }
+export function sendCombineStacksRequest(ID1,ID2){
+    console.log("Sending combine Stacks Request: " + ID1 + " " + ID2)
+    webSocket.send(JSON.stringify({type:"combineStacks",stackID1:ID1,stackID2:ID2}))
+}
 
 export function getMainPlayerID() {
     return scene.mainPlayerID

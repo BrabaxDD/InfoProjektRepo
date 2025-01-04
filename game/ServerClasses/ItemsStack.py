@@ -3,8 +3,8 @@ from dataclasses import dataclass
 
 @dataclass
 class ItemStack:
-    def __init__(self, ID, size, stackID):
+    def __init__(self, itemID, size, stackID):
         self.stackID = stackID
         self.size = size
-        self.itemID = ID
+        self.itemID = itemID
         self.tags = []

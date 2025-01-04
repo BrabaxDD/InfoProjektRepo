@@ -123,3 +123,9 @@ class gameServer(WebsocketConsumer):
 
     def healthUpdate(self, event):
         pass
+    def combineStacksRequest(self,event):
+        stackID1 = event["stackID1"]
+        stackID2 = event["stackID2"]
+        playerID = event["playerID"]
+        self.serverThreat.requestItemStackCombination(stackID1,stackID2,playerID)
+        pass

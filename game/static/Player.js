@@ -69,15 +69,9 @@ export default class Player extends GameObject {
             this.right = false
         }
 
-        if(this.scene.keys['h'] == true){
-            if (this.onCooldown >= 10){
-                hit()
-                //addTestInv()
-                this.onCooldown = 0
-            }
-            
-            this.onCooldown ++
-            
+        if (this.scene.keys['h'] == true) {
+            hit()
+            //addTestInv()
         }
     }
 
@@ -85,19 +79,19 @@ export default class Player extends GameObject {
         this.ctx.fillStyle = "blue";
         this.ctx.fillRect(this.posx, this.posy, this.width, this.height);
 
-        
+
         this.ctx.font = font;
         this.ctx.fillStyle = 'black';
         this.ctx.textBaseline = 'left';
-        
-        this.ctx.fillText("Health: " + this.hp, 100 ,100);
+
+        this.ctx.fillText("Health: " + this.hp, 100, 100);
     }
-   event(eventString, eventObject) {
-        if (eventString == "position" && eventObject.type == "Player" && eventObject.ID == this.playerID ) {
+    event(eventString, eventObject) {
+        if (eventString == "position" && eventObject.type == "Player" && eventObject.ID == this.playerID) {
             this.posx = eventObject.posx
             this.posy = eventObject.posy
         }
-        if(eventString == "healthUpdate" && eventObject.type == "Player" && eventObject.ID == this.playerID){
+        if (eventString == "healthUpdate" && eventObject.type == "Player" && eventObject.ID == this.playerID) {
             console.log("HEALTH UUPDATATET" + eventObject.HP)
             console.log(eventObject)
             this.hp = eventObject.HP

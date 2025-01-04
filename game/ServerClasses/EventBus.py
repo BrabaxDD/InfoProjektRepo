@@ -7,6 +7,7 @@ class EventBus:
         self.playerPositionUpdateListners = []
         self.zombieHitListners = []
         self.playerForbiddenMovementListners = []
+        self.stackCombinationRequesetListners = []
         pass
 
     def playerForbiddenMovement(self, action):
@@ -69,3 +70,13 @@ class EventBus:
 
     def registerZombieHitListner(self, listner):
         self.zombieHitListners.append(listner)
+
+    def stackCombinationRequest(self, action):
+        for listner in self.stackCombinationRequesetListners:
+            listner.stackCombinationRequest(action)
+
+    def registerStackCombinationRequestListner(self, listner):
+        self.stackCombinationRequesetListners.append(listner)
+
+    def deRegisterStackCombinationRequestListner(self, listner):
+        self.stackCombinationRequesetListners.remove(listner)
