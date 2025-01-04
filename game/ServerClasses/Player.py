@@ -154,6 +154,7 @@ class Player(GameObject.GameObject):
                     self.removeItemFromInv(str(item1.stackID))
                     self.removeItemFromInv(str(item2.stackID))
                     self.addItemToInv(newItem)
+        self.world.broadcastPlayerInventoryUpdate(self.ID, self.Inventory)
 
     def playerRequestCraft(self, action):
         recipe = action["recipe"]

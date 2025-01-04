@@ -53,14 +53,17 @@ class gamePlayerSocketConsumer(WebsocketConsumer):
         if messageType == "combineStacks":
             print("log: got request to combine stacks with the following content")
             print(text_data_json)
-            stackID1 = text_data_json["stackID1"]
-            stackDI2 = text_data_json["stackID2"]
-            async_to_sync(self.channel_layer.group_send)(self.serverID, {
-                "type": "combineStacksRequest",
-                "stackID1": stackID1,
-                "stackID2": stackDI2,
-                "playerID": self.player_ID
-            })
+            if "stackID1" in text_data_json and "stackID2" in text_data_json:
+                stackID1 = text_data_json["stackID1"]
+                stackDI2 = text_data_json["stackID2"]
+                async_to_sync(self.channel_layer.group_send)(self.serverID, {
+                    "type": "combineStacksRequest",
+                    "stackID1": stackID1,
+                    "stackID2": stackDI2,
+                    "playerID": self.player_ID
+                })
+            else:
+                print("log: Player send invalid combine request")
         if messageType == "craft":
             print("log: got request to craft with the following content from client with ID: " + str(self.player_ID))
             recipe = text_data_json["recipe"]
