@@ -23,7 +23,9 @@ class serverThreat(threading.Thread):
         start = time.perf_counter()
         last = None
         now = time.perf_counter()
-
+        self.generated = "False"
+        self.world.generate()
+        self.generated = "True"
         while running:
             if not self.gameServerSocket.getRunning():
                 running = False
@@ -37,9 +39,13 @@ class serverThreat(threading.Thread):
         self.world.eventBus.playerAction(action)
 
     def login(self, ID):
-
-        if not self.firstplayer:
-            self.world.generate()
+        print("log: ein spieler versucht sich auf einem server einzuloggen dessen zustand " +
+              self.generated + " ist ")
+        if self.generated == "False":
+            self.gameServerSocket.respondToLogin(False, ID)
+            return
+        else:
+            self.gameServerSocket.respondToLogin(True, ID)
         self.firstplayer = True
         self.world.addGameobject(Player(ID, self.world))
         self.world.loginNewPlayer(ID)

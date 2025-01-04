@@ -67,7 +67,7 @@ export default class ButtonGameObject extends GameObject {
         }
         if (this.eventString == "loginToServer"){
             if (self.textOfTextField != ""){
-                this.scene.eventBus.triggerEvent("switchScene",eventObject)
+//                this.scene.eventBus.triggerEvent("switchScene",eventObject)
                 loginToServer(this.textOfTextField)
             }
             else{

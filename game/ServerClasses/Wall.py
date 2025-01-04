@@ -34,7 +34,7 @@ class Wall(GameObject.GameObject):
         posx = action["posx"]
         posy = action["posy"]
         playerID = action["ID"]
-        if self.framecount > 10:
+        if playerID in self.lastPlayerPosx and playerID in self.lastPlayerPosy:
             collision = self.do_intersect(
                 (posx, posy),
                 (self.lastPlayerPosx[playerID], self.lastPlayerPosy[playerID]),

@@ -178,3 +178,17 @@ class gamePlayerSocketConsumer(WebsocketConsumer):
 
     def craftChannel(self, event):
         pass
+
+    def connectionRefused(self, event):
+        playerID = event["playerID"]
+        if playerID == self.player_ID:
+            print("log: sending connection denied message to client with ID: " + str(self.player_ID))
+            self.send(text_data=json.dumps({"type": "connectionRefused"}))
+            self.disconnect(0)
+
+    def connectionAccepted(self, event):
+        playerID = event["playerID"]
+        if playerID == self.player_ID:
+            print("log: sending connection accepted message to client with ID: " + str(self.player_ID))
+            self.send(text_data=json.dumps({"type": "connectionAccepted"}))
+        pass

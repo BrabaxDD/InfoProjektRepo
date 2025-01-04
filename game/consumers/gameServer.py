@@ -108,6 +108,14 @@ class gameServer(WebsocketConsumer):
         print("log: new Player logged in to server with ID: " +
               self.serverID + " the Player ID is: " + str(event["ID"]))
         self.serverThreat.login(event["ID"])
+    def respondToLogin(self,accepted,playerID):
+        if accepted:
+            async_to_sync(self.channel_layer.group_send)(self.serverID, {
+                "type": "connectionAccepted", "playerID": playerID})
+        else:
+            async_to_sync(self.channel_layer.group_send)(self.serverID, {
+                "type": "connectionRefused", "playerID": playerID})
+
 
     def getRunning(self):
         return self.running
@@ -136,4 +144,8 @@ class gameServer(WebsocketConsumer):
         recipe = event["recipe"]
         playerID = event["playerID"]
         self.serverThreat.requestCraft(recipe, playerID)
+        pass
+    def connectionRefused(self,event):
+        pass
+    def connectionAccepted(self,event):
         pass

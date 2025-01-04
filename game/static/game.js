@@ -27,6 +27,16 @@ webSocket.onmessage = function(e) {
         scene.eventBus.triggerEvent("inventory", data.Inventory)
         return
     }
+    if (data.type == "connectionRefused"){
+        console.log("connectionRefused")
+    }
+    if (data.type == "connectionAccepted"){
+        console.log("connectionAccepted")
+        scene.eventBus.triggerEvent("switchScene",{sceneToSwitch:2})
+        isStarted = true
+
+
+    }
 
     if (data.type == "position") {
         scene.eventBus.triggerEvent("position", { type: data.entityType, ID: data.ID, posx: data.posx, posy: data.posy })
@@ -167,7 +177,7 @@ export function loginToServer(serverName) {
     let d = new Date()
     loginID = Math.floor(Math.random() * 3000000001)
     webSocket.send(JSON.stringify({ type: "login", ID: loginID, serverID: serverName }))
-    isStarted = true
+//    isStarted = true
 }
 
 export function loginToServerHost(serverName) {

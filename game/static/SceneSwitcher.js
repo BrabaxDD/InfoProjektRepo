@@ -14,6 +14,7 @@ export default class SceneSwitcher{
     event(eventString, eventObject){
         console.log("switching Scene to: "+eventObject.sceneToSwitch)
         if (eventString == "switchScene"){
+            console.log("switching Scene")
             switchScene(eventObject.sceneToSwitch)
         }
     }
