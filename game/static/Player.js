@@ -3,6 +3,7 @@ import { hit } from "./game.js"
 import { addTestInv } from "./game.js"
 import Inventory from "./GUI_elements/Inventory.js"
 import { font } from "./game.js"
+import { interact } from "./game.js"
 
 
 export default class Player extends GameObject {
@@ -72,6 +73,9 @@ export default class Player extends GameObject {
         if (this.scene.keys['h'] == true) {
             hit()
             //addTestInv()
+        }
+        if (this.scene.keys['g'] == true){
+            interact()
         }
     }
 

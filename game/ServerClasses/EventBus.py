@@ -9,6 +9,8 @@ class EventBus:
         self.playerForbiddenMovementListners = []
         self.stackCombinationRequesetListners = []
         self.playerRequestCraftListners = []
+        self.playerRequestInteractionListners = []
+        self.playerInteractionListners = []
         pass
 
     def playerRequestCraft(self, action):
@@ -91,3 +93,27 @@ class EventBus:
 
     def deRegisterStackCombinationRequestListner(self, listner):
         self.stackCombinationRequesetListners.remove(listner)
+
+    def playerRequestInteraction(self, action):
+        for listner in self.playerRequestInteractionListners:
+            listner.playerRequestInteraction(action)
+
+    def registerPlayerRequestInteractionListner(self, listner):
+        self.playerRequestInteractionListners.append(listner)
+
+    def deRegisterPlayerRequestInteractionListner(self, listner):
+        self.playerRequestInteractionListners.remove(listner)
+
+        self.playerRequestInteractionListners.append(listner)
+
+    def playerInteraction(self, action):
+        for listner in self.playerInteractionListners:
+            listner.playerInteraction(action)
+
+    def registerPlayerInteractionListner(self, listner):
+        self.playerInteractionListners.append(listner)
+
+    def deRegisterPlayerInteractionListner(self, listner):
+        self.playerInteractionListners.remove(listner)
+
+

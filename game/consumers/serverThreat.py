@@ -85,3 +85,6 @@ class serverThreat(threading.Thread):
     def requestCraft(self, recepi, playerID):
         self.world.eventBus.playerRequestCraft(
             {"recipe": recepi, "playerID": playerID})
+
+    def interactionRequestFromPlayer(self, playerID):
+        self.world.eventBus.playerRequestInteraction({"playerID": playerID})

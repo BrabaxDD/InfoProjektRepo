@@ -22,10 +22,12 @@ class Player(GameObject.GameObject):
         self.world.eventBus.registerPlayerForbiddenMovementListner(self)
         self.world.eventBus.registerStackCombinationRequestListner(self)
         self.world.eventBus.registerPlayerRequestCraftListner(self)
+        self.world.eventBus.registerPlayerRequestInteractionListner(self)
         self.Inventory = Inventory.Inventory()
         self.lastHit = time.perf_counter()
         self.HP = 200
         self.firstBroadcast = False
+        self.interactioCooldown = 0
 
     def playerAction(self, action):
         if action["ID"] == self.ID:
@@ -35,6 +37,9 @@ class Player(GameObject.GameObject):
             self.left = action["left"]
 #            print("log: updating Player Actions of Player: " + str(self.ID) + " to " +
 #                  str(self.up) + str(self.down) + str(self.right) + str(self.left))
+
+    def setInteractionCooldown(self, time):
+        self.interactioCooldown = time
 
     def broadcastInit(self):
         self.world.broadcastHealth(self.ID, self.HP, "Player")
@@ -59,6 +64,7 @@ class Player(GameObject.GameObject):
                     {"ID": self.ID, "dmg": dmg, "Player": self, "direction": action["direction"]})
 
     def process(self, delta):
+        self.interactioCooldown -= delta
         if not self.firstBroadcast:
             self.broadcastInit()
         self.firstBroadcast = True
@@ -86,7 +92,7 @@ class Player(GameObject.GameObject):
     def treeHit(self, tree):
         ID = uuid.uuid4().int
         ID = ID % 4001001001
-        self.addItemToInv(ItemsStack.ItemStack("Stick", 3, str(ID)))
+        self.addItemToInv(ItemsStack.ItemStack("Stick", 3, ID))
 
     def zombieHit(self, action):
         if action["PlayerID"] == self.ID:
@@ -180,7 +186,7 @@ class Player(GameObject.GameObject):
                     ID = uuid.uuid4().int
                     ID = ID % 4001001001
                     newItem = ItemsStack.ItemStack(
-                        item1.itemID, item1.size + item2.size, str(ID))
+                        item1.itemID, item1.size + item2.size, ID)
                     newItem.tags = item1.tags
                     print("log: the old items are: ")
                     print(json.dumps(item1, default=jsonSerializer.asDict))
@@ -206,7 +212,7 @@ class Player(GameObject.GameObject):
                         ID = uuid.uuid4().int
                         ID = ID % 4001001001
                         self.addItemToInv(
-                            ItemsStack.ItemStack("Wood", 3, str(ID)))
+                            ItemsStack.ItemStack("Wood", 3, ID))
 
     def getItemAmountByItemID(self, itemID):
         current = 0
@@ -223,3 +229,12 @@ class Player(GameObject.GameObject):
         return currentStack
 
         pass
+
+    def playerRequestInteraction(self, action):
+        if self.interactioCooldown < 0:
+            playerID = action["playerID"]
+            print("log: Aplayer is trying to interact")
+            if playerID == self.ID:
+                self.world.eventBus.playerInteraction(
+                    {"playerID": self.ID, "player": self})
+                pass

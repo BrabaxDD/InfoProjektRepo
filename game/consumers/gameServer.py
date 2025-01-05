@@ -18,6 +18,12 @@ class gameServer(WebsocketConsumer):
 
     def disconnect(self, close_code):
         self.running = False
+        with open("tmp/runningservers.txt", "r") as file:
+            lines = file.readlines()
+        with open("tmp/runningservers.txt", "w") as file:
+            for line in lines:
+                if self.serverID not in line:
+                    file.write(line)
         pass
 
     def receive(self, text_data):
@@ -33,12 +39,13 @@ class gameServer(WebsocketConsumer):
                 for line in file:
                     print(line)
                     if line.strip() == self.serverID:
-                        print("log: someone is trying to host a server that already exists the ID is: " + line.strip())
+                        print(
+                            "log: someone is trying to host a server that already exists the ID is: " + line.strip())
                         alreadyExisting = True
             if alreadyExisting:
                 return
             else:
-                with open("tmp/runningservers.txt","a") as file:
+                with open("tmp/runningservers.txt", "a") as file:
                     file.write(self.serverID + "\n")
 
             if not self.running:
@@ -163,4 +170,10 @@ class gameServer(WebsocketConsumer):
         pass
 
     def connectionAccepted(self, event):
+        pass
+
+    def interactionRequestFromClient(self, event):
+        playerID = event["playerID"]
+        self.serverThreat.interactionRequestFromPlayer(playerID)
+
         pass

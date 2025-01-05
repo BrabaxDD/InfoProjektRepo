@@ -206,7 +206,12 @@ export function hit() {
     console.log("HIT")
     webSocket.send(JSON.stringify({ type: "action", actiontype: "hit", direction: 100 }))
 }
+export function interact(){
+    console.log("interact")
+    webSocket.send(JSON.stringify({type: "action", actiontype: "interact"}))
 
+
+}
 export function addTestInv() {
     scene.eventBus.triggerEvent("inventory", { "items": [{ "size": 99, "itemID": "Stick", "tags": [] }, { itemID: "Stick", size: 3, tags: {} }, { itemID: 2, size: 5, tags: {} }, { itemID: "Stick", size: 5, tags: {} }, { itemID: "Stick", size: 8, tags: {} }, { "size": 99, "itemID": "Stick", "tags": [] }, { itemID: "Stick", size: 3, tags: {} }, { itemID: 2, size: 5, tags: {} }, { itemID: "Stick", size: 5, tags: {} }, { itemID: "Stick", size: 8, tags: {} }] })
 }

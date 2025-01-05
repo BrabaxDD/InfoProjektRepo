@@ -50,6 +50,10 @@ class gamePlayerSocketConsumer(WebsocketConsumer):
                 direction = text_data_json["direction"]
                 async_to_sync(self.channel_layer.group_send)(self.serverID, {
                     "type": "hitRequestFromClient", "direction": direction, "ID": self.player_ID})
+            elif actiontype == "interact":
+                print("log: Player with ID " + str(self.player_ID) + " is trying to interact")
+                async_to_sync(self.channel_layer.group_send)(self.serverID, {
+                    "type": "interactionRequestFromClient", "playerID": self.player_ID})
         if messageType == "combineStacks":
             print("log: got request to combine stacks with the following content")
             print(text_data_json)
@@ -184,13 +188,17 @@ class gamePlayerSocketConsumer(WebsocketConsumer):
     def connectionRefused(self, event):
         playerID = event["playerID"]
         if playerID == self.player_ID:
-            print("log: sending connection denied message to client with ID: " + str(self.player_ID))
+            print(
+                "log: sending connection denied message to client with ID: " + str(self.player_ID))
             self.send(text_data=json.dumps({"type": "connectionRefused"}))
             self.disconnect(0)
 
     def connectionAccepted(self, event):
         playerID = event["playerID"]
         if playerID == self.player_ID:
-            print("log: sending connection accepted message to client with ID: " + str(self.player_ID))
+            print(
+                "log: sending connection accepted message to client with ID: " + str(self.player_ID))
             self.send(text_data=json.dumps({"type": "connectionAccepted"}))
+        pass
+    def interactionRequestFromClient(self,event):
         pass
