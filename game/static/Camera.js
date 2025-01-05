@@ -15,7 +15,7 @@ export default class Camera extends GameObject{
 
         this.lockedPlayer = null
 
-        this.cullingDisance = 100//((this.cameraHeight < this.cameraWidth) ? this.cameraWidth : this.cameraHeight)
+        this.cullingDisance = ((this.cameraHeight < this.cameraWidth) ? this.cameraWidth : this.cameraHeight)
     }
 
     /*
