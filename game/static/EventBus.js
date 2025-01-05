@@ -10,7 +10,6 @@ export default class EventBus {
         }
     }
     triggerEvent(eventString, eventObject) {
-        console.log("Event: " + eventString)
         if (eventString in this.listners) {
             try {
                 for (let i = 0; i < this.listners[eventString].length; i++) {

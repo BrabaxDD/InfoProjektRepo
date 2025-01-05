@@ -1,6 +1,9 @@
 from game.ServerClasses import GameObject
 import uuid
 from math import sqrt
+import math
+from game.ServerClasses import ItemsStack
+import random
 
 
 class Zombie(GameObject.GameObject):
@@ -70,8 +73,19 @@ class Zombie(GameObject.GameObject):
         direction = action["direction"]
         playerID = action["ID"]
         player = action["Player"]
+        dmg = action["dmg"]
         if (player.posx - self.posx)**2 + (player.posy - self.posy)**2 < 2500:
-            self.HP -= 50
+            self.HP -= dmg
         if self.HP < 0:
+            ID = uuid.uuid4().int
+            ID = ID % 4001001001
+            player.addItemToInv(ItemsStack.ItemStack(
+                "Rags", random.randint(1, 3), ID))
+            ID = uuid.uuid4().int
+            ID = ID % 4001001001
+            if random.randint(0, 3) == 0:
+                ID = uuid.uuid4().int
+                ID = ID % 4001001001
+                player.addItemToInv(ItemsStack.ItemStack("Screwdriver", 1, ID))
             self.deleteSelf()
             pass

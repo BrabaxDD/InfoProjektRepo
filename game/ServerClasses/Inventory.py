@@ -7,6 +7,7 @@ import json
 class Inventory:
     def __init__(self):
         self.items = []
+        self.primaryHand = None
 
     def addItem(self, itemStack):
         self.items.append(itemStack)

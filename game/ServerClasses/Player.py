@@ -25,7 +25,7 @@ class Player(GameObject.GameObject):
         self.Inventory = Inventory.Inventory()
         self.lastHit = time.perf_counter()
         self.HP = 200
-        self.world.broadcastHealth(self.ID, self.HP, "Player")
+        self.firstBroadcast = False
 
     def playerAction(self, action):
         if action["ID"] == self.ID:
@@ -36,6 +36,9 @@ class Player(GameObject.GameObject):
 #            print("log: updating Player Actions of Player: " + str(self.ID) + " to " +
 #                  str(self.up) + str(self.down) + str(self.right) + str(self.left))
 
+    def broadcastInit(self):
+        self.world.broadcastHealth(self.ID, self.HP, "Player")
+
     def playerGenerateItem(self, action):
         print("log: Generating Player Item: " + str(action))
         if action["ID"] == self.ID:
@@ -44,13 +47,21 @@ class Player(GameObject.GameObject):
             self.world.broadcastPlayerInventoryUpdate(self.ID, self.Inventory)
 
     def playerRequestHit(self, action):
+        dmg = 50
+        match self.Inventory.primaryHand:
+            case None:
+                dmg = 50
+
         if action["ID"] == self.ID:
             if time.perf_counter() - self.lastHit > 0.5:
                 self.lastHit = time.perf_counter()
                 self.world.eventBus.playerHit(
-                    {"ID": self.ID, "Player": self, "direction": action["direction"]})
+                    {"ID": self.ID, "dmg": dmg, "Player": self, "direction": action["direction"]})
 
     def process(self, delta):
+        if not self.firstBroadcast:
+            self.broadcastInit()
+        self.firstBroadcast = True
         NewPosx = self.posx
         NewPosy = self.posy
         if self.right:
@@ -75,7 +86,7 @@ class Player(GameObject.GameObject):
     def treeHit(self, tree):
         ID = uuid.uuid4().int
         ID = ID % 4001001001
-        self.addItemToInv(ItemsStack.ItemStack("Wood", 3, str(ID)))
+        self.addItemToInv(ItemsStack.ItemStack("Stick", 3, str(ID)))
 
     def zombieHit(self, action):
         if action["PlayerID"] == self.ID:
@@ -105,6 +116,31 @@ class Player(GameObject.GameObject):
         self.world.broadcastPlayerInventoryUpdate(self.ID, self.Inventory)
 
     # später mit einer liste von items und mengen sodass alles gemeinsam abgebrochen wrid
+    def consumeMultipleItems(self, itemAmounts):
+        for itemAmount in itemAmounts:
+            itemID = itemAmount[0]
+            neededItemStackSize = itemAmount[1]
+            if self.getItemAmountByItemID(itemID) < neededItemStackSize:
+                return False
+        for itemAmount in itemAmounts:  # zwei listen damit nicht nur die hälfte der items lonsumiert wird und dann abgebrochen
+            itemID = itemAmount[0]
+            neededItemStackSize = itemAmount[1]
+            needed = neededItemStackSize
+            while needed > 0:
+                stack = self.getItemStackByItemID(itemID)
+                if stack.size > needed:
+                    self.changeStackSize(stack, stack.size - needed)
+                    return True
+                elif stack.size == needed:
+                    self.removeItemFromInv(stackID=stack.stackID)
+                    return True
+                elif stack.size < needed:
+                    self.removeItemFromInv(stackID=stack.stackID)
+                    needed -= stack.size
+            print("log: beim Konsumieren von Items von Spieler: " +
+                  str(self.ID) + " ist etwas schiefgegangen")
+            return False
+
     def consumeItems(self, itemID, amount):
         if self.getItemAmountByItemID(itemID) < amount:
             return False
@@ -163,14 +199,14 @@ class Player(GameObject.GameObject):
             print("log: player with ID: " + str(self.ID) +
                   " trys to craft the recipe: " + recipe)
             match recipe:
-                case "Sticks":
+                case "Wood":
                     print("log: Player with ID: " + str(self.ID) +
                           " is attempting to craft sticks")
-                    if self.consumeItems("Wood", 7):
+                    if self.consumeMultipleItems([("Stick", 7)]):
                         ID = uuid.uuid4().int
                         ID = ID % 4001001001
                         self.addItemToInv(
-                            ItemsStack.ItemStack("Stick", 3, str(ID)))
+                            ItemsStack.ItemStack("Wood", 3, str(ID)))
 
     def getItemAmountByItemID(self, itemID):
         current = 0
