@@ -8,70 +8,68 @@ import Tree from "./tree.js"
 import { getMainPlayerID } from "./game.js";
 import Inventory from "./GUI_elements/Inventory.js";
 
-export default class GameSceneFactory extends GameObject{
-    constructor (canvas, keys,sceneObject){
+export default class GameSceneFactory extends GameObject {
+    constructor(canvas, keys, sceneObject) {
         super(sceneObject)
         this.canvas = canvas
         this.keys = keys
-        
+
     }
 
-    buildGameScene(wichSceneToRender ){ //Das ist das Startfeld
+    buildGameScene(wichSceneToRender) { //Das ist das Startfeld
         let scene = null
         switch (wichSceneToRender) {
             case "mainMenu":
             case 0:
-                scene = new Scene(this.canvas,"");
-                let button = new ButtonGameObject(this.canvas.width/2-100,this.canvas.height/3-28,200,56,"switchScene",{sceneToSwitch:"hostOrLogin"},scene,"Play")
+                scene = new Scene(this.canvas, "");
+                let button = new ButtonGameObject(this.canvas.width / 2 - 100, this.canvas.height / 3 - 28, 200, 56, "switchScene", { sceneToSwitch: "hostOrLogin" }, scene, "Play")
                 scene.addObject(button)
 
-                let button2 = new ButtonGameObject(this.canvas.width/2-100,this.canvas.height/3 * 2-28,200,56,"switchScene",{sceneToSwitch:"optionsMenu"},scene,"Options")
+                let button2 = new ButtonGameObject(this.canvas.width / 2 - 100, this.canvas.height / 3 * 2 - 28, 200, 56, "switchScene", { sceneToSwitch: "optionsMenu" }, scene, "Options")
                 scene.addObject(button2)
 
 
-                
-//
+
+                //
                 //let HostTest = new ButtonGameObject(this.canvas.width/3*2-100,this.canvas.height/5 -28,200,56,"loginToServerHost",{},scene,"Login as host ((test for message))")
                 //scene.addObject(HostTest)
 
                 //console.log(button.eventObject.sceneToSwitch)
 
-                
+
                 console.log("Fertige Scene")
-                
+
                 break;
 
             case "optionsMenu":
             case 1:
-                scene = new Scene(this.canvas,"");
-                let b2 = new ButtonGameObject(this.canvas.width/2-100,this.canvas.height/3 * 2-28,200,56,"switchScene",{sceneToSwitch:0},scene,"Back To Main Menu")
+                scene = new Scene(this.canvas, "");
+                let b2 = new ButtonGameObject(this.canvas.width / 2 - 100, this.canvas.height / 3 * 2 - 28, 200, 56, "switchScene", { sceneToSwitch: 0 }, scene, "Back To Main Menu")
                 scene.addObject(b2)
 
                 break;
 
             case "game":
             case 2:
-                scene = new Scene(this.canvas,"GameMap.txt");
-
-            
-
+                scene = new Scene(this.canvas, "GameMap.txt");
+                let craftinput = new CanvasTextInput(scene, this.canvas.width - 200, this.canvas.height - 30, 200, 30, "textInputFinishedCraftField")
+                scene.addObject(craftinput)
                 //let tree = new Tree(scene)
                 //scene.addObject(tree)
-
                 //let lotTest = new ButtonGameObject(this.canvas.width/3-100,this.canvas.height/5-28,200,56,"generateItem","erstes Item",scene,"Generate erstes Item")
                 //scene.addObject(lotTest)
-                
+
                 break;
-            
+
             case "hostOrLogin":
             case 3:
-                scene = new Scene(this.canvas,"");
-                let input = new CanvasTextInput(scene, this.canvas.width/2-100, this.canvas.height/2 - 15,200,30)
+                scene = new Scene(this.canvas, "");
+                let input = new CanvasTextInput(scene, this.canvas.width / 2 - 100, this.canvas.height / 2 - 15, 200, 30, "textInputFinishedLoginField")
                 scene.addObject(input)
 
-                let logBut = new ButtonGameObject(this.canvas.width/3-100,this.canvas.height/5*4-28,200,56, "loginToServer",{}, scene, "Login (to game)")
+                let logBut = new ButtonGameObject(this.canvas.width / 3 - 100, this.canvas.height / 5 * 4 - 28, 200, 56, "loginToServer", {}, scene, "Login (to game)")
                 scene.addObject(logBut)
-                let logButHost = new ButtonGameObject(this.canvas.width/3*2-100,this.canvas.height/5*4-28,200,56, "loginToServerHost",{}, scene, "Host (to game)")
+                let logButHost = new ButtonGameObject(this.canvas.width / 3 * 2 - 100, this.canvas.height / 5 * 4 - 28, 200, 56, "loginToServerHost", {}, scene, "Host (to game)")
                 scene.addObject(logButHost)
         }
         console.log(scene.gameObjects)

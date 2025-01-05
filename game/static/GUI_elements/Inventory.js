@@ -20,6 +20,7 @@ export default class Inventory extends GameObject {
         this.scene.eventBus.registerListner("splitStack", this)
         this.scene.eventBus.registerListner("mouseJustDown", this)
         this.scene.eventBus.registerListner("craftsticks", this)
+        this.scene.eventBus.registerListner("CraftRequest",this)
 
         //this.scene.eventBus.registerListner("click_on_canvas",this)
 
@@ -62,13 +63,18 @@ export default class Inventory extends GameObject {
         this.combineSelectedButton = new ButtonGameObject(this.posx, this.posy + this.invHeight, this.invWidth, 40, "combineStacks", {}, this.scene, "COMBINE SELECTED")
         this.selectAllButton = new ButtonGameObject(this.posx, this.posy + this.invHeight + 40, this.invWidth, 40, "selectAll", {}, this.scene, "ALL")
         this.splitButton = new ButtonGameObject(this.posx, this.posy + this.invHeight + 80, this.invWidth, 40, "splitStack", {}, this.scene, "SPLIT SELECTED STACK")
-        this.craftButton = new ButtonGameObject(this.posx, this.posy + this.invHeight + 120, this.invWidth, 40, "craftsticks", {}, this.scene, "CRAFT STICKS")
+        this.craftButton = new ButtonGameObject(this.posx, this.posy + this.invHeight + 120, this.invWidth, 40, "CraftRequest", {}, this.scene, "Craft")
+
     }
 
 
     async initializeImages() {
         this.imagesIndex = {
-            Stick: "stick.png"
+            Stick: "stick.png",
+            Fabric: "Fabric.png",
+            Wood: "Wood.png",
+            Rags: "Rags.png",
+            Screwdriver: "Screwdriver.png"
         };
 
         this.images = await this.loadAllImages(this.imagesIndex)
@@ -139,6 +145,12 @@ export default class Inventory extends GameObject {
         if (eventString == "craftsticks") {
             this.craft("Sticks")
             console.log("attempting to craft sticks")
+        }
+        if (eventString == "CraftRequest"){
+            this.craft(eventObject.recipe)
+            console.log("attempting to craft: " + eventObject.recipe)
+
+
         }
     }
     craft(recipe) {

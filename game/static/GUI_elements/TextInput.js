@@ -2,7 +2,8 @@ import GameObject from "../GameObject.js";
 import { font } from "../game.js";
 
 export default class CanvasTextInput extends GameObject{
-    constructor(scene, posx, posy, widthButton, heightButton) {
+    constructor(scene, posx, posy, widthButton, heightButton,eventString) {
+
         super(scene)
         this.canvas = this.scene.canvas;
         this.ctx = this.canvas.getContext('2d');
@@ -17,6 +18,7 @@ export default class CanvasTextInput extends GameObject{
         this.heightBox = heightButton//30;
 
         this.scene.eventBus.registerListner("click_on_canvas",this)
+        this.eventString = eventString
         
         window.addEventListener('keydown', (e) => this.handleKeyDown(e));
     }
@@ -49,7 +51,7 @@ export default class CanvasTextInput extends GameObject{
             this.storedText = this.inputText; 
             console.log('Stored Text:', this.storedText);
             //this.inputText = ''; 
-            this.scene.eventBus.triggerEvent("textInputFinished",{storedText:this.storedText})
+            this.scene.eventBus.triggerEvent(this.eventString,{storedText:this.storedText})
         } else if (event.key === 'Backspace') {
             this.inputText = this.inputText.slice(0, -1); 
         } else if (event.key.length === 1) {

@@ -124,7 +124,7 @@ function gameLoop() {
                 frameCount = 0
             }
         }
-        if (frameCount >= 200) {
+        if (frameCount >= 10) {
             isDelayed = true
         }
         frameCount += 1
