@@ -77,7 +77,7 @@ export default class Player extends GameObject {
 
     render() {
         this.ctx.fillStyle = "blue";
-        this.ctx.fillRect(this.posx, this.posy, this.width, this.height);
+        this.ctx.fillRect(this.canvas.width/2, this.canvas.height/2, this.width, this.height);
 
 
         this.ctx.font = font;

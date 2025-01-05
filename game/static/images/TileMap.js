@@ -1,5 +1,5 @@
 import GameObject from "../GameObject.js";
-import ImageLoader from "./ImageLoader.js"
+import ImageLoader from "./ImageLoader.js";
 
 export default class TileMap extends GameObject {
     constructor(scene, tileSize, mapName) {
@@ -8,101 +8,90 @@ export default class TileMap extends GameObject {
         this.scene = scene;
         this.canvas = this.scene.canvas;
         this.ctx = this.scene.canvas.getContext("2d");
-        this.fileName = mapName
+        this.fileName = mapName;
 
-        
-        this.imageLoader = this.scene.imageLoader
-        console.log("IMAGE LOADER: "+this.imageLoader)
-
-        // Define the tile-to-file mapping
+        this.imageLoader = this.scene.imageLoader;
         this.tileMap = {
-            0: "Wand.png", // All Tiles
+            0: "Wand.png",
             1: "Floor.png",
             2: "Water.png",
         };
 
-        // Initialize the map. Example map
-        // this.map = [
-        //    [0, 0],
-        //    [1, 0],
-        //    [1, 1],
-        //];
+        this.preloadedImages = {}; // Store preloaded images
+        this.map = [];
 
-        if (this.mapName != "") {
-            this.map = this.loadMap(mapName)
+        if (this.fileName) {
+            this.loadMap(this.fileName).then((map) => {
+                if (map) this.map = map;
+            });
         }
-        console.log(this.map)
 
-
-
+        this.preloadTileImages();
     }
 
     async loadMap(fileName) {
-        let mapData = null;
         try {
             const response = await fetch(`/static/images/${fileName}`);
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            mapData = await response.text();
+            if (!response.ok) throw new Error("Network response was not ok");
+            const mapData = (await response.text()).trim().split("\n").map(row => row.split(",").map(Number));
+            return mapData;
         } catch (error) {
-            console.error('Error beim Laden der Datei:', error);
+            console.error("Error loading map file:", error);
             return null;
         }
-
-
-        mapData = mapData.split("\n");
-
-
-        let l = mapData.length;
-        let result = [];
-
-        for (let i = 0; i < l; i++) {
-
-            let row = mapData[i].split(",").map(Number);
-            result.push(row);
-        }
-
-        console.log(this.map = result);
-        return result;
     }
 
-
-
-    process() {
-
+    preloadTileImages() {
+        for (const [tile, fileName] of Object.entries(this.tileMap)) {
+            this.imageLoader.load(
+                fileName,
+                (image) => {
+                    this.preloadedImages[tile] = image;
+                },
+                (error) => {
+                    console.error(`Error preloading tile image: ${fileName}`, error);
+                }
+            );
+        }
     }
 
     render() {
-        const length = this.map.length;
-
-        for (let row = 0; row < length; row++) {
-            const width = this.map[row].length;
-
-            for (let column = 0; column < width; column++) {
+        if (!this.map.length) return;
+    
+        const { posx, posy, cameraWidth, cameraHeight } = this.scene.camera;
+        const tileSize = this.tileSize;
+        const ctx = this.ctx;
+    
+        ctx.imageSmoothingEnabled = false; // Disable image smoothing
+        ctx.save();
+        ctx.translate(
+            Math.floor(-(posx - cameraWidth / 2)),
+            Math.floor(-(posy - cameraHeight / 2))
+        );
+    
+        const startX = Math.max(0, Math.floor((posx - cameraWidth / 2) / tileSize));
+        const endX = Math.min(this.map[0].length, Math.ceil((posx + cameraWidth / 2) / tileSize));
+        const startY = Math.max(0, Math.floor((posy - cameraHeight / 2) / tileSize));
+        const endY = Math.min(this.map.length, Math.ceil((posy + cameraHeight / 2) / tileSize));
+    
+        for (let row = startY; row < endY; row++) {
+            for (let column = startX; column < endX; column++) {
                 const tile = this.map[row][column];
-                const fileName = this.tileMap[tile]; // Get file name based on tile type
-                if (fileName) {
-
-                    this.imageLoader.load(
-                        fileName,
-
-                        (image) => {
-                            // Draw the image once it's loaded
-                            this.ctx.drawImage(
-                                image,
-                                column * this.tileSize,
-                                row * this.tileSize,
-                                this.tileSize,
-                                this.tileSize
-                            );
-                        },
-                        (error) => {
-                            console.error(`Error loading tile image: ${fileName}`, error);
-                        }
+                const image = this.preloadedImages[tile];
+    
+                if (image) {
+                    ctx.drawImage(
+                        image,
+                        Math.floor(column * tileSize),
+                        Math.floor(row * tileSize),
+                        tileSize + 1, // Slight overlap to hide gaps
+                        tileSize + 1
                     );
                 }
             }
         }
+    
+        ctx.restore();
     }
+    
 }

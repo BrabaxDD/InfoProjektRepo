@@ -10,6 +10,9 @@ export default class Camera extends GameObject{
         this.posx = this.canvas.width/2
         this.posy = this.canvas.height/2
 
+        this.cameraWidth = this.canvas.width
+        this.cameraHeight = this.canvas.height
+
         this.lockedPlayer = null
     }
 
