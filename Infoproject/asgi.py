@@ -20,5 +20,5 @@ from channels.generic.websocket import WebsocketConsumer
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "Infoproject.settings")
 application = ProtocolTypeRouter({
     "http": get_asgi_application(),
-    "websocket":Infoproject.routing.router
+    "websocket": Infoproject.routing.router
 })
