@@ -61,8 +61,9 @@ export default class TileMap extends GameObject {
         const { posx, posy, cameraWidth, cameraHeight } = this.scene.camera;
         const tileSize = this.tileSize;
         const ctx = this.ctx;
+        const renderRadius = 200; // Maximum render distance in pixels
     
-        ctx.imageSmoothingEnabled = false; // Disable image smoothing
+        ctx.imageSmoothingEnabled = false;
         ctx.save();
         ctx.translate(
             Math.floor(-(posx - cameraWidth / 2)),
@@ -80,18 +81,33 @@ export default class TileMap extends GameObject {
                 const image = this.preloadedImages[tile];
     
                 if (image) {
-                    ctx.drawImage(
-                        image,
-                        Math.floor(column * tileSize),
-                        Math.floor(row * tileSize),
-                        tileSize + 1, // Slight overlap to hide gaps
-                        tileSize + 1
-                    );
+                    // Calculate the center of the current tile
+                    const tileCenterX = column * tileSize + tileSize / 2;
+                    const tileCenterY = row * tileSize + tileSize / 2;
+    
+                    // Calculate the distance from the camera's center to the tile
+                    const dx = tileCenterX - posx;
+                    const dy = tileCenterY - posy;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+    
+                    // Render only if within the specified render radius
+                    if (distance <= this.scene.camera.cullingDisance) {
+                        ctx.drawImage(
+                            image,
+                            Math.floor(column * tileSize),
+                            Math.floor(row * tileSize),
+                            tileSize + 1,
+                            tileSize + 1
+                        );
+                    }
                 }
             }
         }
     
         ctx.restore();
     }
+    
+    
+
     
 }

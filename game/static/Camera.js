@@ -14,7 +14,19 @@ export default class Camera extends GameObject{
         this.cameraHeight = this.canvas.height
 
         this.lockedPlayer = null
+
+        this.cullingDisance = 100//((this.cameraHeight < this.cameraWidth) ? this.cameraWidth : this.cameraHeight)
     }
+
+    /*
+    To use the camera, to get objects to render into camera, use
+    this.posx - (this.scene.camera.posx - this.scene.camera.cameraWidth/2)
+    this.posy - (this.scene.camera.posy- this.scene.camera.cameraHeight/2)
+    in the render function of the object in question
+
+    To use Culling: 
+    maximum disance is the camera width or height (what is larger?) for rendering.
+    */
 
     setLockedPlayer(player){
         this.lockedPlayer = player
