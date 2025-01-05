@@ -18,8 +18,8 @@ export default class Wall extends GameObject {
     render() {
         this.ctx.fillStyle = "black";
         this.ctx.beginPath()
-        this.ctx.moveTo(this.posx, this.posy)
-        this.ctx.lineTo(this.posx2, this.posy2)
+        this.ctx.moveTo(this.posx - (this.scene.camera.posx - this.scene.camera.cameraWidth/2), this.posy - (this.scene.camera.posy- this.scene.camera.cameraHeight/2))
+        this.ctx.lineTo(this.posx2 - (this.scene.camera.posx - this.scene.camera.cameraWidth/2), this.posy2- (this.scene.camera.posy- this.scene.camera.cameraHeight/2))
         this.ctx.strokeStyle = "black"
         this.ctx.lineWidth = this.thickness
         this.ctx.stroke()

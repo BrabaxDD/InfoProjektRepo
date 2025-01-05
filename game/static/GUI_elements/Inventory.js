@@ -72,7 +72,7 @@ export default class Inventory extends GameObject {
         this.imagesIndex = {
             Stick: "stick.png",
             Fabric: "Fabric.png",
-            Wood: "Wood.png",
+            Wood: "wood.png",
             Rags: "Rags.png",
             Screwdriver: "Screwdriver.png"
         };
