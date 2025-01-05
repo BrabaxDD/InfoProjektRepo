@@ -13,18 +13,13 @@ class Inventory:
         self.items.append(itemStack)
 
     def removeItem(self, stackID):
+        print("log: deleting stack with ID  : " + str(stackID))
         toRemove = None
         indexToRemove = None
-        for i,itemStack in enumerate(self.items):
-            print(itemStack.stackID)
-            print(stackID)
-            print(itemStack.stackID == stackID)
-            if itemStack.stackID == stackID:
+        for i, itemStack in enumerate(self.items):
+            if int(itemStack.stackID) == int(stackID):
                 toRemove = itemStack
                 indexToRemove = i
         if indexToRemove is not None:
-            print(json.dumps(toRemove, default=jsonSerializer.asDict))
-            print(json.dumps(self, default=jsonSerializer.asDict))
             del self.items[indexToRemove]
-            print(json.dumps(self, default=jsonSerializer.asDict))
-        print(json.dumps(self, default=jsonSerializer.asDict))
+        print("log: someone tryes to remove a nonexistigng stack with ID: " + str(stackID))

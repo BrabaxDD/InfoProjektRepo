@@ -18,6 +18,12 @@ class gameServer(WebsocketConsumer):
 
     def disconnect(self, close_code):
         self.running = False
+        with open("tmp/runningservers.txt", "r") as file:
+            lines = file.readlines()
+        with open("tmp/runningservers.txt", "w") as file:
+            for line in lines:
+                if self.serverID not in line:
+                    file.write(line)
         pass
 
     def receive(self, text_data):
@@ -26,8 +32,22 @@ class gameServer(WebsocketConsumer):
         print(text_data)
 
         data_json = json.loads(text_data)
+        alreadyExisting = False
         if data_json["type"] == "startserver":
             self.serverID = data_json["serverID"]
+            with open("tmp/runningservers.txt", "r") as file:
+                for line in file:
+                    print(line)
+                    if line.strip() == self.serverID:
+                        print(
+                            "log: someone is trying to host a server that already exists the ID is: " + line.strip())
+                        alreadyExisting = True
+            if alreadyExisting:
+                return
+            else:
+                with open("tmp/runningservers.txt", "a") as file:
+                    file.write(self.serverID + "\n")
+
             if not self.running:
                 self.running = True
                 self.serverThreat.start()
@@ -108,14 +128,14 @@ class gameServer(WebsocketConsumer):
         print("log: new Player logged in to server with ID: " +
               self.serverID + " the Player ID is: " + str(event["ID"]))
         self.serverThreat.login(event["ID"])
-    def respondToLogin(self,accepted,playerID):
+
+    def respondToLogin(self, accepted, playerID):
         if accepted:
             async_to_sync(self.channel_layer.group_send)(self.serverID, {
                 "type": "connectionAccepted", "playerID": playerID})
         else:
             async_to_sync(self.channel_layer.group_send)(self.serverID, {
                 "type": "connectionRefused", "playerID": playerID})
-
 
     def getRunning(self):
         return self.running
@@ -145,7 +165,15 @@ class gameServer(WebsocketConsumer):
         playerID = event["playerID"]
         self.serverThreat.requestCraft(recipe, playerID)
         pass
-    def connectionRefused(self,event):
+
+    def connectionRefused(self, event):
         pass
-    def connectionAccepted(self,event):
+
+    def connectionAccepted(self, event):
+        pass
+
+    def interactionRequestFromClient(self, event):
+        playerID = event["playerID"]
+        self.serverThreat.interactionRequestFromPlayer(playerID)
+
         pass
