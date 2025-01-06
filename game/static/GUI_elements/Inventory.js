@@ -49,8 +49,8 @@ export default class Inventory extends GameObject {
         this.widthInSLots = 5
         this.updateDimensions(this.widthInSLots)
 
-        this.posx = 0
-        this.posy = 0 + this.textBoderSize
+        this.posx = 200
+        this.posy = 100 + this.textBoderSize
 
         this.isHovered = false
 

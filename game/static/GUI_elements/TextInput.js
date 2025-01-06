@@ -58,6 +58,7 @@ export default class CanvasTextInput extends GameObject{
             this.inputText += event.key; 
         }
         this.storedText = this.inputText; 
+        this.scene.eventBus.triggerEvent(this.eventString,{storedText:this.storedText})
         this.render();
     }
 

@@ -28,7 +28,7 @@ export default class Player extends GameObject {
         this.playerID = playerID
         this.onCooldown = 0
 
-        this.hp = null
+        this.hp = 999999
 
         this.inventory = new Inventory(this.scene)
         this.scene.addObject(this.inventory)
@@ -74,21 +74,39 @@ export default class Player extends GameObject {
             hit()
             //addTestInv()
         }
-        if (this.scene.keys['g'] == true){
+        if (this.scene.keys['g'] == true) {
             interact()
         }
     }
 
     render() {
         this.ctx.fillStyle = "blue";
-        this.ctx.fillRect(this.posx - (this.scene.camera.posx - this.scene.camera.cameraWidth/2), this.posy - (this.scene.camera.posy- this.scene.camera.cameraHeight/2), this.width, this.height);
+        this.ctx.fillRect(this.posx - (this.scene.camera.posx - this.scene.camera.cameraWidth / 2), this.posy - (this.scene.camera.posy - this.scene.camera.cameraHeight / 2), this.width, this.height);
 
-    
-        this.ctx.font = font;
-        this.ctx.fillStyle = 'black';
-        this.ctx.textBaseline = 'left';
 
-        this.ctx.fillText("Health: " + this.hp, 100, 100);
+        //Render Health bar
+        if (this.playerID == this.scene.mainPlayerID) {
+            const healthString = "Health: " + (this.hp).toString()
+            const sString = this.ctx.measureText(healthString)
+
+            const heightHealth = 40
+            let widthHealth = Math.ceil(sString.width / 5) * 6
+
+            const xHealth = heightHealth/2
+            const yHealth = heightHealth/2
+
+            this.ctx.fillStyle = "green";
+            this.ctx.globalAlpha = 0.4;
+            this.ctx.fillRect(xHealth, yHealth, widthHealth, heightHealth);
+            console.log(sString.width / 5)
+            this.ctx.globalAlpha = 1;
+
+            this.ctx.fillStyle = 'black';
+
+            this.ctx.font = font;
+            this.ctx.textBaseline = 'middle';
+            this.ctx.fillText(healthString, xHealth + widthHealth / 2, yHealth + heightHealth / 2);
+        }
     }
     event(eventString, eventObject) {
         if (eventString == "position" && eventObject.type == "Player" && eventObject.ID == this.playerID) {

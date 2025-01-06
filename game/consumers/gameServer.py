@@ -9,9 +9,11 @@ from game.ServerClasses import jsonSerializer
 class gameServer(WebsocketConsumer):
     def __init__(self):
         super().__init__()
+        open('tmp/runningservers.txt', 'w').close()
         self.serverID = ""
         self.running = False
         self.serverThreat = serverThreat.serverThreat("test", 1000, self)
+        
 
     def connect(self):
         self.accept()
