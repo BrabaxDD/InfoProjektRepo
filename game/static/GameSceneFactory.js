@@ -64,7 +64,7 @@ export default class GameSceneFactory extends GameObject {
             case "hostOrLogin":
             case 3:
                 scene = new Scene(this.canvas, "");
-                let input = new CanvasTextInput(scene, this.canvas.width / 2 - 100, this.canvas.height / 2 - 15, 200, 30, "textInputFinishedLoginField")
+                let input = new CanvasTextInput(scene, this.canvas.width / 2 - 100, this.canvas.height / 2 - 15, 200, 30, "textInputFinishedLoginField", true)
                 scene.addObject(input)
 
                 let logBut = new ButtonGameObject(this.canvas.width / 3 - 100, this.canvas.height / 5 * 4 - 28, 200, 56, "loginToServer", {}, scene, "Login (to game)")

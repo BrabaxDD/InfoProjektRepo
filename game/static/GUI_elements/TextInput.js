@@ -2,14 +2,14 @@ import GameObject from "../GameObject.js";
 import { font } from "../game.js";
 
 export default class CanvasTextInput extends GameObject{
-    constructor(scene, posx, posy, widthButton, heightButton,eventString) {
+    constructor(scene, posx, posy, widthButton, heightButton,eventString, focusedOnCreation) {
 
         super(scene)
         this.canvas = this.scene.canvas;
         this.ctx = this.canvas.getContext('2d');
         this.inputText = ''; 
-        this.isFocused = false;
-        this.storedText = null; 
+        this.isFocused = (focusedOnCreation == true) ? true : false;
+        this.storedText = ""; 
         this.textSize = font;
         
         this.posx = posx//100
@@ -57,6 +57,7 @@ export default class CanvasTextInput extends GameObject{
         } else if (event.key.length === 1) {
             this.inputText += event.key; 
         }
+        this.storedText = this.inputText; 
         this.render();
     }
 
