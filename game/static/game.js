@@ -20,6 +20,9 @@ webSocket.onmessage = function(e) {
     //console.log("")
     //console.log(data)
 
+    if(data.type == "deletedGameObject"){
+        console.log("FAWFHAWFIHAWFIUH Gelöscht")
+    }
 
     if (data.type == "InventoryUpdate") {
         console.log(e)

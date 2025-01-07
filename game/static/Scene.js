@@ -14,7 +14,7 @@ export default class Scene {
         this.mousex = 0
         this.mousey = 0
         this.canvas = canvasObjectScene
-        
+
         this.camera = new Camera(this)
 
 
@@ -50,11 +50,17 @@ export default class Scene {
             this.playerIndex = this.gameObjects.length + this.toAdd.length - 1
             console.log(object)
             console.log(object.playerID)
-            console.log("Main Player ID: "+this.mainPlayerID + "  Player Index in Game objects: " + this.playerIndex)
+            console.log("Main Player ID: " + this.mainPlayerID + "  Player Index in Game objects: " + this.playerIndex)
             console.log(this.gameObjects)
             this.camera.setLockedPlayer(object)
         }
         console.log(this.toAdd)
+    }
+
+    removeObject(object) {
+        this.toDelete.push(object)
+        console.log("removed an object from scene: " + object.constructor.name)
+
     }
 
     render() {
@@ -81,10 +87,17 @@ export default class Scene {
 
 
         if (this.toDelete.length != 0) {
-            this.gameObjects = this.gameObjects.filter(function(el) {
+            this.gameObjects = this.gameObjects.filter(function (el) {
                 return toDelete.indexOf(el) < 0;
             });
             this.toDelete = [];
+
+            const length = this.gameObjects.length
+            for (let i = 0; i <= length; i++) {
+                if (this.gameObjects[i].constructor.name == "Player" && this.gameObjects[i].playerID == this.mainPlayerID) {
+                    this.playerIndex = i
+                }
+            }
         }
 
         let len_add = this.toAdd.length

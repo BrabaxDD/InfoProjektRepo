@@ -98,7 +98,6 @@ export default class Player extends GameObject {
             this.ctx.fillStyle = "green";
             this.ctx.globalAlpha = 0.4;
             this.ctx.fillRect(xHealth, yHealth, widthHealth, heightHealth);
-            console.log(sString.width / 5)
             this.ctx.globalAlpha = 1;
 
             this.ctx.fillStyle = 'black';
