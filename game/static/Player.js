@@ -21,6 +21,7 @@ export default class Player extends GameObject {
         //this.scene.eventBus.registerListner("test", this)
         this.scene.eventBus.registerListner("position", this)
         this.scene.eventBus.registerListner("healthUpdate", this)
+        this.scene.eventBus.registerListner("playerSet", this)
         this.up = false
         this.down = false
         this.left = false
@@ -30,8 +31,11 @@ export default class Player extends GameObject {
 
         this.hp = 999999
 
+        
         this.inventory = new Inventory(this.scene)
         this.scene.addObject(this.inventory)
+        
+        console.log("my ID: ", this.playerID, " serverPlayerID: ", this.scene.mainPlayerID)
     }
 
     process() {
@@ -70,12 +74,17 @@ export default class Player extends GameObject {
             this.right = false
         }
 
-        if (this.scene.keys['h'] == true) {
+        if (this.scene.keys['h'] == true && this.onCooldown <= 0) {
             hit()
             //addTestInv()
+            this.onCooldown = 10
         }
         if (this.scene.keys['g'] == true) {
             interact()
+        }
+
+        if (this.onCooldown >= 0){
+            this.onCooldown -= 1
         }
     }
 

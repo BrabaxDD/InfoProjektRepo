@@ -27,6 +27,7 @@ export default class Scene {
 
         this.eventBus.registerListner("keydown", this)
         this.eventBus.registerListner("mouseDown", this)
+        this.eventBus.registerListner("deleteGameObjects", this)
 
         this.canvas.addEventListener('mousemove', (event) => {
             // Get the bounding rectangle of the canvas
@@ -47,6 +48,7 @@ export default class Scene {
         console.log("added object to scene: " + object.constructor.name);
         if (object.constructor.name == "Player" && this.mainPlayerID == 0) {
             this.mainPlayerID = object.playerID
+            this.eventBus.triggerEvent("playerSet", this.mainPlayerID)
             this.playerIndex = this.gameObjects.length + this.toAdd.length - 1
             console.log(object)
             console.log(object.playerID)
@@ -87,17 +89,20 @@ export default class Scene {
 
 
         if (this.toDelete.length != 0) {
-            this.gameObjects = this.gameObjects.filter(function (el) {
-                return toDelete.indexOf(el) < 0;
-            });
+            console.log(this.toDelete)
+            this.gameObjects = this.gameObjects.filter(el => 
+                this.toDelete.indexOf(el) < 0
+            );
+            console.log(this.gameObjects)
             this.toDelete = [];
 
             const length = this.gameObjects.length
-            for (let i = 0; i <= length; i++) {
+            for (let i = 0; i < length; i++) {
                 if (this.gameObjects[i].constructor.name == "Player" && this.gameObjects[i].playerID == this.mainPlayerID) {
                     this.playerIndex = i
                 }
             }
+            console.log(this.gameObjects)
         }
 
         let len_add = this.toAdd.length
@@ -106,6 +111,12 @@ export default class Scene {
                 this.gameObjects.push(this.toAdd[i]);
             }
             this.toAdd = [];
+
+            for (let i = 0; i < length; i++) {
+                if (this.gameObjects[i].constructor.name == "Player" && this.gameObjects[i].playerID == this.mainPlayerID) {
+                    this.playerIndex = i
+                }
+            }
         }
 
         this.camera.process()
@@ -128,6 +139,18 @@ export default class Scene {
 
             this.mouseDown = eventObject.status
 
+        }
+        if (eventString == "deleteGameObjects") {
+            const length = this.gameObjects.length
+            for (let i = 0; i <= length; i++) {
+                if (this.gameObjects[i].ID == this.gameObjects[i].ID) {
+                    console.log("ID: ", eventObject.ID, " Type: ", eventObject.type)
+                    this.removeObject(this.gameObjects[i])
+                    console.log(this.gameObjects[i])
+                    break
+                }
+            }
+            
         }
     }
 
