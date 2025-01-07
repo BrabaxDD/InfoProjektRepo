@@ -4,8 +4,8 @@ import uuid
 
 
 class Wall(Obstacle.Obstacle):
-    def __init__(self,world,posx,posy,posx2,posy2):
-        super().__init__(world,posx,posy,posx2,posy2)
+    def __init__(self, world, posx, posy, posx2, posy2):
+        super().__init__(world, posx, posy, posx2, posy2,"Wall")
 
 #    def __init__(self, world, posx, posy, posx2, posy2):
 #        ID = uuid.uuid4().int
@@ -60,7 +60,7 @@ class Wall(Obstacle.Obstacle):
 #            pass
 #
 #
-## Code von CHATGPT
+# Code von CHATGPT
 #
 #
 #    def do_intersect(self, p1, q1, p2, q2):

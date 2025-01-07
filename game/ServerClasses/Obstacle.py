@@ -3,11 +3,12 @@ import uuid
 
 
 class Obstacle(GameObject.GameObject):
-    def __init__(self, world, posx, posy, posx2, posy2):
+    def __init__(self, world, posx, posy, posx2, posy2, entityType):
         ID = uuid.uuid4().int
         ID = ID % 4001001001
-        super().__init__(world=world, posx=posx, posy=posy, ID=ID, entityType="Wall")
+        super().__init__(world, posx, posy, ID, entityType)
         self.world.eventBus.registerListner(self, "playerPositionUpdate")
+        self.entityType = entityType
         self.thickness = 10
         self.posx2 = posx2
         self.posy2 = posy2
