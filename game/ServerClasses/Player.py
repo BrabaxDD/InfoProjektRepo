@@ -15,14 +15,13 @@ class Player(GameObject.GameObject):
         self.down = False
         self.left = False
         self.right = False
-        self.world.eventBus.registerPlayerActionListner(self)
-        self.world.eventBus.registerPlayerGenerateItemListner(self)
-        self.world.eventBus.registerPlayerRequestHitListner(self)
-        self.world.eventBus.registerZombieHitListner(self)
-        self.world.eventBus.registerPlayerForbiddenMovementListner(self)
-        self.world.eventBus.registerStackCombinationRequestListner(self)
-        self.world.eventBus.registerPlayerRequestCraftListner(self)
-        self.world.eventBus.registerPlayerRequestInteractionListner(self)
+        self.world.eventBus.registerListner(self, "playerRequestCraft")
+        self.world.eventBus.registerListner(self, "playerAction")
+        self.world.eventBus.registerListner(self, "playerRequestHit")
+        self.world.eventBus.registerListner(self, "zombieHit")
+        self.world.eventBus.registerListner(self, "playerForbiddenMovement")
+        self.world.eventBus.registerListner(self, "stackCombinationRequest")
+        self.world.eventBus.registerListner(self, "playerRequestInteraction")
         self.Inventory = Inventory.Inventory()
         self.lastHit = time.perf_counter()
         self.HP = 200
@@ -44,25 +43,6 @@ class Player(GameObject.GameObject):
     def broadcastInit(self):
         self.world.broadcastHealth(self.ID, self.HP, "Player")
 
-    def playerGenerateItem(self, action):
-        print("log: Generating Player Item: " + str(action))
-        if action["ID"] == self.ID:
-            self.Inventory.addItem(
-                ItemsStack.ItemStack(action["itemID"], 1), 0)
-            self.world.broadcastPlayerInventoryUpdate(self.ID, self.Inventory)
-
-    def playerRequestHit(self, action):
-        dmg = 50
-        match self.Inventory.primaryHand:
-            case None:
-                dmg = 50
-
-        if action["ID"] == self.ID:
-            if time.perf_counter() - self.lastHit > 0.5:
-                self.lastHit = time.perf_counter()
-                self.world.eventBus.playerHit(
-                    {"ID": self.ID, "dmg": dmg, "Player": self, "direction": action["direction"]})
-
     def process(self, delta):
         self.interactioCooldown -= delta
         if not self.firstBroadcast:
@@ -83,7 +63,7 @@ class Player(GameObject.GameObject):
     def newPositon(self, newPosx, newPosy):
         self.posx = newPosx
         self.posy = newPosy
-        self.world.eventBus.playerPositionUpdate(
+        self.world.eventBus.event("playerPositionUpdate",
             {"posx": self.posx, "posy": self.posy, "ID": self.ID})
 
     def broadcast(self):
@@ -93,21 +73,6 @@ class Player(GameObject.GameObject):
         ID = uuid.uuid4().int
         ID = ID % 4001001001
         self.addItemToInv(ItemsStack.ItemStack("Stick", 3, ID))
-
-    def zombieHit(self, action):
-        if action["PlayerID"] == self.ID:
-            self.HP = self.HP - action["Damage"]
-            self.world.broadcastHealth(self.ID, self.HP, "Player")
-
-    def playerForbiddenMovement(self, action):
-        playerID = action["playerID"]
-        if playerID == self.ID:
-            print(
-                "log: Player got Interupted in Movement, the player ID is: " + str(self.ID))
-            print("log: Player got Teleported deltax: " + str(self.posx -
-                  action["lastPosx"]) + " deltay: " + str(self.posy - action["lastPosy"]))
-            self.newPositon(
-                newPosx=action["lastPosx"], newPosy=action["lastPosy"])
 
     def addItemToInv(self, itemStack):
         self.Inventory.addItem(itemStack)
@@ -167,52 +132,52 @@ class Player(GameObject.GameObject):
                   str(self.ID) + " ist etwas schiefgegangen")
             return False
 
-    def stackCombinationRequest(self, action):
-        playerID = action["playerID"]
-        if playerID == self.ID:
-            stackID1 = action["stackID1"]
-            stackID2 = action["stackID2"]
-            print("log: trying to combine stackst the ID are: " +
-                  str(stackID1) + " " + str(stackID2))
-            item1 = None
-            item2 = None
-            for itemStack in self.Inventory.items:
-                if itemStack.stackID == stackID1:
-                    item1 = itemStack
-                if itemStack.stackID == stackID2:
-                    item2 = itemStack
-            if (item1 is not None) and (item2 is not None):
-                if item1.itemID == item2.itemID and item1.tags == item2.tags:
-                    ID = uuid.uuid4().int
-                    ID = ID % 4001001001
-                    newItem = ItemsStack.ItemStack(
-                        item1.itemID, item1.size + item2.size, ID)
-                    newItem.tags = item1.tags
-                    print("log: the old items are: ")
-                    print(json.dumps(item1, default=jsonSerializer.asDict))
-                    print(json.dumps(item2, default=jsonSerializer.asDict))
-                    print("log: the new item is: ")
-                    print(json.dumps(newItem, default=jsonSerializer.asDict))
-                    self.removeItemFromInv(str(item1.stackID))
-                    self.removeItemFromInv(str(item2.stackID))
-                    self.addItemToInv(newItem)
-        self.world.broadcastPlayerInventoryUpdate(self.ID, self.Inventory)
-
-    def playerRequestCraft(self, action):
-        playerID = action["playerID"]
-        if playerID == self.ID:
-            recipe = action["recipe"]
-            print("log: player with ID: " + str(self.ID) +
-                  " trys to craft the recipe: " + recipe)
-            match recipe:
-                case "Wood":
-                    print("log: Player with ID: " + str(self.ID) +
-                          " is attempting to craft sticks")
-                    if self.consumeMultipleItems([("Stick", 7)]):
-                        ID = uuid.uuid4().int
-                        ID = ID % 4001001001
-                        self.addItemToInv(
-                            ItemsStack.ItemStack("Wood", 3, ID))
+#    def stackCombinationRequest(self, action):
+#        playerID = action["playerID"]
+#        if playerID == self.ID:
+#            stackID1 = action["stackID1"]
+#            stackID2 = action["stackID2"]
+#            print("log: trying to combine stackst the ID are: " +
+#                  str(stackID1) + " " + str(stackID2))
+#            item1 = None
+#            item2 = None
+#            for itemStack in self.Inventory.items:
+#                if itemStack.stackID == stackID1:
+#                    item1 = itemStack
+#                if itemStack.stackID == stackID2:
+#                    item2 = itemStack
+#            if (item1 is not None) and (item2 is not None):
+#                if item1.itemID == item2.itemID and item1.tags == item2.tags:
+#                    ID = uuid.uuid4().int
+#                    ID = ID % 4001001001
+#                    newItem = ItemsStack.ItemStack(
+#                        item1.itemID, item1.size + item2.size, ID)
+#                    newItem.tags = item1.tags
+#                    print("log: the old items are: ")
+#                    print(json.dumps(item1, default=jsonSerializer.asDict))
+#                    print(json.dumps(item2, default=jsonSerializer.asDict))
+#                    print("log: the new item is: ")
+#                    print(json.dumps(newItem, default=jsonSerializer.asDict))
+#                    self.removeItemFromInv(str(item1.stackID))
+#                    self.removeItemFromInv(str(item2.stackID))
+#                    self.addItemToInv(newItem)
+#        self.world.broadcastPlayerInventoryUpdate(self.ID, self.Inventory)
+#
+#    def playerRequestCraft(self, action):
+#        playerID = action["playerID"]
+#        if playerID == self.ID:
+#            recipe = action["recipe"]
+#            print("log: player with ID: " + str(self.ID) +
+#                  " trys to craft the recipe: " + recipe)
+#            match recipe:
+#                case "Wood":
+#                    print("log: Player with ID: " + str(self.ID) +
+#                          " is attempting to craft sticks")
+#                    if self.consumeMultipleItems([("Stick", 7)]):
+#                        ID = uuid.uuid4().int
+#                        ID = ID % 4001001001
+#                        self.addItemToInv(
+#                            ItemsStack.ItemStack("Wood", 3, ID))
 
     def getItemAmountByItemID(self, itemID):
         current = 0
@@ -230,11 +195,87 @@ class Player(GameObject.GameObject):
 
         pass
 
-    def playerRequestInteraction(self, action):
-        if self.interactioCooldown < 0:
+    def event(self, eventString, action):
+        if eventString == "playerRequestCraft":
             playerID = action["playerID"]
-            print("log: Aplayer is trying to interact")
             if playerID == self.ID:
-                self.world.eventBus.playerInteraction(
-                    {"playerID": self.ID, "player": self})
-                pass
+                recipe = action["recipe"]
+                print("log: player with ID: " + str(self.ID) +
+                      " trys to craft the recipe: " + recipe)
+                match recipe:
+                    case "Wood":
+                        print("log: Player with ID: " + str(self.ID) +
+                              " is attempting to craft sticks")
+                        if self.consumeMultipleItems([("Stick", 7)]):
+                            ID = uuid.uuid4().int
+                            ID = ID % 4001001001
+                            self.addItemToInv(
+                                ItemsStack.ItemStack("Wood", 3, ID))
+        if eventString == "playerAction":
+            if action["ID"] == self.ID:
+                self.up = action["up"]
+                self.down = action["down"]
+                self.right = action["right"]
+                self.left = action["left"]
+        if eventString == "playerRequestHit":
+            dmg = 50
+            match self.Inventory.primaryHand:
+                case None:
+                    dmg = 50
+
+            if action["ID"] == self.ID:
+                if time.perf_counter() - self.lastHit > 0.5:
+                    self.lastHit = time.perf_counter()
+                    self.world.eventBus.event("playerHit",
+                                              {"ID": self.ID, "dmg": dmg, "Player": self, "direction": action["direction"]})
+        if eventString == "zombieHit":
+            if action["PlayerID"] == self.ID:
+                self.HP = self.HP - action["Damage"]
+                self.world.broadcastHealth(self.ID, self.HP, "Player")
+        if eventString == "playerForbiddenMovement":
+            playerID = action["playerID"]
+            if playerID == self.ID:
+                print(
+                    "log: Player got Interupted in Movement, the player ID is: " + str(self.ID))
+                print("log: Player got Teleported deltax: " + str(self.posx -
+                      action["lastPosx"]) + " deltay: " + str(self.posy - action["lastPosy"]))
+                self.newPositon(
+                    newPosx=action["lastPosx"], newPosy=action["lastPosy"])
+        if eventString == "stackCombinationRequest":
+            playerID = action["playerID"]
+            if playerID == self.ID:
+                stackID1 = action["stackID1"]
+                stackID2 = action["stackID2"]
+                print("log: trying to combine stackst the ID are: " +
+                      str(stackID1) + " " + str(stackID2))
+                item1 = None
+                item2 = None
+                for itemStack in self.Inventory.items:
+                    if itemStack.stackID == stackID1:
+                        item1 = itemStack
+                    if itemStack.stackID == stackID2:
+                        item2 = itemStack
+                if (item1 is not None) and (item2 is not None):
+                    if item1.itemID == item2.itemID and item1.tags == item2.tags:
+                        ID = uuid.uuid4().int
+                        ID = ID % 4001001001
+                        newItem = ItemsStack.ItemStack(
+                            item1.itemID, item1.size + item2.size, ID)
+                        newItem.tags = item1.tags
+                        print("log: the old items are: ")
+                        print(json.dumps(item1, default=jsonSerializer.asDict))
+                        print(json.dumps(item2, default=jsonSerializer.asDict))
+                        print("log: the new item is: ")
+                        print(json.dumps(newItem, default=jsonSerializer.asDict))
+                        self.removeItemFromInv(str(item1.stackID))
+                        self.removeItemFromInv(str(item2.stackID))
+                        self.addItemToInv(newItem)
+            self.world.broadcastPlayerInventoryUpdate(self.ID, self.Inventory)
+        if eventString == "playerRequestInteraction":
+            if self.interactioCooldown < 0:
+                playerID = action["playerID"]
+                print("log: Aplayer is trying to interact")
+                if playerID == self.ID:
+                    self.world.eventBus.event("playerInteraction",
+                        {"playerID": self.ID, "player": self})
+                    pass
