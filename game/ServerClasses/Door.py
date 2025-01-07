@@ -7,19 +7,25 @@ class Door(Obstacle.Obstacle):
         super().__init__(world, posx, posy, posx2, posy2, "Door")
         self.closed = True
         self.world.eventBus.registerListner(self, "playerInteraction")
+        self.closedPosx2 = posx2
+        self.closedPosy2 = posy2
+        self.openPosx2 = posx + (posy2 - posy)
+        self.openPosy2 = posy + (posx2 - posx)
 
     def event(self, eventString, action):
         if eventString == "playerPositionUpdate":
-            if self.closed:
-                super().event(eventString, action)
-            else:
-                posx = action["posx"]
-                posy = action["posy"]
-                playerID = action["ID"]
-                self.lastPlayerPosx[playerID] = posx
-                self.lastPlayerPosy[playerID] = posy
+            super().event(eventString, action)
         if eventString == "playerInteraction":
-            if self.closed:
-                self.closed = False
-            else:
-                self.closed = True
+            player = action["player"]
+            if (player.posx - self.posx)**2 + (player.posy - self.posy)**2 < 10000:
+                if self.closed:
+                    self.closed = False
+                    self.posx2 = self.openPosx2
+                    self.posy2 = self.openPosy2
+                else:
+                    self.closed = True
+                    self.posx2 = self.closedPosx2
+                    self.posy2 = self.closedPosy2
+                player.setInteractionCooldown(1)
+                print("log: the new second coordinates after door  has been interacted with are: " +
+                      str(self.posx2) + " " + str(self.posy2))

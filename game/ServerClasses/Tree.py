@@ -18,15 +18,6 @@ class Tree(GameObject.GameObject):
     def process(self, delta):
         pass
 
-    def playerInteraction(self, action):
-        playerID = action["playerID"]
-        player = action["player"]
-        if (player.posx - self.posx)**2 + (player.posy - self.posy)**2 < 10000:
-            ID = uuid.uuid4().int
-            ID = ID % 4001001001
-            player.addItemToInv(ItemsStack.ItemStack("Apple", 1, ID))
-            player.setInteractionCooldown(1)
-
     def event(self, eventString, action):
         if eventString == "playerHit":
             direction = action["direction"]
