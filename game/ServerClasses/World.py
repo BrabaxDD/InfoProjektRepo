@@ -2,6 +2,7 @@ from game.ServerClasses import EventBus
 from game.ServerClasses import Tree
 from game.ServerClasses import zombie
 from game.ServerClasses import Wall
+from game.ServerClasses import Door
 import time
 
 
@@ -36,6 +37,7 @@ class World:
         self.addGameobject(zombie.Zombie(self))
         self.addGameobject(Wall.Wall(self, 100, 0, 100, 300))
         self.addGameobject(Wall.Wall(self, 0, 400, 300, 400))
+        self.addGameobject(Door.Door(self,100, 300, 100, 400))
 
     def broadcastHealth(self, ID, HP, entityType):
         self.threat.broadcastHealthUpdate(ID, entityType, HP)

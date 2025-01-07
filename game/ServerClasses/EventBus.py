@@ -1,119 +1,18 @@
 class EventBus:
     def __init__(self):
-        self.playerActionListners = []
-        self.playerGenerateItemListners = []
-        self.playerRequestHitListners = []
-        self.playerHitListners = []
-        self.playerPositionUpdateListners = []
-        self.zombieHitListners = []
-        self.playerForbiddenMovementListners = []
-        self.stackCombinationRequesetListners = []
-        self.playerRequestCraftListners = []
-        self.playerRequestInteractionListners = []
-        self.playerInteractionListners = []
+        self.Listners = {}
         pass
 
-    def playerRequestCraft(self, action):
-        for listner in self.playerRequestCraftListners:
-            listner.playerRequestCraft(action)
 
-    def registerPlayerRequestCraftListner(self, listner):
-        self.playerRequestCraftListners.append(listner)
+    def registerListner(self, listner, eventString):
+        if eventString in self.Listners:
+            self.Listners[eventString].append(listner)
+        else:
+            self.Listners[eventString] = [listner]
 
-    def deRegisterPlayerRequestCraftListner(self, listner):
-        self.playerRequestCraftListners.remove(listner)
+    def event(self, eventString, action):
+        for listner in self.Listners[eventString]:
+            listner.event(eventString, action)
 
-    def playerForbiddenMovement(self, action):
-        for listner in self.playerForbiddenMovementListners:
-            listner.playerForbiddenMovement(action)
-
-    def registerPlayerForbiddenMovementListner(self, listner):
-        self.playerForbiddenMovementListners.append(listner)
-
-    def deRegisterPlayerForbiddenMovementListner(self, listner):
-        self.playerForbiddenMovementListners.remove(listner)
-
-    def playerAction(self, action):
-        for listner in self.playerActionListners:
-            listner.playerAction(action)
-
-    def registerPlayerActionListner(self, listner):
-        self.playerActionListners.append(listner)
-
-    def playerGenerateItem(self, action):
-        for listner in self.playerGenerateItemListners:
-            listner.playerGenerateItem(action)
-
-    def registerPlayerGenerateItemListner(self, listner):
-        self.playerGenerateItemListners.append(listner)
-
-    def playerRequestHit(self, action):
-        for listner in self.playerRequestHitListners:
-            listner.playerRequestHit(action)
-
-    def registerPlayerRequestHitListner(self, listner):
-        self.playerRequestHitListners.append(listner)
-
-    def deRegisterPlayerRequestHitListner(self, listner):
-        self.playerRequestHitListners.remove(listner)
-
-    def playerHit(self, action):
-        for listner in self.playerHitListners:
-            listner.playerHit(action)
-
-    def registerPlayerHitListner(self, listner):
-        self.playerHitListners.append(listner)
-
-    def deRegisterPlayerHitListner(self, listner):
-        self.playerHitListners.remove(listner)
-
-    def playerPositionUpdate(self, action):
-        for listner in self.playerPositionUpdateListners:
-            listner.playerPositionUpdate(action)
-
-    def registerPlayerPositionUpdateListner(self, listner):
-        self.playerPositionUpdateListners.append(listner)
-
-    def deRegisterPlayerPositionUpdateListner(self, listner):
-        self.playerPositionUpdateListners.remove(listner)
-
-    def zombieHit(self, action):
-        for listner in self.zombieHitListners:
-            listner.zombieHit(action)
-
-    def registerZombieHitListner(self, listner):
-        self.zombieHitListners.append(listner)
-
-    def stackCombinationRequest(self, action):
-        for listner in self.stackCombinationRequesetListners:
-            listner.stackCombinationRequest(action)
-
-    def registerStackCombinationRequestListner(self, listner):
-        self.stackCombinationRequesetListners.append(listner)
-
-    def deRegisterStackCombinationRequestListner(self, listner):
-        self.stackCombinationRequesetListners.remove(listner)
-
-    def playerRequestInteraction(self, action):
-        for listner in self.playerRequestInteractionListners:
-            listner.playerRequestInteraction(action)
-
-    def registerPlayerRequestInteractionListner(self, listner):
-        self.playerRequestInteractionListners.append(listner)
-
-    def deRegisterPlayerRequestInteractionListner(self, listner):
-        self.playerRequestInteractionListners.remove(listner)
-
-        self.playerRequestInteractionListners.append(listner)
-
-    def playerInteraction(self, action):
-        for listner in self.playerInteractionListners:
-            listner.playerInteraction(action)
-
-    def registerPlayerInteractionListner(self, listner):
-        self.playerInteractionListners.append(listner)
-
-    def deRegisterPlayerInteractionListner(self, listner):
-        self.playerInteractionListners.remove(listner)
-
-
+    def deRegisterListner(self, listner, eventString):
+        self.Listners[eventString].remove(listner)

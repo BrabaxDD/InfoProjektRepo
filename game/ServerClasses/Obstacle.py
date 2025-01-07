@@ -3,11 +3,12 @@ import uuid
 
 
 class Obstacle(GameObject.GameObject):
-    def __init__(self, world,posx,posy,posx2,posy2,entityType):
+    def __init__(self, world, posx, posy, posx2, posy2, entityType):
         ID = uuid.uuid4().int
         ID = ID % 4001001001
-        super().__init__(world=world, posx=posx, posy=posy, ID=ID, entityType=entityType)
-        self.world.eventBus.registerPlayerPositionUpdateListner(self)
+        super().__init__(world, posx, posy, ID, entityType)
+        self.world.eventBus.registerListner(self, "playerPositionUpdate")
+        self.entityType = entityType
         self.thickness = 10
         self.posx2 = posx2
         self.posy2 = posy2
@@ -30,30 +31,34 @@ class Obstacle(GameObject.GameObject):
             self.posx2, self.posy2, self.thickness, self.ID)
         pass
 
-    def playerPositionUpdate(self, action):
-        posx = action["posx"]
-        posy = action["posy"]
-        playerID = action["ID"]
-        if playerID in self.lastPlayerPosx and playerID in self.lastPlayerPosy:
-            collision = self.do_intersect(
-                (posx, posy),
-                (self.lastPlayerPosx[playerID], self.lastPlayerPosy[playerID]),
-                (self.posx, self.posy), (self.posx2, self.posy2))
-            if collision:
-                print(
-                    "log: interupted Player movement of Player with ID: " + str(playerID))
-                self.world.eventBus.playerForbiddenMovement(
-                    {"playerID": playerID, "lastPosx": self.lastPlayerPosx[playerID], "lastPosy": self.lastPlayerPosy[playerID]})
+    def event(self, eventString, action):
+        if eventString == "playerPositionUpdate":
+            posx = action["posx"]
+            posy = action["posy"]
+            playerID = action["ID"]
+            if playerID in self.lastPlayerPosx and playerID in self.lastPlayerPosy:
+                collision = self.do_intersect(
+                    (posx, posy),
+                    (self.lastPlayerPosx[playerID],
+                     self.lastPlayerPosy[playerID]),
+                    (self.posx, self.posy), (self.posx2, self.posy2))
+                if collision:
+                    print(
+                        "log: interupted Player movement of Player with ID: " + str(playerID))
+                    self.world.eventBus.event("playerForbiddenMovement",
+                                              {"playerID": playerID, "lastPosx": self.lastPlayerPosx[playerID], "lastPosy": self.lastPlayerPosy[playerID]})
+                else:
+                    self.lastPlayerPosx[playerID] = posx
+                    self.lastPlayerPosy[playerID] = posy
             else:
                 self.lastPlayerPosx[playerID] = posx
                 self.lastPlayerPosy[playerID] = posy
-        else:
-            self.lastPlayerPosx[playerID] = posx
-            self.lastPlayerPosy[playerID] = posy
 
-        pass
+            pass
+
 
 # Code von CHATGPT
+
 
     def do_intersect(self, p1, q1, p2, q2):
         # Hilfsfunktion zur Orientierung

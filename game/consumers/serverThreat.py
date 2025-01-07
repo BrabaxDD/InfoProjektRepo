@@ -36,7 +36,7 @@ class serverThreat(threading.Thread):
             self.world.broadcast()
 
     def playerActionUpdate(self, action):
-        self.world.eventBus.playerAction(action)
+        self.world.eventBus.event("playerAction", action)
 
     def login(self, ID):
         print("log: ein spieler versucht sich auf einem server einzuloggen dessen zustand " +
@@ -54,14 +54,14 @@ class serverThreat(threading.Thread):
         self.gameServerSocket.updatePosition(ID, posx, posy, entityType)
 
     def playerGenerateItem(self, event):
-        self.world.eventBus.playerGenerateItem(event)
+        pass
 
     def broadcastPlayerInventoryUpdate(self, ID, Inventory):
         self.gameServerSocket.updateInventory(ID, Inventory)
 
     def hitRequestFromPlayer(self, ID, direction):
-        self.world.eventBus.playerRequestHit(
-            {"ID": ID, "direction": direction})
+        self.world.eventBus.event("playerRequestHit",
+                                  {"ID": ID, "direction": direction})
 
     def broadcastHealthUpdate(self, ID, entityType, HP):
         self.gameServerSocket.updateHealth(ID, entityType, HP)
@@ -78,13 +78,13 @@ class serverThreat(threading.Thread):
             posx2=posx2, posy2=posy2, thickness=thickness, wallID=ID)
 
     def requestItemStackCombination(self, stackID1, stackID2, playerID):
-        self.world.eventBus.stackCombinationRequest(
+        self.world.eventBus.event("stackCombinationRequest",
             {"stackID1": stackID1, "stackID2": stackID2, "playerID": playerID})
         pass
 
     def requestCraft(self, recepi, playerID):
-        self.world.eventBus.playerRequestCraft(
-            {"recipe": recepi, "playerID": playerID})
+        self.world.eventBus.event("playerRequestCraft",
+                                  {"recipe": recepi, "playerID": playerID})
 
     def interactionRequestFromPlayer(self, playerID):
-        self.world.eventBus.playerRequestInteraction({"playerID": playerID})
+        self.world.eventBus.event("playerRequestInteraction",{"playerID": playerID})
