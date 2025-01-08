@@ -1,5 +1,6 @@
 from channels.generic.websocket import WebsocketConsumer
 import json
+import datetime
 from asgiref.sync import async_to_sync
 from game.consumers import serverThreat
 import threading
@@ -113,6 +114,7 @@ class gameServer(WebsocketConsumer):
         pass
 
     def hitRequestFromClient(self, event):
+        print(datetime.datetime.now())
         self.serverThreat.hitRequestFromPlayer(event["ID"], event["direction"])
         pass
 

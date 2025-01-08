@@ -1,6 +1,7 @@
 from channels.generic.websocket import WebsocketConsumer
 import json
 from asgiref.sync import async_to_sync
+import datetime
 
 
 class gamePlayerSocketConsumer(WebsocketConsumer):
@@ -47,6 +48,7 @@ class gamePlayerSocketConsumer(WebsocketConsumer):
                     }
                 )
             elif actiontype == "hit":
+                print(datetime.datetime.now())
                 direction = text_data_json["direction"]
                 async_to_sync(self.channel_layer.group_send)(self.serverID, {
                     "type": "hitRequestFromClient", "direction": direction, "ID": self.player_ID})

@@ -1,4 +1,5 @@
 from game.ServerClasses import GameObject
+import datetime
 import uuid
 from math import sqrt
 import math
@@ -53,6 +54,7 @@ class Zombie(GameObject.GameObject):
 
     def event(self, eventString, action):
         if eventString == "playerHit":
+            print(datetime.datetime.now())
             direction = action["direction"]
             playerID = action["ID"]
             player = action["Player"]
