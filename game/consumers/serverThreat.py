@@ -1,4 +1,5 @@
 import threading
+import datetime
 import time
 from game.consumers import gameServer
 from game.ServerClasses import World
@@ -60,6 +61,7 @@ class serverThreat(threading.Thread):
         self.gameServerSocket.updateInventory(ID, Inventory)
 
     def hitRequestFromPlayer(self, ID, direction):
+        print(datetime.datetime.now())
         self.world.eventBus.event("playerRequestHit",
                                   {"ID": ID, "direction": direction})
 

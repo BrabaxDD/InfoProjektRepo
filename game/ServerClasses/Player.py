@@ -1,4 +1,5 @@
 from game.ServerClasses import World
+import datetime
 from game.ServerClasses import Inventory, ItemsStack
 import time
 from game.ServerClasses import GameObject
@@ -218,6 +219,7 @@ class Player(GameObject.GameObject):
                 self.right = action["right"]
                 self.left = action["left"]
         if eventString == "playerRequestHit":
+            print(datetime.datetime.now())
             dmg = 50
             match self.Inventory.primaryHand:
                 case None:
