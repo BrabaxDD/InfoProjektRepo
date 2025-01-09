@@ -23,7 +23,7 @@ webSocket.onmessage = function (e) {
 
     if (data.type == "deletedGameObject") {
         scene.eventBus.triggerEvent("deleteGameObjects", { ID: data.entityID, type: data.entityType })
-        console.log("FAWFHAWFIHAWFIUH Gelöscht")
+        console.log(`FAWFHAWFIHAWFIUH Gelöscht ${data.entityID}  ${data.entityType}`)
     }
 
     if (data.type == "InventoryUpdate") {
