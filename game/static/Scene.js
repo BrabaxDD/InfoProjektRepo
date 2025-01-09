@@ -145,7 +145,7 @@ export default class Scene {
             console.log(eventObject)
             const length = this.gameObjects.length
             for (let i = 0; i <= length; i++) {
-                if (this.gameObjects[i].ID == this.gameObjects[i].ID) {
+                if (this.gameObjects[i].ID == this.eventObject.ID) {
                     console.log("ID: ", eventObject.ID, " Type: ", eventObject.type)
                     this.removeObject(this.gameObjects[i])
                     console.log(this.gameObjects[i])
