@@ -114,6 +114,7 @@ class gameServer(WebsocketConsumer):
         pass
 
     def hitRequestFromClient(self, event):
+        print("arrived at server consumer (after redis)")
         print(datetime.datetime.now())
         self.serverThreat.hitRequestFromPlayer(event["ID"], event["direction"])
         pass

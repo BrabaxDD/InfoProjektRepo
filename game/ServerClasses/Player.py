@@ -219,6 +219,7 @@ class Player(GameObject.GameObject):
                 self.right = action["right"]
                 self.left = action["left"]
         if eventString == "playerRequestHit":
+            print("arrived at Player")
             print(datetime.datetime.now())
             dmg = 50
             match self.Inventory.primaryHand:
