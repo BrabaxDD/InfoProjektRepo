@@ -219,8 +219,6 @@ class Player(GameObject.GameObject):
                 self.right = action["right"]
                 self.left = action["left"]
         if eventString == "playerRequestHit":
-            print("arrived at Player")
-            print(datetime.datetime.now())
             dmg = 50
             match self.Inventory.primaryHand:
                 case None:
@@ -277,7 +275,6 @@ class Player(GameObject.GameObject):
         if eventString == "playerRequestInteraction":
             if self.interactioCooldown < 0:
                 playerID = action["playerID"]
-                print("log: Aplayer is trying to interact")
                 if playerID == self.ID:
                     self.world.eventBus.event("playerInteraction",
                         {"playerID": self.ID, "player": self})
