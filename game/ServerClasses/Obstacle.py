@@ -8,12 +8,15 @@ class Obstacle(GameObject.GameObject):
         ID = ID % 4001001001
         super().__init__(world, posx, posy, ID, entityType)
         self.world.eventBus.registerListner(self, "playerPositionUpdate")
+        self.world.eventBus.registerListner(self, "zombiePositionUpdate")
         self.entityType = entityType
         self.thickness = 10
         self.posx2 = posx2
         self.posy2 = posy2
         self.lastPlayerPosx = {}
         self.lastPlayerPosy = {}
+        self.lastZombiePosx = {}
+        self.lastZombiePosy = {}
         self.framecount = 0
         pass
 
@@ -32,6 +35,30 @@ class Obstacle(GameObject.GameObject):
         pass
 
     def event(self, eventString, action):
+        if eventString == "zombiePositionUpdate":
+            posx = action["posx"]
+            posy = action["posy"]
+            zombieID = action["zombieID"]
+            if zombieID in self.lastZombiePosx and zombieID in self.lastZombiePosy:
+                collision = self.do_intersect(
+                    (posx, posy),
+                    (self.lastZombiePosx[zombieID],
+                     self.lastZombiePosy[zombieID]),
+                    (self.posx, self.posy), (self.posx2, self.posy2))
+                if collision:
+                    print(
+                        "log: interupted Zombie movement of Player with ID: " + str(zombieID))
+                    self.world.eventBus.event("zombieForbiddenMovement",
+                                              {"zombieID": zombieID, "lastPosx": self.lastZombiePosx[zombieID], "lastPosy": self.lastZombiePosy[zombieID]})
+                else:
+                    self.lastZombiePosx[zombieID] = posx
+                    self.lastZombiePosy[zombieID] = posy
+            else:
+                self.lastZombiePosx[zombieID] = posx
+                self.lastZombiePosy[zombieID] = posy
+
+            pass
+
         if eventString == "playerPositionUpdate":
             posx = action["posx"]
             posy = action["posy"]
@@ -58,7 +85,6 @@ class Obstacle(GameObject.GameObject):
 
 
 # Code von CHATGPT
-
 
     def do_intersect(self, p1, q1, p2, q2):
         # Hilfsfunktion zur Orientierung

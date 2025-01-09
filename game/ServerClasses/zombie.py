@@ -14,6 +14,7 @@ class Zombie(GameObject.GameObject):
         super().__init__(world, posx=0, posy=0, ID=ID, entityType="Zombie")
         self.world.eventBus.registerListner(self, "playerPositionUpdate")
         self.world.eventBus.registerListner(self, "playerHit")
+        self.world.eventBus.registerListner(self, "zombieForbiddenMovement")
         self.HP = 200
         self.nearestPlayerID = 0
         self.nearestPlayerDistance = 10000000000000
@@ -25,7 +26,9 @@ class Zombie(GameObject.GameObject):
 
     def deleteSelf(self):
         self.world.eventBus.deRegisterListner(self, "playerHit")
-        self.world.eventBus.deRegisterListner(self,"playerPositionUpdate")
+        self.world.eventBus.deRegisterListner(self, "playerPositionUpdate")
+        self.world.eventBus.deReigsterListner(self, "zombieForbiddenMovement")
+
         super().deleteSelf()
 
     def process(self, delta):
@@ -37,6 +40,8 @@ class Zombie(GameObject.GameObject):
                                   self.nearestPlayerDistance * self.velocity)
             self.posy += delta * ((self.nearestPlayerPosy - self.posy) /
                                   self.nearestPlayerDistance * self.velocity)
+            self.world.eventBus.event("zombiePositionUpdate", {
+                                      "zombieID": self.ID, "posx": self.posx, "posy": self.posy})
         if self.nearestPlayerDistance < 400 and self.timesincelasthit > 1:
             self.timesincelasthit = 0
             self.world.eventBus.event("zombieHit",
@@ -87,3 +92,7 @@ class Zombie(GameObject.GameObject):
                     self.nearestPlayerID = ID
                     self.nearestPlayerPosx = posx
                     self.nearestPlayerPosy = posy
+        if eventString == "zombieForbiddenMovement":
+            if self.ID == action["zombieID"]:
+                self.posx = action["lastPosx"]
+                self.posy = action["lastPosy"]
