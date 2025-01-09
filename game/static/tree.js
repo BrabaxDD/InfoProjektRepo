@@ -10,6 +10,16 @@ export default class Tree extends GameObject{
         this.ID = ID
         this.posx = 0
         this.posy = 0
+        this.image = null
+        this.scene.imageLoader.load(
+            "Tree1.png",
+            (image) => {
+                this.image = image;
+            },
+            (error) => {
+                console.error(`Error preloading tile image: ${fileName}`, error);
+            }
+        );
     }
 
     render(){
@@ -19,6 +29,11 @@ export default class Tree extends GameObject{
         this.ctx.font = font;
         this.ctx.fillStyle = 'black';
         this.ctx.textBaseline = 'left';
+        this.ctx.drawImage(
+            this.image,
+            this.posx - (this.scene.camera.posx - this.scene.camera.cameraWidth/2),
+            this.posy - (this.scene.camera.posy- this.scene.camera.cameraHeight/2),
+        );
         
     }
 
