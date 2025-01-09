@@ -6,11 +6,12 @@ export default class Door extends GameObject {
         this.canvas = this.scene.canvas
         this.ctx = this.scene.canvas.getContext("2d")
         this.scene.eventBus.registerListner("position", this)
+        this.scene.eventBus.registerListner("wallInformation", this)
         this.ID = ID
         this.posx = 0
         this.posy = 0
-        this.posx2 = 0
-        this.posy2 = 0
+        this.posx2 = 100
+        this.posy2 = 100
         this.thickness = 10
     }
 
@@ -31,6 +32,13 @@ export default class Door extends GameObject {
         if (eventString == "position" && eventObject.type == "Door" && eventObject.ID == this.ID) {
             this.posx = eventObject.posx
             this.posy = eventObject.posy
+        }
+        if (eventString == "wallInformation") {
+            if (eventObject.wallID == this.ID) {
+                this.posx2 = eventObject.posx2
+                this.posy2 = eventObject.posy2
+                this.thickness = eventObject.thickness
+            }
         }
     }
 }

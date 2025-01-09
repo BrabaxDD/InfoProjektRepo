@@ -56,7 +56,7 @@ webSocket.onmessage = function (e) {
         return
     }
     if (data.type == "wallInformation") {
-        scene.eventBus.triggerEvent("wallInformation", { wallID: data.wallID, posx2: data.posx2, posy2: data.posy2, thickness: data.thickness })
+        scene.eventBus.triggerEvent("wallInformation", {wallID: data.wallID, posx2: data.posx2, posy2: data.posy2, thickness: data.thickness })
 
         return
     }
