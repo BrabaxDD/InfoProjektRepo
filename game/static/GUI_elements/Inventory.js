@@ -75,7 +75,9 @@ export default class Inventory extends GameObject {
             Wood: "wood.png",
             Rags: "Rags.png",
             Screwdriver: "Screwdriver.png",
-            Apple: "Apple.png"
+            Apple: "Apple.png",
+            FirstAidKit: "FirstAidKit.png",
+            Scrap: "Scrap.png"
         };
 
         this.images = await this.loadAllImages(this.imagesIndex)
