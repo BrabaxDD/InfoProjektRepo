@@ -1,8 +1,8 @@
 import GameObject from "./GameObject.js"
 import { font } from "./game.js"
 
-export default class Tree extends GameObject{
-    constructor(scene, ID){
+export default class Tree extends GameObject {
+    constructor(scene, ID) {
         super(scene)
         this.canvas = this.scene.canvas
         this.ctx = this.scene.canvas.getContext("2d")
@@ -22,27 +22,29 @@ export default class Tree extends GameObject{
         );
     }
 
-    render(){
+    render() {
         this.ctx.fillStyle = "green";
-        this.ctx.fillRect(this.posx - (this.scene.camera.posx - this.scene.camera.cameraWidth/2) , this.posy - (this.scene.camera.posy- this.scene.camera.cameraHeight/2), 10, 10);
+        this.ctx.fillRect(this.posx - (this.scene.camera.posx - this.scene.camera.cameraWidth / 2), this.posy - (this.scene.camera.posy - this.scene.camera.cameraHeight / 2), 10, 10);
 
         this.ctx.font = font;
         this.ctx.fillStyle = 'black';
         this.ctx.textBaseline = 'left';
-        this.ctx.drawImage(
-            this.image,
-            this.posx - (this.scene.camera.posx - this.scene.camera.cameraWidth/2),
-            this.posy - (this.scene.camera.posy- this.scene.camera.cameraHeight/2),
-        );
-        
-    }
-
-    process(){}
-
-    event(eventString, eventObject){
-        if (eventString == "position" && eventObject.type == "Tree" && eventObject.ID == this.ID) {
-            this.posx = eventObject.posx
-            this.posy = eventObject.posy
+        if (this.image != null) {
+            this.ctx.drawImage(
+                this.image,
+                this.posx - (this.scene.camera.posx - this.scene.camera.cameraWidth / 2),
+                this.posy - (this.scene.camera.posy - this.scene.camera.cameraHeight / 2),
+            );
         }
     }
+
+
+process(){ }
+
+event(eventString, eventObject){
+    if (eventString == "position" && eventObject.type == "Tree" && eventObject.ID == this.ID) {
+        this.posx = eventObject.posx
+        this.posy = eventObject.posy
+    }
+}
 }
