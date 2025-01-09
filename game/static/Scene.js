@@ -27,7 +27,7 @@ export default class Scene {
 
         this.eventBus.registerListner("keydown", this)
         this.eventBus.registerListner("mouseDown", this)
-        this.eventBus.registerListner("deleteGameObjects", this)
+        this.eventBus.registerListner("deletedGameObject", this)
 
         this.canvas.addEventListener('mousemove', (event) => {
             // Get the bounding rectangle of the canvas
@@ -140,7 +140,7 @@ export default class Scene {
             this.mouseDown = eventObject.status
 
         }
-        if (eventString == "deleteGameObjects") {
+        if (eventString == "deletedGameObject") {
             console.log("Trying to Delete Object: " + eventObject.ID + "  " + eventObject.type)
             console.log(eventObject)
             const length = this.gameObjects.length
