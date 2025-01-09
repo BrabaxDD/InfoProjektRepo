@@ -145,7 +145,7 @@ export default class Scene {
             console.log(eventObject)
             const length = this.gameObjects.length
             for (let i = 0; i <= length; i++) {
-                if (this.gameObjects[i].ID === this.eventObject.ID) {
+                if (this.gameObjects[i].ID === eventObject.ID) {
                     console.log("OBJECT TO DELETE: ID: ", eventObject.ID, " Type: ", eventObject.type)
                     console.log("OBJECT THAT IS DELETED: Typ: " + this.gameObjects[i].constructor.name)
                     this.removeObject(this.gameObjects[i])
