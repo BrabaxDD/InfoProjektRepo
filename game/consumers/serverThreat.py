@@ -61,8 +61,6 @@ class serverThreat(threading.Thread):
         self.gameServerSocket.updateInventory(ID, Inventory)
 
     def hitRequestFromPlayer(self, ID, direction):
-        print("arrived at threat")
-        print(datetime.datetime.now())
         self.world.eventBus.event("playerRequestHit",
                                   {"ID": ID, "direction": direction})
 
