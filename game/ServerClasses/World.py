@@ -1,4 +1,5 @@
 from game.ServerClasses import EventBus
+from game.ServerClasses import chest
 from game.ServerClasses import Tree
 from game.ServerClasses import zombie
 from game.ServerClasses import Wall
@@ -37,7 +38,8 @@ class World:
         self.addGameobject(zombie.Zombie(self))
         self.addGameobject(Wall.Wall(self, 100, 0, 100, 300))
         self.addGameobject(Wall.Wall(self, 0, 400, 300, 400))
-        self.addGameobject(Door.Door(self,100, 300, 100, 400))
+        self.addGameobject(Door.Door(self, 100, 300, 100, 400))
+        self.addGameobject(chest.Chest(self, 0, 0))
 
     def broadcastHealth(self, ID, HP, entityType):
         self.threat.broadcastHealthUpdate(ID, entityType, HP)
