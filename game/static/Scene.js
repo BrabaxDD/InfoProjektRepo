@@ -142,6 +142,7 @@ export default class Scene {
         }
         if (eventString == "deleteGameObjects") {
             console.log("Trying to Delete Object: " + eventObject.ID + "  " + eventObject.type)
+            console.log(eventObject)
             const length = this.gameObjects.length
             for (let i = 0; i <= length; i++) {
                 if (this.gameObjects[i].ID == this.gameObjects[i].ID) {
