@@ -60,18 +60,16 @@ webSocket.onmessage = function (e) {
     }
 
     if (data.type == "newGameObject") {
-
+        console.log(data)
         if (data.entityType == "Wall") {
             const W = new Wall(scene, data.ID)
             scene.addObject(W)
-            console.log(scene.gameObjects)
             return
         }
 
         if (data.entityType == "Tree") {
             const t = new Tree(scene, data.ID)
             scene.addObject(t)
-            console.log(scene.gameObjects)
             return
         }
         if (data.entityType == "Player") {
@@ -82,8 +80,6 @@ webSocket.onmessage = function (e) {
         if (data.entityType == "Zombie") {
             const z = new Zombie(scene, data.ID)
             scene.addObject(z)
-            console.log("new Zombie")
-            console.log(scene.gameObjects)
         }
         if (data.entityType == "Door"){
             const d = new Door(scene, data.ID)
