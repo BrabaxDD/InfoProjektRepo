@@ -52,9 +52,15 @@ class gamePlayerSocketConsumer(WebsocketConsumer):
                 async_to_sync(self.channel_layer.group_send)(self.serverID, {
                     "type": "hitRequestFromClient", "direction": direction, "ID": self.player_ID})
             elif actiontype == "interact":
-                print("log: Player with ID " + str(self.player_ID) + " is trying to interact")
+                print("log: Player with ID " +
+                      str(self.player_ID) + " is trying to interact")
                 async_to_sync(self.channel_layer.group_send)(self.serverID, {
                     "type": "interactionRequestFromClient", "playerID": self.player_ID})
+        if messageType == "setHotbar":
+            stackID = text_data_json["stackID"]
+            hotbarSlot = text_data_json["hotbarSlot"]
+            async_to_sync(self.channel_layer.group_send)(self.serverID, {"type": "setHotbar",
+                                                                         "playerID": self.player_ID, "stackID": stackID, "hotbarSlot": hotbarSlot})
         if messageType == "combineStacks":
             print("log: got request to combine stacks with the following content")
             print(text_data_json)
@@ -201,5 +207,9 @@ class gamePlayerSocketConsumer(WebsocketConsumer):
                 "log: sending connection accepted message to client with ID: " + str(self.player_ID))
             self.send(text_data=json.dumps({"type": "connectionAccepted"}))
         pass
-    def interactionRequestFromClient(self,event):
+
+    def interactionRequestFromClient(self, event):
+        pass
+
+    def setHotbar(self, event):
         pass

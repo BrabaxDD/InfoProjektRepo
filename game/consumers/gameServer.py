@@ -14,7 +14,6 @@ class gameServer(WebsocketConsumer):
         self.serverID = ""
         self.running = False
         self.serverThreat = serverThreat.serverThreat("test", 1000, self)
-        
 
     def connect(self):
         self.accept()
@@ -178,5 +177,11 @@ class gameServer(WebsocketConsumer):
     def interactionRequestFromClient(self, event):
         playerID = event["playerID"]
         self.serverThreat.interactionRequestFromPlayer(playerID)
+        pass
 
+    def setHotbar(self, event):
+        stackID = event["stackID"]
+        hotbarSlot = event["hotbarSlot"]
+        playerID = event["palyerID"]
+        self.serverThreat.setHotbarRequest(playerID, hotbarSlot, stackID)
         pass

@@ -80,7 +80,7 @@ class serverThreat(threading.Thread):
 
     def requestItemStackCombination(self, stackID1, stackID2, playerID):
         self.world.eventBus.event("stackCombinationRequest",
-            {"stackID1": stackID1, "stackID2": stackID2, "playerID": playerID})
+                                  {"stackID1": stackID1, "stackID2": stackID2, "playerID": playerID})
         pass
 
     def requestCraft(self, recepi, playerID):
@@ -88,4 +88,9 @@ class serverThreat(threading.Thread):
                                   {"recipe": recepi, "playerID": playerID})
 
     def interactionRequestFromPlayer(self, playerID):
-        self.world.eventBus.event("playerRequestInteraction",{"playerID": playerID})
+        self.world.eventBus.event("playerRequestInteraction", {
+                                  "playerID": playerID})
+
+    def setHotbarRequest(self, playerID, hotbarSlot, stackID):
+        self.world.eventBus.event("setHotbarRequest", {
+                                  "playerID": playerID, "HotbarSlot": hotbarSlot, "stackID": stackID})
