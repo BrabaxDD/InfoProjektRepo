@@ -1,0 +1,7 @@
+Performing system checks...
+
+System check identified no issues (0 silenced).
+January 10, 2025 - 17:01:18
+Django version 5.1.4, using settings 'Infoproject.settings'
+Starting ASGI/Daphne version 4.1.2 development server at http://0.0.0.0:8100/
+Quit the server with CONTROL-C.
