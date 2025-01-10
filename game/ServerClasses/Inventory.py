@@ -7,7 +7,10 @@ import json
 class Inventory:
     def __init__(self):
         self.items = []
-        self.primaryHand = None
+        self.hotbar = []
+        self.hotbarSize = 6
+        for i in range(6):
+            self.hotbar.append(None)
 
     def addItem(self, itemStack):
         self.items.append(itemStack)

@@ -65,7 +65,7 @@ class Player(GameObject.GameObject):
         self.posx = newPosx
         self.posy = newPosy
         self.world.eventBus.event("playerPositionUpdate",
-            {"posx": self.posx, "posy": self.posy, "ID": self.ID})
+                                  {"posx": self.posx, "posy": self.posy, "ID": self.ID})
 
     def broadcast(self):
         self.world.broadcastPosition(self.ID, self.posx, self.posy, "Player")
@@ -187,6 +187,14 @@ class Player(GameObject.GameObject):
                 current += stack.size
         return current
 
+    def getItemStackByStackID(self, itemID):
+        currentStack = None
+        for stack in self.Inventory.items:
+            if stack.stackID == itemID:
+                currentStack = stack
+        return currentStack
+        pass
+
     def getItemStackByItemID(self, ItemID):
         currentStack = None
         for stack in self.Inventory.items:
@@ -218,6 +226,14 @@ class Player(GameObject.GameObject):
                 self.down = action["down"]
                 self.right = action["right"]
                 self.left = action["left"]
+        if eventString == "setHotbarRequest":
+            playerID = action["playerID"]
+            if playerID == self.playerAction():
+                stackID = action["stackID"]
+                hotbarSlot = action["HotbarSlot"]
+                stack = self.getItemStackByStackID(stackID)
+                self.Inventory.hotbar[hotbarSlot] = stack
+
         if eventString == "playerRequestHit":
             dmg = 50
             match self.Inventory.primaryHand:
@@ -277,5 +293,5 @@ class Player(GameObject.GameObject):
                 playerID = action["playerID"]
                 if playerID == self.ID:
                     self.world.eventBus.event("playerInteraction",
-                        {"playerID": self.ID, "player": self})
+                                              {"playerID": self.ID, "player": self})
                     pass

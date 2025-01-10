@@ -5,6 +5,7 @@ import SceneSwitcher from './SceneSwitcher.js';
 import Tree from './tree.js';
 import Zombie from "./zombie.js";
 import Wall from "./Wall.js";
+import Door from './Door.js';
 
 export const font = "20px Arial"
 
@@ -15,14 +16,16 @@ const webSocketHost = new WebSocket('ws://' + window.location.host + '/game/serv
 const webSocket = new WebSocket('ws://' + window.location.host + '/game/login')
 
 
-webSocket.onmessage = function(e) {
+webSocket.onmessage = function (e) {
     const data = JSON.parse(e.data)
     //console.log("")
     //console.log(data)
 
-    if(data.type == "deletedGameObject"){
-        scene.eventBus.triggerEvent("deleteGameObjects", {ID:data.entityID, type:data.entityType})
-        console.log("FAWFHAWFIHAWFIUH Gelöscht")
+    if (data.type == "deletedGameObject") {
+        
+        scene.eventBus.triggerEvent("deletedGameObject", { ID: data.entityID, type: data.entityType })
+        console.log(`FAWFHAWFIHAWFIUH Gelöscht ${data.entityID}  ${data.entityType}`)
+        console.log(data)
     }
 
     if (data.type == "InventoryUpdate") {
@@ -31,12 +34,12 @@ webSocket.onmessage = function(e) {
         scene.eventBus.triggerEvent("inventory", data.Inventory)
         return
     }
-    if (data.type == "connectionRefused"){
+    if (data.type == "connectionRefused") {
         console.log("connectionRefused")
     }
-    if (data.type == "connectionAccepted"){
+    if (data.type == "connectionAccepted") {
         console.log("connectionAccepted")
-        scene.eventBus.triggerEvent("switchScene",{sceneToSwitch:2})
+        scene.eventBus.triggerEvent("switchScene", { sceneToSwitch: 2 })
         isStarted = true
 
 
@@ -53,24 +56,22 @@ webSocket.onmessage = function(e) {
         return
     }
     if (data.type == "wallInformation") {
-        scene.eventBus.triggerEvent("wallInformation", { wallID: data.wallID, posx2: data.posx2, posy2: data.posy2, thickness: data.thickness })
+        scene.eventBus.triggerEvent("wallInformation", {wallID: data.wallID, posx2: data.posx2, posy2: data.posy2, thickness: data.thickness })
 
         return
     }
 
     if (data.type == "newGameObject") {
-
+        console.log(data)
         if (data.entityType == "Wall") {
             const W = new Wall(scene, data.ID)
             scene.addObject(W)
-            console.log(scene.gameObjects)
             return
         }
 
         if (data.entityType == "Tree") {
             const t = new Tree(scene, data.ID)
             scene.addObject(t)
-            console.log(scene.gameObjects)
             return
         }
         if (data.entityType == "Player") {
@@ -81,8 +82,10 @@ webSocket.onmessage = function(e) {
         if (data.entityType == "Zombie") {
             const z = new Zombie(scene, data.ID)
             scene.addObject(z)
-            console.log("new Zombie")
-            console.log(scene.gameObjects)
+        }
+        if (data.entityType == "Door"){
+            const d = new Door(scene, data.ID)
+            scene.addObject(d)
         }
 
     }
@@ -181,7 +184,7 @@ export function loginToServer(serverName) {
     let d = new Date()
     loginID = Math.floor(Math.random() * 3000000001)
     webSocket.send(JSON.stringify({ type: "login", ID: loginID, serverID: serverName }))
-//    isStarted = true
+    //    isStarted = true
 }
 
 export function loginToServerHost(serverName) {
@@ -210,9 +213,9 @@ export function hit() {
     console.log("HIT")
     webSocket.send(JSON.stringify({ type: "action", actiontype: "hit", direction: 100 }))
 }
-export function interact(){
+export function interact() {
     console.log("interact")
-    webSocket.send(JSON.stringify({type: "action", actiontype: "interact"}))
+    webSocket.send(JSON.stringify({ type: "action", actiontype: "interact" }))
 
 
 }
