@@ -27,7 +27,7 @@ class Zombie(GameObject.GameObject):
     def deleteSelf(self):
         self.world.eventBus.deRegisterListner(self, "playerHit")
         self.world.eventBus.deRegisterListner(self, "playerPositionUpdate")
-        self.world.eventBus.deReigsterListner(self, "zombieForbiddenMovement")
+        self.world.eventBus.deRegisterListner(self, "zombieForbiddenMovement")
 
         super().deleteSelf()
 

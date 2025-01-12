@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 from game.ServerClasses import jsonSerializer
+from game.ServerClasses import ItemsStack
 import json
 
 
@@ -9,6 +10,7 @@ class Inventory:
         self.items = []
         self.hotbar = []
         self.hotbarSize = 6
+        self.activeSlot = 0
         for i in range(6):
             self.hotbar.append(None)
 
@@ -25,4 +27,7 @@ class Inventory:
                 indexToRemove = i
         if indexToRemove is not None:
             del self.items[indexToRemove]
-        print("log: someone tryes to remove a nonexistigng stack with ID: " + str(stackID))
+        for i, item in enumerate(self.hotbar):
+            if item is not None:
+                if item.stackID == stackID:
+                    self.hotbar[i] = None

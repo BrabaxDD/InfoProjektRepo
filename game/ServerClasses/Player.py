@@ -28,6 +28,10 @@ class Player(GameObject.GameObject):
         self.HP = 200
         self.firstBroadcast = False
         self.interactioCooldown = 0
+        ID = uuid.uuid4().int
+        ID = ID % 4001001001
+        self.addItemToInv(ItemsStack.ItemStack("FirstAidKit", 5, ID))
+        self.Inventory.hotbar[0] = self.getItemStackByItemID("FirstAidKit")
 
     def playerAction(self, action):
         if action["ID"] == self.ID:
@@ -41,8 +45,13 @@ class Player(GameObject.GameObject):
     def setInteractionCooldown(self, time):
         self.interactioCooldown = time
 
+    def setHealth(self, HP):
+        self.HP = HP
+        self.world.broadcastHealth(self.ID, self.HP, "Player")
+
     def broadcastInit(self):
         self.world.broadcastHealth(self.ID, self.HP, "Player")
+        self.world.broadcastPlayerInventoryUpdate(self.ID, self.Inventory)
 
     def process(self, delta):
         self.interactioCooldown -= delta
@@ -98,26 +107,6 @@ class Player(GameObject.GameObject):
             itemID = itemAmount[0]
             neededItemStackSize = itemAmount[1]
             needed = neededItemStackSize
-            while needed > 0:
-                stack = self.getItemStackByItemID(itemID)
-                if stack.size > needed:
-                    self.changeStackSize(stack, stack.size - needed)
-                    return True
-                elif stack.size == needed:
-                    self.removeItemFromInv(stackID=stack.stackID)
-                    return True
-                elif stack.size < needed:
-                    self.removeItemFromInv(stackID=stack.stackID)
-                    needed -= stack.size
-            print("log: beim Konsumieren von Items von Spieler: " +
-                  str(self.ID) + " ist etwas schiefgegangen")
-            return False
-
-    def consumeItems(self, itemID, amount):
-        if self.getItemAmountByItemID(itemID) < amount:
-            return False
-        else:
-            needed = amount
             while needed > 0:
                 stack = self.getItemStackByItemID(itemID)
                 if stack.size > needed:
@@ -236,10 +225,6 @@ class Player(GameObject.GameObject):
 
         if eventString == "playerRequestHit":
             dmg = 50
-            match self.Inventory.primaryHand:
-                case None:
-                    dmg = 50
-
             if action["ID"] == self.ID:
                 if time.perf_counter() - self.lastHit > 0.5:
                     self.lastHit = time.perf_counter()
@@ -291,7 +276,15 @@ class Player(GameObject.GameObject):
         if eventString == "playerRequestInteraction":
             if self.interactioCooldown < 0:
                 playerID = action["playerID"]
+
                 if playerID == self.ID:
-                    self.world.eventBus.event("playerInteraction",
-                                              {"playerID": self.ID, "player": self})
-                    pass
+                    if self.Inventory.hotbar[self.Inventory.activeSlot] is None:
+                        self.world.eventBus.event("playerInteraction",
+                                                  {"playerID": self.ID, "player": self})
+                        pass
+                    else:
+                        match self.Inventory.hotbar[self.Inventory.activeSlot].itemID:
+                            case "FirstAidKit":
+                                if self.consumeMultipleItems([("FirstAidKit", 1)]):
+                                    self.setHealth(self.HP + 1000)
+                                    print("log: consumed AIdKit")
