@@ -5,6 +5,7 @@ import InventorySlot from "./InventorySlot.js"
 import { addTestInv } from "../game.js"
 import ButtonGameObject from "./Button.js"
 import { sendCraftingRequest } from "../game.js"
+import EquippedInventory from "./EquippedInventory.js"
 
 export default class Inventory extends GameObject {
     constructor(scene) {
@@ -20,7 +21,7 @@ export default class Inventory extends GameObject {
         this.scene.eventBus.registerListner("splitStack", this)
         this.scene.eventBus.registerListner("mouseJustDown", this)
         this.scene.eventBus.registerListner("craftsticks", this)
-        this.scene.eventBus.registerListner("CraftRequest",this)
+        this.scene.eventBus.registerListner("CraftRequest", this)
 
         //this.scene.eventBus.registerListner("click_on_canvas",this)
 
@@ -64,7 +65,7 @@ export default class Inventory extends GameObject {
         this.selectAllButton = new ButtonGameObject(this.posx, this.posy + this.invHeight + 40, this.invWidth, 40, "selectAll", {}, this.scene, "ALL")
         this.splitButton = new ButtonGameObject(this.posx, this.posy + this.invHeight + 80, this.invWidth, 40, "splitStack", {}, this.scene, "SPLIT SELECTED STACK")
         this.craftButton = new ButtonGameObject(this.posx, this.posy + this.invHeight + 120, this.invWidth, 40, "CraftRequest", {}, this.scene, "Craft")
-
+        this.equippedinv = new EquippedInventory(this, this.posx + this.invWidth, this.posy - this.textBoderSize)
     }
 
 
@@ -149,7 +150,7 @@ export default class Inventory extends GameObject {
             this.craft("Sticks")
             console.log("attempting to craft sticks")
         }
-        if (eventString == "CraftRequest"){
+        if (eventString == "CraftRequest") {
             this.craft(eventObject.recipe)
             console.log("attempting to craft: " + eventObject.recipe)
 
@@ -312,6 +313,7 @@ export default class Inventory extends GameObject {
             }
             this.splitButton.render()
         }
+        this.equippedinv.render()
     }
 
     process() {
