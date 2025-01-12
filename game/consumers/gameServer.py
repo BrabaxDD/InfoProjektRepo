@@ -185,3 +185,10 @@ class gameServer(WebsocketConsumer):
         playerID = event["palyerID"]
         self.serverThreat.setHotbarRequest(playerID, hotbarSlot, stackID)
         pass
+
+    def setActiveSlot(self, event):
+        playerID = event["playerID"]
+        slot = event["slot"]
+        self.serverThreat.world.eventBus.event(
+            "setActiveSlot", {"playerID": playerID, "slot": slot})
+        pass

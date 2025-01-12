@@ -23,6 +23,7 @@ class Player(GameObject.GameObject):
         self.world.eventBus.registerListner(self, "playerForbiddenMovement")
         self.world.eventBus.registerListner(self, "stackCombinationRequest")
         self.world.eventBus.registerListner(self, "playerRequestInteraction")
+        self.world.eventBus.registerListner(self, "setActiveSlot")
         self.Inventory = Inventory.Inventory()
         self.lastHit = time.perf_counter()
         self.HP = 200
@@ -194,6 +195,11 @@ class Player(GameObject.GameObject):
         pass
 
     def event(self, eventString, action):
+        if eventString == "setActiveSlot":
+            playerID = action["playerID"]
+            if playerID == self.ID:
+                slot = action["slot"]
+                self.Inventory.activeSlot = slot
         if eventString == "playerRequestCraft":
             playerID = action["playerID"]
             if playerID == self.ID:

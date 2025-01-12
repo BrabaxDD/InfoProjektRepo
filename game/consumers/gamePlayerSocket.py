@@ -61,6 +61,12 @@ class gamePlayerSocketConsumer(WebsocketConsumer):
             hotbarSlot = text_data_json["hotbarSlot"]
             async_to_sync(self.channel_layer.group_send)(self.serverID, {"type": "setHotbar",
                                                                          "playerID": self.player_ID, "stackID": stackID, "hotbarSlot": hotbarSlot})
+        if messageType == "setActiveSlot":
+            slot = text_data_json["slot"]
+            print("log: git Request to change active Slot from player: " +
+                  str(self.player_ID) + " to Slot number: " + slot)
+            async_to_sync(self.channel_layer.group_send)(self.serverID, {
+                "type": "setActiveSlot", "playerID": self.player_ID, "slot": slot})
         if messageType == "combineStacks":
             print("log: got request to combine stacks with the following content")
             print(text_data_json)
@@ -212,4 +218,7 @@ class gamePlayerSocketConsumer(WebsocketConsumer):
         pass
 
     def setHotbar(self, event):
+        pass
+
+    def setActiveSlot(self, event):
         pass
