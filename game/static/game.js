@@ -16,13 +16,13 @@ const webSocketHost = new WebSocket('ws://' + window.location.host + '/game/serv
 const webSocket = new WebSocket('ws://' + window.location.host + '/game/login')
 
 
-webSocket.onmessage = function (e) {
+webSocket.onmessage = function(e) {
     const data = JSON.parse(e.data)
     //console.log("")
     //console.log(data)
 
     if (data.type == "deletedGameObject") {
-        
+
         scene.eventBus.triggerEvent("deletedGameObject", { ID: data.entityID, type: data.entityType })
         console.log(`FAWFHAWFIHAWFIUH Gelöscht ${data.entityID}  ${data.entityType}`)
         console.log(data)
@@ -56,7 +56,7 @@ webSocket.onmessage = function (e) {
         return
     }
     if (data.type == "wallInformation") {
-        scene.eventBus.triggerEvent("wallInformation", {wallID: data.wallID, posx2: data.posx2, posy2: data.posy2, thickness: data.thickness })
+        scene.eventBus.triggerEvent("wallInformation", { wallID: data.wallID, posx2: data.posx2, posy2: data.posy2, thickness: data.thickness })
 
         return
     }
@@ -83,7 +83,7 @@ webSocket.onmessage = function (e) {
             const z = new Zombie(scene, data.ID)
             scene.addObject(z)
         }
-        if (data.entityType == "Door"){
+        if (data.entityType == "Door") {
             const d = new Door(scene, data.ID)
             scene.addObject(d)
         }
@@ -221,4 +221,9 @@ export function interact() {
 }
 export function addTestInv() {
     scene.eventBus.triggerEvent("inventory", { "items": [{ "size": 99, "itemID": "Stick", "tags": [] }, { itemID: "Stick", size: 3, tags: {} }, { itemID: 2, size: 5, tags: {} }, { itemID: "Stick", size: 5, tags: {} }, { itemID: "Stick", size: 8, tags: {} }, { "size": 99, "itemID": "Stick", "tags": [] }, { itemID: "Stick", size: 3, tags: {} }, { itemID: 2, size: 5, tags: {} }, { itemID: "Stick", size: 5, tags: {} }, { itemID: "Stick", size: 8, tags: {} }] })
+}
+
+export function setHotbarSlot(stackID, slotNumber) {
+    console.log("sending new Hotbarslot to Server: stackID:" + stackID + "  into slot number:" + slotNumber)
+    webSocket.send(JSON.stringify({ type: "setHotbar", stackID: stackID, hotbarSlot: slotNumber }))
 }

@@ -1,5 +1,5 @@
-export default class GameObject{
-    constructor(sceneObject){
+export default class GameObject {
+    constructor(sceneObject) {
         this.scene = sceneObject
     }
 }

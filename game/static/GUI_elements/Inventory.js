@@ -6,6 +6,7 @@ import { addTestInv } from "../game.js"
 import ButtonGameObject from "./Button.js"
 import { sendCraftingRequest } from "../game.js"
 import EquippedInventory from "./EquippedInventory.js"
+import { setHotbarSlot } from "../game.js"
 
 export default class Inventory extends GameObject {
     constructor(scene) {
@@ -15,6 +16,8 @@ export default class Inventory extends GameObject {
 
         //        this.content = [{ "size": 99, "itemID": "Stick", "tags": [] }, { itemID: "Stick", size: 3, tags: {} }, { itemID: 2, size: 5, tags: {} }, { itemID: "Stick", size: 5, tags: {} }, { itemID: "Stick", size: 8, tags: {} }, { "size": 99, "itemID": "Stick", "tags": [] }, { itemID: "Stick", size: 3, tags: {} }, { itemID: 2, size: 5, tags: {} }, { itemID: "Stick", size: 5, tags: {} }, { itemID: "Stick", size: 8, tags: {} }] //All item stacks
         this.content = []
+        this.hotbar = []
+
         this.scene.eventBus.registerListner("inventory", this)
         this.scene.eventBus.registerListner("combineStacks", this)
         this.scene.eventBus.registerListner("selectAll", this)
@@ -22,6 +25,7 @@ export default class Inventory extends GameObject {
         this.scene.eventBus.registerListner("mouseJustDown", this)
         this.scene.eventBus.registerListner("craftsticks", this)
         this.scene.eventBus.registerListner("CraftRequest", this)
+        this.scene.eventBus.registerListner("equipItem", this)
 
         //this.scene.eventBus.registerListner("click_on_canvas",this)
 
@@ -58,6 +62,8 @@ export default class Inventory extends GameObject {
         this.atackPosx = 0
         this.atackPosy = 0
         this.buttons = []
+        this.hotbar = []
+        this.hotbarSlot = 0
         this.isALLInizialised = false
         this.initializeImages()
 
@@ -65,7 +71,7 @@ export default class Inventory extends GameObject {
         this.selectAllButton = new ButtonGameObject(this.posx, this.posy + this.invHeight + 40, this.invWidth, 40, "selectAll", {}, this.scene, "ALL")
         this.splitButton = new ButtonGameObject(this.posx, this.posy + this.invHeight + 80, this.invWidth, 40, "splitStack", {}, this.scene, "SPLIT SELECTED STACK")
         this.craftButton = new ButtonGameObject(this.posx, this.posy + this.invHeight + 120, this.invWidth, 40, "CraftRequest", {}, this.scene, "Craft")
-        this.equippedinv = new EquippedInventory(this, this.posx + this.invWidth, this.posy - this.textBoderSize)
+        this.equipButton = new ButtonGameObject(this.posx, this.posy + this.invHeight + 160, this.invWidth, 40, "equipItem", {}, this.scene, "To Hotbar")
     }
 
 
@@ -84,6 +90,8 @@ export default class Inventory extends GameObject {
         this.images = await this.loadAllImages(this.imagesIndex)
         console.log(this.images)
         this.updateButtons(this.content)
+
+        this.equippedinv = new EquippedInventory(this.scene, this, this.posx + this.invWidth, this.posy - this.textBoderSize)
         console.log(this.images);
 
     }
@@ -122,7 +130,22 @@ export default class Inventory extends GameObject {
         console.log(eventString)
         if (eventString == "inventory") {
             console.log("eventObject: " + eventObject.items)
+
+            //check, if items in hotbar or not
+            let len = eventObject.length
+            for (let i = 0; i <= len; i++) {
+
+            }
+
+            this.content = eventObject.items.filter(el =>
+                eventObject.hotbar.indexOf(el) < 0
+            );
+            this.hotbar = eventObject.hotbar
+            console.log(this.content)
+            console.log(this.hotbar)
+
             this.content = eventObject.items
+
             this.updateButtons()
             this.updateDimensions(this.widthInSLots)
         }
@@ -153,8 +176,26 @@ export default class Inventory extends GameObject {
         if (eventString == "CraftRequest") {
             this.craft(eventObject.recipe)
             console.log("attempting to craft: " + eventObject.recipe)
+        }
+        if (eventString == "equipItem") {
+            let sel = this.getSelected()
+            if (sel.length != 1) {
+                return
+            }
+            this.hotbar[this.hotbarSlot] = sel[0].itemStack
 
+            this.content = this.content.filter(el =>
+                this.hotbar.indexOf(el) < 0
+            );
+            console.log(this.content)
+            console.log("Das war Content")
+            console.log(this.hotbar)
+            console.log("Das War die Hotbar")
+            this.updateButtons()
 
+            console.log(sel)
+            console.log("Das war sel")
+            setHotbarSlot(sel[0].itemStack.stackID, this.hotbarSlot)
         }
     }
     craft(recipe) {
@@ -196,6 +237,12 @@ export default class Inventory extends GameObject {
 
         this.craftButton.posx = this.posx
         this.craftButton.posy = this.posy + this.invHeight + 120
+
+        this.equipButton.posx = this.posx
+        this.equipButton.posy = this.posy + this.invHeight + 160
+
+        this.equippedinv.posx = this.posx + this.invWidth
+        this.equippedinv.posy = this.posy
     }
 
     printInventory() {
@@ -305,15 +352,28 @@ export default class Inventory extends GameObject {
             this.combineSelectedButton.render()
             this.selectAllButton.render()
             this.craftButton.render()
+
             if (this.getSelected().length != 1) {
                 this.splitButton.setButtonColorPrimary("grey")
+                this.equipButton.setButtonColorPrimary("grey")
             }
             else {
                 this.splitButton.setButtonColorPrimary("green")
+                this.equipButton.setButtonColorPrimary("green")
             }
             this.splitButton.render()
+            this.equipButton.render()
+
+            this.equippedinv.render()
         }
-        this.equippedinv.render()
+
+        //render hotbar
+        let hotbarWidth = this.imageSize * 6 + 5 * this.bufferSize + 2 * this.borderWidth
+        let hotbarHeight = this.imageSize + this.borderWidth * 2
+        this.ctx.globalAlpha = 0.4;
+        this.ctx.fillStyle = "green";
+        this.ctx.fillRect(this.canvas.width / 2 - hotbarWidth / 2, this.canvas.height - hotbarHeight, hotbarWidth, hotbarHeight)
+        this.ctx.globalAlpha = 1;
     }
 
     process() {
@@ -361,7 +421,7 @@ export default class Inventory extends GameObject {
             this.selectAllButton.process()
             this.splitButton.process()
             this.craftButton.process()
-
+            this.equipButton.process()
         }
     }
 
