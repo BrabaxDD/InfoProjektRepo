@@ -107,11 +107,6 @@ class gamePlayerSocketConsumer(WebsocketConsumer):
                 self.serverID, {"type": "login", "ID": ID})
             servers = runningServers.objects.all()
             serversSer = []
-            for server in servers:
-                serversSer.append(str(server.serverID))
-            self.send(text_data=json.dumps(
-                {"type": "runningservers", "servers": serversSer}))
-
 #            self.send(text_data=json.dumps({"type":"loginSucessfull"}))
 
         if messageType == "generateItem":
