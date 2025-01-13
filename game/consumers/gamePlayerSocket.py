@@ -2,6 +2,7 @@ from channels.generic.websocket import WebsocketConsumer
 import json
 from asgiref.sync import async_to_sync
 import datetime
+from game.models import runningServers
 
 
 class gamePlayerSocketConsumer(WebsocketConsumer):
@@ -21,12 +22,15 @@ class gamePlayerSocketConsumer(WebsocketConsumer):
             self.serverID, self.channel_name)
 
     def receive(self, text_data):
-        True
-#        print("log: received Package by client to " +
-#              str(self.player_ID) + " with the following content:")
-#        print(text_data)
         text_data_json = json.loads(text_data)
         messageType = text_data_json["type"]
+        if messageType == "getRunningServers":
+            servers = runningServers.objects.all()
+            serversSer = []
+            for server in servers:
+                serversSer.append(str(server.serverID))
+            self.send(text_data=json.dumps(
+                {"type": "runningservers", "servers": serversSer}))
         if messageType == "action":
             actiontype = text_data_json["actiontype"]
 
@@ -101,7 +105,15 @@ class gamePlayerSocketConsumer(WebsocketConsumer):
             self.player_ID = ID
             async_to_sync(self.channel_layer.group_send)(
                 self.serverID, {"type": "login", "ID": ID})
+            servers = runningServers.objects.all()
+            serversSer = []
+            for server in servers:
+                serversSer.append(str(server.serverID))
+            self.send(text_data=json.dumps(
+                {"type": "runningservers", "servers": serversSer}))
+
 #            self.send(text_data=json.dumps({"type":"loginSucessfull"}))
+
         if messageType == "generateItem":
             itemID = text_data_json["itemID"]
             async_to_sync(self.channel_layer.group_send)(

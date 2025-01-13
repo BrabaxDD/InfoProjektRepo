@@ -5,12 +5,12 @@ from asgiref.sync import async_to_sync
 from game.consumers import serverThreat
 import threading
 from game.ServerClasses import jsonSerializer
+from game.models import runningServers
 
 
 class gameServer(WebsocketConsumer):
     def __init__(self):
         super().__init__()
-        open('tmp/runningservers.txt', 'w').close()
         self.serverID = ""
         self.running = False
         self.serverThreat = serverThreat.serverThreat("test", 1000, self)
@@ -20,13 +20,15 @@ class gameServer(WebsocketConsumer):
 
     def disconnect(self, close_code):
         self.running = False
-        with open("tmp/runningservers.txt", "r") as file:
-            lines = file.readlines()
-        with open("tmp/runningservers.txt", "w") as file:
-            for line in lines:
-                if self.serverID not in line:
-                    file.write(line)
-        pass
+        serverDB = runningServers.objects.get(serverID=self.serverID)
+        serverDB.delete()
+#        with open("tmp/runningservers.txt", "r") as file:
+#            lines = file.readlines()
+#        with open("tmp/runningservers.txt", "w") as file:
+#            for line in lines:
+#                if self.serverID not in line:
+#                    file.write(line)
+#        pass
 
     def receive(self, text_data):
         print("log: received package to server websocket with ID " +
@@ -37,20 +39,15 @@ class gameServer(WebsocketConsumer):
         alreadyExisting = False
         if data_json["type"] == "startserver":
             self.serverID = data_json["serverID"]
-            with open("tmp/runningservers.txt", "r") as file:
-                for line in file:
-                    print(line)
-                    if line.strip() == self.serverID:
-                        print(
-                            "log: someone is trying to host a server that already exists the ID is: " + line.strip())
-                        alreadyExisting = True
-            if alreadyExisting:
-                return
-            else:
-                with open("tmp/runningservers.txt", "a") as file:
-                    file.write(self.serverID + "\n")
-
-            if not self.running:
+            alreadyRunning = False
+            for server in runningServers.objects.all():
+                print(server.serverID)
+                if server.serverID == self.serverID:
+                    print("log: someone is trying to start a server wich aleready runns")
+                    alreadyRunning = True
+            if not alreadyRunning:
+                serverDB = runningServers.objects.create(
+                    serverID=self.serverID)
                 self.running = True
                 self.serverThreat.start()
                 async_to_sync(self.channel_layer.group_add)(
