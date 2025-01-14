@@ -25,11 +25,7 @@ SECRET_KEY = "django-insecure-hk((cp_53cdn$%qy6obl1+a-1!tg4)z3q8m98@ve^t$w#s&+5s
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-<<<<<<< HEAD
 ALLOWED_HOSTS = ["*"]
-=======
-ALLOWED_HOSTS = ['*'] 
->>>>>>> DevPi
 
 
 # Application definition

@@ -23,6 +23,7 @@ class Player(GameObject.GameObject):
         self.world.eventBus.registerListner(self, "playerForbiddenMovement")
         self.world.eventBus.registerListner(self, "stackCombinationRequest")
         self.world.eventBus.registerListner(self, "playerRequestInteraction")
+        self.world.eventBus.registerListner(self, "setHotbarRequest")
         self.world.eventBus.registerListner(self, "setActiveSlot")
         self.Inventory = Inventory.Inventory()
         self.lastHit = time.perf_counter()
@@ -223,7 +224,7 @@ class Player(GameObject.GameObject):
                 self.left = action["left"]
         if eventString == "setHotbarRequest":
             playerID = action["playerID"]
-            if playerID == self.playerAction():
+            if playerID == self.ID:
                 stackID = action["stackID"]
                 hotbarSlot = action["HotbarSlot"]
                 stack = self.getItemStackByStackID(stackID)

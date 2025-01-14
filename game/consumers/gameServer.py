@@ -179,7 +179,7 @@ class gameServer(WebsocketConsumer):
     def setHotbar(self, event):
         stackID = event["stackID"]
         hotbarSlot = event["hotbarSlot"]
-        playerID = event["palyerID"]
+        playerID = event["playerID"]
         self.serverThreat.setHotbarRequest(playerID, hotbarSlot, stackID)
         pass
 
