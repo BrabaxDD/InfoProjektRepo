@@ -1,1 +1,64 @@
+Performing system checks...
 
+System check identified no issues (0 silenced).
+January 14, 2025 - 17:22:10
+Django version 5.1.4, using settings 'Infoproject.settings'
+Starting ASGI/Daphne version 4.1.2 development server at http://0.0.0.0:8100/
+Quit the server with CONTROL-C.
+server Worker Threat started with ID: 
+log: received package to server websocket with ID  and the following content:
+{"type":"startserver","serverID":"gawddw"}
+adsfasdfa
+asdfasdgafas
+asdfasdfa
+asdfasdcvas
+log: new Player logged in to server with ID: gawddw the Player ID is: 2704651922
+log: ein spieler versucht sich auf einem server einzuloggen dessen zustand True ist 
+log: sending connection accepted message to client with ID: 2704651922
+log: updating Player Inventory with player ID: 2704651922for server with ID: gawddwand with content: 
+{"items": [{"stackID": 3232671398, "size": 5, "itemID": "FirstAidKit", "tags": []}], "hotbar": [null, null, null, null, null, null], "hotbarSize": 6, "activeSlot": 0, "primaryHand": []}
+log: sending information about new GameObject on Server with ID: gawddw to client with ID 2704651922 the ID of the new Object is 2704651922 the entity Type is Player
+log: sending information about new GameObject on Server with ID: gawddw to client with ID 2704651922 the ID of the new Object is 1039929411 the entity Type is Tree
+log: sending information about new GameObject on Server with ID: gawddw to client with ID 2704651922 the ID of the new Object is 3962305118 the entity Type is Zombie
+log: sending information about new GameObject on Server with ID: gawddw to client with ID 2704651922 the ID of the new Object is 1890204339 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: gawddw to client with ID 2704651922 the ID of the new Object is 3895943347 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: gawddw to client with ID 2704651922 the ID of the new Object is 12216715 the entity Type is Door
+log: sending information about new GameObject on Server with ID: gawddw to client with ID 2704651922 the ID of the new Object is 1633964540 the entity Type is Chest
+log: sending information about new Health on Server with ID: gawddw to client with ID 2704651922 the ID of the Updated Object is 2704651922 the entityType is Player the new hp is 200
+log: updating Player Inventory with player ID: 2704651922for server with ID: gawddwand with content: 
+{"items": [{"stackID": 3232671398, "size": 5, "itemID": "FirstAidKit", "tags": []}], "hotbar": [{"stackID": 3232671398, "size": 5, "itemID": "FirstAidKit", "tags": []}, null, null, null, null, null], "hotbarSize": 6, "activeSlot": 0, "primaryHand": []}
+log: sending information about new Health on Server with ID: gawddw to client with ID 2704651922 the ID of the Updated Object is 2704651922 the entityType is Player the new hp is 150
+log: sending information about new Health on Server with ID: gawddw to client with ID 2704651922 the ID of the Updated Object is 2704651922 the entityType is Player the new hp is 100
+log: sending information about new Health on Server with ID: gawddw to client with ID 2704651922 the ID of the Updated Object is 2704651922 the entityType is Player the new hp is 50
+log: sending information about new Health on Server with ID: gawddw to client with ID 2704651922 the ID of the Updated Object is 2704651922 the entityType is Player the new hp is 0
+server Worker Threat started with ID: 
+log: received package to server websocket with ID  and the following content:
+{"type":"startserver","serverID":"gadwaw"}
+adsfasdfa
+asdfasdgafas
+asdfasdfa
+asdfasdcvas
+log: new Player logged in to server with ID: gadwaw the Player ID is: 2867103921
+log: ein spieler versucht sich auf einem server einzuloggen dessen zustand True ist 
+log: sending connection accepted message to client with ID: 2867103921
+log: updating Player Inventory with player ID: 2867103921for server with ID: gadwawand with content: 
+{"items": [{"stackID": 436098077, "size": 5, "itemID": "FirstAidKit", "tags": []}], "hotbar": [null, null, null, null, null, null], "hotbarSize": 6, "activeSlot": 0, "primaryHand": []}
+log: sending information about new GameObject on Server with ID: gadwaw to client with ID 2867103921 the ID of the new Object is 2867103921 the entity Type is Player
+log: sending information about new GameObject on Server with ID: gadwaw to client with ID 2867103921 the ID of the new Object is 2265212088 the entity Type is Tree
+log: sending information about new GameObject on Server with ID: gadwaw to client with ID 2867103921 the ID of the new Object is 636976632 the entity Type is Zombie
+log: sending information about new GameObject on Server with ID: gadwaw to client with ID 2867103921 the ID of the new Object is 397545342 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: gadwaw to client with ID 2867103921 the ID of the new Object is 1187538151 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: gadwaw to client with ID 2867103921 the ID of the new Object is 2305986843 the entity Type is Door
+log: sending information about new GameObject on Server with ID: gadwaw to client with ID 2867103921 the ID of the new Object is 2086660289 the entity Type is Chest
+log: sending information about new Health on Server with ID: gadwaw to client with ID 2867103921 the ID of the Updated Object is 2867103921 the entityType is Player the new hp is 200
+log: updating Player Inventory with player ID: 2867103921for server with ID: gadwawand with content: 
+{"items": [{"stackID": 436098077, "size": 5, "itemID": "FirstAidKit", "tags": []}], "hotbar": [{"stackID": 436098077, "size": 5, "itemID": "FirstAidKit", "tags": []}, null, null, null, null, null], "hotbarSize": 6, "activeSlot": 0, "primaryHand": []}
+log: sending information about new Health on Server with ID: gadwaw to client with ID 2867103921 the ID of the Updated Object is 2867103921 the entityType is Player the new hp is 150
+log: sending information about new Health on Server with ID: gadwaw to client with ID 2867103921 the ID of the Updated Object is 2867103921 the entityType is Player the new hp is 100
+log: sending information about new Health on Server with ID: gadwaw to client with ID 2867103921 the ID of the Updated Object is 2867103921 the entityType is Player the new hp is 50
+log: sending information about new Health on Server with ID: gadwaw to client with ID 2867103921 the ID of the Updated Object is 2867103921 the entityType is Player the new hp is 0
+log: sending information about new Health on Server with ID: gadwaw to client with ID 2867103921 the ID of the Updated Object is 2867103921 the entityType is Player the new hp is -50
+log: sending information about new Health on Server with ID: gadwaw to client with ID 2867103921 the ID of the Updated Object is 2867103921 the entityType is Player the new hp is -100
+log: updating Player Inventory with player ID: 2867103921for server with ID: gadwawand with content: 
+{"items": [{"stackID": 436098077, "size": 5, "itemID": "FirstAidKit", "tags": []}, {"stackID": 2429129422, "size": 3, "itemID": "Rags", "tags": []}], "hotbar": [{"stackID": 436098077, "size": 5, "itemID": "FirstAidKit", "tags": []}, null, null, null, null, null], "hotbarSize": 6, "activeSlot": 0, "primaryHand": []}
+log: sendfing Information about deleted GameObject on Server with ID:gadwaw to client with ID: 2867103921 the deleted entity has the ID: 636976632 and the type: Zombie
