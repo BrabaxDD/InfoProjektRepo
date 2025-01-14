@@ -62,7 +62,7 @@ export default class Inventory extends GameObject {
         this.atackPosx = 0
         this.atackPosy = 0
         this.buttons = []
-        this.hotbar = []
+        this.hotbar = [{}, {}, {}, {}, {}, {}]
         this.hotbarSlot = 0
         this.isALLInizialised = false
         this.initializeImages()
@@ -131,16 +131,21 @@ export default class Inventory extends GameObject {
         if (eventString == "inventory") {
             console.log("eventObject: " + eventObject.items)
 
-            //check, if items in hotbar or not
-            let len = eventObject.length
-            for (let i = 0; i <= len; i++) {
-
-            }
 
             this.content = eventObject.items.filter(el =>
                 eventObject.hotbar.indexOf(el) < 0
             );
             this.hotbar = eventObject.hotbar
+
+            for (let i = 0; i < 6; i++) {
+                if (eventObject.hotbar[i]) {
+                    this.hotbar[i] = {}
+                }
+                else {
+                    this.hotbar[i] = eventObject.hotbar[i]
+                }
+            }
+
             console.log(this.content)
             console.log(this.hotbar)
 
@@ -182,6 +187,7 @@ export default class Inventory extends GameObject {
             if (sel.length != 1) {
                 return
             }
+            this.content.push(this.hotbar[this.hotbarSlot])
             this.hotbar[this.hotbarSlot] = sel[0].itemStack
 
             this.content = this.content.filter(el =>
