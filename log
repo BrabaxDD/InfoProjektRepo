@@ -1,27 +1,361 @@
 Performing system checks...
 
 System check identified no issues (0 silenced).
-January 13, 2025 - 14:47:12
+January 13, 2025 - 15:32:30
 Django version 5.1.4, using settings 'Infoproject.settings'
 Starting ASGI/Daphne version 4.1.2 development server at http://0.0.0.0:8100/
 Quit the server with CONTROL-C.
 server Worker Threat started with ID: 
 log: received package to server websocket with ID  and the following content:
-{"type":"startserver","serverID":"rjewr"}
-log: new Player logged in to server with ID: rjewr the Player ID is: 1744889105
+{"type":"startserver","serverID":"gawdw"}
+log: new Player logged in to server with ID: gawdw the Player ID is: 1430301847
 log: ein spieler versucht sich auf einem server einzuloggen dessen zustand True ist 
-log: sending connection accepted message to client with ID: 1744889105
-log: sending information about new GameObject on Server with ID: rjewr to client with ID 1744889105 the ID of the new Object is 1744889105 the entity Type is Player
-log: sending information about new GameObject on Server with ID: rjewr to client with ID 1744889105 the ID of the new Object is 1502688693 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: rjewr to client with ID 1744889105 the ID of the new Object is 853745221 the entity Type is Zombie
-log: sending information about new GameObject on Server with ID: rjewr to client with ID 1744889105 the ID of the new Object is 3401272544 the entity Type is Wall
-log: sending information about new GameObject on Server with ID: rjewr to client with ID 1744889105 the ID of the new Object is 3261101753 the entity Type is Wall
-log: sending information about new GameObject on Server with ID: rjewr to client with ID 1744889105 the ID of the new Object is 3550197790 the entity Type is Door
-log: sending information about new GameObject on Server with ID: rjewr to client with ID 1744889105 the ID of the new Object is 2889844693 the entity Type is Chest
-log: sending information about new Health on Server with ID: rjewr to client with ID 1744889105 the ID of the Updated Object is 1744889105 the entityType is Player the new hp is 200
-log: sending information about new Health on Server with ID: rjewr to client with ID 1744889105 the ID of the Updated Object is 1744889105 the entityType is Player the new hp is 150
-log: sending information about new Health on Server with ID: rjewr to client with ID 1744889105 the ID of the Updated Object is 1744889105 the entityType is Player the new hp is 100
-log: sending information about new Health on Server with ID: rjewr to client with ID 1744889105 the ID of the Updated Object is 1744889105 the entityType is Player the new hp is 50
-log: updating Player Inventory with player ID: 1744889105for server with ID: rjewrand with content: 
-{"items": [{"stackID": 2950369750, "size": 1, "itemID": "Rags", "tags": []}], "hotbar": [null, null, null, null, null, null], "hotbarSize": 6, "primaryHand": []}
-log: sendfing Information about deleted GameObject on Server with ID:rjewr to client with ID: 1744889105 the deleted entity has the ID: 853745221 and the type: Zombie
+log: sending connection accepted message to client with ID: 1430301847
+log: sending information about new GameObject on Server with ID: gawdw to client with ID 1430301847 the ID of the new Object is 1430301847 the entity Type is Player
+log: sending information about new GameObject on Server with ID: gawdw to client with ID 1430301847 the ID of the new Object is 683993139 the entity Type is Tree
+log: sending information about new GameObject on Server with ID: gawdw to client with ID 1430301847 the ID of the new Object is 2581512857 the entity Type is Zombie
+log: sending information about new GameObject on Server with ID: gawdw to client with ID 1430301847 the ID of the new Object is 3097373721 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: gawdw to client with ID 1430301847 the ID of the new Object is 2340724485 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: gawdw to client with ID 1430301847 the ID of the new Object is 2775518094 the entity Type is Door
+log: sending information about new Health on Server with ID: gawdw to client with ID 1430301847 the ID of the Updated Object is 1430301847 the entityType is Player the new hp is 200
+log: sending information about new GameObject on Server with ID: gawdw to client with ID 1430301847 the ID of the new Object is 3622826252 the entity Type is Chest
+log: sending information about new Health on Server with ID: gawdw to client with ID 1430301847 the ID of the Updated Object is 1430301847 the entityType is Player the new hp is 150
+log: sending information about new Health on Server with ID: gawdw to client with ID 1430301847 the ID of the Updated Object is 1430301847 the entityType is Player the new hp is 100
+log: sending information about new Health on Server with ID: gawdw to client with ID 1430301847 the ID of the Updated Object is 1430301847 the entityType is Player the new hp is 50
+log: interupted Player movement of Player with ID: 1430301847
+log: Player got Interupted in Movement, the player ID is: 1430301847
+log: Player got Teleported deltax: -18.04654305917211 deltay: -18.04654305917211
+log: interupted Player movement of Player with ID: 1430301847
+log: Player got Interupted in Movement, the player ID is: 1430301847
+log: Player got Teleported deltax: -14.945745729492046 deltay: -14.945745729492046
+log: sending information about new Health on Server with ID: gawdw to client with ID 1430301847 the ID of the Updated Object is 1430301847 the entityType is Player the new hp is 0
+log: interupted Player movement of Player with ID: 1430301847
+log: Player got Interupted in Movement, the player ID is: 1430301847
+log: Player got Teleported deltax: 14.689502199180424 deltay: 14.689502199180424
+log: interupted Player movement of Player with ID: 1430301847
+log: Player got Interupted in Movement, the player ID is: 1430301847
+log: Player got Teleported deltax: 14.304728983552195 deltay: 14.304728983552195
+log: sending information about new Health on Server with ID: gawdw to client with ID 1430301847 the ID of the Updated Object is 1430301847 the entityType is Player the new hp is -50
+log: interupted Player movement of Player with ID: 1430301847
+log: Player got Interupted in Movement, the player ID is: 1430301847
+log: Player got Teleported deltax: 14.211327203083783 deltay: 14.211327203083783
+log: interupted Player movement of Player with ID: 1430301847
+log: Player got Interupted in Movement, the player ID is: 1430301847
+log: Player got Teleported deltax: 15.42137159674894 deltay: 15.42137159674894
+log: interupted Player movement of Player with ID: 1430301847
+log: Player got Interupted in Movement, the player ID is: 1430301847
+log: Player got Teleported deltax: 14.751128972275183 deltay: 14.751128972275183
+log: interupted Player movement of Player with ID: 1430301847
+log: Player got Interupted in Movement, the player ID is: 1430301847
+log: Player got Teleported deltax: 14.681327195139602 deltay: 14.681327195139602
+log: interupted Player movement of Player with ID: 1430301847
+log: Player got Interupted in Movement, the player ID is: 1430301847
+log: Player got Teleported deltax: 17.36051895073615 deltay: 17.36051895073615
+log: interupted Player movement of Player with ID: 1430301847
+log: Player got Interupted in Movement, the player ID is: 1430301847
+log: Player got Teleported deltax: 13.60064456705004 deltay: 13.60064456705004
+log: interupted Player movement of Player with ID: 1430301847
+log: Player got Interupted in Movement, the player ID is: 1430301847
+log: Player got Teleported deltax: 14.460061909630895 deltay: 14.460061909630895
+log: interupted Player movement of Player with ID: 1430301847
+log: Player got Interupted in Movement, the player ID is: 1430301847
+log: Player got Teleported deltax: 13.730327793164179 deltay: 13.730327793164179
+log: sending information about new Health on Server with ID: gawdw to client with ID 1430301847 the ID of the Updated Object is 1430301847 the entityType is Player the new hp is -100
+log: interupted Player movement of Player with ID: 1430301847
+log: Player got Interupted in Movement, the player ID is: 1430301847
+log: Player got Teleported deltax: 14.856402489822358 deltay: 14.856402489822358
+log: interupted Player movement of Player with ID: 1430301847
+log: Player got Interupted in Movement, the player ID is: 1430301847
+log: Player got Teleported deltax: 14.798622200032696 deltay: 14.798622200032696
+log: interupted Player movement of Player with ID: 1430301847
+log: Player got Interupted in Movement, the player ID is: 1430301847
+log: Player got Teleported deltax: 13.911511325277388 deltay: 13.911511325277388
+log: interupted Player movement of Player with ID: 1430301847
+log: Player got Interupted in Movement, the player ID is: 1430301847
+log: Player got Teleported deltax: 14.433378970716149 deltay: 14.433378970716149
+log: interupted Player movement of Player with ID: 1430301847
+log: Player got Interupted in Movement, the player ID is: 1430301847
+log: Player got Teleported deltax: 14.401971328770742 deltay: 14.401971328770742
+log: interupted Player movement of Player with ID: 1430301847
+log: Player got Interupted in Movement, the player ID is: 1430301847
+log: Player got Teleported deltax: 15.623089844011702 deltay: 0.0
+log: interupted Player movement of Player with ID: 1430301847
+log: Player got Interupted in Movement, the player ID is: 1430301847
+log: Player got Teleported deltax: 13.982311912695877 deltay: 0.0
+log: interupted Player movement of Player with ID: 1430301847
+log: Player got Interupted in Movement, the player ID is: 1430301847
+log: Player got Teleported deltax: 14.708480713306926 deltay: 0.0
+log: interupted Player movement of Player with ID: 1430301847
+log: Player got Interupted in Movement, the player ID is: 1430301847
+log: Player got Teleported deltax: 14.080203115590848 deltay: 0.0
+log: sending information about new Health on Server with ID: gawdw to client with ID 1430301847 the ID of the Updated Object is 1430301847 the entityType is Player the new hp is -150
+log: interupted Player movement of Player with ID: 1430301847
+log: Player got Interupted in Movement, the player ID is: 1430301847
+log: Player got Teleported deltax: 14.5384863356594 deltay: 0.0
+log: interupted Player movement of Player with ID: 1430301847
+log: Player got Interupted in Movement, the player ID is: 1430301847
+log: Player got Teleported deltax: 14.533703944762237 deltay: 0.0
+log: interupted Player movement of Player with ID: 1430301847
+log: Player got Interupted in Movement, the player ID is: 1430301847
+log: Player got Teleported deltax: 13.689419282600284 deltay: 0.0
+log: interupted Player movement of Player with ID: 1430301847
+log: Player got Interupted in Movement, the player ID is: 1430301847
+log: Player got Teleported deltax: 15.145919540664181 deltay: 0.0
+log: interupted Player movement of Player with ID: 1430301847
+log: Player got Interupted in Movement, the player ID is: 1430301847
+log: Player got Teleported deltax: 14.083079280680977 deltay: 0.0
+log: interupted Player movement of Player with ID: 1430301847
+log: Player got Interupted in Movement, the player ID is: 1430301847
+log: Player got Teleported deltax: 14.674243081826717 deltay: 0.0
+log: interupted Player movement of Player with ID: 1430301847
+log: Player got Interupted in Movement, the player ID is: 1430301847
+log: Player got Teleported deltax: 14.575140740489587 deltay: 0.0
+log: interupted Player movement of Player with ID: 1430301847
+log: Player got Interupted in Movement, the player ID is: 1430301847
+log: Player got Teleported deltax: 13.810956628294662 deltay: -13.810956628294662
+log: interupted Player movement of Player with ID: 1430301847
+log: Player got Interupted in Movement, the player ID is: 1430301847
+log: Player got Teleported deltax: 14.369249262381345 deltay: -14.369249262381345
+log: interupted Player movement of Player with ID: 1430301847
+log: Player got Interupted in Movement, the player ID is: 1430301847
+log: Player got Teleported deltax: 13.63167867239099 deltay: -13.63167867239099
+log: interupted Player movement of Player with ID: 1430301847
+log: Player got Interupted in Movement, the player ID is: 1430301847
+log: Player got Teleported deltax: 14.725623104022816 deltay: -14.725623104022816
+log: interupted Player movement of Player with ID: 1430301847
+log: Player got Interupted in Movement, the player ID is: 1430301847
+log: Player got Teleported deltax: 14.06803249148652 deltay: 0.0
+log: interupted Player movement of Player with ID: 1430301847
+log: Player got Interupted in Movement, the player ID is: 1430301847
+log: Player got Teleported deltax: 14.664771030074917 deltay: 0.0
+log: interupted Player movement of Player with ID: 1430301847
+log: Player got Interupted in Movement, the player ID is: 1430301847
+log: Player got Teleported deltax: 14.083888390450738 deltay: 0.0
+log: interupted Player movement of Player with ID: 1430301847
+log: Player got Interupted in Movement, the player ID is: 1430301847
+log: Player got Teleported deltax: 15.026603944716044 deltay: 0.0
+log: sending information about new Health on Server with ID: gawdw to client with ID 1430301847 the ID of the Updated Object is 1430301847 the entityType is Player the new hp is -200
+log: interupted Player movement of Player with ID: 1430301847
+log: Player got Interupted in Movement, the player ID is: 1430301847
+log: Player got Teleported deltax: 16.39474867610261 deltay: 0.0
+log: interupted Player movement of Player with ID: 1430301847
+log: Player got Interupted in Movement, the player ID is: 1430301847
+log: Player got Teleported deltax: 14.216533961589448 deltay: 0.0
+log: interupted Player movement of Player with ID: 1430301847
+log: Player got Interupted in Movement, the player ID is: 1430301847
+log: Player got Teleported deltax: 15.134920429554768 deltay: 0.0
+log: interupted Player movement of Player with ID: 1430301847
+log: Player got Interupted in Movement, the player ID is: 1430301847
+log: Player got Teleported deltax: 14.331411904422566 deltay: 0.0
+log: interupted Player movement of Player with ID: 1430301847
+log: Player got Interupted in Movement, the player ID is: 1430301847
+log: Player got Teleported deltax: 14.139154575532302 deltay: 0.0
+log: interupted Player movement of Player with ID: 1430301847
+log: Player got Interupted in Movement, the player ID is: 1430301847
+log: Player got Teleported deltax: 14.150182485464029 deltay: 0.0
+log: interupted Player movement of Player with ID: 1430301847
+log: Player got Interupted in Movement, the player ID is: 1430301847
+log: Player got Teleported deltax: 14.960321632679552 deltay: 0.0
+log: sending information about new Health on Server with ID: gawdw to client with ID 1430301847 the ID of the Updated Object is 1430301847 the entityType is Player the new hp is -250
+log: interupted Player movement of Player with ID: 1430301847
+log: Player got Interupted in Movement, the player ID is: 1430301847
+log: Player got Teleported deltax: 15.85004982596729 deltay: 0.0
+log: interupted Player movement of Player with ID: 1430301847
+log: Player got Interupted in Movement, the player ID is: 1430301847
+log: Player got Teleported deltax: 15.113180133630522 deltay: 0.0
+log: interupted Player movement of Player with ID: 1430301847
+log: Player got Interupted in Movement, the player ID is: 1430301847
+log: Player got Teleported deltax: 14.729899873491377 deltay: 0.0
+log: interupted Player movement of Player with ID: 1430301847
+log: Player got Interupted in Movement, the player ID is: 1430301847
+log: Player got Teleported deltax: 14.937943955301307 deltay: 0.0
+log: interupted Player movement of Player with ID: 1430301847
+log: Player got Interupted in Movement, the player ID is: 1430301847
+log: Player got Teleported deltax: 16.329218074679375 deltay: 0.0
+log: interupted Player movement of Player with ID: 1430301847
+log: Player got Interupted in Movement, the player ID is: 1430301847
+log: Player got Teleported deltax: 17.06576069467701 deltay: 0.0
+log: interupted Player movement of Player with ID: 1430301847
+log: Player got Interupted in Movement, the player ID is: 1430301847
+log: Player got Teleported deltax: 14.186153982882388 deltay: -14.186153982882388
+log: interupted Player movement of Player with ID: 1430301847
+log: Player got Interupted in Movement, the player ID is: 1430301847
+log: Player got Teleported deltax: 15.649921883596107 deltay: -15.649921883596107
+log: interupted Player movement of Player with ID: 1430301847
+log: Player got Interupted in Movement, the player ID is: 1430301847
+log: Player got Teleported deltax: 14.146715150563978 deltay: -14.146715150563978
+log: interupted Player movement of Player with ID: 1430301847
+log: Player got Interupted in Movement, the player ID is: 1430301847
+log: Player got Teleported deltax: 17.940867765573785 deltay: 0.0
+log: interupted Player movement of Player with ID: 1430301847
+log: Player got Interupted in Movement, the player ID is: 1430301847
+log: Player got Teleported deltax: 13.580901909735985 deltay: 0.0
+log: interupted Player movement of Player with ID: 1430301847
+log: Player got Interupted in Movement, the player ID is: 1430301847
+log: Player got Teleported deltax: 14.988227204303257 deltay: 0.0
+log: Player with ID 1430301847 is trying to interact
+log: interupted Player movement of Player with ID: 1430301847
+log: Player got Interupted in Movement, the player ID is: 1430301847
+log: Player got Teleported deltax: 14.035385164897889 deltay: 0.0
+log: the new second coordinates after door  has been interacted with are: 200 300
+log: Player with ID 1430301847 is trying to interact
+log: Player with ID 1430301847 is trying to interact
+log: Player with ID 1430301847 is trying to interact
+log: Player with ID 1430301847 is trying to interact
+log: Player with ID 1430301847 is trying to interact
+log: sending information about new Health on Server with ID: gawdw to client with ID 1430301847 the ID of the Updated Object is 1430301847 the entityType is Player the new hp is -300
+log: interupted Player movement of Player with ID: 1430301847
+log: Player got Interupted in Movement, the player ID is: 1430301847
+log: Player got Teleported deltax: -14.904728086548857 deltay: -14.904728086548857
+log: sending information about new Health on Server with ID: gawdw to client with ID 1430301847 the ID of the Updated Object is 1430301847 the entityType is Player the new hp is -350
+log: sending information about new Health on Server with ID: gawdw to client with ID 1430301847 the ID of the Updated Object is 1430301847 the entityType is Player the new hp is -400
+log: interupted Player movement of Player with ID: 1430301847
+log: Player got Interupted in Movement, the player ID is: 1430301847
+log: Player got Teleported deltax: 14.159006022382528 deltay: 14.159006022382528
+log: interupted Player movement of Player with ID: 1430301847
+log: Player got Interupted in Movement, the player ID is: 1430301847
+log: Player got Teleported deltax: 15.990009251399897 deltay: 15.990009251399897
+log: sending information about new Health on Server with ID: gawdw to client with ID 1430301847 the ID of the Updated Object is 1430301847 the entityType is Player the new hp is -450
+log: sending information about new Health on Server with ID: gawdw to client with ID 1430301847 the ID of the Updated Object is 1430301847 the entityType is Player the new hp is -500
+log: sending information about new Health on Server with ID: gawdw to client with ID 1430301847 the ID of the Updated Object is 1430301847 the entityType is Player the new hp is -550
+log: sending information about new Health on Server with ID: gawdw to client with ID 1430301847 the ID of the Updated Object is 1430301847 the entityType is Player the new hp is -600
+log: sending information about new Health on Server with ID: gawdw to client with ID 1430301847 the ID of the Updated Object is 1430301847 the entityType is Player the new hp is -650
+log: sending information about new Health on Server with ID: gawdw to client with ID 1430301847 the ID of the Updated Object is 1430301847 the entityType is Player the new hp is -700
+log: interupted Player movement of Player with ID: 1430301847
+log: Player got Interupted in Movement, the player ID is: 1430301847
+log: Player got Teleported deltax: 16.116787784267217 deltay: 16.116787784267217
+log: interupted Player movement of Player with ID: 1430301847
+log: Player got Interupted in Movement, the player ID is: 1430301847
+log: Player got Teleported deltax: 14.816671013832092 deltay: 14.816671013832092
+log: interupted Player movement of Player with ID: 1430301847
+log: Player got Interupted in Movement, the player ID is: 1430301847
+log: Player got Teleported deltax: 14.184454870410264 deltay: 14.184454870410264
+log: interupted Player movement of Player with ID: 1430301847
+log: Player got Interupted in Movement, the player ID is: 1430301847
+log: Player got Teleported deltax: 14.291766319656745 deltay: 14.291766319656745
+log: interupted Player movement of Player with ID: 1430301847
+log: Player got Interupted in Movement, the player ID is: 1430301847
+log: Player got Teleported deltax: 19.234652151353657 deltay: 19.234652151353657
+log: interupted Player movement of Player with ID: 1430301847
+log: Player got Interupted in Movement, the player ID is: 1430301847
+log: Player got Teleported deltax: 14.84752160788048 deltay: -14.84752160788048
+log: interupted Player movement of Player with ID: 1430301847
+log: Player got Interupted in Movement, the player ID is: 1430301847
+log: Player got Teleported deltax: 14.511033984599635 deltay: -14.511033984599635
+log: interupted Player movement of Player with ID: 1430301847
+log: Player got Interupted in Movement, the player ID is: 1430301847
+log: Player got Teleported deltax: 13.823408401804045 deltay: -13.823408401804045
+log: interupted Player movement of Player with ID: 1430301847
+log: Player got Interupted in Movement, the player ID is: 1430301847
+log: Player got Teleported deltax: 13.504153968533501 deltay: -13.504153968533501
+log: interupted Player movement of Player with ID: 1430301847
+log: Player got Interupted in Movement, the player ID is: 1430301847
+log: Player got Teleported deltax: 14.01245662884321 deltay: -14.01245662884321
+log: interupted Player movement of Player with ID: 1430301847
+log: Player got Interupted in Movement, the player ID is: 1430301847
+log: Player got Teleported deltax: 14.166365727433003 deltay: -14.166365727433003
+log: sending information about new Health on Server with ID: gawdw to client with ID 1430301847 the ID of the Updated Object is 1430301847 the entityType is Player the new hp is -750
+log: interupted Player movement of Player with ID: 1430301847
+log: Player got Interupted in Movement, the player ID is: 1430301847
+log: Player got Teleported deltax: 14.506113969255239 deltay: -14.506113969255239
+log: interupted Player movement of Player with ID: 1430301847
+log: Player got Interupted in Movement, the player ID is: 1430301847
+log: Player got Teleported deltax: -14.006888098665513 deltay: -14.006888098665513
+log: interupted Player movement of Player with ID: 1430301847
+log: Player got Interupted in Movement, the player ID is: 1430301847
+log: Player got Teleported deltax: -14.284177216468379 deltay: -14.284177216468379
+log: sending information about new Health on Server with ID: gawdw to client with ID 1430301847 the ID of the Updated Object is 1430301847 the entityType is Player the new hp is -800
+log: interupted Player movement of Player with ID: 1430301847
+log: Player got Interupted in Movement, the player ID is: 1430301847
+log: Player got Teleported deltax: -14.57121395971626 deltay: -14.57121395971626
+log: sending information about new Health on Server with ID: gawdw to client with ID 1430301847 the ID of the Updated Object is 1430301847 the entityType is Player the new hp is -850
+log: sending information about new Health on Server with ID: gawdw to client with ID 1430301847 the ID of the Updated Object is 1430301847 the entityType is Player the new hp is -900
+log: sending information about new Health on Server with ID: gawdw to client with ID 1430301847 the ID of the Updated Object is 1430301847 the entityType is Player the new hp is -950
+log: updating Player Inventory with player ID: 1430301847for server with ID: gawdwand with content: 
+{"items": [{"stackID": 2530080902, "size": 1, "itemID": "Rags", "tags": []}], "hotbar": [null, null, null, null, null, null], "hotbarSize": 6, "primaryHand": []}
+log: sendfing Information about deleted GameObject on Server with ID:gawdw to client with ID: 1430301847 the deleted entity has the ID: 2581512857 and the type: Zombie
+log: Player with ID 1430301847 is trying to interact
+log: Player with ID 1430301847 is trying to interact
+log: Player with ID 1430301847 is trying to interact
+log: Player with ID 1430301847 is trying to interact
+log: Player with ID 1430301847 is trying to interact
+log: Player with ID 1430301847 is trying to interact
+log: Player with ID 1430301847 is trying to interact
+log: updating Player Inventory with player ID: 1430301847for server with ID: gawdwand with content: 
+{"items": [{"stackID": 2530080902, "size": 1, "itemID": "Rags", "tags": []}, {"stackID": 2030354747, "size": 1, "itemID": "Apple", "tags": []}], "hotbar": [null, null, null, null, null, null], "hotbarSize": 6, "primaryHand": []}
+log: Player with ID 1430301847 is trying to interact
+log: Player with ID 1430301847 is trying to interact
+log: Player with ID 1430301847 is trying to interact
+log: Player with ID 1430301847 is trying to interact
+log: Player with ID 1430301847 is trying to interact
+log: Player with ID 1430301847 is trying to interact
+log: Player with ID 1430301847 is trying to interact
+log: Player with ID 1430301847 is trying to interact
+log: Player with ID 1430301847 is trying to interact
+log: Player with ID 1430301847 is trying to interact
+log: Player with ID 1430301847 is trying to interact
+log: Player with ID 1430301847 is trying to interact
+log: Player with ID 1430301847 is trying to interact
+log: Player with ID 1430301847 is trying to interact
+log: Player with ID 1430301847 is trying to interact
+log: Player with ID 1430301847 is trying to interact
+log: Player with ID 1430301847 is trying to interact
+log: updating Player Inventory with player ID: 1430301847for server with ID: gawdwand with content: 
+{"items": [{"stackID": 2530080902, "size": 1, "itemID": "Rags", "tags": []}, {"stackID": 2030354747, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 778636247, "size": 1, "itemID": "Apple", "tags": []}], "hotbar": [null, null, null, null, null, null], "hotbarSize": 6, "primaryHand": []}
+log: Player with ID 1430301847 is trying to interact
+log: Player with ID 1430301847 is trying to interact
+log: Player with ID 1430301847 is trying to interact
+log: Player with ID 1430301847 is trying to interact
+log: Player with ID 1430301847 is trying to interact
+log: Player with ID 1430301847 is trying to interact
+log: Player with ID 1430301847 is trying to interact
+log: Player with ID 1430301847 is trying to interact
+log: Player with ID 1430301847 is trying to interact
+log: Player with ID 1430301847 is trying to interact
+log: Player with ID 1430301847 is trying to interact
+log: Player with ID 1430301847 is trying to interact
+log: Player with ID 1430301847 is trying to interact
+log: Player with ID 1430301847 is trying to interact
+log: Player with ID 1430301847 is trying to interact
+log: Player with ID 1430301847 is trying to interact
+log: Player with ID 1430301847 is trying to interact
+log: updating Player Inventory with player ID: 1430301847for server with ID: gawdwand with content: 
+{"items": [{"stackID": 2530080902, "size": 1, "itemID": "Rags", "tags": []}, {"stackID": 2030354747, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 778636247, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 171461652, "size": 1, "itemID": "Apple", "tags": []}], "hotbar": [null, null, null, null, null, null], "hotbarSize": 6, "primaryHand": []}
+log: Player with ID 1430301847 is trying to interact
+log: Player with ID 1430301847 is trying to interact
+log: Player with ID 1430301847 is trying to interact
+log: Player with ID 1430301847 is trying to interact
+log: Player with ID 1430301847 is trying to interact
+log: Player with ID 1430301847 is trying to interact
+log: Player with ID 1430301847 is trying to interact
+log: Player with ID 1430301847 is trying to interact
+log: Player with ID 1430301847 is trying to interact
+log: Player with ID 1430301847 is trying to interact
+log: Player with ID 1430301847 is trying to interact
+log: Player with ID 1430301847 is trying to interact
+log: Player with ID 1430301847 is trying to interact
+log: Player with ID 1430301847 is trying to interact
+log: Player with ID 1430301847 is trying to interact
+log: Player with ID 1430301847 is trying to interact
+log: Player with ID 1430301847 is trying to interact
+log: Player with ID 1430301847 is trying to interact
+log: Player with ID 1430301847 is trying to interact
+log: Player with ID 1430301847 is trying to interact
+log: Player with ID 1430301847 is trying to interact
+log: Player with ID 1430301847 is trying to interact
+log: Player with ID 1430301847 is trying to interact
+log: Player with ID 1430301847 is trying to interact
+log: updating Player Inventory with player ID: 1430301847for server with ID: gawdwand with content: 
+{"items": [{"stackID": 2530080902, "size": 1, "itemID": "Rags", "tags": []}, {"stackID": 2030354747, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 778636247, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 171461652, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 3768417831, "size": 1, "itemID": "Apple", "tags": []}], "hotbar": [null, null, null, null, null, null], "hotbarSize": 6, "primaryHand": []}
+log: Player with ID 1430301847 is trying to interact
+log: Player with ID 1430301847 is trying to interact
+log: Player with ID 1430301847 is trying to interact
+log: Player with ID 1430301847 is trying to interact
+log: Player with ID 1430301847 is trying to interact
+log: Player with ID 1430301847 is trying to interact
+log: Player with ID 1430301847 is trying to interact
+log: Player with ID 1430301847 is trying to interact
+log: Player with ID 1430301847 is trying to interact
+log: Player with ID 1430301847 is trying to interact
+log: updating Player Inventory with player ID: 1430301847for server with ID: gawdwand with content: 
+{"items": [{"stackID": 2530080902, "size": 1, "itemID": "Rags", "tags": []}, {"stackID": 2030354747, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 778636247, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 171461652, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 3768417831, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 3905451616, "size": 1, "itemID": "Apple", "tags": []}], "hotbar": [null, null, null, null, null, null], "hotbarSize": 6, "primaryHand": []}
