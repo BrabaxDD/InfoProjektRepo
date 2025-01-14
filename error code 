@@ -1,0 +1,13 @@
+  File "/home/admin/InfoProjektRepoFolder/InfoProjektRepo/game/ServerClasses/Player.py", line 67, in newPositon
+    self.world.eventBus.event("playerPositionUpdate",
+  File "/home/admin/InfoProjektRepoFolder/InfoProjektRepo/game/ServerClasses/EventBus.py", line 15, in event
+    listner.event(eventString, action)
+  File "/home/admin/InfoProjektRepoFolder/InfoProjektRepo/game/ServerClasses/Obstacle.py", line 40, in event
+    collision = self.do_intersect(
+                ^^^^^^^^^^^^^^^^^^
+  File "/home/admin/InfoProjektRepoFolder/InfoProjektRepo/game/ServerClasses/Obstacle.py", line 78, in do_intersect
+    o1 = orientation(p1, q1, p2)
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/admin/InfoProjektRepoFolder/InfoProjektRepo/game/ServerClasses/Obstacle.py", line 67, in orientation
+    if val == 0:
+       ^^^^^^^^

@@ -90,7 +90,7 @@ export default class Scene {
 
         if (this.toDelete.length != 0) {
             console.log(this.toDelete)
-            this.gameObjects = this.gameObjects.filter(el => 
+            this.gameObjects = this.gameObjects.filter(el =>
                 this.toDelete.indexOf(el) < 0
             );
             console.log(this.gameObjects)
@@ -153,7 +153,7 @@ export default class Scene {
                     break
                 }
             }
-            
+
         }
     }
 

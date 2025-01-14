@@ -108,6 +108,9 @@ export default class ButtonGameObject extends GameObject {
             else {
             }
         }
+        if (this.eventString == "equipItem") {
+            this.scene.eventBus.triggerEvent("equipItem", eventObject)
+        }
 
     }
 

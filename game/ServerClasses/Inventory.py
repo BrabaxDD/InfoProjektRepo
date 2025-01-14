@@ -13,6 +13,7 @@ class Inventory:
         self.activeSlot = 0
         for i in range(6):
             self.hotbar.append(None)
+        self.primaryHand = []
 
     def addItem(self, itemStack):
         self.items.append(itemStack)
