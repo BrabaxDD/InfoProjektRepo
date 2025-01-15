@@ -24,6 +24,15 @@ class gamePlayerSocketConsumer(WebsocketConsumer):
     def receive(self, text_data):
         text_data_json = json.loads(text_data)
         messageType = text_data_json["type"]
+        if messageType == "respawn":
+            async_to_sync(self.channel_layer.group_send)(
+                self.serverID,
+                {
+                    "type": "respawnPlayerChannels",
+                    "playerID": self.player_ID,
+                }
+            )
+
         if messageType == "getRunningServers":
             servers = runningServers.objects.all()
             serversSer = []
@@ -228,4 +237,12 @@ class gamePlayerSocketConsumer(WebsocketConsumer):
         pass
 
     def setActiveSlot(self, event):
+        pass
+
+    def deadPlayerChannel(self, event):
+        playerID = event["playerID"]
+        if playerID == self.player_ID:
+            self.send(text_data=json.dumps({"type": "playerDead"}))
+
+    def respawnPlayerChannels(self, event):
         pass

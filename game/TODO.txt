@@ -1,0 +1,7 @@
+Respawn auf client seite implementiern
+Level system auf server seite
+Inventar ordentlcih machen auf Client seite
+UI fixen auf Client seite
+Wlet gneration serverseite
+Spiel interesanter machen auf server seite
+
