@@ -1,64 +1,742 @@
 Performing system checks...
 
 System check identified no issues (0 silenced).
-January 14, 2025 - 17:22:10
+January 15, 2025 - 16:32:29
 Django version 5.1.4, using settings 'Infoproject.settings'
 Starting ASGI/Daphne version 4.1.2 development server at http://0.0.0.0:8100/
 Quit the server with CONTROL-C.
 server Worker Threat started with ID: 
 log: received package to server websocket with ID  and the following content:
-{"type":"startserver","serverID":"gawddw"}
+{"type":"startserver","serverID":"sagd"}
 adsfasdfa
 asdfasdgafas
 asdfasdfa
 asdfasdcvas
-log: new Player logged in to server with ID: gawddw the Player ID is: 2704651922
+gadwaw
+log: new Player logged in to server with ID: sagd the Player ID is: 508005595
 log: ein spieler versucht sich auf einem server einzuloggen dessen zustand True ist 
-log: sending connection accepted message to client with ID: 2704651922
-log: updating Player Inventory with player ID: 2704651922for server with ID: gawddwand with content: 
-{"items": [{"stackID": 3232671398, "size": 5, "itemID": "FirstAidKit", "tags": []}], "hotbar": [null, null, null, null, null, null], "hotbarSize": 6, "activeSlot": 0, "primaryHand": []}
-log: sending information about new GameObject on Server with ID: gawddw to client with ID 2704651922 the ID of the new Object is 2704651922 the entity Type is Player
-log: sending information about new GameObject on Server with ID: gawddw to client with ID 2704651922 the ID of the new Object is 1039929411 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: gawddw to client with ID 2704651922 the ID of the new Object is 3962305118 the entity Type is Zombie
-log: sending information about new GameObject on Server with ID: gawddw to client with ID 2704651922 the ID of the new Object is 1890204339 the entity Type is Wall
-log: sending information about new GameObject on Server with ID: gawddw to client with ID 2704651922 the ID of the new Object is 3895943347 the entity Type is Wall
-log: sending information about new GameObject on Server with ID: gawddw to client with ID 2704651922 the ID of the new Object is 12216715 the entity Type is Door
-log: sending information about new GameObject on Server with ID: gawddw to client with ID 2704651922 the ID of the new Object is 1633964540 the entity Type is Chest
-log: sending information about new Health on Server with ID: gawddw to client with ID 2704651922 the ID of the Updated Object is 2704651922 the entityType is Player the new hp is 200
-log: updating Player Inventory with player ID: 2704651922for server with ID: gawddwand with content: 
-{"items": [{"stackID": 3232671398, "size": 5, "itemID": "FirstAidKit", "tags": []}], "hotbar": [{"stackID": 3232671398, "size": 5, "itemID": "FirstAidKit", "tags": []}, null, null, null, null, null], "hotbarSize": 6, "activeSlot": 0, "primaryHand": []}
-log: sending information about new Health on Server with ID: gawddw to client with ID 2704651922 the ID of the Updated Object is 2704651922 the entityType is Player the new hp is 150
-log: sending information about new Health on Server with ID: gawddw to client with ID 2704651922 the ID of the Updated Object is 2704651922 the entityType is Player the new hp is 100
-log: sending information about new Health on Server with ID: gawddw to client with ID 2704651922 the ID of the Updated Object is 2704651922 the entityType is Player the new hp is 50
-log: sending information about new Health on Server with ID: gawddw to client with ID 2704651922 the ID of the Updated Object is 2704651922 the entityType is Player the new hp is 0
+log: sending connection accepted message to client with ID: 508005595
+log: updating Player Inventory with player ID: 508005595for server with ID: sagdand with content: 
+{"items": [{"stackID": 734507016, "size": 5, "itemID": "FirstAidKit", "tags": []}], "hotbar": [null, null, null, null, null, null], "hotbarSize": 6, "activeSlot": 0, "primaryHand": []}
+log: sending information about new GameObject on Server with ID: sagd to client with ID 508005595 the ID of the new Object is 508005595 the entity Type is Player
+log: sending information about new GameObject on Server with ID: sagd to client with ID 508005595 the ID of the new Object is 490051227 the entity Type is Tree
+log: sending information about new GameObject on Server with ID: sagd to client with ID 508005595 the ID of the new Object is 2877888310 the entity Type is Zombie
+log: sending information about new GameObject on Server with ID: sagd to client with ID 508005595 the ID of the new Object is 3800826987 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: sagd to client with ID 508005595 the ID of the new Object is 1446064626 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: sagd to client with ID 508005595 the ID of the new Object is 378931954 the entity Type is Door
+log: sending information about new GameObject on Server with ID: sagd to client with ID 508005595 the ID of the new Object is 182660601 the entity Type is Chest
+log: sending information about new Health on Server with ID: sagd to client with ID 508005595 the ID of the Updated Object is 508005595 the entityType is Player the new hp is 200
+log: updating Player Inventory with player ID: 508005595for server with ID: sagdand with content: 
+{"items": [{"stackID": 734507016, "size": 5, "itemID": "FirstAidKit", "tags": []}], "hotbar": [{"stackID": 734507016, "size": 5, "itemID": "FirstAidKit", "tags": []}, null, null, null, null, null], "hotbarSize": 6, "activeSlot": 0, "primaryHand": []}
+log: sending information about new Health on Server with ID: sagd to client with ID 508005595 the ID of the Updated Object is 508005595 the entityType is Player the new hp is 150
+log: sending information about new Health on Server with ID: sagd to client with ID 508005595 the ID of the Updated Object is 508005595 the entityType is Player the new hp is 100
+log: sending information about new Health on Server with ID: sagd to client with ID 508005595 the ID of the Updated Object is 508005595 the entityType is Player the new hp is 50
+log: sending information about new Health on Server with ID: sagd to client with ID 508005595 the ID of the Updated Object is 508005595 the entityType is Player the new hp is 0
+log: sending information about new Health on Server with ID: sagd to client with ID 508005595 the ID of the Updated Object is 508005595 the entityType is Player the new hp is -50
+log: sending information about new Health on Server with ID: sagd to client with ID 508005595 the ID of the Updated Object is 508005595 the entityType is Player the new hp is -100
+log: sending information about new Health on Server with ID: sagd to client with ID 508005595 the ID of the Updated Object is 508005595 the entityType is Player the new hp is -150
+log: sending information about new Health on Server with ID: sagd to client with ID 508005595 the ID of the Updated Object is 508005595 the entityType is Player the new hp is -200
+log: sending information about new Health on Server with ID: sagd to client with ID 508005595 the ID of the Updated Object is 508005595 the entityType is Player the new hp is -250
+log: sending information about new Health on Server with ID: sagd to client with ID 508005595 the ID of the Updated Object is 508005595 the entityType is Player the new hp is -300
+log: sending information about new Health on Server with ID: sagd to client with ID 508005595 the ID of the Updated Object is 508005595 the entityType is Player the new hp is -350
+log: sending information about new Health on Server with ID: sagd to client with ID 508005595 the ID of the Updated Object is 508005595 the entityType is Player the new hp is -400
+log: sending information about new Health on Server with ID: sagd to client with ID 508005595 the ID of the Updated Object is 508005595 the entityType is Player the new hp is -450
+log: sending information about new Health on Server with ID: sagd to client with ID 508005595 the ID of the Updated Object is 508005595 the entityType is Player the new hp is -500
+log: updating Player Inventory with player ID: 508005595for server with ID: sagdand with content: 
+{"items": [{"stackID": 734507016, "size": 5, "itemID": "FirstAidKit", "tags": []}, {"stackID": 3915592247, "size": 1, "itemID": "Rags", "tags": []}], "hotbar": [{"stackID": 734507016, "size": 5, "itemID": "FirstAidKit", "tags": []}, null, null, null, null, null], "hotbarSize": 6, "activeSlot": 0, "primaryHand": []}
+log: updating Player Inventory with player ID: 508005595for server with ID: sagdand with content: 
+{"items": [{"stackID": 734507016, "size": 5, "itemID": "FirstAidKit", "tags": []}, {"stackID": 3915592247, "size": 1, "itemID": "Rags", "tags": []}, {"stackID": 180183262, "size": 1, "itemID": "Screwdriver", "tags": []}], "hotbar": [{"stackID": 734507016, "size": 5, "itemID": "FirstAidKit", "tags": []}, null, null, null, null, null], "hotbarSize": 6, "activeSlot": 0, "primaryHand": []}
+log: sendfing Information about deleted GameObject on Server with ID:sagd to client with ID: 508005595 the deleted entity has the ID: 2877888310 and the type: Zombie
+log: Player with ID 508005595 is trying to interact
+log: consumed AIdKit
+log: Player with ID 508005595 is trying to interact
+log: updating Player Inventory with player ID: 508005595for server with ID: sagdand with content: 
+{"items": [{"stackID": 734507016, "size": 4, "itemID": "FirstAidKit", "tags": []}, {"stackID": 3915592247, "size": 1, "itemID": "Rags", "tags": []}, {"stackID": 180183262, "size": 1, "itemID": "Screwdriver", "tags": []}], "hotbar": [{"stackID": 734507016, "size": 4, "itemID": "FirstAidKit", "tags": []}, null, null, null, null, null], "hotbarSize": 6, "activeSlot": 0, "primaryHand": []}
+log: sending information about new Health on Server with ID: sagd to client with ID 508005595 the ID of the Updated Object is 508005595 the entityType is Player the new hp is 500
+log: consumed AIdKit
+log: Player with ID 508005595 is trying to interact
+log: Player with ID 508005595 is trying to interact
+log: updating Player Inventory with player ID: 508005595for server with ID: sagdand with content: 
+{"items": [{"stackID": 734507016, "size": 3, "itemID": "FirstAidKit", "tags": []}, {"stackID": 3915592247, "size": 1, "itemID": "Rags", "tags": []}, {"stackID": 180183262, "size": 1, "itemID": "Screwdriver", "tags": []}], "hotbar": [{"stackID": 734507016, "size": 3, "itemID": "FirstAidKit", "tags": []}, null, null, null, null, null], "hotbarSize": 6, "activeSlot": 0, "primaryHand": []}
+log: sending information about new Health on Server with ID: sagd to client with ID 508005595 the ID of the Updated Object is 508005595 the entityType is Player the new hp is 1500
+log: Player with ID 508005595 is trying to interact
+log: consumed AIdKit
+log: Player with ID 508005595 is trying to interact
+log: consumed AIdKit
+log: Player with ID 508005595 is trying to interact
+log: deleting stack with ID  : 734507016
+log: consumed AIdKit
+log: updating Player Inventory with player ID: 508005595for server with ID: sagdand with content: 
+{"items": [{"stackID": 734507016, "size": 2, "itemID": "FirstAidKit", "tags": []}, {"stackID": 3915592247, "size": 1, "itemID": "Rags", "tags": []}, {"stackID": 180183262, "size": 1, "itemID": "Screwdriver", "tags": []}], "hotbar": [{"stackID": 734507016, "size": 2, "itemID": "FirstAidKit", "tags": []}, null, null, null, null, null], "hotbarSize": 6, "activeSlot": 0, "primaryHand": []}
+log: sending information about new Health on Server with ID: sagd to client with ID 508005595 the ID of the Updated Object is 508005595 the entityType is Player the new hp is 2500
+log: updating Player Inventory with player ID: 508005595for server with ID: sagdand with content: 
+{"items": [{"stackID": 734507016, "size": 1, "itemID": "FirstAidKit", "tags": []}, {"stackID": 3915592247, "size": 1, "itemID": "Rags", "tags": []}, {"stackID": 180183262, "size": 1, "itemID": "Screwdriver", "tags": []}], "hotbar": [{"stackID": 734507016, "size": 1, "itemID": "FirstAidKit", "tags": []}, null, null, null, null, null], "hotbarSize": 6, "activeSlot": 0, "primaryHand": []}
+log: sending information about new Health on Server with ID: sagd to client with ID 508005595 the ID of the Updated Object is 508005595 the entityType is Player the new hp is 3500
+log: updating Player Inventory with player ID: 508005595for server with ID: sagdand with content: 
+{"items": [{"stackID": 3915592247, "size": 1, "itemID": "Rags", "tags": []}, {"stackID": 180183262, "size": 1, "itemID": "Screwdriver", "tags": []}], "hotbar": [null, null, null, null, null, null], "hotbarSize": 6, "activeSlot": 0, "primaryHand": []}
+log: sending information about new Health on Server with ID: sagd to client with ID 508005595 the ID of the Updated Object is 508005595 the entityType is Player the new hp is 4500
+log: Player with ID 508005595 is trying to interact
+log: Player with ID 508005595 is trying to interact
+log: Player with ID 508005595 is trying to interact
+log: Player with ID 508005595 is trying to interact
+log: Player with ID 508005595 is trying to interact
+log: Player with ID 508005595 is trying to interact
+log: Player with ID 508005595 is trying to interact
+log: Player with ID 508005595 is trying to interact
+log: Player with ID 508005595 is trying to interact
+log: Player with ID 508005595 is trying to interact
+log: Player with ID 508005595 is trying to interact
+log: Player with ID 508005595 is trying to interact
+log: Player with ID 508005595 is trying to interact
+log: Player with ID 508005595 is trying to interact
+log: Player with ID 508005595 is trying to interact
+log: interupted Player movement of Player with ID: 508005595
+log: Player got Interupted in Movement, the player ID is: 508005595
+log: Player got Teleported deltax: -12.672032749942446 deltay: 12.672032749942446
+log: interupted Player movement of Player with ID: 508005595
+log: Player got Interupted in Movement, the player ID is: 508005595
+log: Player got Teleported deltax: -12.812192430155847 deltay: 12.812192430155847
+log: interupted Player movement of Player with ID: 508005595
+log: Player got Interupted in Movement, the player ID is: 508005595
+log: Player got Teleported deltax: -13.41527169976871 deltay: 13.41527169976871
+log: interupted Player movement of Player with ID: 508005595
+log: Player got Interupted in Movement, the player ID is: 508005595
+log: Player got Teleported deltax: -12.026162010206463 deltay: 12.026162010206463
+log: interupted Player movement of Player with ID: 508005595
+log: Player got Interupted in Movement, the player ID is: 508005595
+log: Player got Teleported deltax: -13.875223659961193 deltay: 13.875223659961193
+log: interupted Player movement of Player with ID: 508005595
+log: Player got Interupted in Movement, the player ID is: 508005595
+log: Player got Teleported deltax: -13.134493229827058 deltay: 13.134493229827058
+log: interupted Player movement of Player with ID: 508005595
+log: Player got Interupted in Movement, the player ID is: 508005595
+log: Player got Teleported deltax: -12.2386716600613 deltay: 12.2386716600613
+log: interupted Player movement of Player with ID: 508005595
+log: Player got Interupted in Movement, the player ID is: 508005595
+log: Player got Teleported deltax: -12.566409550172466 deltay: 12.566409550172466
+log: interupted Player movement of Player with ID: 508005595
+log: Player got Interupted in Movement, the player ID is: 508005595
+log: Player got Teleported deltax: -12.362016629767822 deltay: 12.362016629767822
+log: interupted Player movement of Player with ID: 508005595
+log: Player got Interupted in Movement, the player ID is: 508005595
+log: Player got Teleported deltax: -14.153504770092695 deltay: 14.153504770092695
+log: interupted Player movement of Player with ID: 508005595
+log: Player got Interupted in Movement, the player ID is: 508005595
+log: Player got Teleported deltax: -13.670836940054869 deltay: 13.670836940054869
+log: interupted Player movement of Player with ID: 508005595
+log: Player got Interupted in Movement, the player ID is: 508005595
+log: Player got Teleported deltax: -14.996419879989844 deltay: 14.996419879989844
+log: interupted Player movement of Player with ID: 508005595
+log: Player got Interupted in Movement, the player ID is: 508005595
+log: Player got Teleported deltax: -13.494194910099395 deltay: 13.494194910099395
+log: interupted Player movement of Player with ID: 508005595
+log: Player got Interupted in Movement, the player ID is: 508005595
+log: Player got Teleported deltax: -12.95274240004801 deltay: 12.95274240004801
+log: interupted Player movement of Player with ID: 508005595
+log: Player got Interupted in Movement, the player ID is: 508005595
+log: Player got Teleported deltax: -13.313115850123722 deltay: 13.313115850123722
+log: interupted Player movement of Player with ID: 508005595
+log: Player got Interupted in Movement, the player ID is: 508005595
+log: Player got Teleported deltax: -13.245800279964897 deltay: 13.245800279964897
+log: interupted Player movement of Player with ID: 508005595
+log: Player got Interupted in Movement, the player ID is: 508005595
+log: Player got Teleported deltax: -12.681797749864927 deltay: 12.681797749864927
+log: interupted Player movement of Player with ID: 508005595
+log: Player got Interupted in Movement, the player ID is: 508005595
+log: Player got Teleported deltax: -14.781148750016655 deltay: 14.781148750016655
+log: interupted Player movement of Player with ID: 508005595
+log: Player got Interupted in Movement, the player ID is: 508005595
+log: Player got Teleported deltax: -13.65527401012514 deltay: 13.65527401012514
+log: interupted Player movement of Player with ID: 508005595
+log: Player got Interupted in Movement, the player ID is: 508005595
+log: Player got Teleported deltax: -13.035994139854665 deltay: 13.035994139854665
+log: interupted Player movement of Player with ID: 508005595
+log: Player got Interupted in Movement, the player ID is: 508005595
+log: Player got Teleported deltax: -12.846711549937027 deltay: 12.846711549937027
+log: Player with ID 508005595 is trying to interact
+log: the new second coordinates after door  has been interacted with are: 200 300
+log: Player with ID 508005595 is trying to interact
+log: interupted Player movement of Player with ID: 508005595
+log: Player got Interupted in Movement, the player ID is: 508005595
+log: Player got Teleported deltax: -13.322978190144568 deltay: 13.322978190144568
+log: Player with ID 508005595 is trying to interact
+log: Player with ID 508005595 is trying to interact
+log: interupted Player movement of Player with ID: 508005595
+log: Player got Interupted in Movement, the player ID is: 508005595
+log: Player got Teleported deltax: -14.917996079875593 deltay: 0.0
+log: interupted Player movement of Player with ID: 508005595
+log: Player got Interupted in Movement, the player ID is: 508005595
+log: Player got Teleported deltax: -13.924318360104735 deltay: 0.0
+log: interupted Player movement of Player with ID: 508005595
+log: Player got Interupted in Movement, the player ID is: 508005595
+log: Player got Teleported deltax: -12.480442210044203 deltay: 0.0
+log: interupted Player movement of Player with ID: 508005595
+log: Player got Interupted in Movement, the player ID is: 508005595
+log: Player got Teleported deltax: -13.047469720013396 deltay: 0.0
+log: interupted Player movement of Player with ID: 508005595
+log: Player got Interupted in Movement, the player ID is: 508005595
+log: Player got Teleported deltax: -13.585484330051258 deltay: 0.0
+log: interupted Player movement of Player with ID: 508005595
+log: Player got Interupted in Movement, the player ID is: 508005595
+log: Player got Teleported deltax: -11.791757059863812 deltay: 0.0
+log: interupted Player movement of Player with ID: 508005595
+log: Player got Interupted in Movement, the player ID is: 508005595
+log: Player got Teleported deltax: -14.067434509925079 deltay: 0.0
+log: interupted Player movement of Player with ID: 508005595
+log: Player got Interupted in Movement, the player ID is: 508005595
+log: Player got Teleported deltax: -12.850109770088238 deltay: -12.850109770088238
+log: interupted Player movement of Player with ID: 508005595
+log: Player got Interupted in Movement, the player ID is: 508005595
+log: Player got Teleported deltax: -12.94464829993558 deltay: 12.94464829993558
+log: interupted Player movement of Player with ID: 508005595
+log: Player got Interupted in Movement, the player ID is: 508005595
+log: Player got Teleported deltax: 13.01316977002898 deltay: 0.0
+log: interupted Player movement of Player with ID: 508005595
+log: Player got Interupted in Movement, the player ID is: 508005595
+log: Player got Teleported deltax: 13.41768318978211 deltay: 0.0
+log: interupted Player movement of Player with ID: 508005595
+log: Player got Interupted in Movement, the player ID is: 508005595
+log: Player got Teleported deltax: 14.594960890217408 deltay: 14.594960890217408
+log: interupted Player movement of Player with ID: 508005595
+log: Player got Interupted in Movement, the player ID is: 508005595
+log: Player got Teleported deltax: 14.559615000016493 deltay: 14.559615000016493
+log: Player with ID 508005595 is trying to interact
+log: the new second coordinates after door  has been interacted with are: 100 400
+log: Player with ID 508005595 is trying to interact
+log: Player with ID 508005595 is trying to interact
+log: Player with ID 508005595 is trying to interact
+log: Player with ID 508005595 is trying to interact
+log: interupted Player movement of Player with ID: 508005595
+log: Player got Interupted in Movement, the player ID is: 508005595
+log: Player got Teleported deltax: 12.459506359982697 deltay: -12.459506359982697
+log: interupted Player movement of Player with ID: 508005595
+log: Player got Interupted in Movement, the player ID is: 508005595
+log: Player got Teleported deltax: 12.99665358988932 deltay: -12.99665358988932
+log: interupted Player movement of Player with ID: 508005595
+log: Player got Interupted in Movement, the player ID is: 508005595
+log: Player got Teleported deltax: 14.403404760096237 deltay: -14.403404760096237
+log: Player with ID 508005595 is trying to interact
+log: Player with ID 508005595 is trying to interact
+log: Player with ID 508005595 is trying to interact
+log: Player with ID 508005595 is trying to interact
+log: Player with ID 508005595 is trying to interact
+log: Player with ID 508005595 is trying to interact
+log: Player with ID 508005595 is trying to interact
+log: updating Player Inventory with player ID: 508005595for server with ID: sagdand with content: 
+{"items": [{"stackID": 3915592247, "size": 1, "itemID": "Rags", "tags": []}, {"stackID": 180183262, "size": 1, "itemID": "Screwdriver", "tags": []}, {"stackID": 1179549484, "size": 1, "itemID": "Scrap", "tags": []}], "hotbar": [null, null, null, null, null, null], "hotbarSize": 6, "activeSlot": 0, "primaryHand": []}
+log: updating Player Inventory with player ID: 508005595for server with ID: sagdand with content: 
+{"items": [{"stackID": 3915592247, "size": 1, "itemID": "Rags", "tags": []}, {"stackID": 180183262, "size": 1, "itemID": "Screwdriver", "tags": []}, {"stackID": 1179549484, "size": 1, "itemID": "Scrap", "tags": []}, {"stackID": 3639303268, "size": 2, "itemID": "FirstAidKit", "tags": []}], "hotbar": [null, null, null, null, null, null], "hotbarSize": 6, "activeSlot": 0, "primaryHand": []}
+log: updating Player Inventory with player ID: 508005595for server with ID: sagdand with content: 
+{"items": [{"stackID": 3915592247, "size": 1, "itemID": "Rags", "tags": []}, {"stackID": 180183262, "size": 1, "itemID": "Screwdriver", "tags": []}, {"stackID": 1179549484, "size": 1, "itemID": "Scrap", "tags": []}, {"stackID": 3639303268, "size": 2, "itemID": "FirstAidKit", "tags": []}, {"stackID": 2529051648, "size": 1, "itemID": "Wood", "tags": []}], "hotbar": [null, null, null, null, null, null], "hotbarSize": 6, "activeSlot": 0, "primaryHand": []}
+log: updating Player Inventory with player ID: 508005595for server with ID: sagdand with content: 
+{"items": [{"stackID": 3915592247, "size": 1, "itemID": "Rags", "tags": []}, {"stackID": 180183262, "size": 1, "itemID": "Screwdriver", "tags": []}, {"stackID": 1179549484, "size": 1, "itemID": "Scrap", "tags": []}, {"stackID": 3639303268, "size": 2, "itemID": "FirstAidKit", "tags": []}, {"stackID": 2529051648, "size": 1, "itemID": "Wood", "tags": []}, {"stackID": 3495536276, "size": 1, "itemID": "Scrap", "tags": []}], "hotbar": [null, null, null, null, null, null], "hotbarSize": 6, "activeSlot": 0, "primaryHand": []}
+log: updating Player Inventory with player ID: 508005595for server with ID: sagdand with content: 
+{"items": [{"stackID": 3915592247, "size": 1, "itemID": "Rags", "tags": []}, {"stackID": 180183262, "size": 1, "itemID": "Screwdriver", "tags": []}, {"stackID": 1179549484, "size": 1, "itemID": "Scrap", "tags": []}, {"stackID": 3639303268, "size": 2, "itemID": "FirstAidKit", "tags": []}, {"stackID": 2529051648, "size": 1, "itemID": "Wood", "tags": []}, {"stackID": 3495536276, "size": 1, "itemID": "Scrap", "tags": []}, {"stackID": 2836046038, "size": 3, "itemID": "Apple", "tags": []}], "hotbar": [null, null, null, null, null, null], "hotbarSize": 6, "activeSlot": 0, "primaryHand": []}
+log: Player with ID 508005595 is trying to interact
+log: Player with ID 508005595 is trying to interact
+log: Player with ID 508005595 is trying to interact
+log: Player with ID 508005595 is trying to interact
+log: Player with ID 508005595 is trying to interact
+log: Player with ID 508005595 is trying to interact
+log: Player with ID 508005595 is trying to interact
+log: Player with ID 508005595 is trying to interact
+log: Player with ID 508005595 is trying to interact
+log: Player with ID 508005595 is trying to interact
+log: Player with ID 508005595 is trying to interact
+log: Player with ID 508005595 is trying to interact
+log: Player with ID 508005595 is trying to interact
+log: Player with ID 508005595 is trying to interact
+log: Player with ID 508005595 is trying to interact
+log: Player with ID 508005595 is trying to interact
+log: Player with ID 508005595 is trying to interact
+log: Player with ID 508005595 is trying to interact
+log: consumed AIdKit
+log: updating Player Inventory with player ID: 508005595for server with ID: sagdand with content: 
+{"items": [{"stackID": 3915592247, "size": 1, "itemID": "Rags", "tags": []}, {"stackID": 180183262, "size": 1, "itemID": "Screwdriver", "tags": []}, {"stackID": 1179549484, "size": 1, "itemID": "Scrap", "tags": []}, {"stackID": 3639303268, "size": 1, "itemID": "FirstAidKit", "tags": []}, {"stackID": 2529051648, "size": 1, "itemID": "Wood", "tags": []}, {"stackID": 3495536276, "size": 1, "itemID": "Scrap", "tags": []}, {"stackID": 2836046038, "size": 3, "itemID": "Apple", "tags": []}], "hotbar": [{"stackID": 3639303268, "size": 1, "itemID": "FirstAidKit", "tags": []}, null, null, null, null, null], "hotbarSize": 6, "activeSlot": 0, "primaryHand": []}
+log: Player with ID 508005595 is trying to interact
+log: sending information about new Health on Server with ID: sagd to client with ID 508005595 the ID of the Updated Object is 508005595 the entityType is Player the new hp is 5500
+log: Player with ID 508005595 is trying to interact
+log: deleting stack with ID  : 3639303268
+log: consumed AIdKit
+log: Player with ID 508005595 is trying to interact
+log: Player with ID 508005595 is trying to interact
+log: updating Player Inventory with player ID: 508005595for server with ID: sagdand with content: 
+{"items": [{"stackID": 3915592247, "size": 1, "itemID": "Rags", "tags": []}, {"stackID": 180183262, "size": 1, "itemID": "Screwdriver", "tags": []}, {"stackID": 1179549484, "size": 1, "itemID": "Scrap", "tags": []}, {"stackID": 2529051648, "size": 1, "itemID": "Wood", "tags": []}, {"stackID": 3495536276, "size": 1, "itemID": "Scrap", "tags": []}, {"stackID": 2836046038, "size": 3, "itemID": "Apple", "tags": []}], "hotbar": [null, null, null, null, null, null], "hotbarSize": 6, "activeSlot": 0, "primaryHand": []}
+log: sending information about new Health on Server with ID: sagd to client with ID 508005595 the ID of the Updated Object is 508005595 the entityType is Player the new hp is 6500
+log: Player with ID 508005595 is trying to interact
+log: Player with ID 508005595 is trying to interact
+log: Player with ID 508005595 is trying to interact
+log: Player with ID 508005595 is trying to interact
+log: Player with ID 508005595 is trying to interact
+log: Player with ID 508005595 is trying to interact
+log: Player with ID 508005595 is trying to interact
+log: Player with ID 508005595 is trying to interact
+log: Player with ID 508005595 is trying to interact
+log: Player with ID 508005595 is trying to interact
+log: Player with ID 508005595 is trying to interact
+log: Player with ID 508005595 is trying to interact
+log: Player with ID 508005595 is trying to interact
+log: Player with ID 508005595 is trying to interact
+log: Player with ID 508005595 is trying to interact
+log: Player with ID 508005595 is trying to interact
+log: Player with ID 508005595 is trying to interact
 server Worker Threat started with ID: 
 log: received package to server websocket with ID  and the following content:
-{"type":"startserver","serverID":"gadwaw"}
+{"type":"startserver","serverID":"gseg"}
 adsfasdfa
 asdfasdgafas
 asdfasdfa
 asdfasdcvas
-log: new Player logged in to server with ID: gadwaw the Player ID is: 2867103921
+gadwaw
+log: new Player logged in to server with ID: gseg the Player ID is: 472178946
 log: ein spieler versucht sich auf einem server einzuloggen dessen zustand True ist 
-log: sending connection accepted message to client with ID: 2867103921
-log: updating Player Inventory with player ID: 2867103921for server with ID: gadwawand with content: 
-{"items": [{"stackID": 436098077, "size": 5, "itemID": "FirstAidKit", "tags": []}], "hotbar": [null, null, null, null, null, null], "hotbarSize": 6, "activeSlot": 0, "primaryHand": []}
-log: sending information about new GameObject on Server with ID: gadwaw to client with ID 2867103921 the ID of the new Object is 2867103921 the entity Type is Player
-log: sending information about new GameObject on Server with ID: gadwaw to client with ID 2867103921 the ID of the new Object is 2265212088 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: gadwaw to client with ID 2867103921 the ID of the new Object is 636976632 the entity Type is Zombie
-log: sending information about new GameObject on Server with ID: gadwaw to client with ID 2867103921 the ID of the new Object is 397545342 the entity Type is Wall
-log: sending information about new GameObject on Server with ID: gadwaw to client with ID 2867103921 the ID of the new Object is 1187538151 the entity Type is Wall
-log: sending information about new GameObject on Server with ID: gadwaw to client with ID 2867103921 the ID of the new Object is 2305986843 the entity Type is Door
-log: sending information about new GameObject on Server with ID: gadwaw to client with ID 2867103921 the ID of the new Object is 2086660289 the entity Type is Chest
-log: sending information about new Health on Server with ID: gadwaw to client with ID 2867103921 the ID of the Updated Object is 2867103921 the entityType is Player the new hp is 200
-log: updating Player Inventory with player ID: 2867103921for server with ID: gadwawand with content: 
-{"items": [{"stackID": 436098077, "size": 5, "itemID": "FirstAidKit", "tags": []}], "hotbar": [{"stackID": 436098077, "size": 5, "itemID": "FirstAidKit", "tags": []}, null, null, null, null, null], "hotbarSize": 6, "activeSlot": 0, "primaryHand": []}
-log: sending information about new Health on Server with ID: gadwaw to client with ID 2867103921 the ID of the Updated Object is 2867103921 the entityType is Player the new hp is 150
-log: sending information about new Health on Server with ID: gadwaw to client with ID 2867103921 the ID of the Updated Object is 2867103921 the entityType is Player the new hp is 100
-log: sending information about new Health on Server with ID: gadwaw to client with ID 2867103921 the ID of the Updated Object is 2867103921 the entityType is Player the new hp is 50
-log: sending information about new Health on Server with ID: gadwaw to client with ID 2867103921 the ID of the Updated Object is 2867103921 the entityType is Player the new hp is 0
-log: sending information about new Health on Server with ID: gadwaw to client with ID 2867103921 the ID of the Updated Object is 2867103921 the entityType is Player the new hp is -50
-log: sending information about new Health on Server with ID: gadwaw to client with ID 2867103921 the ID of the Updated Object is 2867103921 the entityType is Player the new hp is -100
-log: updating Player Inventory with player ID: 2867103921for server with ID: gadwawand with content: 
-{"items": [{"stackID": 436098077, "size": 5, "itemID": "FirstAidKit", "tags": []}, {"stackID": 2429129422, "size": 3, "itemID": "Rags", "tags": []}], "hotbar": [{"stackID": 436098077, "size": 5, "itemID": "FirstAidKit", "tags": []}, null, null, null, null, null], "hotbarSize": 6, "activeSlot": 0, "primaryHand": []}
-log: sendfing Information about deleted GameObject on Server with ID:gadwaw to client with ID: 2867103921 the deleted entity has the ID: 636976632 and the type: Zombie
+log: sending connection accepted message to client with ID: 472178946
+log: updating Player Inventory with player ID: 472178946for server with ID: gsegand with content: 
+{"items": [{"stackID": 1762691674, "size": 5, "itemID": "FirstAidKit", "tags": []}], "hotbar": [null, null, null, null, null, null], "hotbarSize": 6, "activeSlot": 0, "primaryHand": []}
+log: sending information about new GameObject on Server with ID: gseg to client with ID 472178946 the ID of the new Object is 472178946 the entity Type is Player
+log: sending information about new GameObject on Server with ID: gseg to client with ID 472178946 the ID of the new Object is 2337379121 the entity Type is Tree
+log: sending information about new GameObject on Server with ID: gseg to client with ID 472178946 the ID of the new Object is 3110079204 the entity Type is Zombie
+log: sending information about new GameObject on Server with ID: gseg to client with ID 472178946 the ID of the new Object is 2727078181 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: gseg to client with ID 472178946 the ID of the new Object is 243545587 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: gseg to client with ID 472178946 the ID of the new Object is 3017726140 the entity Type is Door
+log: sending information about new GameObject on Server with ID: gseg to client with ID 472178946 the ID of the new Object is 3873500242 the entity Type is Chest
+log: sending information about new Health on Server with ID: gseg to client with ID 472178946 the ID of the Updated Object is 472178946 the entityType is Player the new hp is 200
+log: updating Player Inventory with player ID: 472178946for server with ID: gsegand with content: 
+{"items": [{"stackID": 1762691674, "size": 5, "itemID": "FirstAidKit", "tags": []}], "hotbar": [{"stackID": 1762691674, "size": 5, "itemID": "FirstAidKit", "tags": []}, null, null, null, null, null], "hotbarSize": 6, "activeSlot": 0, "primaryHand": []}
+log: sending information about new Health on Server with ID: gseg to client with ID 472178946 the ID of the Updated Object is 472178946 the entityType is Player the new hp is 150
+log: sending information about new Health on Server with ID: gseg to client with ID 472178946 the ID of the Updated Object is 472178946 the entityType is Player the new hp is 100
+log: sending information about new Health on Server with ID: gseg to client with ID 472178946 the ID of the Updated Object is 472178946 the entityType is Player the new hp is 50
+log: sending information about new Health on Server with ID: gseg to client with ID 472178946 the ID of the Updated Object is 472178946 the entityType is Player the new hp is 0
+log: updating Player Inventory with player ID: 472178946for server with ID: gsegand with content: 
+{"items": [{"stackID": 1762691674, "size": 5, "itemID": "FirstAidKit", "tags": []}, {"stackID": 543925636, "size": 3, "itemID": "Rags", "tags": []}], "hotbar": [{"stackID": 1762691674, "size": 5, "itemID": "FirstAidKit", "tags": []}, null, null, null, null, null], "hotbarSize": 6, "activeSlot": 0, "primaryHand": []}
+log: sendfing Information about deleted GameObject on Server with ID:gseg to client with ID: 472178946 the deleted entity has the ID: 3110079204 and the type: Zombie
+log: Player with ID 472178946 is trying to interact
+log: consumed AIdKit
+log: Player with ID 472178946 is trying to interact
+log: updating Player Inventory with player ID: 472178946for server with ID: gsegand with content: 
+{"items": [{"stackID": 1762691674, "size": 4, "itemID": "FirstAidKit", "tags": []}, {"stackID": 543925636, "size": 3, "itemID": "Rags", "tags": []}], "hotbar": [{"stackID": 1762691674, "size": 4, "itemID": "FirstAidKit", "tags": []}, null, null, null, null, null], "hotbarSize": 6, "activeSlot": 0, "primaryHand": []}
+log: Player with ID 472178946 is trying to interact
+log: sending information about new Health on Server with ID: gseg to client with ID 472178946 the ID of the Updated Object is 472178946 the entityType is Player the new hp is 1000
+log: consumed AIdKit
+log: Player with ID 472178946 is trying to interact
+log: consumed AIdKit
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: updating Player Inventory with player ID: 472178946for server with ID: gsegand with content: 
+{"items": [{"stackID": 1762691674, "size": 3, "itemID": "FirstAidKit", "tags": []}, {"stackID": 543925636, "size": 3, "itemID": "Rags", "tags": []}], "hotbar": [{"stackID": 1762691674, "size": 3, "itemID": "FirstAidKit", "tags": []}, null, null, null, null, null], "hotbarSize": 6, "activeSlot": 0, "primaryHand": []}
+log: sending information about new Health on Server with ID: gseg to client with ID 472178946 the ID of the Updated Object is 472178946 the entityType is Player the new hp is 2000
+log: consumed AIdKit
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: updating Player Inventory with player ID: 472178946for server with ID: gsegand with content: 
+{"items": [{"stackID": 1762691674, "size": 2, "itemID": "FirstAidKit", "tags": []}, {"stackID": 543925636, "size": 3, "itemID": "Rags", "tags": []}], "hotbar": [{"stackID": 1762691674, "size": 2, "itemID": "FirstAidKit", "tags": []}, null, null, null, null, null], "hotbarSize": 6, "activeSlot": 0, "primaryHand": []}
+log: sending information about new Health on Server with ID: gseg to client with ID 472178946 the ID of the Updated Object is 472178946 the entityType is Player the new hp is 3000
+log: deleting stack with ID  : 1762691674
+log: consumed AIdKit
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: updating Player Inventory with player ID: 472178946for server with ID: gsegand with content: 
+{"items": [{"stackID": 1762691674, "size": 1, "itemID": "FirstAidKit", "tags": []}, {"stackID": 543925636, "size": 3, "itemID": "Rags", "tags": []}], "hotbar": [{"stackID": 1762691674, "size": 1, "itemID": "FirstAidKit", "tags": []}, null, null, null, null, null], "hotbarSize": 6, "activeSlot": 0, "primaryHand": []}
+log: Player with ID 472178946 is trying to interact
+log: sending information about new Health on Server with ID: gseg to client with ID 472178946 the ID of the Updated Object is 472178946 the entityType is Player the new hp is 4000
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: updating Player Inventory with player ID: 472178946for server with ID: gsegand with content: 
+{"items": [{"stackID": 543925636, "size": 3, "itemID": "Rags", "tags": []}], "hotbar": [null, null, null, null, null, null], "hotbarSize": 6, "activeSlot": 0, "primaryHand": []}
+log: Player with ID 472178946 is trying to interact
+log: sending information about new Health on Server with ID: gseg to client with ID 472178946 the ID of the Updated Object is 472178946 the entityType is Player the new hp is 5000
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: updating Player Inventory with player ID: 472178946for server with ID: gsegand with content: 
+{"items": [{"stackID": 543925636, "size": 3, "itemID": "Rags", "tags": []}, {"stackID": 2203645073, "size": 1, "itemID": "Apple", "tags": []}], "hotbar": [null, null, null, null, null, null], "hotbarSize": 6, "activeSlot": 0, "primaryHand": []}
+log: updating Player Inventory with player ID: 472178946for server with ID: gsegand with content: 
+{"items": [{"stackID": 543925636, "size": 3, "itemID": "Rags", "tags": []}, {"stackID": 2203645073, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 834864902, "size": 2, "itemID": "Apple", "tags": []}], "hotbar": [null, null, null, null, null, null], "hotbarSize": 6, "activeSlot": 0, "primaryHand": []}
+log: Player with ID 472178946 is trying to interact
+log: updating Player Inventory with player ID: 472178946for server with ID: gsegand with content: 
+{"items": [{"stackID": 543925636, "size": 3, "itemID": "Rags", "tags": []}, {"stackID": 2203645073, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 834864902, "size": 2, "itemID": "Apple", "tags": []}, {"stackID": 288177585, "size": 2, "itemID": "Wood", "tags": []}], "hotbar": [null, null, null, null, null, null], "hotbarSize": 6, "activeSlot": 0, "primaryHand": []}
+log: updating Player Inventory with player ID: 472178946for server with ID: gsegand with content: 
+{"items": [{"stackID": 543925636, "size": 3, "itemID": "Rags", "tags": []}, {"stackID": 2203645073, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 834864902, "size": 2, "itemID": "Apple", "tags": []}, {"stackID": 288177585, "size": 2, "itemID": "Wood", "tags": []}, {"stackID": 128883727, "size": 3, "itemID": "FirstAidKit", "tags": []}], "hotbar": [null, null, null, null, null, null], "hotbarSize": 6, "activeSlot": 0, "primaryHand": []}
+log: updating Player Inventory with player ID: 472178946for server with ID: gsegand with content: 
+{"items": [{"stackID": 543925636, "size": 3, "itemID": "Rags", "tags": []}, {"stackID": 2203645073, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 834864902, "size": 2, "itemID": "Apple", "tags": []}, {"stackID": 288177585, "size": 2, "itemID": "Wood", "tags": []}, {"stackID": 128883727, "size": 3, "itemID": "FirstAidKit", "tags": []}, {"stackID": 422223831, "size": 2, "itemID": "Apple", "tags": []}], "hotbar": [null, null, null, null, null, null], "hotbarSize": 6, "activeSlot": 0, "primaryHand": []}
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: consumed AIdKit
+log: updating Player Inventory with player ID: 472178946for server with ID: gsegand with content: 
+{"items": [{"stackID": 543925636, "size": 3, "itemID": "Rags", "tags": []}, {"stackID": 2203645073, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 834864902, "size": 2, "itemID": "Apple", "tags": []}, {"stackID": 288177585, "size": 2, "itemID": "Wood", "tags": []}, {"stackID": 128883727, "size": 2, "itemID": "FirstAidKit", "tags": []}, {"stackID": 422223831, "size": 2, "itemID": "Apple", "tags": []}], "hotbar": [{"stackID": 128883727, "size": 2, "itemID": "FirstAidKit", "tags": []}, null, null, null, null, null], "hotbarSize": 6, "activeSlot": 0, "primaryHand": []}
+log: Player with ID 472178946 is trying to interact
+log: sending information about new Health on Server with ID: gseg to client with ID 472178946 the ID of the Updated Object is 472178946 the entityType is Player the new hp is 6000
+log: Player with ID 472178946 is trying to interact
+log: consumed AIdKit
+log: Player with ID 472178946 is trying to interact
+log: deleting stack with ID  : 128883727
+log: consumed AIdKit
+log: Player with ID 472178946 is trying to interact
+log: updating Player Inventory with player ID: 472178946for server with ID: gsegand with content: 
+{"items": [{"stackID": 543925636, "size": 3, "itemID": "Rags", "tags": []}, {"stackID": 2203645073, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 834864902, "size": 2, "itemID": "Apple", "tags": []}, {"stackID": 288177585, "size": 2, "itemID": "Wood", "tags": []}, {"stackID": 128883727, "size": 1, "itemID": "FirstAidKit", "tags": []}, {"stackID": 422223831, "size": 2, "itemID": "Apple", "tags": []}], "hotbar": [{"stackID": 128883727, "size": 1, "itemID": "FirstAidKit", "tags": []}, null, null, null, null, null], "hotbarSize": 6, "activeSlot": 0, "primaryHand": []}
+log: sending information about new Health on Server with ID: gseg to client with ID 472178946 the ID of the Updated Object is 472178946 the entityType is Player the new hp is 7000
+log: Player with ID 472178946 is trying to interact
+log: updating Player Inventory with player ID: 472178946for server with ID: gsegand with content: 
+{"items": [{"stackID": 543925636, "size": 3, "itemID": "Rags", "tags": []}, {"stackID": 2203645073, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 834864902, "size": 2, "itemID": "Apple", "tags": []}, {"stackID": 288177585, "size": 2, "itemID": "Wood", "tags": []}, {"stackID": 422223831, "size": 2, "itemID": "Apple", "tags": []}], "hotbar": [null, null, null, null, null, null], "hotbarSize": 6, "activeSlot": 0, "primaryHand": []}
+log: Player with ID 472178946 is trying to interact
+log: sending information about new Health on Server with ID: gseg to client with ID 472178946 the ID of the Updated Object is 472178946 the entityType is Player the new hp is 8000
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: updating Player Inventory with player ID: 472178946for server with ID: gsegand with content: 
+{"items": [{"stackID": 543925636, "size": 3, "itemID": "Rags", "tags": []}, {"stackID": 2203645073, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 834864902, "size": 2, "itemID": "Apple", "tags": []}, {"stackID": 288177585, "size": 2, "itemID": "Wood", "tags": []}, {"stackID": 422223831, "size": 2, "itemID": "Apple", "tags": []}, {"stackID": 1247990667, "size": 1, "itemID": "Apple", "tags": []}], "hotbar": [null, null, null, null, null, null], "hotbarSize": 6, "activeSlot": 0, "primaryHand": []}
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: updating Player Inventory with player ID: 472178946for server with ID: gsegand with content: 
+{"items": [{"stackID": 543925636, "size": 3, "itemID": "Rags", "tags": []}, {"stackID": 2203645073, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 834864902, "size": 2, "itemID": "Apple", "tags": []}, {"stackID": 288177585, "size": 2, "itemID": "Wood", "tags": []}, {"stackID": 422223831, "size": 2, "itemID": "Apple", "tags": []}, {"stackID": 1247990667, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 2843445351, "size": 1, "itemID": "Apple", "tags": []}], "hotbar": [null, null, null, null, null, null], "hotbarSize": 6, "activeSlot": 0, "primaryHand": []}
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: updating Player Inventory with player ID: 472178946for server with ID: gsegand with content: 
+{"items": [{"stackID": 543925636, "size": 3, "itemID": "Rags", "tags": []}, {"stackID": 2203645073, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 834864902, "size": 2, "itemID": "Apple", "tags": []}, {"stackID": 288177585, "size": 2, "itemID": "Wood", "tags": []}, {"stackID": 422223831, "size": 2, "itemID": "Apple", "tags": []}, {"stackID": 1247990667, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 2843445351, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 3798668374, "size": 3, "itemID": "Stick", "tags": []}], "hotbar": [null, null, null, null, null, null], "hotbarSize": 6, "activeSlot": 0, "primaryHand": []}
+log: Player with ID 472178946 is trying to interact
+log: updating Player Inventory with player ID: 472178946for server with ID: gsegand with content: 
+{"items": [{"stackID": 543925636, "size": 3, "itemID": "Rags", "tags": []}, {"stackID": 2203645073, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 834864902, "size": 2, "itemID": "Apple", "tags": []}, {"stackID": 288177585, "size": 2, "itemID": "Wood", "tags": []}, {"stackID": 422223831, "size": 2, "itemID": "Apple", "tags": []}, {"stackID": 1247990667, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 2843445351, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 3798668374, "size": 3, "itemID": "Stick", "tags": []}, {"stackID": 235580834, "size": 1, "itemID": "Apple", "tags": []}], "hotbar": [null, null, null, null, null, null], "hotbarSize": 6, "activeSlot": 0, "primaryHand": []}
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: updating Player Inventory with player ID: 472178946for server with ID: gsegand with content: 
+{"items": [{"stackID": 543925636, "size": 3, "itemID": "Rags", "tags": []}, {"stackID": 2203645073, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 834864902, "size": 2, "itemID": "Apple", "tags": []}, {"stackID": 288177585, "size": 2, "itemID": "Wood", "tags": []}, {"stackID": 422223831, "size": 2, "itemID": "Apple", "tags": []}, {"stackID": 1247990667, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 2843445351, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 3798668374, "size": 3, "itemID": "Stick", "tags": []}, {"stackID": 235580834, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 2406907742, "size": 3, "itemID": "Stick", "tags": []}], "hotbar": [null, null, null, null, null, null], "hotbarSize": 6, "activeSlot": 0, "primaryHand": []}
+log: updating Player Inventory with player ID: 472178946for server with ID: gsegand with content: 
+{"items": [{"stackID": 543925636, "size": 3, "itemID": "Rags", "tags": []}, {"stackID": 2203645073, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 834864902, "size": 2, "itemID": "Apple", "tags": []}, {"stackID": 288177585, "size": 2, "itemID": "Wood", "tags": []}, {"stackID": 422223831, "size": 2, "itemID": "Apple", "tags": []}, {"stackID": 1247990667, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 2843445351, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 3798668374, "size": 3, "itemID": "Stick", "tags": []}, {"stackID": 235580834, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 2406907742, "size": 3, "itemID": "Stick", "tags": []}, {"stackID": 3336607909, "size": 3, "itemID": "Stick", "tags": []}], "hotbar": [null, null, null, null, null, null], "hotbarSize": 6, "activeSlot": 0, "primaryHand": []}
+log: Player with ID 472178946 is trying to interact
+log: updating Player Inventory with player ID: 472178946for server with ID: gsegand with content: 
+{"items": [{"stackID": 543925636, "size": 3, "itemID": "Rags", "tags": []}, {"stackID": 2203645073, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 834864902, "size": 2, "itemID": "Apple", "tags": []}, {"stackID": 288177585, "size": 2, "itemID": "Wood", "tags": []}, {"stackID": 422223831, "size": 2, "itemID": "Apple", "tags": []}, {"stackID": 1247990667, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 2843445351, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 3798668374, "size": 3, "itemID": "Stick", "tags": []}, {"stackID": 235580834, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 2406907742, "size": 3, "itemID": "Stick", "tags": []}, {"stackID": 3336607909, "size": 3, "itemID": "Stick", "tags": []}, {"stackID": 740650442, "size": 1, "itemID": "Apple", "tags": []}], "hotbar": [null, null, null, null, null, null], "hotbarSize": 6, "activeSlot": 0, "primaryHand": []}
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: updating Player Inventory with player ID: 472178946for server with ID: gsegand with content: 
+{"items": [{"stackID": 543925636, "size": 3, "itemID": "Rags", "tags": []}, {"stackID": 2203645073, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 834864902, "size": 2, "itemID": "Apple", "tags": []}, {"stackID": 288177585, "size": 2, "itemID": "Wood", "tags": []}, {"stackID": 422223831, "size": 2, "itemID": "Apple", "tags": []}, {"stackID": 1247990667, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 2843445351, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 3798668374, "size": 3, "itemID": "Stick", "tags": []}, {"stackID": 235580834, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 2406907742, "size": 3, "itemID": "Stick", "tags": []}, {"stackID": 3336607909, "size": 3, "itemID": "Stick", "tags": []}, {"stackID": 740650442, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 3443964046, "size": 1, "itemID": "Apple", "tags": []}], "hotbar": [null, null, null, null, null, null], "hotbarSize": 6, "activeSlot": 0, "primaryHand": []}
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: updating Player Inventory with player ID: 472178946for server with ID: gsegand with content: 
+{"items": [{"stackID": 543925636, "size": 3, "itemID": "Rags", "tags": []}, {"stackID": 2203645073, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 834864902, "size": 2, "itemID": "Apple", "tags": []}, {"stackID": 288177585, "size": 2, "itemID": "Wood", "tags": []}, {"stackID": 422223831, "size": 2, "itemID": "Apple", "tags": []}, {"stackID": 1247990667, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 2843445351, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 3798668374, "size": 3, "itemID": "Stick", "tags": []}, {"stackID": 235580834, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 2406907742, "size": 3, "itemID": "Stick", "tags": []}, {"stackID": 3336607909, "size": 3, "itemID": "Stick", "tags": []}, {"stackID": 740650442, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 3443964046, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 2804037531, "size": 1, "itemID": "Apple", "tags": []}], "hotbar": [null, null, null, null, null, null], "hotbarSize": 6, "activeSlot": 0, "primaryHand": []}
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: Player with ID 472178946 is trying to interact
+log: got request to combine stacks with the following content
+{'type': 'combineStacks', 'stackID1': 740650442, 'stackID2': 3443964046}
+log: trying to combine stackst the ID are: 740650442 3443964046
+log: the old items are: 
+{"stackID": 740650442, "size": 1, "itemID": "Apple", "tags": []}
+{"stackID": 3443964046, "size": 1, "itemID": "Apple", "tags": []}
+log: the new item is: 
+{"stackID": 2218257670, "size": 2, "itemID": "Apple", "tags": []}
+log: deleting stack with ID  : 740650442
+log: deleting stack with ID  : 3443964046
+log: updating Player Inventory with player ID: 472178946for server with ID: gsegand with content: 
+{"items": [{"stackID": 543925636, "size": 3, "itemID": "Rags", "tags": []}, {"stackID": 2203645073, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 834864902, "size": 2, "itemID": "Apple", "tags": []}, {"stackID": 288177585, "size": 2, "itemID": "Wood", "tags": []}, {"stackID": 422223831, "size": 2, "itemID": "Apple", "tags": []}, {"stackID": 1247990667, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 2843445351, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 3798668374, "size": 3, "itemID": "Stick", "tags": []}, {"stackID": 235580834, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 2406907742, "size": 3, "itemID": "Stick", "tags": []}, {"stackID": 3336607909, "size": 3, "itemID": "Stick", "tags": []}, {"stackID": 3443964046, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 2804037531, "size": 1, "itemID": "Apple", "tags": []}], "hotbar": [null, null, null, null, null, null], "hotbarSize": 6, "activeSlot": 0, "primaryHand": []}
+log: updating Player Inventory with player ID: 472178946for server with ID: gsegand with content: 
+{"items": [{"stackID": 543925636, "size": 3, "itemID": "Rags", "tags": []}, {"stackID": 2203645073, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 834864902, "size": 2, "itemID": "Apple", "tags": []}, {"stackID": 288177585, "size": 2, "itemID": "Wood", "tags": []}, {"stackID": 422223831, "size": 2, "itemID": "Apple", "tags": []}, {"stackID": 1247990667, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 2843445351, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 3798668374, "size": 3, "itemID": "Stick", "tags": []}, {"stackID": 235580834, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 2406907742, "size": 3, "itemID": "Stick", "tags": []}, {"stackID": 3336607909, "size": 3, "itemID": "Stick", "tags": []}, {"stackID": 2804037531, "size": 1, "itemID": "Apple", "tags": []}], "hotbar": [null, null, null, null, null, null], "hotbarSize": 6, "activeSlot": 0, "primaryHand": []}
+log: updating Player Inventory with player ID: 472178946for server with ID: gsegand with content: 
+{"items": [{"stackID": 543925636, "size": 3, "itemID": "Rags", "tags": []}, {"stackID": 2203645073, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 834864902, "size": 2, "itemID": "Apple", "tags": []}, {"stackID": 288177585, "size": 2, "itemID": "Wood", "tags": []}, {"stackID": 422223831, "size": 2, "itemID": "Apple", "tags": []}, {"stackID": 1247990667, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 2843445351, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 3798668374, "size": 3, "itemID": "Stick", "tags": []}, {"stackID": 235580834, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 2406907742, "size": 3, "itemID": "Stick", "tags": []}, {"stackID": 3336607909, "size": 3, "itemID": "Stick", "tags": []}, {"stackID": 2804037531, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 2218257670, "size": 2, "itemID": "Apple", "tags": []}], "hotbar": [null, null, null, null, null, null], "hotbarSize": 6, "activeSlot": 0, "primaryHand": []}
+log: updating Player Inventory with player ID: 472178946for server with ID: gsegand with content: 
+{"items": [{"stackID": 543925636, "size": 3, "itemID": "Rags", "tags": []}, {"stackID": 2203645073, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 834864902, "size": 2, "itemID": "Apple", "tags": []}, {"stackID": 288177585, "size": 2, "itemID": "Wood", "tags": []}, {"stackID": 422223831, "size": 2, "itemID": "Apple", "tags": []}, {"stackID": 1247990667, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 2843445351, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 3798668374, "size": 3, "itemID": "Stick", "tags": []}, {"stackID": 235580834, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 2406907742, "size": 3, "itemID": "Stick", "tags": []}, {"stackID": 3336607909, "size": 3, "itemID": "Stick", "tags": []}, {"stackID": 2804037531, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 2218257670, "size": 2, "itemID": "Apple", "tags": []}], "hotbar": [null, null, null, null, null, null], "hotbarSize": 6, "activeSlot": 0, "primaryHand": []}
+log: got request to combine stacks with the following content
+{'type': 'combineStacks', 'stackID1': 2804037531, 'stackID2': 2218257670}
+log: trying to combine stackst the ID are: 2804037531 2218257670
+log: the old items are: 
+{"stackID": 2804037531, "size": 1, "itemID": "Apple", "tags": []}
+{"stackID": 2218257670, "size": 2, "itemID": "Apple", "tags": []}
+log: the new item is: 
+{"stackID": 2818964091, "size": 3, "itemID": "Apple", "tags": []}
+log: deleting stack with ID  : 2804037531
+log: deleting stack with ID  : 2218257670
+log: updating Player Inventory with player ID: 472178946for server with ID: gsegand with content: 
+{"items": [{"stackID": 543925636, "size": 3, "itemID": "Rags", "tags": []}, {"stackID": 2203645073, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 834864902, "size": 2, "itemID": "Apple", "tags": []}, {"stackID": 288177585, "size": 2, "itemID": "Wood", "tags": []}, {"stackID": 422223831, "size": 2, "itemID": "Apple", "tags": []}, {"stackID": 1247990667, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 2843445351, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 3798668374, "size": 3, "itemID": "Stick", "tags": []}, {"stackID": 235580834, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 2406907742, "size": 3, "itemID": "Stick", "tags": []}, {"stackID": 3336607909, "size": 3, "itemID": "Stick", "tags": []}, {"stackID": 2218257670, "size": 2, "itemID": "Apple", "tags": []}], "hotbar": [null, null, null, null, null, null], "hotbarSize": 6, "activeSlot": 0, "primaryHand": []}
+log: updating Player Inventory with player ID: 472178946for server with ID: gsegand with content: 
+{"items": [{"stackID": 543925636, "size": 3, "itemID": "Rags", "tags": []}, {"stackID": 2203645073, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 834864902, "size": 2, "itemID": "Apple", "tags": []}, {"stackID": 288177585, "size": 2, "itemID": "Wood", "tags": []}, {"stackID": 422223831, "size": 2, "itemID": "Apple", "tags": []}, {"stackID": 1247990667, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 2843445351, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 3798668374, "size": 3, "itemID": "Stick", "tags": []}, {"stackID": 235580834, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 2406907742, "size": 3, "itemID": "Stick", "tags": []}, {"stackID": 3336607909, "size": 3, "itemID": "Stick", "tags": []}], "hotbar": [null, null, null, null, null, null], "hotbarSize": 6, "activeSlot": 0, "primaryHand": []}
+log: updating Player Inventory with player ID: 472178946for server with ID: gsegand with content: 
+{"items": [{"stackID": 543925636, "size": 3, "itemID": "Rags", "tags": []}, {"stackID": 2203645073, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 834864902, "size": 2, "itemID": "Apple", "tags": []}, {"stackID": 288177585, "size": 2, "itemID": "Wood", "tags": []}, {"stackID": 422223831, "size": 2, "itemID": "Apple", "tags": []}, {"stackID": 1247990667, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 2843445351, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 3798668374, "size": 3, "itemID": "Stick", "tags": []}, {"stackID": 235580834, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 2406907742, "size": 3, "itemID": "Stick", "tags": []}, {"stackID": 3336607909, "size": 3, "itemID": "Stick", "tags": []}, {"stackID": 2818964091, "size": 3, "itemID": "Apple", "tags": []}], "hotbar": [null, null, null, null, null, null], "hotbarSize": 6, "activeSlot": 0, "primaryHand": []}
+log: updating Player Inventory with player ID: 472178946for server with ID: gsegand with content: 
+{"items": [{"stackID": 543925636, "size": 3, "itemID": "Rags", "tags": []}, {"stackID": 2203645073, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 834864902, "size": 2, "itemID": "Apple", "tags": []}, {"stackID": 288177585, "size": 2, "itemID": "Wood", "tags": []}, {"stackID": 422223831, "size": 2, "itemID": "Apple", "tags": []}, {"stackID": 1247990667, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 2843445351, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 3798668374, "size": 3, "itemID": "Stick", "tags": []}, {"stackID": 235580834, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 2406907742, "size": 3, "itemID": "Stick", "tags": []}, {"stackID": 3336607909, "size": 3, "itemID": "Stick", "tags": []}, {"stackID": 2818964091, "size": 3, "itemID": "Apple", "tags": []}], "hotbar": [null, null, null, null, null, null], "hotbarSize": 6, "activeSlot": 0, "primaryHand": []}
+log: got request to combine stacks with the following content
+{'type': 'combineStacks', 'stackID1': 2843445351, 'stackID2': 2818964091}
+log: trying to combine stackst the ID are: 2843445351 2818964091
+log: the old items are: 
+{"stackID": 2843445351, "size": 1, "itemID": "Apple", "tags": []}
+{"stackID": 2818964091, "size": 3, "itemID": "Apple", "tags": []}
+log: the new item is: 
+{"stackID": 1955642909, "size": 4, "itemID": "Apple", "tags": []}
+log: deleting stack with ID  : 2843445351
+log: deleting stack with ID  : 2818964091
+log: updating Player Inventory with player ID: 472178946for server with ID: gsegand with content: 
+{"items": [{"stackID": 543925636, "size": 3, "itemID": "Rags", "tags": []}, {"stackID": 2203645073, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 834864902, "size": 2, "itemID": "Apple", "tags": []}, {"stackID": 288177585, "size": 2, "itemID": "Wood", "tags": []}, {"stackID": 422223831, "size": 2, "itemID": "Apple", "tags": []}, {"stackID": 1247990667, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 3798668374, "size": 3, "itemID": "Stick", "tags": []}, {"stackID": 235580834, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 2406907742, "size": 3, "itemID": "Stick", "tags": []}, {"stackID": 3336607909, "size": 3, "itemID": "Stick", "tags": []}, {"stackID": 2818964091, "size": 3, "itemID": "Apple", "tags": []}], "hotbar": [null, null, null, null, null, null], "hotbarSize": 6, "activeSlot": 0, "primaryHand": []}
+log: updating Player Inventory with player ID: 472178946for server with ID: gsegand with content: 
+{"items": [{"stackID": 543925636, "size": 3, "itemID": "Rags", "tags": []}, {"stackID": 2203645073, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 834864902, "size": 2, "itemID": "Apple", "tags": []}, {"stackID": 288177585, "size": 2, "itemID": "Wood", "tags": []}, {"stackID": 422223831, "size": 2, "itemID": "Apple", "tags": []}, {"stackID": 1247990667, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 3798668374, "size": 3, "itemID": "Stick", "tags": []}, {"stackID": 235580834, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 2406907742, "size": 3, "itemID": "Stick", "tags": []}, {"stackID": 3336607909, "size": 3, "itemID": "Stick", "tags": []}], "hotbar": [null, null, null, null, null, null], "hotbarSize": 6, "activeSlot": 0, "primaryHand": []}
+log: updating Player Inventory with player ID: 472178946for server with ID: gsegand with content: 
+{"items": [{"stackID": 543925636, "size": 3, "itemID": "Rags", "tags": []}, {"stackID": 2203645073, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 834864902, "size": 2, "itemID": "Apple", "tags": []}, {"stackID": 288177585, "size": 2, "itemID": "Wood", "tags": []}, {"stackID": 422223831, "size": 2, "itemID": "Apple", "tags": []}, {"stackID": 1247990667, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 3798668374, "size": 3, "itemID": "Stick", "tags": []}, {"stackID": 235580834, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 2406907742, "size": 3, "itemID": "Stick", "tags": []}, {"stackID": 3336607909, "size": 3, "itemID": "Stick", "tags": []}, {"stackID": 1955642909, "size": 4, "itemID": "Apple", "tags": []}], "hotbar": [null, null, null, null, null, null], "hotbarSize": 6, "activeSlot": 0, "primaryHand": []}
+log: updating Player Inventory with player ID: 472178946for server with ID: gsegand with content: 
+{"items": [{"stackID": 543925636, "size": 3, "itemID": "Rags", "tags": []}, {"stackID": 2203645073, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 834864902, "size": 2, "itemID": "Apple", "tags": []}, {"stackID": 288177585, "size": 2, "itemID": "Wood", "tags": []}, {"stackID": 422223831, "size": 2, "itemID": "Apple", "tags": []}, {"stackID": 1247990667, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 3798668374, "size": 3, "itemID": "Stick", "tags": []}, {"stackID": 235580834, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 2406907742, "size": 3, "itemID": "Stick", "tags": []}, {"stackID": 3336607909, "size": 3, "itemID": "Stick", "tags": []}, {"stackID": 1955642909, "size": 4, "itemID": "Apple", "tags": []}], "hotbar": [null, null, null, null, null, null], "hotbarSize": 6, "activeSlot": 0, "primaryHand": []}
+log: got request to combine stacks with the following content
+{'type': 'combineStacks', 'stackID1': 1247990667, 'stackID2': 1955642909}
+log: trying to combine stackst the ID are: 1247990667 1955642909
+log: the old items are: 
+{"stackID": 1247990667, "size": 1, "itemID": "Apple", "tags": []}
+{"stackID": 1955642909, "size": 4, "itemID": "Apple", "tags": []}
+log: the new item is: 
+{"stackID": 3323710757, "size": 5, "itemID": "Apple", "tags": []}
+log: deleting stack with ID  : 1247990667
+log: deleting stack with ID  : 1955642909
+log: updating Player Inventory with player ID: 472178946for server with ID: gsegand with content: 
+{"items": [{"stackID": 543925636, "size": 3, "itemID": "Rags", "tags": []}, {"stackID": 2203645073, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 834864902, "size": 2, "itemID": "Apple", "tags": []}, {"stackID": 288177585, "size": 2, "itemID": "Wood", "tags": []}, {"stackID": 422223831, "size": 2, "itemID": "Apple", "tags": []}, {"stackID": 3798668374, "size": 3, "itemID": "Stick", "tags": []}, {"stackID": 235580834, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 2406907742, "size": 3, "itemID": "Stick", "tags": []}, {"stackID": 3336607909, "size": 3, "itemID": "Stick", "tags": []}, {"stackID": 1955642909, "size": 4, "itemID": "Apple", "tags": []}], "hotbar": [null, null, null, null, null, null], "hotbarSize": 6, "activeSlot": 0, "primaryHand": []}
+log: updating Player Inventory with player ID: 472178946for server with ID: gsegand with content: 
+{"items": [{"stackID": 543925636, "size": 3, "itemID": "Rags", "tags": []}, {"stackID": 2203645073, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 834864902, "size": 2, "itemID": "Apple", "tags": []}, {"stackID": 288177585, "size": 2, "itemID": "Wood", "tags": []}, {"stackID": 422223831, "size": 2, "itemID": "Apple", "tags": []}, {"stackID": 3798668374, "size": 3, "itemID": "Stick", "tags": []}, {"stackID": 235580834, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 2406907742, "size": 3, "itemID": "Stick", "tags": []}, {"stackID": 3336607909, "size": 3, "itemID": "Stick", "tags": []}], "hotbar": [null, null, null, null, null, null], "hotbarSize": 6, "activeSlot": 0, "primaryHand": []}
+log: updating Player Inventory with player ID: 472178946for server with ID: gsegand with content: 
+{"items": [{"stackID": 543925636, "size": 3, "itemID": "Rags", "tags": []}, {"stackID": 2203645073, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 834864902, "size": 2, "itemID": "Apple", "tags": []}, {"stackID": 288177585, "size": 2, "itemID": "Wood", "tags": []}, {"stackID": 422223831, "size": 2, "itemID": "Apple", "tags": []}, {"stackID": 3798668374, "size": 3, "itemID": "Stick", "tags": []}, {"stackID": 235580834, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 2406907742, "size": 3, "itemID": "Stick", "tags": []}, {"stackID": 3336607909, "size": 3, "itemID": "Stick", "tags": []}, {"stackID": 3323710757, "size": 5, "itemID": "Apple", "tags": []}], "hotbar": [null, null, null, null, null, null], "hotbarSize": 6, "activeSlot": 0, "primaryHand": []}
+log: updating Player Inventory with player ID: 472178946for server with ID: gsegand with content: 
+{"items": [{"stackID": 543925636, "size": 3, "itemID": "Rags", "tags": []}, {"stackID": 2203645073, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 834864902, "size": 2, "itemID": "Apple", "tags": []}, {"stackID": 288177585, "size": 2, "itemID": "Wood", "tags": []}, {"stackID": 422223831, "size": 2, "itemID": "Apple", "tags": []}, {"stackID": 3798668374, "size": 3, "itemID": "Stick", "tags": []}, {"stackID": 235580834, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 2406907742, "size": 3, "itemID": "Stick", "tags": []}, {"stackID": 3336607909, "size": 3, "itemID": "Stick", "tags": []}, {"stackID": 3323710757, "size": 5, "itemID": "Apple", "tags": []}], "hotbar": [null, null, null, null, null, null], "hotbarSize": 6, "activeSlot": 0, "primaryHand": []}
+log: got request to combine stacks with the following content
+{'type': 'combineStacks', 'stackID1': 2406907742, 'stackID2': 3336607909}
+log: trying to combine stackst the ID are: 2406907742 3336607909
+log: the old items are: 
+{"stackID": 2406907742, "size": 3, "itemID": "Stick", "tags": []}
+{"stackID": 3336607909, "size": 3, "itemID": "Stick", "tags": []}
+log: the new item is: 
+{"stackID": 909409570, "size": 6, "itemID": "Stick", "tags": []}
+log: deleting stack with ID  : 2406907742
+log: deleting stack with ID  : 3336607909
+log: updating Player Inventory with player ID: 472178946for server with ID: gsegand with content: 
+{"items": [{"stackID": 543925636, "size": 3, "itemID": "Rags", "tags": []}, {"stackID": 2203645073, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 834864902, "size": 2, "itemID": "Apple", "tags": []}, {"stackID": 288177585, "size": 2, "itemID": "Wood", "tags": []}, {"stackID": 422223831, "size": 2, "itemID": "Apple", "tags": []}, {"stackID": 3798668374, "size": 3, "itemID": "Stick", "tags": []}, {"stackID": 235580834, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 3336607909, "size": 3, "itemID": "Stick", "tags": []}, {"stackID": 3323710757, "size": 5, "itemID": "Apple", "tags": []}], "hotbar": [null, null, null, null, null, null], "hotbarSize": 6, "activeSlot": 0, "primaryHand": []}
+log: updating Player Inventory with player ID: 472178946for server with ID: gsegand with content: 
+{"items": [{"stackID": 543925636, "size": 3, "itemID": "Rags", "tags": []}, {"stackID": 2203645073, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 834864902, "size": 2, "itemID": "Apple", "tags": []}, {"stackID": 288177585, "size": 2, "itemID": "Wood", "tags": []}, {"stackID": 422223831, "size": 2, "itemID": "Apple", "tags": []}, {"stackID": 3798668374, "size": 3, "itemID": "Stick", "tags": []}, {"stackID": 235580834, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 3323710757, "size": 5, "itemID": "Apple", "tags": []}], "hotbar": [null, null, null, null, null, null], "hotbarSize": 6, "activeSlot": 0, "primaryHand": []}
+log: updating Player Inventory with player ID: 472178946for server with ID: gsegand with content: 
+{"items": [{"stackID": 543925636, "size": 3, "itemID": "Rags", "tags": []}, {"stackID": 2203645073, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 834864902, "size": 2, "itemID": "Apple", "tags": []}, {"stackID": 288177585, "size": 2, "itemID": "Wood", "tags": []}, {"stackID": 422223831, "size": 2, "itemID": "Apple", "tags": []}, {"stackID": 3798668374, "size": 3, "itemID": "Stick", "tags": []}, {"stackID": 235580834, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 3323710757, "size": 5, "itemID": "Apple", "tags": []}, {"stackID": 909409570, "size": 6, "itemID": "Stick", "tags": []}], "hotbar": [null, null, null, null, null, null], "hotbarSize": 6, "activeSlot": 0, "primaryHand": []}
+log: updating Player Inventory with player ID: 472178946for server with ID: gsegand with content: 
+{"items": [{"stackID": 543925636, "size": 3, "itemID": "Rags", "tags": []}, {"stackID": 2203645073, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 834864902, "size": 2, "itemID": "Apple", "tags": []}, {"stackID": 288177585, "size": 2, "itemID": "Wood", "tags": []}, {"stackID": 422223831, "size": 2, "itemID": "Apple", "tags": []}, {"stackID": 3798668374, "size": 3, "itemID": "Stick", "tags": []}, {"stackID": 235580834, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 3323710757, "size": 5, "itemID": "Apple", "tags": []}, {"stackID": 909409570, "size": 6, "itemID": "Stick", "tags": []}], "hotbar": [null, null, null, null, null, null], "hotbarSize": 6, "activeSlot": 0, "primaryHand": []}
+log: got request to combine stacks with the following content
+{'type': 'combineStacks', 'stackID1': 2203645073, 'stackID2': 3323710757}
+log: trying to combine stackst the ID are: 2203645073 3323710757
+log: the old items are: 
+{"stackID": 2203645073, "size": 1, "itemID": "Apple", "tags": []}
+{"stackID": 3323710757, "size": 5, "itemID": "Apple", "tags": []}
+log: the new item is: 
+{"stackID": 1739994507, "size": 6, "itemID": "Apple", "tags": []}
+log: deleting stack with ID  : 2203645073
+log: deleting stack with ID  : 3323710757
+log: updating Player Inventory with player ID: 472178946for server with ID: gsegand with content: 
+{"items": [{"stackID": 543925636, "size": 3, "itemID": "Rags", "tags": []}, {"stackID": 834864902, "size": 2, "itemID": "Apple", "tags": []}, {"stackID": 288177585, "size": 2, "itemID": "Wood", "tags": []}, {"stackID": 422223831, "size": 2, "itemID": "Apple", "tags": []}, {"stackID": 3798668374, "size": 3, "itemID": "Stick", "tags": []}, {"stackID": 235580834, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 3323710757, "size": 5, "itemID": "Apple", "tags": []}, {"stackID": 909409570, "size": 6, "itemID": "Stick", "tags": []}], "hotbar": [null, null, null, null, null, null], "hotbarSize": 6, "activeSlot": 0, "primaryHand": []}
+log: updating Player Inventory with player ID: 472178946for server with ID: gsegand with content: 
+{"items": [{"stackID": 543925636, "size": 3, "itemID": "Rags", "tags": []}, {"stackID": 834864902, "size": 2, "itemID": "Apple", "tags": []}, {"stackID": 288177585, "size": 2, "itemID": "Wood", "tags": []}, {"stackID": 422223831, "size": 2, "itemID": "Apple", "tags": []}, {"stackID": 3798668374, "size": 3, "itemID": "Stick", "tags": []}, {"stackID": 235580834, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 909409570, "size": 6, "itemID": "Stick", "tags": []}], "hotbar": [null, null, null, null, null, null], "hotbarSize": 6, "activeSlot": 0, "primaryHand": []}
+log: updating Player Inventory with player ID: 472178946for server with ID: gsegand with content: 
+{"items": [{"stackID": 543925636, "size": 3, "itemID": "Rags", "tags": []}, {"stackID": 834864902, "size": 2, "itemID": "Apple", "tags": []}, {"stackID": 288177585, "size": 2, "itemID": "Wood", "tags": []}, {"stackID": 422223831, "size": 2, "itemID": "Apple", "tags": []}, {"stackID": 3798668374, "size": 3, "itemID": "Stick", "tags": []}, {"stackID": 235580834, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 909409570, "size": 6, "itemID": "Stick", "tags": []}, {"stackID": 1739994507, "size": 6, "itemID": "Apple", "tags": []}], "hotbar": [null, null, null, null, null, null], "hotbarSize": 6, "activeSlot": 0, "primaryHand": []}
+log: updating Player Inventory with player ID: 472178946for server with ID: gsegand with content: 
+{"items": [{"stackID": 543925636, "size": 3, "itemID": "Rags", "tags": []}, {"stackID": 834864902, "size": 2, "itemID": "Apple", "tags": []}, {"stackID": 288177585, "size": 2, "itemID": "Wood", "tags": []}, {"stackID": 422223831, "size": 2, "itemID": "Apple", "tags": []}, {"stackID": 3798668374, "size": 3, "itemID": "Stick", "tags": []}, {"stackID": 235580834, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 909409570, "size": 6, "itemID": "Stick", "tags": []}, {"stackID": 1739994507, "size": 6, "itemID": "Apple", "tags": []}], "hotbar": [null, null, null, null, null, null], "hotbarSize": 6, "activeSlot": 0, "primaryHand": []}
+log: got request to combine stacks with the following content
+{'type': 'combineStacks', 'stackID1': 1739994507}
+log: Player send invalid combine request
+log: got request to combine stacks with the following content
+{'type': 'combineStacks', 'stackID1': 422223831}
+log: Player send invalid combine request
+log: got request to combine stacks with the following content
+{'type': 'combineStacks', 'stackID1': 543925636, 'stackID2': 288177585}
+log: trying to combine stackst the ID are: 543925636 288177585
+log: updating Player Inventory with player ID: 472178946for server with ID: gsegand with content: 
+{"items": [{"stackID": 543925636, "size": 3, "itemID": "Rags", "tags": []}, {"stackID": 834864902, "size": 2, "itemID": "Apple", "tags": []}, {"stackID": 288177585, "size": 2, "itemID": "Wood", "tags": []}, {"stackID": 422223831, "size": 2, "itemID": "Apple", "tags": []}, {"stackID": 3798668374, "size": 3, "itemID": "Stick", "tags": []}, {"stackID": 235580834, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 909409570, "size": 6, "itemID": "Stick", "tags": []}, {"stackID": 1739994507, "size": 6, "itemID": "Apple", "tags": []}], "hotbar": [null, null, null, null, null, null], "hotbarSize": 6, "activeSlot": 0, "primaryHand": []}
+log: got request to combine stacks with the following content
+{'type': 'combineStacks', 'stackID1': 422223831}
+log: Player send invalid combine request
+log: got request to combine stacks with the following content
+{'type': 'combineStacks', 'stackID1': 909409570}
+log: Player send invalid combine request
+log: got request to combine stacks with the following content
+{'type': 'combineStacks'}
+log: Player send invalid combine request
+log: got request to combine stacks with the following content
+{'type': 'combineStacks', 'stackID1': 3798668374}
+log: Player send invalid combine request
+log: got request to combine stacks with the following content
+{'type': 'combineStacks', 'stackID1': 288177585}
+log: Player send invalid combine request
+log: got request to combine stacks with the following content
+{'type': 'combineStacks'}
+log: Player send invalid combine request
+log: got request to combine stacks with the following content
+{'type': 'combineStacks', 'stackID1': 543925636}
+log: Player send invalid combine request
+log: updating Player Inventory with player ID: 472178946for server with ID: gsegand with content: 
+{"items": [{"stackID": 543925636, "size": 3, "itemID": "Rags", "tags": []}, {"stackID": 834864902, "size": 2, "itemID": "Apple", "tags": []}, {"stackID": 288177585, "size": 2, "itemID": "Wood", "tags": []}, {"stackID": 422223831, "size": 2, "itemID": "Apple", "tags": []}, {"stackID": 3798668374, "size": 3, "itemID": "Stick", "tags": []}, {"stackID": 235580834, "size": 1, "itemID": "Apple", "tags": []}, {"stackID": 909409570, "size": 6, "itemID": "Stick", "tags": []}, {"stackID": 1739994507, "size": 6, "itemID": "Apple", "tags": []}, {"stackID": 2593522253, "size": 3, "itemID": "Stick", "tags": []}], "hotbar": [null, null, null, null, null, null], "hotbarSize": 6, "activeSlot": 0, "primaryHand": []}
+server Worker Threat started with ID: 
+log: received package to server websocket with ID  and the following content:
+{"type":"startserver","serverID":"awdw"}
+adsfasdfa
+asdfasdgafas
+asdfasdfa
+asdfasdcvas
+gadwaw
+log: new Player logged in to server with ID: awdw the Player ID is: 1336404089
+log: ein spieler versucht sich auf einem server einzuloggen dessen zustand True ist 
+log: sending connection accepted message to client with ID: 1336404089
+log: updating Player Inventory with player ID: 1336404089for server with ID: awdwand with content: 
+{"items": [{"stackID": 3450806229, "size": 5, "itemID": "FirstAidKit", "tags": []}], "hotbar": [null, null, null, null, null, null], "hotbarSize": 6, "activeSlot": 0, "primaryHand": []}
+log: sending information about new GameObject on Server with ID: awdw to client with ID 1336404089 the ID of the new Object is 1336404089 the entity Type is Player
+log: sending information about new GameObject on Server with ID: awdw to client with ID 1336404089 the ID of the new Object is 1296616353 the entity Type is Tree
+log: sending information about new GameObject on Server with ID: awdw to client with ID 1336404089 the ID of the new Object is 3731818243 the entity Type is Zombie
+log: sending information about new GameObject on Server with ID: awdw to client with ID 1336404089 the ID of the new Object is 811148767 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: awdw to client with ID 1336404089 the ID of the new Object is 539831616 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: awdw to client with ID 1336404089 the ID of the new Object is 3609377982 the entity Type is Door
+log: sending information about new GameObject on Server with ID: awdw to client with ID 1336404089 the ID of the new Object is 980463303 the entity Type is Chest
+log: sending information about new Health on Server with ID: awdw to client with ID 1336404089 the ID of the Updated Object is 1336404089 the entityType is Player the new hp is 200
+log: updating Player Inventory with player ID: 1336404089for server with ID: awdwand with content: 
+{"items": [{"stackID": 3450806229, "size": 5, "itemID": "FirstAidKit", "tags": []}], "hotbar": [{"stackID": 3450806229, "size": 5, "itemID": "FirstAidKit", "tags": []}, null, null, null, null, null], "hotbarSize": 6, "activeSlot": 0, "primaryHand": []}
+log: sending information about new Health on Server with ID: awdw to client with ID 1336404089 the ID of the Updated Object is 1336404089 the entityType is Player the new hp is 150
+log: sending information about new Health on Server with ID: awdw to client with ID 1336404089 the ID of the Updated Object is 1336404089 the entityType is Player the new hp is 100
+log: sending information about new Health on Server with ID: awdw to client with ID 1336404089 the ID of the Updated Object is 1336404089 the entityType is Player the new hp is 50
+log: sending information about new Health on Server with ID: awdw to client with ID 1336404089 the ID of the Updated Object is 1336404089 the entityType is Player the new hp is 0
+log: sending information about new Health on Server with ID: awdw to client with ID 1336404089 the ID of the Updated Object is 1336404089 the entityType is Player the new hp is -50
+log: Player with ID 1336404089 is trying to interact
+log: consumed AIdKit
+log: Player with ID 1336404089 is trying to interact
+log: updating Player Inventory with player ID: 1336404089for server with ID: awdwand with content: 
+{"items": [{"stackID": 3450806229, "size": 4, "itemID": "FirstAidKit", "tags": []}], "hotbar": [{"stackID": 3450806229, "size": 4, "itemID": "FirstAidKit", "tags": []}, null, null, null, null, null], "hotbarSize": 6, "activeSlot": 0, "primaryHand": []}
+log: Player with ID 1336404089 is trying to interact
+log: sending information about new Health on Server with ID: awdw to client with ID 1336404089 the ID of the Updated Object is 1336404089 the entityType is Player the new hp is 950
+log: consumed AIdKit
+log: Player with ID 1336404089 is trying to interact
+log: consumed AIdKit
+log: Player with ID 1336404089 is trying to interact
+log: updating Player Inventory with player ID: 1336404089for server with ID: awdwand with content: 
