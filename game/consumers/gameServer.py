@@ -30,6 +30,13 @@ class gameServer(WebsocketConsumer):
 #                    file.write(line)
 #        pass
 
+    def broadcastDeadPlayer(self, playerID):
+        async_to_sync(self.channel_layer.group_send)(self.serverID,
+                                                     {"type": "deadPlayerChannel",
+                                                      "playerID": playerID,
+                                                      }
+                                                     )
+
     def receive(self, text_data):
         print("log: received package to server websocket with ID " +
               str(self.serverID) + " and the following content:")
@@ -41,9 +48,9 @@ class gameServer(WebsocketConsumer):
             self.serverID = data_json["serverID"]
             alreadyRunning = False
             for server in runningServers.objects.all():
-                print(server.serverID)
                 if server.serverID == self.serverID:
-                    print("log: someone is trying to start a server wich aleready runns")
+                    print(
+                        "log: someone is trying to start a server wich aleready runns")
                     alreadyRunning = True
             if not alreadyRunning:
                 serverDB = runningServers.objects.create(
@@ -189,3 +196,11 @@ class gameServer(WebsocketConsumer):
         self.serverThreat.world.eventBus.event(
             "setActiveSlot", {"playerID": playerID, "slot": slot})
         pass
+
+    def deadPlayerChannel(self, event):
+        pass
+
+    def respawnPlayerChannels(self, event):
+        playerID = event["playerID"]
+        self.serverThreat.world.eventBus.event(
+            "respawnPlayer", {"playerID": playerID})

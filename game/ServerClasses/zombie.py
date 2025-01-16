@@ -11,7 +11,7 @@ class Zombie(GameObject.GameObject):
     def __init__(self, world):
         ID = uuid.uuid4().int
         ID = ID % 4001001001
-        super().__init__(world, posx=0, posy=0, ID=ID, entityType="Zombie")
+        super().__init__(world, posx=1, posy=1, ID=ID, entityType="Zombie")
         self.world.eventBus.registerListner(self, "playerPositionUpdate")
         self.world.eventBus.registerListner(self, "playerHit")
         self.world.eventBus.registerListner(self, "zombieForbiddenMovement")

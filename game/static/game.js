@@ -14,7 +14,7 @@ const ctx = canvas.getContext('2d');
 ctx.font = font
 const webSocketHost = new WebSocket('ws://' + window.location.host + '/game/server')
 const webSocket = new WebSocket('ws://' + window.location.host + '/game/login')
-
+let serverID = ""
 
 webSocket.onmessage = function(e) {
     const data = JSON.parse(e.data)
@@ -175,8 +175,9 @@ function updateToServer() {
     //console.log("Server update")
     webSocket.send(JSON.stringify({ type: "action", up: scene.gameObjects[scene.playerIndex].up, down: scene.gameObjects[scene.playerIndex].down, left: scene.gameObjects[scene.playerIndex].left, right: scene.gameObjects[scene.playerIndex].right, actiontype: "movement" }))
 }
-
+export function getServerID(){return serverID}
 export function loginToServer(serverName) {
+    serverID = serverName
 
     console.log("PLAYER ID:")
     console.log(scene.mainPlayerID)

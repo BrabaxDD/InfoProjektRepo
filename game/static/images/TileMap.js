@@ -12,10 +12,11 @@ export default class TileMap extends GameObject {
 
         this.imageLoader = this.scene.imageLoader;
         this.tileMap = {
-            0: "FloorNewGrass1.png",
-            1: "FloorNew.png",
-            2: "FloorNewGrass2.png",
-            3: "FloorNewStone.png"
+            0: "FloorNew.png",
+            1: "Water.png",
+            2: "Sand.png",
+            3: "Street.png",
+            4: "WoodenFloor.png",
         };
 
         this.preloadedImages = {}; // Store preloaded images
@@ -32,7 +33,7 @@ export default class TileMap extends GameObject {
 
     async loadMap(fileName) {
         try {
-            const response = await fetch(`/static/images/${fileName}`);
+            const response = await fetch(`/static/images/TileMaps/${fileName}`);
             if (!response.ok) throw new Error("Network response was not ok");
             const mapData = (await response.text()).trim().split("\n").map(row => row.split(",").map(Number));
             return mapData;
