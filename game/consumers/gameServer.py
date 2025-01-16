@@ -48,7 +48,6 @@ class gameServer(WebsocketConsumer):
             self.serverID = data_json["serverID"]
             alreadyRunning = False
             for server in runningServers.objects.all():
-                print(server.serverID)
                 if server.serverID == self.serverID:
                     print(
                         "log: someone is trying to start a server wich aleready runns")

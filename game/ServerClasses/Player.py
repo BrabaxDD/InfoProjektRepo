@@ -10,7 +10,7 @@ from game.ServerClasses import jsonSerializer
 
 class Player(GameObject.GameObject):
     def __init__(self, ID, world: World.World):
-        super().__init__(world, 0, 0, ID, "Player")
+        super().__init__(world, 1, 1, ID, "Player")
         self.dead = False
         self.velocity = 310
         self.up = False
@@ -26,7 +26,7 @@ class Player(GameObject.GameObject):
         self.world.eventBus.registerListner(self, "playerRequestInteraction")
         self.world.eventBus.registerListner(self, "setHotbarRequest")
         self.world.eventBus.registerListner(self, "setActiveSlot")
-        self.world.eventBUs.registerListner(self, "respawnPlayer")
+        self.world.eventBus.registerListner(self, "respawnPlayer")
         self.Inventory = Inventory.Inventory()
         self.lastHit = time.perf_counter()
         self.HP = 200

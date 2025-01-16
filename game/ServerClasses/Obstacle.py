@@ -28,11 +28,11 @@ class Obstacle(GameObject.GameObject):
         pass
 
     def broadcast(self):
-        self.world.broadcastPosition(
-            self.ID, self.posx, self.posy, self.entityType)
-        self.world.broadcastWallInformation(
-            self.posx2, self.posy2, self.thickness, self.ID)
-        pass
+        if self.framecount % 2000 == 0:
+            self.world.broadcastPosition(
+                self.ID, self.posx, self.posy, self.entityType)
+            self.world.broadcastWallInformation(
+                self.posx2, self.posy2, self.thickness, self.ID)
 
     def event(self, eventString, action):
         if eventString == "zombiePositionUpdate":

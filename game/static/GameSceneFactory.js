@@ -7,7 +7,7 @@ import TileMap from "./images/TileMap.js";
 import Tree from "./tree.js"
 import { getMainPlayerID } from "./game.js";
 import Inventory from "./GUI_elements/Inventory.js";
-
+import { getServerID } from "./game.js"
 export default class GameSceneFactory extends GameObject {
     constructor(canvas, keys, sceneObject) {
         super(sceneObject)
@@ -51,7 +51,8 @@ export default class GameSceneFactory extends GameObject {
 
             case "game":
             case 2:
-                scene = new Scene(this.canvas, "GameMap.txt");
+                scene = new Scene(this.canvas, getServerID() + ".txt");
+                console.log("log: trying to get Tile Map with name" + getServerID() + ".txt")
                 let craftinput = new CanvasTextInput(scene, this.canvas.width - 200, this.canvas.height - 30, 200, 30, "textInputFinishedCraftField")
                 scene.addObject(craftinput)
                 //let tree = new Tree(scene)
