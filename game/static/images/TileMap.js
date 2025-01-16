@@ -16,6 +16,7 @@ export default class TileMap extends GameObject {
             1: "Water.png",
             2: "Sand.png",
             3: "Street.png",
+            4: "WoodenFloor.png",
         };
 
         this.preloadedImages = {}; // Store preloaded images

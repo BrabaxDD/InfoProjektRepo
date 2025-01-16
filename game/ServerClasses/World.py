@@ -120,12 +120,14 @@ class World:
         villagesize = 80
         for i in range(5):
             self.generateHouse(random.randint(0, villagesize) * 32 + villageposx,
-                               random.randint(0, villagesize) * 32 + villageposy, 1024, 1024, "North")
+                               random.randint(0, villagesize) * 32 + villageposy, 128, 128, "North")
 
+#        self.generateHouse(64, 256, 128, 128, "north")
         with open("./game/static/images/TileMaps/" + self.serverID + ".txt", "w") as file:
-            for i in self.map:
-                for j in i:
-                    file.write(str(j)+",")
+            for i in range(len(self.map)):
+                for j in range(len(self.map[i])):
+                    # j und i vertausct weil die Tilemap achsengespiegelt gerendert wird
+                    file.write(str(self.map[j][i])+",")
                 file.write("\n")
 
         self.addGameobject(Wall.Wall(self, 0, 0, 0, sizeY*32))
@@ -141,9 +143,12 @@ class World:
         self.addGameobject(Wall.Wall(self, posx, posy, posx + sizex, posy))
         self.addGameobject(Wall.Wall(self, posx, posy, posx, posy + sizey))
         self.addGameobject(Wall.Wall(self, posx + sizex,
-                           posy, posx + sizex, posy + sizey))
+                           posy, posx + sizex, posy + sizey - 50))
         self.addGameobject(Wall.Wall(self, posx, posy + sizey,
-                           posx + sizex, posy + sizey - 50))
+                           posx + sizex, posy + sizey))
         self.addGameobject(Door.Door(self, posx + sizex,
                            posy + sizey - 50, posx + sizex, posy + sizey))
         self.addGameobject(chest.Chest(self, posx, posy))
+        for i in range(int(sizex/32)):
+            for j in range(int(sizey/32)):
+                self.map[int(posx/32) + i][int(posy/32) + j] = 4

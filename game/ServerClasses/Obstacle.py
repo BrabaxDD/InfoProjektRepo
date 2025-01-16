@@ -1,5 +1,6 @@
 from game.ServerClasses import GameObject
 import uuid
+import random
 
 
 class Obstacle(GameObject.GameObject):
@@ -17,18 +18,21 @@ class Obstacle(GameObject.GameObject):
         self.lastPlayerPosy = {}
         self.lastZombiePosx = {}
         self.lastZombiePosy = {}
-        self.framecount = 0
+        self.time = 0
+        self.nextUpdate = 0
+        self.nextUpdate = random.randint(0,100) / 100
         pass
 
     def deleteSelf(self):
         pass
 
     def process(self, delta):
-        self.framecount += 1
+        self.time += delta
         pass
 
     def broadcast(self):
-        if self.framecount % 2000 == 0:
+        if self.time > self.nextUpdate:
+            self.nextUpdate += 0.5
             self.world.broadcastPosition(
                 self.ID, self.posx, self.posy, self.entityType)
             self.world.broadcastWallInformation(
