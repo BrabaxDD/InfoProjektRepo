@@ -52,6 +52,10 @@ export default class Inventory extends GameObject {
         this.bufferSize = 10
         this.textBoderSize = 40
         this.widthInSLots = 5
+
+        this.hotbarWidth = this.imageSize * 6 + 5 * this.bufferSize + 2 * this.borderWidth
+        this.hotbarHeight = this.imageSize + this.borderWidth * 2
+
         this.updateDimensions(this.widthInSLots)
 
         this.posx = 200
@@ -63,7 +67,10 @@ export default class Inventory extends GameObject {
         this.atackPosy = 0
         this.buttons = []
         this.hotbar = [{}, {}, {}, {}, {}, {}]
+        //[{ "stackID": -1, "size": 0, "itemID": "Empty", "tags": [] }, { "stackID": -1, "size": 0, "itemID": "Empty", "tags": [] }, { "stackID": -1, "size": 0, "itemID": "Empty", "tags": [] }, { "stackID": -1, "size": 0, "itemID": "Empty", "tags": [] }, { "stackID": -1, "size": 0, "itemID": "Empty", "tags": [] }, { "stackID": -1, "size": 0, "itemID": "Empty", "tags": [] }]
+
         this.hotbarSlot = 0
+        this.hotbarButtons = []
         this.isALLInizialised = false
         this.initializeImages()
 
@@ -84,7 +91,8 @@ export default class Inventory extends GameObject {
             Screwdriver: "Screwdriver.png",
             Apple: "Apple.png",
             FirstAidKit: "FirstAidKit.png",
-            Scrap: "Scrap.png"
+            Scrap: "Scrap.png",
+            Empty: "EmptyItemFrame.png"
         };
 
         this.images = await this.loadAllImages(this.imagesIndex)
@@ -139,7 +147,7 @@ export default class Inventory extends GameObject {
 
             for (let i = 0; i < 6; i++) {
                 if (eventObject.hotbar[i] == null) {
-                    this.hotbar[i] = {"size": 0, "itemID": "Leer", "tags": [] }
+                    this.hotbar[i] = { "stackID": -1, "size": 0, "itemID": "Empty", "tags": [] }
                 }
                 else {
                     this.hotbar[i] = eventObject.hotbar[i]
@@ -187,7 +195,11 @@ export default class Inventory extends GameObject {
             if (sel.length != 1) {
                 return
             }
-            this.content.push(this.hotbar[this.hotbarSlot])
+
+            if (this.hotbar[this.hotbarSlot].stackID != -1) {
+                this.content.push(this.hotbar[this.hotbarSlot])
+            }
+
             this.hotbar[this.hotbarSlot] = sel[0].itemStack
 
             this.content = this.content.filter(el =>
@@ -222,6 +234,19 @@ export default class Inventory extends GameObject {
             this.buttons.push(new InventorySlot(this.scene, this.posx, this.posy, this.imageSize, image, this.content[i]))
         }
         this.updateDimensions(this.widthInSLots)
+
+        this.hotbarButtons = []
+        for (let i = 0; i < 6; i++) {
+            let image = this.dummyItem
+
+            let c = this.hotbar[i].itemID
+            if (this.images[c]) {
+                image = this.images[c]
+            }
+            this.hotbarButtons[i] = new InventorySlot(this.scene, this.canvas.width / 2 - this.hotbarWidth / 2 + this.borderWidth + this.imageSize * i + this.bufferSize * (i), this.canvas.height - (this.imageSize + this.bufferSize), this.imageSize, image, this.hotbar[i])
+            console.log(this.hotbarButtons[i])
+            console.log("Neuer Hotbar buton plaziert")
+        }
     }
 
     //updates the Position and checks status of buttons
@@ -232,6 +257,7 @@ export default class Inventory extends GameObject {
             this.buttons[i - 1].posx = this.posx + ((i - 1) * this.imageSize) + this.bufferSize * (i - 1) + this.borderWidth - (level - 1) * ((this.invWidth) - 2 * this.bufferSize)
             this.buttons[(i - 1)].posy = this.posy + this.borderWidth + (level - 1) * this.imageSize + this.bufferSize * (level - 1)
         }
+
         this.combineSelectedButton.posx = this.posx
         this.combineSelectedButton.posy = this.posy + this.invHeight
 
@@ -374,12 +400,21 @@ export default class Inventory extends GameObject {
         }
 
         //render hotbar
-        let hotbarWidth = this.imageSize * 6 + 5 * this.bufferSize + 2 * this.borderWidth
-        let hotbarHeight = this.imageSize + this.borderWidth * 2
         this.ctx.globalAlpha = 0.4;
         this.ctx.fillStyle = "green";
-        this.ctx.fillRect(this.canvas.width / 2 - hotbarWidth / 2, this.canvas.height - hotbarHeight, hotbarWidth, hotbarHeight)
+        this.ctx.fillRect(this.canvas.width / 2 - this.hotbarWidth / 2, this.canvas.height - this.hotbarHeight, this.hotbarWidth, this.hotbarHeight)
         this.ctx.globalAlpha = 1;
+
+
+        for (let i = 0; i < 6; i++) {
+            if (this.hotbarButtons[i] == undefined) {
+                return
+            }
+            this.hotbarButtons[i].render()
+        }
+
+        this.ctx.fillStyle = "yellow"
+        this.ctx.strokeRect(this.hotbarButtons[this.hotbarSlot].posx - 5, this.hotbarButtons[this.hotbarSlot].posy - 5, this.imageSize + 10, this.imageSize + 10);
     }
 
     process() {
@@ -422,6 +457,10 @@ export default class Inventory extends GameObject {
             let len = this.buttons.length
             for (let i = 0; i < len; i++) {
                 this.buttons[i].process()
+            }
+
+            for (let i = 0; i < 6; i++) {
+                this.hotbarButtons[i].process()
             }
             this.combineSelectedButton.process()
             this.selectAllButton.process()

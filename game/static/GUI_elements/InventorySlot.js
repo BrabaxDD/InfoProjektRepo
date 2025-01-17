@@ -1,10 +1,10 @@
 import GameObject from "../GameObject.js";
 import { font } from "../game.js";
 
-export default class InventorySlot extends GameObject{
-    constructor(scene, posx, posy, size, image, itemStack){
+export default class InventorySlot extends GameObject {
+    constructor(scene, posx, posy, size, image, itemStack) {
         super(scene)
-        
+
         this.canvas = this.scene.canvas
         this.ctx = this.scene.canvas.getContext("2d")
 
@@ -21,17 +21,17 @@ export default class InventorySlot extends GameObject{
         console.log(this.image)
     }
 
-    process(){
-        if (this.scene.mousex >  this.posx && this.scene.mousex < this.posx + this.size && 
-            this.scene.mousey >  this.posy && this.scene.mousey < this.posy + this.size){
+    process() {
+        if (this.scene.mousex > this.posx && this.scene.mousex < this.posx + this.size &&
+            this.scene.mousey > this.posy && this.scene.mousey < this.posy + this.size) {
             this.isHovered = true
-        } 
-        else{
+        }
+        else {
             this.isHovered = false
         }
     }
 
-    render(){
+    render() {
         this.ctx.fillStyle = ((this.isHovered == true) ? "red" : "green");
         this.ctx.fillRect(this.posx, this.posy, this.size, this.size);
 
@@ -43,14 +43,14 @@ export default class InventorySlot extends GameObject{
             this.size
         );
 
-        if (this.isHovered){
+        if (this.isHovered) {
             this.ctx.fillStyle = "green";
             this.ctx.globalAlpha = 0.4;
             this.ctx.fillRect(this.posx, this.posy, this.size, this.size);
             this.ctx.globalAlpha = 1;
         }
 
-        if (this.isSelected){
+        if (this.isSelected) {
             this.ctx.fillStyle = "red";
             this.ctx.lineWidth = 7
             this.ctx.strokeRect(this.posx, this.posy, this.size, this.size);
@@ -59,13 +59,13 @@ export default class InventorySlot extends GameObject{
         this.ctx.fillStyle = 'yellow';
         this.ctx.textBaseline = 'left';
         this.ctx.font = font;
-        if (this.itemStack.itemID != "leer"){
-        this.ctx.fillText(this.itemStack.size, this.posx + this.size-5,this.posy+ this.size);
+        if (this.itemStack.itemID != "Empty") {
+            this.ctx.fillText(this.itemStack.size, this.posx + this.size - 5, this.posy + this.size);
         }
     }
 
-    event(eventString, eventObject){
-        if(eventString == "click_on_canvas" && this.isHovered){
+    event(eventString, eventObject) {
+        if (eventString == "click_on_canvas" && this.isHovered) {
             console.log("clicked on itemstack: " + this.itemStack)
             this.isSelected = !this.isSelected
         }

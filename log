@@ -1,296 +1,58 @@
 Performing system checks...
 
 System check identified no issues (0 silenced).
-January 16, 2025 - 19:13:04
+January 17, 2025 - 16:41:40
 Django version 5.1.4, using settings 'Infoproject.settings'
 Starting ASGI/Daphne version 4.1.2 development server at http://0.0.0.0:8100/
 Quit the server with CONTROL-C.
 server Worker Threat started with ID: 
 log: received package to server websocket with ID  and the following content:
-{"type":"startserver","serverID":"ese"}
+{"type":"startserver","serverID":"awwwwwwwwv"}
 log generating Background
-log: new Player logged in to server with ID: ese the Player ID is: 2240917541
-log: ein spieler versucht sich auf einem server einzuloggen dessen zustand False ist 
-log: sending connection denied message to client with ID: 2240917541
 log: Generating Streets
 log: generating Houses
 log: World Generation Done
-log: received package to server websocket with ID ese and the following content:
-{"type":"startserver","serverID":"ese"}
-log: someone is trying to start a server wich aleready runns
-log: new Player logged in to server with ID: ese the Player ID is: 2500114610
+log: new Player logged in to server with ID: awwwwwwwwv the Player ID is: 1388639898
 log: ein spieler versucht sich auf einem server einzuloggen dessen zustand True ist 
-log: sending connection accepted message to client with ID: 2500114610
-log: updating Player Inventory with player ID: 2500114610for server with ID: eseand with content: 
-{"items": [{"stackID": 2677922312, "size": 5, "itemID": "FirstAidKit", "tags": []}], "hotbar": [null, null, null, null, null, null], "hotbarSize": 6, "activeSlot": 0, "primaryHand": []}
-log: sending information about new GameObject on Server with ID: ese to client with ID 2500114610 the ID of the new Object is 2500114610 the entity Type is Player
-log: sending information about new GameObject on Server with ID: ese to client with ID 2500114610 the ID of the new Object is 704133864 the entity Type is Wall
-log: sending information about new GameObject on Server with ID: ese to client with ID 2500114610 the ID of the new Object is 3954101759 the entity Type is Wall
-log: sending information about new GameObject on Server with ID: ese to client with ID 2500114610 the ID of the new Object is 1767074464 the entity Type is Wall
-log: sending information about new GameObject on Server with ID: ese to client with ID 2500114610 the ID of the new Object is 3508623275 the entity Type is Wall
-log: sending information about new GameObject on Server with ID: ese to client with ID 2500114610 the ID of the new Object is 474592080 the entity Type is Door
-log: sending information about new GameObject on Server with ID: ese to client with ID 2500114610 the ID of the new Object is 3275996354 the entity Type is Chest
-log: sending information about new GameObject on Server with ID: ese to client with ID 2500114610 the ID of the new Object is 3063418310 the entity Type is Wall
-log: sending information about new GameObject on Server with ID: ese to client with ID 2500114610 the ID of the new Object is 844836869 the entity Type is Wall
-log: sending information about new Health on Server with ID: ese to client with ID 2500114610 the ID of the Updated Object is 2500114610 the entityType is Player the new hp is 200
-log: sending information about new GameObject on Server with ID: ese to client with ID 2500114610 the ID of the new Object is 3087834870 the entity Type is Wall
-log: sending information about new GameObject on Server with ID: ese to client with ID 2500114610 the ID of the new Object is 2516680642 the entity Type is Wall
-log: updating Player Inventory with player ID: 2500114610for server with ID: eseand with content: 
-{"items": [{"stackID": 2677922312, "size": 5, "itemID": "FirstAidKit", "tags": []}], "hotbar": [{"stackID": 2677922312, "size": 5, "itemID": "FirstAidKit", "tags": []}, null, null, null, null, null], "hotbarSize": 6, "activeSlot": 0, "primaryHand": []}
-log: sending information about new GameObject on Server with ID: ese to client with ID 2500114610 the ID of the new Object is 1130265819 the entity Type is Door
-log: sending information about new GameObject on Server with ID: ese to client with ID 2500114610 the ID of the new Object is 235363145 the entity Type is Chest
-log: sending information about new GameObject on Server with ID: ese to client with ID 2500114610 the ID of the new Object is 3463832748 the entity Type is Wall
-log: sending information about new GameObject on Server with ID: ese to client with ID 2500114610 the ID of the new Object is 2468109159 the entity Type is Wall
-log: sending information about new GameObject on Server with ID: ese to client with ID 2500114610 the ID of the new Object is 2500368670 the entity Type is Wall
-log: sending information about new GameObject on Server with ID: ese to client with ID 2500114610 the ID of the new Object is 854585906 the entity Type is Wall
-log: sending information about new GameObject on Server with ID: ese to client with ID 2500114610 the ID of the new Object is 667995311 the entity Type is Door
-log: sending information about new GameObject on Server with ID: ese to client with ID 2500114610 the ID of the new Object is 1739607920 the entity Type is Chest
-log: sending information about new GameObject on Server with ID: ese to client with ID 2500114610 the ID of the new Object is 2532108266 the entity Type is Wall
-log: sending information about new GameObject on Server with ID: ese to client with ID 2500114610 the ID of the new Object is 537353786 the entity Type is Wall
-log: sending information about new GameObject on Server with ID: ese to client with ID 2500114610 the ID of the new Object is 2773153584 the entity Type is Wall
-log: sending information about new GameObject on Server with ID: ese to client with ID 2500114610 the ID of the new Object is 1520003226 the entity Type is Wall
-log: sending information about new GameObject on Server with ID: ese to client with ID 2500114610 the ID of the new Object is 1670762911 the entity Type is Door
-log: sending information about new GameObject on Server with ID: ese to client with ID 2500114610 the ID of the new Object is 2038148988 the entity Type is Chest
-log: sending information about new GameObject on Server with ID: ese to client with ID 2500114610 the ID of the new Object is 3344792217 the entity Type is Wall
-log: sending information about new GameObject on Server with ID: ese to client with ID 2500114610 the ID of the new Object is 3746839046 the entity Type is Wall
-log: sending information about new GameObject on Server with ID: ese to client with ID 2500114610 the ID of the new Object is 3690538976 the entity Type is Wall
-log: sending information about new GameObject on Server with ID: ese to client with ID 2500114610 the ID of the new Object is 1839135724 the entity Type is Wall
-log: sending information about new GameObject on Server with ID: ese to client with ID 2500114610 the ID of the new Object is 2336691702 the entity Type is Door
-log: sending information about new GameObject on Server with ID: ese to client with ID 2500114610 the ID of the new Object is 1373946804 the entity Type is Chest
-log: sending information about new GameObject on Server with ID: ese to client with ID 2500114610 the ID of the new Object is 603505494 the entity Type is Wall
-log: sending information about new GameObject on Server with ID: ese to client with ID 2500114610 the ID of the new Object is 3222317015 the entity Type is Wall
-log: sending information about new GameObject on Server with ID: ese to client with ID 2500114610 the ID of the new Object is 3074672236 the entity Type is Wall
-log: sending information about new GameObject on Server with ID: ese to client with ID 2500114610 the ID of the new Object is 399487401 the entity Type is Wall
-log: sending information about new GameObject on Server with ID: ese to client with ID 2500114610 the ID of the new Object is 3484183568 the entity Type is Tree
-log: Player with ID 2500114610 is trying to interact
-log: consumed AIdKit
-log: Player with ID 2500114610 is trying to interact
-log: Player with ID 2500114610 is trying to interact
-log: updating Player Inventory with player ID: 2500114610for server with ID: eseand with content: 
-{"items": [{"stackID": 2677922312, "size": 4, "itemID": "FirstAidKit", "tags": []}], "hotbar": [{"stackID": 2677922312, "size": 4, "itemID": "FirstAidKit", "tags": []}, null, null, null, null, null], "hotbarSize": 6, "activeSlot": 0, "primaryHand": []}
-log: Player with ID 2500114610 is trying to interact
-log: sending information about new Health on Server with ID: ese to client with ID 2500114610 the ID of the Updated Object is 2500114610 the entityType is Player the new hp is 1200
-log: consumed AIdKit
-log: Player with ID 2500114610 is trying to interact
-log: consumed AIdKit
-log: consumed AIdKit
-log: Player with ID 2500114610 is trying to interact
-log: Player with ID 2500114610 is trying to interact
-log: updating Player Inventory with player ID: 2500114610for server with ID: eseand with content: 
-{"items": [{"stackID": 2677922312, "size": 3, "itemID": "FirstAidKit", "tags": []}], "hotbar": [{"stackID": 2677922312, "size": 3, "itemID": "FirstAidKit", "tags": []}, null, null, null, null, null], "hotbarSize": 6, "activeSlot": 0, "primaryHand": []}
-log: Player with ID 2500114610 is trying to interact
-log: deleting stack with ID  : 2677922312
-log: consumed AIdKit
-log: sending information about new Health on Server with ID: ese to client with ID 2500114610 the ID of the Updated Object is 2500114610 the entityType is Player the new hp is 2200
-log: Player with ID 2500114610 is trying to interact
-log: updating Player Inventory with player ID: 2500114610for server with ID: eseand with content: 
-{"items": [{"stackID": 2677922312, "size": 2, "itemID": "FirstAidKit", "tags": []}], "hotbar": [{"stackID": 2677922312, "size": 2, "itemID": "FirstAidKit", "tags": []}, null, null, null, null, null], "hotbarSize": 6, "activeSlot": 0, "primaryHand": []}
-log: Player with ID 2500114610 is trying to interact
-log: sending information about new Health on Server with ID: ese to client with ID 2500114610 the ID of the Updated Object is 2500114610 the entityType is Player the new hp is 3200
-log: Player with ID 2500114610 is trying to interact
-log: updating Player Inventory with player ID: 2500114610for server with ID: eseand with content: 
-{"items": [{"stackID": 2677922312, "size": 1, "itemID": "FirstAidKit", "tags": []}], "hotbar": [{"stackID": 2677922312, "size": 1, "itemID": "FirstAidKit", "tags": []}, null, null, null, null, null], "hotbarSize": 6, "activeSlot": 0, "primaryHand": []}
-log: Player with ID 2500114610 is trying to interact
-log: sending information about new Health on Server with ID: ese to client with ID 2500114610 the ID of the Updated Object is 2500114610 the entityType is Player the new hp is 4200
-log: Player with ID 2500114610 is trying to interact
-log: Player with ID 2500114610 is trying to interact
-log: updating Player Inventory with player ID: 2500114610for server with ID: eseand with content: 
-{"items": [], "hotbar": [null, null, null, null, null, null], "hotbarSize": 6, "activeSlot": 0, "primaryHand": []}
-log: sending information about new Health on Server with ID: ese to client with ID 2500114610 the ID of the Updated Object is 2500114610 the entityType is Player the new hp is 5200
-log: Player with ID 2500114610 is trying to interact
-log: Player with ID 2500114610 is trying to interact
-log: Player with ID 2500114610 is trying to interact
-log: Player with ID 2500114610 is trying to interact
-log: Player with ID 2500114610 is trying to interact
-log: Player with ID 2500114610 is trying to interact
-log: Player with ID 2500114610 is trying to interact
-log: Player with ID 2500114610 is trying to interact
-log: Player with ID 2500114610 is trying to interact
-log: Player with ID 2500114610 is trying to interact
-log: Player with ID 2500114610 is trying to interact
-log: Player with ID 2500114610 is trying to interact
-log: Player with ID 2500114610 is trying to interact
-log: Player with ID 2500114610 is trying to interact
-log: Player with ID 2500114610 is trying to interact
-log: Player with ID 2500114610 is trying to interact
-log: Player with ID 2500114610 is trying to interact
-log: Player with ID 2500114610 is trying to interact
-log: Player with ID 2500114610 is trying to interact
-log: Player with ID 2500114610 is trying to interact
-log: Player with ID 2500114610 is trying to interact
-log: Player with ID 2500114610 is trying to interact
-log: Player with ID 2500114610 is trying to interact
-log: Player with ID 2500114610 is trying to interact
-log: Player with ID 2500114610 is trying to interact
-log: Player with ID 2500114610 is trying to interact
-log: Player with ID 2500114610 is trying to interact
-log: Player with ID 2500114610 is trying to interact
-log: Player with ID 2500114610 is trying to interact
-log: Player with ID 2500114610 is trying to interact
-log: Player with ID 2500114610 is trying to interact
-log: Player with ID 2500114610 is trying to interact
-log: Player with ID 2500114610 is trying to interact
-log: Player with ID 2500114610 is trying to interact
-log: Player with ID 2500114610 is trying to interact
-log: Player with ID 2500114610 is trying to interact
-log: Player with ID 2500114610 is trying to interact
-log: Player with ID 2500114610 is trying to interact
-log: Player with ID 2500114610 is trying to interact
-log: interupted Player movement of Player with ID: 2500114610
-log: Player got Interupted in Movement, the player ID is: 2500114610
-log: Player got Teleported deltax: 0.0 deltay: 26.301488097087713
-log: interupted Player movement of Player with ID: 2500114610
-log: Player got Interupted in Movement, the player ID is: 2500114610
-log: Player got Teleported deltax: 0.0 deltay: 30.084903560200473
-log: interupted Player movement of Player with ID: 2500114610
-log: Player got Interupted in Movement, the player ID is: 2500114610
-log: Player got Teleported deltax: 27.653439328278182 deltay: 27.653439328278182
-log: interupted Player movement of Player with ID: 2500114610
-log: Player got Interupted in Movement, the player ID is: 2500114610
-log: Player got Teleported deltax: 15.232625310745789 deltay: 15.232625310745789
-log: interupted Player movement of Player with ID: 2500114610
-log: Player got Interupted in Movement, the player ID is: 2500114610
-log: Player got Teleported deltax: 15.669054162863176 deltay: 15.669054162863176
-log: interupted Player movement of Player with ID: 2500114610
-log: Player got Interupted in Movement, the player ID is: 2500114610
-log: Player got Teleported deltax: 15.687975318433018 deltay: 15.687975318433018
-log: interupted Player movement of Player with ID: 2500114610
-log: Player got Interupted in Movement, the player ID is: 2500114610
-log: Player got Teleported deltax: 24.78508775922819 deltay: 24.78508775922819
-log: interupted Player movement of Player with ID: 2500114610
-log: Player got Interupted in Movement, the player ID is: 2500114610
-log: Player got Teleported deltax: 22.277897348831175 deltay: 22.277897348831175
-log: interupted Player movement of Player with ID: 2500114610
-log: Player got Interupted in Movement, the player ID is: 2500114610
-log: Player got Teleported deltax: 34.00295635961811 deltay: 34.00295635961811
-log: interupted Player movement of Player with ID: 2500114610
-log: Player got Interupted in Movement, the player ID is: 2500114610
-log: Player got Teleported deltax: 30.227635621122317 deltay: 30.227635621122317
-log: interupted Player movement of Player with ID: 2500114610
-log: Player got Interupted in Movement, the player ID is: 2500114610
-log: Player got Teleported deltax: 16.011018569697626 deltay: 16.011018569697626
-log: interupted Player movement of Player with ID: 2500114610
-log: Player got Interupted in Movement, the player ID is: 2500114610
-log: Player got Teleported deltax: 19.759828729147557 deltay: 19.759828729147557
-log: interupted Player movement of Player with ID: 2500114610
-log: Player got Interupted in Movement, the player ID is: 2500114610
-log: Player got Teleported deltax: 21.620846150326543 deltay: 21.620846150326543
-log: interupted Player movement of Player with ID: 2500114610
-log: Player got Interupted in Movement, the player ID is: 2500114610
-log: Player got Teleported deltax: 21.956037059717346 deltay: 21.956037059717346
-log: interupted Player movement of Player with ID: 2500114610
-log: Player got Interupted in Movement, the player ID is: 2500114610
-log: Player got Teleported deltax: 19.866376662248513 deltay: 19.866376662248513
-log: interupted Player movement of Player with ID: 2500114610
-log: Player got Interupted in Movement, the player ID is: 2500114610
-log: Player got Teleported deltax: 25.486072467901977 deltay: 25.486072467901977
-log: interupted Player movement of Player with ID: 2500114610
-log: Player got Interupted in Movement, the player ID is: 2500114610
-log: Player got Teleported deltax: 26.443962240737164 deltay: 26.443962240737164
-log: interupted Player movement of Player with ID: 2500114610
-log: Player got Interupted in Movement, the player ID is: 2500114610
-log: Player got Teleported deltax: 22.51766530025634 deltay: 22.51766530025634
-log: interupted Player movement of Player with ID: 2500114610
-log: Player got Interupted in Movement, the player ID is: 2500114610
-log: Player got Teleported deltax: 21.393139681604225 deltay: 21.393139681604225
-log: interupted Player movement of Player with ID: 2500114610
-log: Player got Interupted in Movement, the player ID is: 2500114610
-log: Player got Teleported deltax: 16.080676808342105 deltay: 16.080676808342105
-log: interupted Player movement of Player with ID: 2500114610
-log: Player got Interupted in Movement, the player ID is: 2500114610
-log: Player got Teleported deltax: 22.132277948840056 deltay: 22.132277948840056
-log: interupted Player movement of Player with ID: 2500114610
-log: Player got Interupted in Movement, the player ID is: 2500114610
-log: Player got Teleported deltax: 22.626572950393893 deltay: 22.626572950393893
-log: interupted Player movement of Player with ID: 2500114610
-log: Player got Interupted in Movement, the player ID is: 2500114610
-log: Player got Teleported deltax: 35.47581906284904 deltay: 35.47581906284904
-log: interupted Player movement of Player with ID: 2500114610
-log: Player got Interupted in Movement, the player ID is: 2500114610
-log: Player got Teleported deltax: 26.57977075621602 deltay: 26.57977075621602
-log: interupted Player movement of Player with ID: 2500114610
-log: Player got Interupted in Movement, the player ID is: 2500114610
-log: Player got Teleported deltax: 13.36720465158578 deltay: 13.36720465158578
-log: interupted Player movement of Player with ID: 2500114610
-log: Player got Interupted in Movement, the player ID is: 2500114610
-log: Player got Teleported deltax: 20.339489051839337 deltay: 20.339489051839337
-log: interupted Player movement of Player with ID: 2500114610
-log: Player got Interupted in Movement, the player ID is: 2500114610
-log: Player got Teleported deltax: 17.105640969093656 deltay: 17.105640969093656
-log: interupted Player movement of Player with ID: 2500114610
-log: Player got Interupted in Movement, the player ID is: 2500114610
-log: Player got Teleported deltax: 23.22152681008447 deltay: 23.22152681008447
-log: interupted Player movement of Player with ID: 2500114610
-log: Player got Interupted in Movement, the player ID is: 2500114610
-log: Player got Teleported deltax: 18.962002810731065 deltay: 18.962002810731065
-log: interupted Player movement of Player with ID: 2500114610
-log: Player got Interupted in Movement, the player ID is: 2500114610
-log: Player got Teleported deltax: 33.33010073823971 deltay: 33.33010073823971
-log: interupted Player movement of Player with ID: 2500114610
-log: Player got Interupted in Movement, the player ID is: 2500114610
-log: Player got Teleported deltax: 21.768762342107948 deltay: 21.768762342107948
-log: interupted Player movement of Player with ID: 2500114610
-log: Player got Interupted in Movement, the player ID is: 2500114610
-log: Player got Teleported deltax: 19.334358997293748 deltay: 19.334358997293748
-log: interupted Player movement of Player with ID: 2500114610
-log: Player got Interupted in Movement, the player ID is: 2500114610
-log: Player got Teleported deltax: 21.86792234875611 deltay: 21.86792234875611
-log: interupted Player movement of Player with ID: 2500114610
-log: Player got Interupted in Movement, the player ID is: 2500114610
-log: Player got Teleported deltax: 14.720533521176549 deltay: 14.720533521176549
-log: interupted Player movement of Player with ID: 2500114610
-log: Player got Interupted in Movement, the player ID is: 2500114610
-log: Player got Teleported deltax: 21.42651056055911 deltay: 21.42651056055911
-log: interupted Player movement of Player with ID: 2500114610
-log: Player got Interupted in Movement, the player ID is: 2500114610
-log: Player got Teleported deltax: 21.492006742337253 deltay: 21.492006742337253
-log: interupted Player movement of Player with ID: 2500114610
-log: Player got Interupted in Movement, the player ID is: 2500114610
-log: Player got Teleported deltax: 23.265052977512823 deltay: 23.265052977512823
-log: interupted Player movement of Player with ID: 2500114610
-log: Player got Interupted in Movement, the player ID is: 2500114610
-log: Player got Teleported deltax: 28.55169378191931 deltay: 28.55169378191931
-log: interupted Player movement of Player with ID: 2500114610
-log: Player got Interupted in Movement, the player ID is: 2500114610
-log: Player got Teleported deltax: 20.2006605079805 deltay: 20.2006605079805
-log: interupted Player movement of Player with ID: 2500114610
-log: Player got Interupted in Movement, the player ID is: 2500114610
-log: Player got Teleported deltax: 21.199464078381425 deltay: 21.199464078381425
-log: interupted Player movement of Player with ID: 2500114610
-log: Player got Interupted in Movement, the player ID is: 2500114610
-log: Player got Teleported deltax: 21.994890288915485 deltay: 21.994890288915485
-log: interupted Player movement of Player with ID: 2500114610
-log: Player got Interupted in Movement, the player ID is: 2500114610
-log: Player got Teleported deltax: 19.401588697655825 deltay: 19.401588697655825
-log: interupted Player movement of Player with ID: 2500114610
-log: Player got Interupted in Movement, the player ID is: 2500114610
-log: Player got Teleported deltax: 20.227119633491384 deltay: 20.227119633491384
-log: interupted Player movement of Player with ID: 2500114610
-log: Player got Interupted in Movement, the player ID is: 2500114610
-log: Player got Teleported deltax: 37.87702945977799 deltay: 37.87702945977799
-log: interupted Player movement of Player with ID: 2500114610
-log: Player got Interupted in Movement, the player ID is: 2500114610
-log: Player got Teleported deltax: 23.30604179907823 deltay: 23.30604179907823
-log: interupted Player movement of Player with ID: 2500114610
-log: Player got Interupted in Movement, the player ID is: 2500114610
-log: Player got Teleported deltax: 21.07692200836027 deltay: 21.07692200836027
-log: interupted Player movement of Player with ID: 2500114610
-log: Player got Interupted in Movement, the player ID is: 2500114610
-log: Player got Teleported deltax: 15.481630331050837 deltay: 15.481630331050837
-log: interupted Player movement of Player with ID: 2500114610
-log: Player got Interupted in Movement, the player ID is: 2500114610
-log: Player got Teleported deltax: 21.82785763827269 deltay: 21.82785763827269
-log: interupted Player movement of Player with ID: 2500114610
-log: Player got Interupted in Movement, the player ID is: 2500114610
-log: Player got Teleported deltax: 21.443411143118283 deltay: 21.443411143118283
-log: interupted Player movement of Player with ID: 2500114610
-log: Player got Interupted in Movement, the player ID is: 2500114610
-log: Player got Teleported deltax: 25.513387190003414 deltay: 25.513387190003414
-log: interupted Player movement of Player with ID: 2500114610
-log: Player got Interupted in Movement, the player ID is: 2500114610
-log: Player got Teleported deltax: 31.29554624669254 deltay: 31.29554624669254
-log: interupted Player movement of Player with ID: 2500114610
-log: Player got Interupted in Movement, the player ID is: 2500114610
-log: Player got Teleported deltax: 21.1695661325939 deltay: 21.1695661325939
-log: interupted Player movement of Player with ID: 2500114610
-log: Player got Interupted in Movement, the player ID is: 2500114610
+log: sending connection accepted message to client with ID: 1388639898
+log: updating Player Inventory with player ID: 1388639898for server with ID: awwwwwwwwvand with content: 
+{"items": [{"stackID": 69115446, "size": 5, "itemID": "FirstAidKit", "tags": []}], "hotbar": [null, null, null, null, null, null], "hotbarSize": 6, "activeSlot": 0, "primaryHand": []}
+log: sending information about new GameObject on Server with ID: awwwwwwwwv to client with ID 1388639898 the ID of the new Object is 1388639898 the entity Type is Player
+log: sending information about new GameObject on Server with ID: awwwwwwwwv to client with ID 1388639898 the ID of the new Object is 1999447788 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: awwwwwwwwv to client with ID 1388639898 the ID of the new Object is 2470725923 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: awwwwwwwwv to client with ID 1388639898 the ID of the new Object is 1986121790 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: awwwwwwwwv to client with ID 1388639898 the ID of the new Object is 3120619884 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: awwwwwwwwv to client with ID 1388639898 the ID of the new Object is 838650549 the entity Type is Door
+log: sending information about new GameObject on Server with ID: awwwwwwwwv to client with ID 1388639898 the ID of the new Object is 92614252 the entity Type is Chest
+log: sending information about new GameObject on Server with ID: awwwwwwwwv to client with ID 1388639898 the ID of the new Object is 2368969555 the entity Type is Wall
+log: sending information about new Health on Server with ID: awwwwwwwwv to client with ID 1388639898 the ID of the Updated Object is 1388639898 the entityType is Player the new hp is 200
+log: sending information about new GameObject on Server with ID: awwwwwwwwv to client with ID 1388639898 the ID of the new Object is 1799303274 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: awwwwwwwwv to client with ID 1388639898 the ID of the new Object is 2094535100 the entity Type is Wall
+log: updating Player Inventory with player ID: 1388639898for server with ID: awwwwwwwwvand with content: 
+{"items": [{"stackID": 69115446, "size": 5, "itemID": "FirstAidKit", "tags": []}], "hotbar": [{"stackID": 69115446, "size": 5, "itemID": "FirstAidKit", "tags": []}, null, null, null, null, null], "hotbarSize": 6, "activeSlot": 0, "primaryHand": []}
+log: sending information about new GameObject on Server with ID: awwwwwwwwv to client with ID 1388639898 the ID of the new Object is 1818524495 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: awwwwwwwwv to client with ID 1388639898 the ID of the new Object is 2067768188 the entity Type is Door
+log: sending information about new GameObject on Server with ID: awwwwwwwwv to client with ID 1388639898 the ID of the new Object is 3163472219 the entity Type is Chest
+log: sending information about new GameObject on Server with ID: awwwwwwwwv to client with ID 1388639898 the ID of the new Object is 2675610374 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: awwwwwwwwv to client with ID 1388639898 the ID of the new Object is 2198813834 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: awwwwwwwwv to client with ID 1388639898 the ID of the new Object is 1581613115 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: awwwwwwwwv to client with ID 1388639898 the ID of the new Object is 2912277665 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: awwwwwwwwv to client with ID 1388639898 the ID of the new Object is 927141863 the entity Type is Door
+log: sending information about new GameObject on Server with ID: awwwwwwwwv to client with ID 1388639898 the ID of the new Object is 991373922 the entity Type is Chest
+log: sending information about new GameObject on Server with ID: awwwwwwwwv to client with ID 1388639898 the ID of the new Object is 1494647690 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: awwwwwwwwv to client with ID 1388639898 the ID of the new Object is 1048687720 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: awwwwwwwwv to client with ID 1388639898 the ID of the new Object is 1028331833 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: awwwwwwwwv to client with ID 1388639898 the ID of the new Object is 529881647 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: awwwwwwwwv to client with ID 1388639898 the ID of the new Object is 3007806117 the entity Type is Door
+log: sending information about new GameObject on Server with ID: awwwwwwwwv to client with ID 1388639898 the ID of the new Object is 2005581341 the entity Type is Chest
+log: sending information about new GameObject on Server with ID: awwwwwwwwv to client with ID 1388639898 the ID of the new Object is 1020216557 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: awwwwwwwwv to client with ID 1388639898 the ID of the new Object is 1013217595 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: awwwwwwwwv to client with ID 1388639898 the ID of the new Object is 3553468830 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: awwwwwwwwv to client with ID 1388639898 the ID of the new Object is 2363450628 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: awwwwwwwwv to client with ID 1388639898 the ID of the new Object is 3611033681 the entity Type is Door
+log: sending information about new GameObject on Server with ID: awwwwwwwwv to client with ID 1388639898 the ID of the new Object is 1031727568 the entity Type is Chest
+log: sending information about new GameObject on Server with ID: awwwwwwwwv to client with ID 1388639898 the ID of the new Object is 628019749 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: awwwwwwwwv to client with ID 1388639898 the ID of the new Object is 2341611957 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: awwwwwwwwv to client with ID 1388639898 the ID of the new Object is 2102569462 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: awwwwwwwwv to client with ID 1388639898 the ID of the new Object is 1640882790 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: awwwwwwwwv to client with ID 1388639898 the ID of the new Object is 3011870549 the entity Type is Tree
