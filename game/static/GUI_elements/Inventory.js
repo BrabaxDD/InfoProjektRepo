@@ -138,8 +138,8 @@ export default class Inventory extends GameObject {
             this.hotbar = eventObject.hotbar
 
             for (let i = 0; i < 6; i++) {
-                if (eventObject.hotbar[i]) {
-                    this.hotbar[i] = {}
+                if (eventObject.hotbar[i] == null) {
+                    this.hotbar[i] = {"size": 0, "itemID": "Leer", "tags": [] }
                 }
                 else {
                     this.hotbar[i] = eventObject.hotbar[i]
