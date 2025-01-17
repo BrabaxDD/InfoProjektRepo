@@ -59,8 +59,9 @@ export default class InventorySlot extends GameObject{
         this.ctx.fillStyle = 'yellow';
         this.ctx.textBaseline = 'left';
         this.ctx.font = font;
+        if (this.itemStack.itemID != "leer"){
         this.ctx.fillText(this.itemStack.size, this.posx + this.size-5,this.posy+ this.size);
-            
+        }
     }
 
     event(eventString, eventObject){
