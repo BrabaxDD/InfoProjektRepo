@@ -8,6 +8,7 @@ import random
 import time
 import perlin_noise
 import queue
+import math
 
 
 class World:
@@ -58,20 +59,41 @@ class World:
     def broadcastWallInformation(self, posx2, posy2, thickness, wallID):
         self.threat.broadcastWallInformation(posx2, posy2, thickness, wallID)
 # Ein Tile der Tile Map ist 32 Pixel groß
-# Ein Chunk ist 16
+# Ein Chunk ist 64
 # Ein Biom besteht aus mehreren Chunks
 
     def generate(self):
         self.serverID = self.threat.gameServerSocket.serverID
-        sizeX = 32
-        sizeY = 32
+        sizeX = 512
+        sizeY = 512
+        chunksize = 16
         self.map = []
         print("log generating Background")
         print("generating Biomes")
+        # Biomes 0: Lake 1: Beach 2: Flatland 3: Woods 4: Villages 5: Mountain (not Implemented yet)
+        self.biomes = WavefunctionCollapse({0: [1, 0], 1: [0, 1, 2], 2: [1, 2, 3, 4], 3:
+                                            [3, 2], 4: [2, 4]}, int(sizeX/chunksize), int(sizeY/chunksize),
+                                           possibilities=5)
+
         for i in range(sizeX):
             self.map.append([])
             for j in range(sizeY):
-                self.map[i].append(0)
+                self.map[i].append(1)
+        for bx, biomeColumn in enumerate(self.biomes):
+            for by, biome in enumerate(biomeColumn):
+                pass
+#                if biome == 0:
+#                    A = 2
+#                    if by != 0:
+#                        for x in range(chunksize):
+#                            A1 = random.random() * A
+#                            A2 = random.random() * A
+#                            for y in range(int(A1 + 0.5*A2 - A1*math.cos(math.pi * (x/chunksize)) - A2*0.5*math.cos(math.pi * 2 * (x/chunksize)))):
+#                                self.map[bx * chunksize +
+#                                         x][by*chunksize + y] = 0
+#
+#
+##
 #        for tileType in range(1, 3):
 #            for i in range(60):
 #                length = random.randint(0, 10)
@@ -109,8 +131,6 @@ class World:
 #                if noise_val < -0.25:
 #                    self.map[x][y] = 1
 #
-        self.map = WavefunctionCollapse({0: [1, 0], 1: [0, 1, 2], 2: [1, 2, 3], 3: [3,
-                                        2]}, xsize=sizeX, ysize=sizeY, possibilities=4)
         print("log: Generating Streets")
 #        for tmp in range(6):  # es gibt 6 straßen
 #            # die straßen starten am x rand

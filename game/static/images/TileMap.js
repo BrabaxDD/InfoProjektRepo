@@ -12,8 +12,8 @@ export default class TileMap extends GameObject {
 
         this.imageLoader = this.scene.imageLoader;
         this.tileMap = {
-            0: "FloorNew.png",
-            1: "Water.png",
+            0: "Water.png",
+            1: "Sand.png",
             2: "Sand.png",
             3: "Street.png",
             4: "WoodenFloor.png",
