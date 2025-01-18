@@ -49,8 +49,27 @@ class World:
 #            gameObject.process(delta)
 
     def broadcast(self):
-        for gameObject in self.objects:
-            gameObject.broadcast()
+        chunkkoordToIterate = []
+        chunkkoordToIterate.append((0, 0))
+        for x, y in self.playerChunks.values():
+            chunkkoordToIterate.append((x, y))
+            chunkkoordToIterate.append(((x-1) % self.chunksx, y))
+            chunkkoordToIterate.append(((x+1) % self.chunksx, y))
+            chunkkoordToIterate.append((x, (y+1) % self.chunksy))
+            chunkkoordToIterate.append(
+                ((x-1) % self.chunksx, (y+1) % self.chunksy))
+            chunkkoordToIterate.append(
+                ((x+1) % self.chunksx, (y+1) % self.chunksy))
+            chunkkoordToIterate.append((x, (y-1) % self.chunksy))
+            chunkkoordToIterate.append(
+                ((x-1) % self.chunksx, (y-1) % self.chunksy))
+            chunkkoordToIterate.append(
+                ((x+1) % self.chunksx, (y-1) % self.chunksy))
+        chunkkoordToIterate = list(set(chunkkoordToIterate))
+        for chunkCoord in chunkkoordToIterate:
+            chunk = self.chunks[chunkCoord]
+            for gameObject in chunk:
+                gameObject.broadcast()
 
     def initialBroadcast(self):
         for obj in self.broadCastGameObjectTodo:
@@ -217,9 +236,8 @@ class World:
             for y in range(sizeY):
                 biome = self.map[x][y]
                 if biome == 2:
-                    if random.random() < 0.01:
-                        pass
-                        # self.addGameobject(Tree.Tree(self, x*32, y*32))
+                    if random.random() < 0.03:
+                        self.addGameobject(Tree.Tree(self, x*32, y*32))
 #        for i in range(5):
 #            self.generateHouse(random.randint(0, villagesize) * 32 + villageposx,
 #                               random.randint(0, villagesize) * 32 + villageposy, 128, 128, "North")
