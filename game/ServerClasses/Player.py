@@ -81,6 +81,8 @@ class Player(GameObject.GameObject):
             self.newPositon(newPosx=NewPosx, newPosy=NewPosy)
 
     def newPositon(self, newPosx, newPosy):
+        self.world.eventBus.event("objectMove", {
+                                  "lastposx": self.posx, "lastposy": self.posy, "posx": newPosx, "posy": newPosy, "gameObject": self})
         self.posx = newPosx
         self.posy = newPosy
         self.world.eventBus.event("playerPositionUpdate",

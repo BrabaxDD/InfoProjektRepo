@@ -36,10 +36,13 @@ class Zombie(GameObject.GameObject):
         if self.nearestPlayerDistance < 4:
             pass
         else:
-            self.posx += delta * ((self.nearestPlayerPosx - self.posx) /
-                                  self.nearestPlayerDistance * self.velocity)
-            self.posy += delta * ((self.nearestPlayerPosy - self.posy) /
-                                  self.nearestPlayerDistance * self.velocity)
+            self.newPositon(((self.nearestPlayerPosx - self.posx) /
+                             self.nearestPlayerDistance * self.velocity) + self.posx, ((self.nearestPlayerPosy - self.posy) /
+                                                                                       self.nearestPlayerDistance * self.velocity) + self.posy)
+#            self.posx += delta * ((self.nearestPlayerPosx - self.posx) /
+#                                  self.nearestPlayerDistance * self.velocity)
+#            self.posy += delta * ((self.nearestPlayerPosy - self.posy) /
+#                                  self.nearestPlayerDistance * self.velocity)
             self.world.eventBus.event("zombiePositionUpdate", {
                                       "zombieID": self.ID, "posx": self.posx, "posy": self.posy})
         if self.nearestPlayerDistance < 400 and self.timesincelasthit > 1:
