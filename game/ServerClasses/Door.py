@@ -29,5 +29,11 @@ class Door(Obstacle.Obstacle):
                 player.setInteractionCooldown(1)
                 print("log: the new second coordinates after door  has been interacted with are: " +
                       str(self.posx2) + " " + str(self.posy2))
+
+                self.world.broadcastPosition(
+                    self.ID, self.posx, self.posy, self.entityType)
+                self.world.broadcastWallInformation(
+                    self.posx2, self.posy2, self.thickness, self.ID)
+
         if eventString == "zombiePositionUpdate":
-            super().event(eventString,action)
+            super().event(eventString, action)

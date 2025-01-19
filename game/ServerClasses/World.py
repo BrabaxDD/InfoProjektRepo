@@ -20,7 +20,7 @@ class World:
         self.threat = threat
         self.broadCastGameObjectTodo = []
         self.eventBus.registerListner(self, "objectMove")
-        self.map = None
+        self.biomeMap = None
         self.playerChunks = {0: (0, 0)}
 
         pass
@@ -139,36 +139,42 @@ class World:
         self.chunksx = sizeX/chunksize
         self.chunksy = sizeY/chunksize
         self.map = []
+        self.biomeMap = []
         self.chunks = {}
         for x in range(int(self.chunksx)):
             for y in range(int(self.chunksy)):
                 self.chunks[(x, y)] = []
         print("log generating Background")
         print("generating Biomes")
-        # Biomes 0: Lake 1: Beach 2: Flatland 3: Woods 4: Villages 5: Mountain (not Implemented yet)
+        # Biomes 0: Lake 1: Beach 2: Flatland 3: Woods 5: Villages 4: Mountain (not Implemented yet)
 #        self.biomes = WavefunctionCollapse({0: [1, 0], 1: [0, 1, 2], 2: [1, 2, 3, 4], 3:
 #                                            [3, 2], 4: [2, 4]}, int(sizeX/chunksize), int(sizeY/chunksize),
 #                                           possibilities=5)
         height = perlin_noise.PerlinNoise(octaves=1)
         vegetation = perlin_noise.PerlinNoise(octaves=1)
         for i in range(sizeX):
+            self.biomeMap.append([])
+            for j in range(sizeY):
+                self.biomeMap[i].append(1)
+        for i in range(sizeX):
             self.map.append([])
             for j in range(sizeY):
                 self.map[i].append(1)
 
+
         for x in range(sizeX):
             for y in range(sizeY):
                 if height([x/sizeX, y/sizeY]) <= -0.2:
-                    self.map[x][y] = 0
+                    self.biomeMap[x][y] = 0
                 elif height([x/sizeX, y/sizeY]) <= -0.18:
-                    self.map[x][y] = 1
+                    self.biomeMap[x][y] = 1
                 else:
                     if vegetation([x/sizeX, y/sizeY]) > 0.1:
-                        self.map[x][y] = 2
-                    elif vegetation([x/sizeX, y/sizeY]) > -0.1:
-                        self.map[x][y] = 5
+                        self.biomeMap[x][y] = 2
+                    elif vegetation([x/sizeX, y/sizeY]) > -0.05:
+                        self.biomeMap[x][y] = 5
                     else:
-                        self.map[x][y] = 3
+                        self.biomeMap[x][y] = 3
 #        for bx, biomeColumn in enumerate(self.biomes):
 #            for by, biome in enumerate(biomeColumn):
 #                pass
@@ -179,7 +185,7 @@ class World:
 #                            A1 = random.random() * A
 #                            A2 = random.random() * A
 #                            for y in range(int(A1 + 0.5*A2 - A1*math.cos(math.pi * (x/chunksize)) - A2*0.5*math.cos(math.pi * 2 * (x/chunksize)))):
-#                                self.map[bx * chunksize +
+#                                self.biomeMap[bx * chunksize +
 #                                         x][by*chunksize + y] = 0
 #
 #
@@ -204,7 +210,7 @@ class World:
 #                                    cposx = cposx % sizeX
 #                                    cposy = cposy % sizeY
 #
-#                                    self.map[cposx][cposy] = tileType
+#                                    self.biomeMap[cposx][cposy] = tileType
 
 
 #        noise1 = perlin_noise.PerlinNoise(octaves=3)
@@ -219,7 +225,7 @@ class World:
 #                noise_val += 0.25 * noise3([x/sizeX, y/sizeY])
 #                noise_val += 0.125 * noise4([x/sizeX, y/sizeY])
 #                if noise_val < -0.25:
-#                    self.map[x][y] = 1
+#                    self.biomeMap[x][y] = 1
 #
 #        for tmp in range(6):  # es gibt 6 straßen
 #            # die straßen starten am x rand
@@ -234,7 +240,7 @@ class World:
 #                    length = length * 40
 #                    for y in range(length):
 #                        for x in range(streetWidth):
-#                            self.map[(currentx + x) %
+#                            self.biomeMap[(currentx + x) %
 #                                     sizeX][(currenty + y) % sizeY] = 3
 #                    currenty += length
 #                    directionY = False
@@ -243,21 +249,42 @@ class World:
 #                    length = length * 40
 #                    for x in range(length):
 #                        for y in range(streetWidth):
-#                            self.map[(currentx + x) %
+#                            self.biomeMap[(currentx + x) %
 #                                     sizeX][(currenty + y) % sizeY] = 3
 #                    currentx += length
 #                    directionY = True
         print("log: decorating")
         for x in range(sizeX):
             for y in range(sizeY):
-                biome = self.map[x][y]
+                biome = self.biomeMap[x][y]
+                if biome == 0:
+                    self.map[x][y] = 0
+                if biome == 1:
+                    self.map[x][y] = 1
                 if biome == 2:
+                    self.map[x][y] = 2
                     if random.random() < 0.03:
                         self.addGameobject(Tree.Tree(self, x*32, y*32))
 # Häuser werden so generiert das in jedem 16 * 16 abschnitt sich maximal eines befindet
                 if biome == 3:
-                    if x % 16 == 0 and y % 16 == 0:
+                    self.map[x][y] = 3
+                    self.map[x][y] = 6  # set everything to CityGrass
+                    if x % 32 == 0 or x % 32 == 1 or x % 32 == 31 or x % 32 == 30:
+                        self.map[x][y] = 3
+
+                    if y % 32 == 0 or y % 32 == 1 or y % 32 == 31 or y % 32 == 30:
+                        self.map[x][y] = 3
+                if biome == 4:
+                    self.map[x][y] = 4
+                if biome == 5:
+                    self.map[x][y] = 5
+        for x in range(sizeX):
+            for y in range(sizeY):
+                biome = self.biomeMap[x][y]
+                if biome == 3:
+                    if y % 16 == 8 and x % 16 == 8:
                         self.generateHouse(x*32, y*32, 128, 128, "north")
+
 
 
 #        for i in range(5):
