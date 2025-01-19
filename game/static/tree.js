@@ -32,19 +32,19 @@ export default class Tree extends GameObject {
         if (this.image != null) {
             this.ctx.drawImage(
                 this.image,
-                this.posx - (this.scene.camera.posx - this.scene.camera.cameraWidth / 2),
-                this.posy - (this.scene.camera.posy - this.scene.camera.cameraHeight / 2),
+                this.posx - 64 - (this.scene.camera.posx - this.scene.camera.cameraWidth / 2),
+                this.posy - 64 - (this.scene.camera.posy - this.scene.camera.cameraHeight / 2),
             );
         }
     }
 
 
-process(){ }
+    process() { }
 
-event(eventString, eventObject){
-    if (eventString == "position" && eventObject.type == "Tree" && eventObject.ID == this.ID) {
-        this.posx = eventObject.posx
-        this.posy = eventObject.posy
+    event(eventString, eventObject) {
+        if (eventString == "position" && eventObject.type == "Tree" && eventObject.ID == this.ID) {
+            this.posx = eventObject.posx
+            this.posy = eventObject.posy
+        }
     }
-}
 }

@@ -13,16 +13,19 @@ export default class Wall extends GameObject {
         this.posx2 = 0
         this.posy2 = 0
         this.thickness = 10
+        this.isToRender = false
     }
 
     render() {
         this.ctx.fillStyle = "black";
-        this.ctx.beginPath()
-        this.ctx.moveTo(this.posx - (this.scene.camera.posx - this.scene.camera.cameraWidth/2), this.posy - (this.scene.camera.posy- this.scene.camera.cameraHeight/2))
-        this.ctx.lineTo(this.posx2 - (this.scene.camera.posx - this.scene.camera.cameraWidth/2), this.posy2- (this.scene.camera.posy- this.scene.camera.cameraHeight/2))
-        this.ctx.strokeStyle = "black"
-        this.ctx.lineWidth = this.thickness
-        this.ctx.stroke()
+        if (this.isToRender == true) {
+            this.ctx.beginPath()
+            this.ctx.moveTo(this.posx - (this.scene.camera.posx - this.scene.camera.cameraWidth / 2), this.posy - (this.scene.camera.posy - this.scene.camera.cameraHeight / 2))
+            this.ctx.lineTo(this.posx2 - (this.scene.camera.posx - this.scene.camera.cameraWidth / 2), this.posy2 - (this.scene.camera.posy - this.scene.camera.cameraHeight / 2))
+            this.ctx.strokeStyle = "black"
+            this.ctx.lineWidth = this.thickness
+            this.ctx.stroke()
+        }
 
     }
 
@@ -32,12 +35,19 @@ export default class Wall extends GameObject {
         if (eventString == "position" && eventObject.type == "Wall" && eventObject.ID == this.ID) {
             this.posx = eventObject.posx
             this.posy = eventObject.posy
+
+            if (this.isToRender == false) {
+                this.isToRender = true
+            }
         }
         if (eventString == "wallInformation") {
             if (eventObject.wallID == this.ID) {
                 this.posx2 = eventObject.posx2
                 this.posy2 = eventObject.posy2
                 this.thickness = eventObject.thickness
+                if (this.isToRender == false) {
+                    this.isToRender = true
+                }
             }
         }
     }

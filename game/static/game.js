@@ -6,6 +6,7 @@ import Tree from './tree.js';
 import Zombie from "./zombie.js";
 import Wall from "./Wall.js";
 import Door from './Door.js';
+import Chest from './Chest.js';
 
 export const font = "20px Arial"
 
@@ -24,7 +25,6 @@ webSocket.onmessage = function(e) {
     if (data.type == "deletedGameObject") {
 
         scene.eventBus.triggerEvent("deletedGameObject", { ID: data.entityID, type: data.entityType })
-        console.log(`FAWFHAWFIHAWFIUH Gelöscht ${data.entityID}  ${data.entityType}`)
         console.log(data)
     }
 
@@ -86,6 +86,10 @@ webSocket.onmessage = function(e) {
         if (data.entityType == "Door") {
             const d = new Door(scene, data.ID)
             scene.addObject(d)
+        }
+        if (data.entityType == "Chest") {
+            const c = new Chest(scene, data.ID)
+            scene.addObject(c)
         }
 
     }
@@ -175,7 +179,7 @@ function updateToServer() {
     //console.log("Server update")
     webSocket.send(JSON.stringify({ type: "action", up: scene.gameObjects[scene.playerIndex].up, down: scene.gameObjects[scene.playerIndex].down, left: scene.gameObjects[scene.playerIndex].left, right: scene.gameObjects[scene.playerIndex].right, actiontype: "movement" }))
 }
-export function getServerID(){return serverID}
+export function getServerID() { return serverID }
 export function loginToServer(serverName) {
     serverID = serverName
 
