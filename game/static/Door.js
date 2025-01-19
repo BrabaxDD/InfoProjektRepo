@@ -13,11 +13,12 @@ export default class Door extends GameObject {
         this.posx2 = 100
         this.posy2 = 100
         this.thickness = 10
-        this.isToRender = false
+        this.isToRenderPart1 = false
+        this.isToRenderPart2 = false
     }
 
     render() {
-        if (this.isToRender) {
+        if (this.isToRenderPart1 && this.isToRenderPart2) {
             this.ctx.fillStyle = "brown";
             this.ctx.beginPath()
             this.ctx.moveTo(this.posx - (this.scene.camera.posx - this.scene.camera.cameraWidth / 2), this.posy - (this.scene.camera.posy - this.scene.camera.cameraHeight / 2))
@@ -35,8 +36,8 @@ export default class Door extends GameObject {
         if (eventString == "position" && eventObject.type == "Door" && eventObject.ID == this.ID) {
             this.posx = eventObject.posx
             this.posy = eventObject.posy
-            if (this.isToRender == false) {
-                this.isToRender = true
+            if (this.isToRenderPart2 == false) {
+                this.isToRenderPart2 = true
             }
         }
         if (eventString == "wallInformation") {
@@ -44,8 +45,8 @@ export default class Door extends GameObject {
                 this.posx2 = eventObject.posx2
                 this.posy2 = eventObject.posy2
                 this.thickness = eventObject.thickness
-                if (this.isToRender == false) {
-                    this.isToRender = true
+                if (this.isToRenderPart1 == false) {
+                    this.isToRenderPart1 = true
                 }
             }
         }
