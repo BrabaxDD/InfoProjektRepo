@@ -133,8 +133,8 @@ class World:
 
     def generate(self):
         self.serverID = self.threat.gameServerSocket.serverID
-        sizeX = 256
-        sizeY = 256
+        sizeX = 128
+        sizeY = 128
         chunksize = 32
         self.chunksx = sizeX/chunksize
         self.chunksy = sizeY/chunksize
@@ -170,7 +170,7 @@ class World:
                 else:
                     if vegetation([x/sizeX, y/sizeY]) > 0.1:
                         self.biomeMap[x][y] = 2
-                    elif vegetation([x/sizeX, y/sizeY]) > -0.05:
+                    elif vegetation([x/sizeX, y/sizeY]) > 0:
                         self.biomeMap[x][y] = 5
                     else:
                         self.biomeMap[x][y] = 3
@@ -346,7 +346,7 @@ class World:
                 self.addGameobject(
                     Wall.Wall(self, posx, posy + sizey, posx + sizex - (doorEnd - sizex - sizey), posy + sizey))
                 self.addGameobject(
-                    Door.Door(self, posy + sizex - (doorEnd - sizex - sizey), posy + sizey, posx + sizex - (doorStart - sizex - sizey), posy + sizey))
+                    Door.Door(self, posx + sizex - (doorEnd - sizex - sizey), posy + sizey, posx + sizex - (doorStart - sizex - sizey), posy + sizey))
                 self.addGameobject(
                     Wall.Wall(self, posx + sizex - (doorStart - sizex - sizey), posy + sizey, posx + sizex, posy + sizey))
             else:  # door on the eastern side
@@ -364,7 +364,7 @@ class World:
                     Wall.Wall(self, posx, posy + sizey, posx + sizex, posy + sizey))
         tilesizey = int(sizey/32)
         tilesizex = int(sizex/32)
-        generateRectWithDoor(posx, posy, sizex, sizey, 32, 64)
+        generateRectWithDoor(posx, posy, sizex, sizey, 416, 448)
 
 #        self.addGameobject(Wall.Wall(self, posx, posy, posx + sizex, posy))
 #        self.addGameobject(Wall.Wall(self, posx, posy, posx, posy + sizey))
