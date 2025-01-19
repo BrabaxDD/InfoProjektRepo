@@ -15,6 +15,7 @@ class Chest(GameObject.GameObject):
                               1: "Wood", 2: "FirstAidKit", 3: "Scrap"}
         self.generateContent()
         self.looted = False
+        self.isStatic = True
 
     def generateContent(self):
         for i in range(5):

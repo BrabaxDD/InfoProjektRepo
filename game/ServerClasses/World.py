@@ -9,6 +9,8 @@ import time
 import perlin_noise
 import queue
 import math
+from multiprocessing.dummy import Pool as ThreatPool
+import itertools
 
 
 class World:
@@ -16,17 +18,79 @@ class World:
         self.eventBus = EventBus.EventBus()
         self.objects = []
         self.threat = threat
-        self.map = None
+        self.broadCastGameObjectTodo = []
+        self.eventBus.registerListner(self, "objectMove")
+        self.biomeMap = None
+        self.playerChunks = {0: (0, 0)}
 
         pass
 
     def process(self, delta):
-        for gameObject in self.objects:
-            gameObject.process(delta)
+        def helperPorcess(obj, delta):
+            obj.process(delta)
+
+        chunkkoordToIterate = []
+        chunkkoordToIterate.append((0, 0))
+        for x, y in self.playerChunks.values():
+            chunkkoordToIterate.append((x, y))
+            chunkkoordToIterate.append(((x-1) % self.chunksx, y))
+            chunkkoordToIterate.append(((x+1) % self.chunksx, y))
+            chunkkoordToIterate.append((x, (y+1) % self.chunksy))
+            chunkkoordToIterate.append(
+                ((x-1) % self.chunksx, (y+1) % self.chunksy))
+            chunkkoordToIterate.append(
+                ((x+1) % self.chunksx, (y+1) % self.chunksy))
+            chunkkoordToIterate.append((x, (y-1) % self.chunksy))
+            chunkkoordToIterate.append(
+                ((x-1) % self.chunksx, (y-1) % self.chunksy))
+            chunkkoordToIterate.append(
+                ((x+1) % self.chunksx, (y-1) % self.chunksy))
+        chunkkoordToIterate = list(set(chunkkoordToIterate))
+        objectsToProcess = []
+        for chunkCoord in chunkkoordToIterate:
+            chunk = self.chunks[chunkCoord]
+            objectsToProcess = objectsToProcess + chunk
+
+        pool = ThreatPool(8)
+        results = pool.starmap(helperPorcess, zip(
+            objectsToProcess, itertools.repeat(delta)))
+
+#            for gameObject in chunk:
+#                helperPorcess(gameObject, delta)
 
     def broadcast(self):
-        for gameObject in self.objects:
-            gameObject.broadcast()
+        def helperBroadcast(obj):
+            obj.broadcast()
+        chunkkoordToIterate = []
+        chunkkoordToIterate.append((0, 0))
+        for x, y in self.playerChunks.values():
+            chunkkoordToIterate.append((x, y))
+            chunkkoordToIterate.append(((x-1) % self.chunksx, y))
+            chunkkoordToIterate.append(((x+1) % self.chunksx, y))
+            chunkkoordToIterate.append((x, (y+1) % self.chunksy))
+            chunkkoordToIterate.append(
+                ((x-1) % self.chunksx, (y+1) % self.chunksy))
+            chunkkoordToIterate.append(
+                ((x+1) % self.chunksx, (y+1) % self.chunksy))
+            chunkkoordToIterate.append((x, (y-1) % self.chunksy))
+            chunkkoordToIterate.append(
+                ((x-1) % self.chunksx, (y-1) % self.chunksy))
+            chunkkoordToIterate.append(
+                ((x+1) % self.chunksx, (y-1) % self.chunksy))
+        chunkkoordToIterate = list(set(chunkkoordToIterate))
+        objectsToBroadcast = []
+        for chunkCoord in chunkkoordToIterate:
+            chunk = self.chunks[chunkCoord]
+            objectsToBroadcast = objectsToBroadcast + chunk
+        pool = ThreatPool(8)
+        results = pool.map(helperBroadcast, objectsToBroadcast)
+#            for gameObject in chunk:
+#                gameObject.broadcast()
+
+    def initialBroadcast(self):
+        for obj in self.broadCastGameObjectTodo:
+            self.threat.gameServerSocket.broadcastNewObject(
+                obj.entityType, obj.ID)
 
     def broadcastPosition(self, ID, posx, posy, entityType):
         self.threat.broadcastPosition(ID, posx, posy, entityType)
@@ -36,7 +100,12 @@ class World:
 
     def addGameobject(self, obj):
         self.objects.append(obj)
-        self.threat.gameServerSocket.broadcastNewObject(obj.entityType, obj.ID)
+        if self.threat.generated:
+            self.threat.gameServerSocket.broadcastNewObject(
+                obj.entityType, obj.ID)
+        else:
+            self.broadCastGameObjectTodo.append(obj)
+        self.chunks[(int(obj.posx/1024), int(obj.posy/1024))].append(obj)
 
     def broadcastHealth(self, ID, HP, entityType):
         self.threat.broadcastHealthUpdate(ID, entityType, HP)
@@ -59,37 +128,64 @@ class World:
     def broadcastWallInformation(self, posx2, posy2, thickness, wallID):
         self.threat.broadcastWallInformation(posx2, posy2, thickness, wallID)
 # Ein Tile der Tile Map ist 32 Pixel groß
-# Ein Chunk ist 64
+# Ein Chunk ist 32
 # Ein Biom besteht aus mehreren Chunks
 
     def generate(self):
         self.serverID = self.threat.gameServerSocket.serverID
-        sizeX = 512
-        sizeY = 512
-        chunksize = 16
+        sizeX = 256
+        sizeY = 256
+        chunksize = 32
+        self.chunksx = sizeX/chunksize
+        self.chunksy = sizeY/chunksize
         self.map = []
+        self.biomeMap = []
+        self.chunks = {}
+        for x in range(int(self.chunksx)):
+            for y in range(int(self.chunksy)):
+                self.chunks[(x, y)] = []
         print("log generating Background")
         print("generating Biomes")
-        # Biomes 0: Lake 1: Beach 2: Flatland 3: Woods 4: Villages 5: Mountain (not Implemented yet)
-        self.biomes = WavefunctionCollapse({0: [1, 0], 1: [0, 1, 2], 2: [1, 2, 3, 4], 3:
-                                            [3, 2], 4: [2, 4]}, int(sizeX/chunksize), int(sizeY/chunksize),
-                                           possibilities=5)
-
+        # Biomes 0: Lake 1: Beach 2: Flatland 3: Woods 5: Villages 4: Mountain (not Implemented yet)
+#        self.biomes = WavefunctionCollapse({0: [1, 0], 1: [0, 1, 2], 2: [1, 2, 3, 4], 3:
+#                                            [3, 2], 4: [2, 4]}, int(sizeX/chunksize), int(sizeY/chunksize),
+#                                           possibilities=5)
+        height = perlin_noise.PerlinNoise(octaves=1)
+        vegetation = perlin_noise.PerlinNoise(octaves=1)
+        for i in range(sizeX):
+            self.biomeMap.append([])
+            for j in range(sizeY):
+                self.biomeMap[i].append(1)
         for i in range(sizeX):
             self.map.append([])
             for j in range(sizeY):
                 self.map[i].append(1)
-        for bx, biomeColumn in enumerate(self.biomes):
-            for by, biome in enumerate(biomeColumn):
-                pass
-#                if biome == 0:
+
+
+        for x in range(sizeX):
+            for y in range(sizeY):
+                if height([x/sizeX, y/sizeY]) <= -0.2:
+                    self.biomeMap[x][y] = 0
+                elif height([x/sizeX, y/sizeY]) <= -0.18:
+                    self.biomeMap[x][y] = 1
+                else:
+                    if vegetation([x/sizeX, y/sizeY]) > 0.1:
+                        self.biomeMap[x][y] = 2
+                    elif vegetation([x/sizeX, y/sizeY]) > -0.05:
+                        self.biomeMap[x][y] = 5
+                    else:
+                        self.biomeMap[x][y] = 3
+#        for bx, biomeColumn in enumerate(self.biomes):
+#            for by, biome in enumerate(biomeColumn):
+#                pass
+# if biome == 0:
 #                    A = 2
 #                    if by != 0:
 #                        for x in range(chunksize):
 #                            A1 = random.random() * A
 #                            A2 = random.random() * A
 #                            for y in range(int(A1 + 0.5*A2 - A1*math.cos(math.pi * (x/chunksize)) - A2*0.5*math.cos(math.pi * 2 * (x/chunksize)))):
-#                                self.map[bx * chunksize +
+#                                self.biomeMap[bx * chunksize +
 #                                         x][by*chunksize + y] = 0
 #
 #
@@ -114,7 +210,7 @@ class World:
 #                                    cposx = cposx % sizeX
 #                                    cposy = cposy % sizeY
 #
-#                                    self.map[cposx][cposy] = tileType
+#                                    self.biomeMap[cposx][cposy] = tileType
 
 
 #        noise1 = perlin_noise.PerlinNoise(octaves=3)
@@ -129,9 +225,8 @@ class World:
 #                noise_val += 0.25 * noise3([x/sizeX, y/sizeY])
 #                noise_val += 0.125 * noise4([x/sizeX, y/sizeY])
 #                if noise_val < -0.25:
-#                    self.map[x][y] = 1
+#                    self.biomeMap[x][y] = 1
 #
-        print("log: Generating Streets")
 #        for tmp in range(6):  # es gibt 6 straßen
 #            # die straßen starten am x rand
 #            currentx = random.randint(4, sizeX)
@@ -145,7 +240,7 @@ class World:
 #                    length = length * 40
 #                    for y in range(length):
 #                        for x in range(streetWidth):
-#                            self.map[(currentx + x) %
+#                            self.biomeMap[(currentx + x) %
 #                                     sizeX][(currenty + y) % sizeY] = 3
 #                    currenty += length
 #                    directionY = False
@@ -154,14 +249,44 @@ class World:
 #                    length = length * 40
 #                    for x in range(length):
 #                        for y in range(streetWidth):
-#                            self.map[(currentx + x) %
+#                            self.biomeMap[(currentx + x) %
 #                                     sizeX][(currenty + y) % sizeY] = 3
 #                    currentx += length
 #                    directionY = True
-        print("log: generating Houses")
-        villageposx = 0
-        villageposy = 0
-        villagesize = 80
+        print("log: decorating")
+        for x in range(sizeX):
+            for y in range(sizeY):
+                biome = self.biomeMap[x][y]
+                if biome == 0:
+                    self.map[x][y] = 0
+                if biome == 1:
+                    self.map[x][y] = 1
+                if biome == 2:
+                    self.map[x][y] = 2
+                    if random.random() < 0.03:
+                        self.addGameobject(Tree.Tree(self, x*32, y*32))
+# Häuser werden so generiert das in jedem 16 * 16 abschnitt sich maximal eines befindet
+                if biome == 3:
+                    self.map[x][y] = 3
+                    self.map[x][y] = 6  # set everything to CityGrass
+                    if x % 32 == 0 or x % 32 == 1 or x % 32 == 31 or x % 32 == 30:
+                        self.map[x][y] = 3
+
+                    if y % 32 == 0 or y % 32 == 1 or y % 32 == 31 or y % 32 == 30:
+                        self.map[x][y] = 3
+                if biome == 4:
+                    self.map[x][y] = 4
+                if biome == 5:
+                    self.map[x][y] = 5
+        for x in range(sizeX):
+            for y in range(sizeY):
+                biome = self.biomeMap[x][y]
+                if biome == 3:
+                    if y % 16 == 8 and x % 16 == 8:
+                        self.generateHouse(x*32, y*32, 128, 128, "north")
+
+
+
 #        for i in range(5):
 #            self.generateHouse(random.randint(0, villagesize) * 32 + villageposx,
 #                               random.randint(0, villagesize) * 32 + villageposy, 128, 128, "North")
@@ -176,10 +301,10 @@ class World:
 
         self.addGameobject(Wall.Wall(self, 0, 0, 0, sizeY*32))
         self.addGameobject(Wall.Wall(self, 0, 0, sizeX*32, 0))
-        self.addGameobject(Wall.Wall(self, 0, sizeY*32, sizeX*32, sizeY*32))
-        self.addGameobject(Wall.Wall(self, sizeX*32, 0, sizeX*32, sizeY*32))
-
-        self.addGameobject(Tree.Tree(self))
+        self.addGameobject(
+            Wall.Wall(self, 0, sizeY*32 - 1, sizeX*32, sizeY*32))
+        self.addGameobject(
+            Wall.Wall(self, sizeX*32 - 1, 0, sizeX*32, sizeY*32))
 
         print("log: World Generation Done")
 
@@ -196,6 +321,21 @@ class World:
         for i in range(int(sizex/32)):
             for j in range(int(sizey/32)):
                 self.map[int(posx/32) + i][int(posy/32) + j] = 4
+
+    def event(self, eventString, eventObject):
+        if eventString == "objectMove":
+            lastposx = eventObject["lastposx"]
+            lastposy = eventObject["lastposy"]
+            posx = eventObject["posx"]
+            posy = eventObject["posy"]
+            gameObject = eventObject["gameObject"]
+            self.chunks[(int(lastposx/1024), int(lastposy/1024))
+                        ].remove(eventObject["gameObject"])
+            self.chunks[(int(posx/1024), int(posy/1024))
+                        ].append(eventObject["gameObject"])
+            if gameObject.entityType == "Player":
+                self.playerChunks[gameObject.ID] = (
+                    int(gameObject.posx/1024), int(gameObject.posy/1024))
 
 
 def WavefunctionCollapse(AllowedNeigbours, xsize, ysize, possibilities):

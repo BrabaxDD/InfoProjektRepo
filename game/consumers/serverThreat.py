@@ -27,6 +27,7 @@ class serverThreat(threading.Thread):
         self.generated = "False"
         self.world.generate()
         self.generated = "True"
+        self.world.initialBroadcast()
         while running:
             if not self.gameServerSocket.getRunning():
                 running = False
