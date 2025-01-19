@@ -133,8 +133,8 @@ class World:
 #        self.biomes = WavefunctionCollapse({0: [1, 0], 1: [0, 1, 2], 2: [1, 2, 3, 4], 3:
 #                                            [3, 2], 4: [2, 4]}, int(sizeX/chunksize), int(sizeY/chunksize),
 #                                           possibilities=5)
-        height = perlin_noise.PerlinNoise(octaves=5)
-        vegetation = perlin_noise.PerlinNoise(octaves=5)
+        height = perlin_noise.PerlinNoise(octaves=2)
+        vegetation = perlin_noise.PerlinNoise(octaves=2)
         for i in range(sizeX):
             self.map.append([])
             for j in range(sizeY):
@@ -144,7 +144,7 @@ class World:
             for y in range(sizeY):
                 if height([x/sizeX, y/sizeY]) <= -0.2:
                     self.map[x][y] = 0
-                elif height([x/sizeX, y/sizeY]) <= -0.14:
+                elif height([x/sizeX, y/sizeY]) <= -0.18:
                     self.map[x][y] = 1
                 else:
                     if vegetation([x/sizeX, y/sizeY]) > 0.1:
@@ -238,6 +238,12 @@ class World:
                 if biome == 2:
                     if random.random() < 0.03:
                         self.addGameobject(Tree.Tree(self, x*32, y*32))
+#Häuser werden so generiert das in jedem 16 * 16 abschnitt sich maximal eines befindet
+                if biome == 3:
+                    if x % 16 == 0 and y % 16 == 0:
+                        self.generateHouse(x*32,y*32,128,128,"north")
+                    
+
 #        for i in range(5):
 #            self.generateHouse(random.randint(0, villagesize) * 32 + villageposx,
 #                               random.randint(0, villagesize) * 32 + villageposy, 128, 128, "North")
