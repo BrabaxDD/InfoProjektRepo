@@ -36,9 +36,6 @@ export default class Wall extends GameObject {
             this.posx = eventObject.posx
             this.posy = eventObject.posy
 
-            if (this.isToRender == false) {
-                this.isToRender = true
-            }
         }
         if (eventString == "wallInformation") {
             if (eventObject.wallID == this.ID) {

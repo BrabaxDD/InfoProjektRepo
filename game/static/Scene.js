@@ -56,7 +56,6 @@ export default class Scene {
             console.log(this.gameObjects)
             this.camera.setLockedPlayer(object)
         }
-        console.log(this.toAdd)
     }
 
     removeObject(object) {
