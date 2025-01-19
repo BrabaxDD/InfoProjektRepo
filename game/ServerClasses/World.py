@@ -133,8 +133,8 @@ class World:
 
     def generate(self):
         self.serverID = self.threat.gameServerSocket.serverID
-        sizeX = 256
-        sizeY = 256
+        sizeX = 128
+        sizeY = 128
         chunksize = 32
         self.chunksx = sizeX/chunksize
         self.chunksy = sizeY/chunksize
@@ -161,7 +161,6 @@ class World:
             for j in range(sizeY):
                 self.map[i].append(1)
 
-
         for x in range(sizeX):
             for y in range(sizeY):
                 if height([x/sizeX, y/sizeY]) <= -0.2:
@@ -171,7 +170,7 @@ class World:
                 else:
                     if vegetation([x/sizeX, y/sizeY]) > 0.1:
                         self.biomeMap[x][y] = 2
-                    elif vegetation([x/sizeX, y/sizeY]) > -0.05:
+                    elif vegetation([x/sizeX, y/sizeY]) > 0:
                         self.biomeMap[x][y] = 5
                     else:
                         self.biomeMap[x][y] = 3
@@ -286,7 +285,6 @@ class World:
                         self.generateHouse(x*32, y*32, 128, 128, "north")
 
 
-
 #        for i in range(5):
 #            self.generateHouse(random.randint(0, villagesize) * 32 + villageposx,
 #                               random.randint(0, villagesize) * 32 + villageposy, 128, 128, "North")
@@ -309,18 +307,77 @@ class World:
         print("log: World Generation Done")
 
     def generateHouse(self, posx, posy, sizex, sizey, direction):
-        self.addGameobject(Wall.Wall(self, posx, posy, posx + sizex, posy))
-        self.addGameobject(Wall.Wall(self, posx, posy, posx, posy + sizey))
-        self.addGameobject(Wall.Wall(self, posx + sizex,
-                           posy, posx + sizex, posy + sizey - 50))
-        self.addGameobject(Wall.Wall(self, posx, posy + sizey,
-                           posx + sizex, posy + sizey))
-        self.addGameobject(Door.Door(self, posx + sizex,
-                           posy + sizey - 50, posx + sizex, posy + sizey))
-        self.addGameobject(chest.Chest(self, posx, posy))
-        for i in range(int(sizex/32)):
-            for j in range(int(sizey/32)):
-                self.map[int(posx/32) + i][int(posy/32) + j] = 4
+        # doorstart ist die menge an pixeln die man gegen den uhrzeigersinn von oben links entgang gehen muss biss die Tür beginnt
+        def generateRectWithDoor(posx, posy, sizex, sizey, doorStart, doorEnd):
+            if doorStart < sizex:  # door on the northern side
+                self.addGameobject(
+                    Wall.Wall(self, posx, posy, posx + doorStart, posy))
+                self.addGameobject(
+                    Door.Door(self, posx + doorStart, posy, posx + doorEnd, posy))
+                self.addGameobject(
+                    Wall.Wall(self, posx + doorEnd, posy, posx + sizex, posy))
+                self.addGameobject(
+                    Wall.Wall(self, posx, posy, posx, posy + sizey))
+                self.addGameobject(
+                    Wall.Wall(self, posx + sizex, posy, posx + sizex, posy + sizey))
+                self.addGameobject(
+                    Wall.Wall(self, posx, posy + sizey, posx + sizex, posy + sizey))
+                pass
+            elif doorStart < sizex + sizey:  # door on the western side
+                self.addGameobject(
+                    Wall.Wall(self, posx, posy, posx + sizex, posy))
+                self.addGameobject(
+                    Wall.Wall(self, posx, posy, posx, posy + sizey))
+                self.addGameobject(
+                    Wall.Wall(self, posx + sizex, posy, posx + sizex, posy + (doorStart - sizex)))
+                self.addGameobject(Door.Door(
+                    self, posx + sizex, posy + doorStart - sizex, posx + sizex, posy + doorEnd - sizex))
+                self.addGameobject(
+                    Wall.Wall(self, posx + sizex, posy + doorEnd - sizex, posx + sizex, posy + sizey))
+                self.addGameobject(
+                    Wall.Wall(self, posx, posy + sizey, posx + sizex, posy + sizey))
+            elif doorStart < sizex * 2 + sizey:  # door on the southern
+                self.addGameobject(
+                    Wall.Wall(self, posx, posy, posx + sizex, posy))
+                self.addGameobject(
+                    Wall.Wall(self, posx, posy, posx, posy + sizey))
+                self.addGameobject(
+                    Wall.Wall(self, posx + sizex, posy, posx + sizex, posy + sizey))
+                self.addGameobject(
+                    Wall.Wall(self, posx, posy + sizey, posx + sizex - (doorEnd - sizex - sizey), posy + sizey))
+                self.addGameobject(
+                    Door.Door(self, posx + sizex - (doorEnd - sizex - sizey), posy + sizey, posx + sizex - (doorStart - sizex - sizey), posy + sizey))
+                self.addGameobject(
+                    Wall.Wall(self, posx + sizex - (doorStart - sizex - sizey), posy + sizey, posx + sizex, posy + sizey))
+            else:  # door on the eastern side
+                self.addGameobject(
+                    Wall.Wall(self, posx, posy, posx + sizex, posy))
+                self.addGameobject(
+                    Wall.Wall(self, posx, posy, posx, posy + sizey - (doorEnd - sizex * 2 - sizey)))
+                self.addGameobject(Door.Door(self, posx, posy + sizey - (doorEnd - 2 *
+                                   sizex - sizey), posx, posy + sizey - (doorStart - sizex * 2 - sizey)))
+                self.addGameobject(Wall.Wall(
+                    self, posx, posy + sizey - (doorStart - sizex * 2 - sizey), posx, posy + sizey))
+                self.addGameobject(
+                    Wall.Wall(self, posx + sizex, posy, posx + sizex, posy + sizey))
+                self.addGameobject(
+                    Wall.Wall(self, posx, posy + sizey, posx + sizex, posy + sizey))
+        tilesizey = int(sizey/32)
+        tilesizex = int(sizex/32)
+        generateRectWithDoor(posx, posy, sizex, sizey, 416, 448)
+
+#        self.addGameobject(Wall.Wall(self, posx, posy, posx + sizex, posy))
+#        self.addGameobject(Wall.Wall(self, posx, posy, posx, posy + sizey))
+#        self.addGameobject(Wall.Wall(self, posx + sizex,
+#                           posy, posx + sizex, posy + sizey - 50))
+#        self.addGameobject(Wall.Wall(self, posx, posy + sizey,
+#                           posx + sizex, posy + sizey))
+#        self.addGameobject(Door.Door(self, posx + sizex,
+#                           posy + sizey - 50, posx + sizex, posy + sizey))
+#        self.addGameobject(chest.Chest(self, posx, posy))
+#        for i in range(int(sizex/32)):
+#            for j in range(int(sizey/32)):
+#                self.map[int(posx/32) + i][int(posy/32) + j] = 4
 
     def event(self, eventString, eventObject):
         if eventString == "objectMove":
