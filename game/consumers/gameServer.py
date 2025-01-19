@@ -6,6 +6,7 @@ from game.consumers import serverThreat
 import threading
 from game.ServerClasses import jsonSerializer
 from game.models import runningServers
+import time
 
 
 class gameServer(WebsocketConsumer):
@@ -117,6 +118,7 @@ class gameServer(WebsocketConsumer):
         pass
 
     def hitRequestFromClient(self, event):
+        print("received Hit Request from Client " + str(time.time()))
         self.serverThreat.hitRequestFromPlayer(event["ID"], event["direction"])
         pass
 

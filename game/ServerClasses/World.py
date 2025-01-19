@@ -9,6 +9,8 @@ import time
 import perlin_noise
 import queue
 import math
+from multiprocessing.dummy import Pool as ThreatPool
+import itertools
 
 
 class World:
@@ -24,6 +26,9 @@ class World:
         pass
 
     def process(self, delta):
+        def helperPorcess(obj, delta):
+            obj.process(delta)
+
         chunkkoordToIterate = []
         chunkkoordToIterate.append((0, 0))
         for x, y in self.playerChunks.values():
@@ -41,14 +46,21 @@ class World:
             chunkkoordToIterate.append(
                 ((x+1) % self.chunksx, (y-1) % self.chunksy))
         chunkkoordToIterate = list(set(chunkkoordToIterate))
+        objectsToProcess = []
         for chunkCoord in chunkkoordToIterate:
             chunk = self.chunks[chunkCoord]
-            for gameObject in chunk:
-                gameObject.process(delta)
-#        for gameObject in self.objects:
-#            gameObject.process(delta)
+            objectsToProcess = objectsToProcess + chunk
+
+        pool = ThreatPool(8)
+        results = pool.starmap(helperPorcess, zip(
+            objectsToProcess, itertools.repeat(delta)))
+
+#            for gameObject in chunk:
+#                helperPorcess(gameObject, delta)
 
     def broadcast(self):
+        def helperBroadcast(obj):
+            obj.broadcast()
         chunkkoordToIterate = []
         chunkkoordToIterate.append((0, 0))
         for x, y in self.playerChunks.values():
@@ -66,10 +78,14 @@ class World:
             chunkkoordToIterate.append(
                 ((x+1) % self.chunksx, (y-1) % self.chunksy))
         chunkkoordToIterate = list(set(chunkkoordToIterate))
+        objectsToBroadcast = []
         for chunkCoord in chunkkoordToIterate:
             chunk = self.chunks[chunkCoord]
-            for gameObject in chunk:
-                gameObject.broadcast()
+            objectsToBroadcast = objectsToBroadcast + chunk
+        pool = ThreatPool(8)
+        results = pool.map(helperBroadcast, objectsToBroadcast)
+#            for gameObject in chunk:
+#                gameObject.broadcast()
 
     def initialBroadcast(self):
         for obj in self.broadCastGameObjectTodo:
@@ -133,8 +149,8 @@ class World:
 #        self.biomes = WavefunctionCollapse({0: [1, 0], 1: [0, 1, 2], 2: [1, 2, 3, 4], 3:
 #                                            [3, 2], 4: [2, 4]}, int(sizeX/chunksize), int(sizeY/chunksize),
 #                                           possibilities=5)
-        height = perlin_noise.PerlinNoise(octaves=2)
-        vegetation = perlin_noise.PerlinNoise(octaves=2)
+        height = perlin_noise.PerlinNoise(octaves=1)
+        vegetation = perlin_noise.PerlinNoise(octaves=1)
         for i in range(sizeX):
             self.map.append([])
             for j in range(sizeY):
@@ -238,11 +254,11 @@ class World:
                 if biome == 2:
                     if random.random() < 0.03:
                         self.addGameobject(Tree.Tree(self, x*32, y*32))
-#Häuser werden so generiert das in jedem 16 * 16 abschnitt sich maximal eines befindet
+# Häuser werden so generiert das in jedem 16 * 16 abschnitt sich maximal eines befindet
                 if biome == 3:
                     if x % 16 == 0 and y % 16 == 0:
-                        self.generateHouse(x*32,y*32,128,128,"north")
-                    
+                        self.generateHouse(x*32, y*32, 128, 128, "north")
+
 
 #        for i in range(5):
 #            self.generateHouse(random.randint(0, villagesize) * 32 + villageposx,

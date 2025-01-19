@@ -18,7 +18,7 @@ class Tree(GameObject.GameObject):
 
     def broadcast(self):
         if self.time > self.nextUpdate:
-            self.nextUpdate += 1
+            self.nextUpdate += 10
             self.world.broadcastPosition(self.ID, self.posx, self.posy, "Tree")
 
     def process(self, delta):

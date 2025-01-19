@@ -32,7 +32,7 @@ class Obstacle(GameObject.GameObject):
 
     def broadcast(self):
         if self.time > self.nextUpdate:
-            self.nextUpdate += 0.5
+            self.nextUpdate += 10
             self.world.broadcastPosition(
                 self.ID, self.posx, self.posy, self.entityType)
             self.world.broadcastWallInformation(
