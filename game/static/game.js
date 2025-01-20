@@ -88,6 +88,7 @@ webSocket.onmessage = function(e) {
             scene.addObject(d)
         }
         if (data.entityType == "Chest") {
+            console.log("Neue Kist?")
             const c = new Chest(scene, data.ID)
             scene.addObject(c)
         }
@@ -119,7 +120,9 @@ window.addEventListener('keyup', (e) => {
     scene.eventBus.triggerEvent("keydown", { key: e.key, status: false })
 });
 
-
+window.addEventListener("wheel", (e) => {
+    scene.eventBus.triggerEvent("wheel", e.wheelDelta)
+})
 
 
 function websocket() { }

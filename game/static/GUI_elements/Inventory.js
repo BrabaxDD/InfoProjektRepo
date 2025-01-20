@@ -26,6 +26,7 @@ export default class Inventory extends GameObject {
         this.scene.eventBus.registerListner("craftsticks", this)
         this.scene.eventBus.registerListner("CraftRequest", this)
         this.scene.eventBus.registerListner("equipItem", this)
+        this.scene.eventBus.registerListner("wheel", this)
 
         //this.scene.eventBus.registerListner("click_on_canvas",this)
 
@@ -214,6 +215,20 @@ export default class Inventory extends GameObject {
             console.log(sel)
             console.log("Das war sel")
             setHotbarSlot(sel[0].itemStack.stackID, this.hotbarSlot)
+        }
+        if (eventString == "wheel") {
+            if (eventObject < 40) {
+                this.hotbarSlot += 1
+                if (this.hotbarSlot >= 6) {
+                    this.hotbarSlot = 0
+                }
+            }
+            else if (eventObject > 40) {
+                this.hotbarSlot -= 1
+                if (this.hotbarSlot < 0) {
+                    this.hotbarSlot = 5
+                }
+            }
         }
     }
     craft(recipe) {

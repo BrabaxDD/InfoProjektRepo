@@ -1,3 +1,5 @@
+Open doors without with item in hand
+generate chetst
 Respawn auf client seite implementiern
 Level system auf server seite
 Inventar ordentlcih machen auf Client seite

@@ -1,410 +1,438 @@
 Performing system checks...
 
 System check identified no issues (0 silenced).
-January 19, 2025 - 18:36:04
+January 20, 2025 - 17:02:08
 Django version 5.1.4, using settings 'Infoproject.settings'
 Starting ASGI/Daphne version 4.1.2 development server at http://0.0.0.0:8100/
 Quit the server with CONTROL-C.
 server Worker Threat started with ID: 
 log: received package to server websocket with ID  and the following content:
-{"type":"startserver","serverID":"aaa"}
+{"type":"startserver","serverID":"aacy"}
 log generating Background
 generating Biomes
 log: decorating
 log: World Generation Done
-log: new Player logged in to server with ID: aaa the Player ID is: 2404761775
+log: new Player logged in to server with ID: aacy the Player ID is: 2546837428
 log: ein spieler versucht sich auf einem server einzuloggen dessen zustand True ist 
-log: sending connection accepted message to client with ID: 2404761775
-log: updating Player Inventory with player ID: 2404761775for server with ID: aaaand with content: 
-{"items": [{"stackID": 1438750170, "size": 5, "itemID": "FirstAidKit", "tags": []}], "hotbar": [null, null, null, null, null, null], "hotbarSize": 6, "activeSlot": 0, "primaryHand": []}
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 2404761775 the entity Type is Player
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 2551869484 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 23870204 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 4202684 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 1469802676 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 3337593054 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 3616750608 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 1941461787 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 1804786326 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 2076016005 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 404817155 the entity Type is Tree
-log: sending information about new Health on Server with ID: aaa to client with ID 2404761775 the ID of the Updated Object is 2404761775 the entityType is Player the new hp is 200
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 1264191882 the entity Type is Tree
-log: updating Player Inventory with player ID: 2404761775for server with ID: aaaand with content: 
-{"items": [{"stackID": 1438750170, "size": 5, "itemID": "FirstAidKit", "tags": []}], "hotbar": [{"stackID": 1438750170, "size": 5, "itemID": "FirstAidKit", "tags": []}, null, null, null, null, null], "hotbarSize": 6, "activeSlot": 0, "primaryHand": []}
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 1328202201 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 1522195949 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 1247959125 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 1935588291 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 1248827864 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 3032133249 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 1426657966 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 3180343179 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 332080877 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 3794813390 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 741598254 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 1273761356 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 3220839685 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 3453322199 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 2561418390 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 272913325 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 824152013 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 1991036562 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 3144627569 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 2637314010 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 3427769525 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 3003471175 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 233811368 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 583038493 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 3290069642 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 2467258900 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 1300076200 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 1471636004 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 2029825485 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 3619108170 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 1434836898 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 2709896913 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 3870959089 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 856872025 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 3414762542 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 1285677973 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 1803518362 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 1863377078 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 1532908879 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 1539165380 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 135405452 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 3080239633 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 402133924 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 2981857872 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 635124164 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 3330078385 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 2563986528 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 979557868 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 3442158807 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 1837240013 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 3399177985 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 2396674399 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 1494083726 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 3662209734 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 1937477139 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 109875526 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 1568562942 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 2827226295 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 1528993157 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 3717266499 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 168495353 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 232082019 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 2656472029 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 3204128035 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 2527287141 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 16425720 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 3815906178 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 3454626247 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 1736111305 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 1499180519 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 79160879 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 2618129025 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 779604422 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 2437332917 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 2509815579 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 3284271212 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 1809737005 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 245979412 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 77944121 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 3788392401 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 3901419981 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 3514160136 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 3667087245 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 2220005114 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 1725062404 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 62492446 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 1257880188 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 3308313269 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 3319914447 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 2891958993 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 1008383933 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 2865875289 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 273211360 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 767596704 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 624895622 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 406241621 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 1994158913 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 1949406049 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 2854361687 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 303519096 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 1128182191 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 1585553583 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 941471441 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 3980053254 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 2487186240 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 1806257976 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 2163660416 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 2752032986 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 2811908666 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 1042551549 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 1069562236 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 2617187737 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 1009066750 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 554397727 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 2434595343 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 3156805499 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 1973824877 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 1906209886 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 1726788432 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 707966555 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 3679277606 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 2846065324 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 122886676 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 740432239 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 3058919299 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 1085331281 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 3934843346 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 847854936 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 2064409749 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 689390398 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 3682424641 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 271093525 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 3018631277 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 2017949023 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 3172857309 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 3602598680 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 3370671231 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 1191930579 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 3018322302 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 1808217262 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 2626417903 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 1890157840 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 2196135616 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 2981008166 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 393157925 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 2332827450 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 1679668175 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 1462106729 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 2803372290 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 524387675 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 453334373 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 6198572 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 546344091 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 3944227416 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 617585849 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 3890738746 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 721570448 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 3984272493 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 590843964 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 2306813961 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 3473227634 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 2351516032 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 3400388749 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 2149415818 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 1984938634 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 3128842110 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 341297277 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 3166268784 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 1582682841 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 3462208701 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 2948202603 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 2455859455 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 709382838 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 2890080430 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 694009828 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 1351376372 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 2215196175 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 1616012445 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 2037888220 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 1858525680 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 2328720687 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 2717405293 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 3186269440 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 547070165 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 284136873 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 2159907477 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 1635298638 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 559093308 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 2766883876 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 2724837903 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 998683259 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 1874164178 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 3793762596 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 2616511899 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 3952338969 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 3040249768 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 275367542 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 2553238240 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 1942981404 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 591954058 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 3555237664 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 2562710092 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 680136523 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 1091989335 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 2597680364 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 727516294 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 1702917459 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 60055933 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 695862519 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 1838371977 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 1605016511 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 697399728 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 1579247523 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 3496119934 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 1668689169 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 3796694978 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 1970020529 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 692430301 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 361849214 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 1153399929 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 955493850 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 3053265666 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 2580170025 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 3657452299 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 3623468013 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 3292563238 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 1423466228 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 1140559517 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 2234826625 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 718838992 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 1219778653 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 3583482392 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 2608158343 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 3804629784 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 2934255038 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 3687597978 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 3828463805 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 2174520232 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 398059714 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 549572240 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 2124147087 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 1090071935 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 2910634338 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 2656278545 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 3263872338 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 2533454492 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 3593042330 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 1713014903 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 402435071 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 2830579797 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 3318357068 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 3232838519 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 1303123395 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 3021801518 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 1360889364 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 3397179522 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 2434379981 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 697925491 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 2399302617 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 765997 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 754303930 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 975045597 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 2053385166 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 3594132367 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 652082576 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 2773597879 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 2172470350 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 3779331923 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 3385179112 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 188176791 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 1622864697 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 3996069035 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 989949675 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 2665449543 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 366057818 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 761118218 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 715120135 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 1730752900 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 3238036454 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 333403381 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 1444606120 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 1958075461 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 2960503965 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 3627355752 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 1625080930 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 1663112053 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 297995263 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 2430450657 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 2382381161 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 371576015 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 1189853390 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 1053684224 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 2507637249 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 486183987 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 1157868031 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 1564152903 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 3043079172 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 3091672539 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 1173373703 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 772416735 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 3532571653 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 964019893 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 1374740945 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 3133817988 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 201019601 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 2906715828 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 2032303278 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 895625201 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 3858659128 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 2533753534 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 3101363221 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 3238728393 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 1580473377 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 721018874 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 2781520095 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 1321516560 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 304089223 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 1964871156 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 1006286606 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 1551161631 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 2907188380 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 405896105 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 703503643 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 3365986950 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 3490773927 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 2274339733 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 2976201374 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 1674914826 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 312827783 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 502675239 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 3078282418 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 3445101986 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 2671953968 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 3930609218 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 79739799 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 3724397223 the entity Type is Tree
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 3781756198 the entity Type is Wall
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 145502604 the entity Type is Wall
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 3663981260 the entity Type is Door
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 308093868 the entity Type is Wall
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 2863811649 the entity Type is Wall
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 1109338231 the entity Type is Wall
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 188602695 the entity Type is Wall
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 3798963718 the entity Type is Wall
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 2619983559 the entity Type is Door
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 1319992382 the entity Type is Wall
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 3285842220 the entity Type is Wall
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 3995447161 the entity Type is Wall
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 2752814707 the entity Type is Wall
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 6807133 the entity Type is Wall
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 1341160653 the entity Type is Door
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 580121643 the entity Type is Wall
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 3831488567 the entity Type is Wall
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 3524043636 the entity Type is Wall
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 749154244 the entity Type is Wall
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 3759998758 the entity Type is Wall
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 2402643167 the entity Type is Door
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 3866422144 the entity Type is Wall
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 94440662 the entity Type is Wall
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 3901725341 the entity Type is Wall
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 72095634 the entity Type is Wall
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 2146523529 the entity Type is Wall
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 1195347734 the entity Type is Door
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 3605263178 the entity Type is Wall
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 1524127197 the entity Type is Wall
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 720178423 the entity Type is Wall
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 142130219 the entity Type is Wall
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 3759927838 the entity Type is Wall
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 1388798723 the entity Type is Door
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 3319225532 the entity Type is Wall
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 2755898380 the entity Type is Wall
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 1680014127 the entity Type is Wall
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 786076733 the entity Type is Wall
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 3683978755 the entity Type is Wall
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 433486071 the entity Type is Wall
-log: sending information about new GameObject on Server with ID: aaa to client with ID 2404761775 the ID of the new Object is 3136295855 the entity Type is Wall
+log: sending connection accepted message to client with ID: 2546837428
+log: updating Player Inventory with player ID: 2546837428for server with ID: aacyand with content: 
+{"items": [{"stackID": 3854050643, "size": 5, "itemID": "FirstAidKit", "tags": []}], "hotbar": [null, null, null, null, null, null], "hotbarSize": 6, "activeSlot": 0, "primaryHand": []}
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 2546837428 the entity Type is Player
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 1247852365 the entity Type is Tree
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 2030161624 the entity Type is Tree
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 1441548297 the entity Type is Tree
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 3501992014 the entity Type is Tree
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 1078956139 the entity Type is Tree
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 175866525 the entity Type is Tree
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 2569851709 the entity Type is Tree
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 1533808182 the entity Type is Tree
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 1126180868 the entity Type is Tree
+log: sending information about new Health on Server with ID: aacy to client with ID 2546837428 the ID of the Updated Object is 2546837428 the entityType is Player the new hp is 200
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 1590062457 the entity Type is Tree
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 707973418 the entity Type is Tree
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 3262287472 the entity Type is Tree
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 133114557 the entity Type is Tree
+log: updating Player Inventory with player ID: 2546837428for server with ID: aacyand with content: 
+{"items": [{"stackID": 3854050643, "size": 5, "itemID": "FirstAidKit", "tags": []}], "hotbar": [{"stackID": 3854050643, "size": 5, "itemID": "FirstAidKit", "tags": []}, null, null, null, null, null], "hotbarSize": 6, "activeSlot": 0, "primaryHand": []}
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 3284728179 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 1676324205 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 3771181011 the entity Type is Door
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 1126376120 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 3033908516 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 2497464199 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 626775392 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 3297566460 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 3830818855 the entity Type is Door
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 1163217668 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 3034112090 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 1129225725 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 3004536405 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 1750094639 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 2594059389 the entity Type is Door
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 955164673 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 3612020998 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 3664517041 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 3693168907 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 2845349497 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 3347385767 the entity Type is Door
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 1576069304 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 3076836942 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 2435144013 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 1731408172 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 3693865130 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 3421561542 the entity Type is Door
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 2788980391 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 2440856343 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 2414524930 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 383612971 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 542060510 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 896401932 the entity Type is Door
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 397629145 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 862331043 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 3650824911 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 2963243321 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 1863380300 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 3602817576 the entity Type is Door
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 3465774378 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 1069493109 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 3662905609 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 3322258333 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 2504374924 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 2845806814 the entity Type is Door
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 2703455541 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 2316796811 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 1790543641 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 1927360046 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 2065759435 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 2696322102 the entity Type is Door
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 1961155188 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 194722809 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 612250814 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 333224535 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 3698524956 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 1516792241 the entity Type is Door
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 3253523046 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 3707102477 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 558639376 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 4000698307 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 2451948859 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 2679636860 the entity Type is Door
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 734565520 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 3379409377 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 3328522367 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 1340924412 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 1355323408 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 68602982 the entity Type is Door
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 3285453694 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 2820102721 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 3761133167 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 1800069540 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 958416289 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 945015348 the entity Type is Door
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 570289935 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 2142253188 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 3455160294 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 1886596384 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 3333759247 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 1833625985 the entity Type is Door
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 428039603 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 2976869796 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 3530567525 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 663822577 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 567997257 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 381672911 the entity Type is Door
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 2370565452 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 3005056757 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 103531903 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 3143324813 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 3216203810 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 2126270659 the entity Type is Door
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 122837167 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 2155527698 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 1679668715 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 269793260 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 1697337299 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 928277215 the entity Type is Door
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 3069523426 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 2647657468 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 3306125560 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 3258484835 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 452572642 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 172638124 the entity Type is Door
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 2917565620 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 2347791905 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 1304407703 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 378088227 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 3567006573 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 1796282579 the entity Type is Door
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 792776039 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 3514328126 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 458242493 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 3093642279 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 3924331951 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 2520522066 the entity Type is Door
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 1179723381 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 173369696 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 1083296415 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 2065992772 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 3004398159 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 2077739098 the entity Type is Door
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 653059239 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 1556010459 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 1097374596 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 2849253968 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 995839679 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 2143349326 the entity Type is Door
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 1984252199 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 1358305372 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 599327025 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 2954052625 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 95908548 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 3176148860 the entity Type is Door
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 1818533428 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 1123534025 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 604140134 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 1582523474 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 3153162878 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 756649341 the entity Type is Door
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 3168167817 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 2163108044 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 2248543191 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 2443791332 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 1666466385 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 3301863362 the entity Type is Door
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 1838192929 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 3925776739 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 1498441733 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 2074302830 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 1135703707 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 1814715503 the entity Type is Door
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 1512169523 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 1690823244 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 2819976615 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 472891905 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 3636532149 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 677950252 the entity Type is Door
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 948355077 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 2832805393 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 1660386024 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 2953676366 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 1961204016 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 2735668536 the entity Type is Door
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 463314588 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 590602599 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 2537283765 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 1378537329 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 2911387051 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 427653078 the entity Type is Door
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 2770536381 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 1312744817 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 3500625744 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 736528956 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 599200334 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 2922306154 the entity Type is Door
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 3262071315 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 503056986 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 3317910659 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 3953848664 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 2664752996 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 2907052272 the entity Type is Door
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 619255529 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 323257046 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 335608759 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 2153022570 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 1818801688 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 631515960 the entity Type is Door
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 2813944390 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 3117862155 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 2718634724 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 3870002422 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 3176139957 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 540437338 the entity Type is Door
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 2496097612 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 3058239877 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 831918000 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 2315842309 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 1228657520 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 3063097347 the entity Type is Door
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 2208642604 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 1537340617 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 2258031212 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 473027030 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 2213127475 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 3627507187 the entity Type is Door
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 362775382 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 379398763 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 1947891348 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 698267508 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 2428712728 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 3648655899 the entity Type is Door
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 2546962055 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 262199144 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 931623147 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 352096117 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 2593676752 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 1269810853 the entity Type is Door
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 1368284536 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 2892001179 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 3956502340 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 2207546405 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 2387995296 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 811564162 the entity Type is Door
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 3522574179 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 2071361124 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 921576030 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 2039974217 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 1719287342 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 3511564413 the entity Type is Door
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 1027139292 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 1679241521 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 1005646727 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 3435651426 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 2060890149 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 945009747 the entity Type is Door
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 1534465017 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 1853122142 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 3447937057 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 566459937 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 564249500 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 383780923 the entity Type is Door
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 579010258 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 3220592089 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 3037492800 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 214682864 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 1249943561 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 2146120359 the entity Type is Door
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 3588103804 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 2933878362 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 877401113 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 3828839680 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 241683008 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 3932307806 the entity Type is Door
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 3630644285 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 3925282556 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 1704654983 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 3565023436 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 1564388646 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 28007278 the entity Type is Wall
+log: sending information about new GameObject on Server with ID: aacy to client with ID 2546837428 the ID of the new Object is 2534077910 the entity Type is Wall
+log: Player with ID 2546837428 is trying to interact
+log: Player with ID 2546837428 is trying to interact
+log: Player with ID 2546837428 is trying to interact
+log: Player with ID 2546837428 is trying to interact
+log: Player with ID 2546837428 is trying to interact
+log: consumed AIdKit
+log: consumed AIdKit
+log: consumed AIdKit
+log: consumed AIdKit
+log: deleting stack with ID  : 3854050643
+log: consumed AIdKit
+log: updating Player Inventory with player ID: 2546837428for server with ID: aacyand with content: 
+{"items": [{"stackID": 3854050643, "size": 4, "itemID": "FirstAidKit", "tags": []}], "hotbar": [{"stackID": 3854050643, "size": 4, "itemID": "FirstAidKit", "tags": []}, {"stackID": 3854050643, "size": 4, "itemID": "FirstAidKit", "tags": []}, null, null, null, null], "hotbarSize": 6, "activeSlot": 0, "primaryHand": []}
+log: sending information about new Health on Server with ID: aacy to client with ID 2546837428 the ID of the Updated Object is 2546837428 the entityType is Player the new hp is 1200
+log: updating Player Inventory with player ID: 2546837428for server with ID: aacyand with content: 
+{"items": [{"stackID": 3854050643, "size": 3, "itemID": "FirstAidKit", "tags": []}], "hotbar": [{"stackID": 3854050643, "size": 3, "itemID": "FirstAidKit", "tags": []}, {"stackID": 3854050643, "size": 3, "itemID": "FirstAidKit", "tags": []}, null, null, null, null], "hotbarSize": 6, "activeSlot": 0, "primaryHand": []}
+log: sending information about new Health on Server with ID: aacy to client with ID 2546837428 the ID of the Updated Object is 2546837428 the entityType is Player the new hp is 2200
+log: updating Player Inventory with player ID: 2546837428for server with ID: aacyand with content: 
+{"items": [{"stackID": 3854050643, "size": 2, "itemID": "FirstAidKit", "tags": []}], "hotbar": [{"stackID": 3854050643, "size": 2, "itemID": "FirstAidKit", "tags": []}, {"stackID": 3854050643, "size": 2, "itemID": "FirstAidKit", "tags": []}, null, null, null, null], "hotbarSize": 6, "activeSlot": 0, "primaryHand": []}
+log: sending information about new Health on Server with ID: aacy to client with ID 2546837428 the ID of the Updated Object is 2546837428 the entityType is Player the new hp is 3200
+log: updating Player Inventory with player ID: 2546837428for server with ID: aacyand with content: 
+{"items": [{"stackID": 3854050643, "size": 1, "itemID": "FirstAidKit", "tags": []}], "hotbar": [{"stackID": 3854050643, "size": 1, "itemID": "FirstAidKit", "tags": []}, {"stackID": 3854050643, "size": 1, "itemID": "FirstAidKit", "tags": []}, null, null, null, null], "hotbarSize": 6, "activeSlot": 0, "primaryHand": []}
+log: sending information about new Health on Server with ID: aacy to client with ID 2546837428 the ID of the Updated Object is 2546837428 the entityType is Player the new hp is 4200
+log: updating Player Inventory with player ID: 2546837428for server with ID: aacyand with content: 
+{"items": [], "hotbar": [null, null, null, null, null, null], "hotbarSize": 6, "activeSlot": 0, "primaryHand": []}
+log: sending information about new Health on Server with ID: aacy to client with ID 2546837428 the ID of the Updated Object is 2546837428 the entityType is Player the new hp is 5200
+log: interupted Player movement of Player with ID: 2546837428
+log: Player got Interupted in Movement, the player ID is: 2546837428
+log: Player got Teleported deltax: 50.62572706898209 deltay: 0.0
+log: interupted Player movement of Player with ID: 2546837428
+log: Player got Interupted in Movement, the player ID is: 2546837428
+log: Player got Teleported deltax: 62.882554497773526 deltay: 0.0
+log: interupted Player movement of Player with ID: 2546837428
+log: Player got Interupted in Movement, the player ID is: 2546837428
+log: Player got Teleported deltax: 47.76631992965122 deltay: 0.0
+log: interupted Player movement of Player with ID: 2546837428
+log: Player got Interupted in Movement, the player ID is: 2546837428
+log: Player got Teleported deltax: 2.9497665615053847 deltay: 0.0
+log: interupted Player movement of Player with ID: 2546837428
+log: Player got Interupted in Movement, the player ID is: 2546837428
+log: Player got Teleported deltax: 4.685451602708781 deltay: 0.0
+log: interupted Player movement of Player with ID: 2546837428
+log: Player got Interupted in Movement, the player ID is: 2546837428
+log: Player got Teleported deltax: 4.273450129112462 deltay: 0.0
+log: interupted Player movement of Player with ID: 2546837428
+log: Player got Interupted in Movement, the player ID is: 2546837428
+log: Player got Teleported deltax: 4.365962186566321 deltay: 0.0
+log: interupted Player movement of Player with ID: 2546837428
+log: Player got Interupted in Movement, the player ID is: 2546837428
+log: Player got Teleported deltax: 3.6376395101251546 deltay: 0.0
+log: interupted Player movement of Player with ID: 2546837428
+log: Player got Interupted in Movement, the player ID is: 2546837428
+log: Player got Teleported deltax: 3.777874834049726 deltay: 0.0
+log: interupted Player movement of Player with ID: 2546837428
+log: Player got Interupted in Movement, the player ID is: 2546837428
+log: Player got Teleported deltax: 0.5491420518956147 deltay: 4.327016885945341
+log: interupted Player movement of Player with ID: 2546837428
+log: Player got Interupted in Movement, the player ID is: 2546837428
+log: Player got Teleported deltax: 4.9449274940707255 deltay: 4.9449274940707255
+log: interupted Player movement of Player with ID: 2546837428
+log: Player got Interupted in Movement, the player ID is: 2546837428
+log: Player got Teleported deltax: 4.373143956036074 deltay: 4.373143956036074
+log: interupted Player movement of Player with ID: 2546837428
+log: Player got Interupted in Movement, the player ID is: 2546837428
+log: Player got Teleported deltax: 3.736931583553087 deltay: 3.736931583553087
+log: interupted Player movement of Player with ID: 2546837428
+log: Player got Interupted in Movement, the player ID is: 2546837428
+log: Player got Teleported deltax: 3.8854903986793943 deltay: 3.8854903986793943
+log: interupted Player movement of Player with ID: 2546837428
+log: Player got Interupted in Movement, the player ID is: 2546837428
+log: Player got Teleported deltax: 4.31786042128806 deltay: 4.31786042128806
+log: interupted Player movement of Player with ID: 2546837428
+log: Player got Interupted in Movement, the player ID is: 2546837428
+log: Player got Teleported deltax: 4.526903958467301 deltay: 4.526903958467301
+log: interupted Player movement of Player with ID: 2546837428
+log: Player got Interupted in Movement, the player ID is: 2546837428
+log: Player got Teleported deltax: 4.139908947981894 deltay: 4.139908947981894
+log: interupted Player movement of Player with ID: 2546837428
+log: Player got Interupted in Movement, the player ID is: 2546837428
+log: Player got Teleported deltax: 4.176798642438371 deltay: 4.176798642438371
+log: interupted Player movement of Player with ID: 2546837428
+log: Player got Interupted in Movement, the player ID is: 2546837428
+log: Player got Teleported deltax: 3.552722758613527 deltay: 3.552722758613527
+log: interupted Player movement of Player with ID: 2546837428
+log: Player got Interupted in Movement, the player ID is: 2546837428
+log: Player got Teleported deltax: 4.06438365302165 deltay: 4.06438365302165
+log: interupted Player movement of Player with ID: 2546837428
+log: Player got Interupted in Movement, the player ID is: 2546837428
+log: Player got Teleported deltax: 4.248816598119447 deltay: 4.248816598119447
+log: interupted Player movement of Player with ID: 2546837428
+log: Player got Interupted in Movement, the player ID is: 2546837428
+log: Player got Teleported deltax: 4.774525137618184 deltay: 4.774525137618184
+log: interupted Player movement of Player with ID: 2546837428
+log: Player got Interupted in Movement, the player ID is: 2546837428
+log: Player got Teleported deltax: 3.7872951119788922 deltay: 3.7872951119788922
+log: interupted Player movement of Player with ID: 2546837428
+log: Player got Interupted in Movement, the player ID is: 2546837428
+log: Player got Teleported deltax: 4.082604519935558 deltay: 4.082604519935558
+log: interupted Player movement of Player with ID: 2546837428
+log: Player got Interupted in Movement, the player ID is: 2546837428
+log: Player got Teleported deltax: 3.7903436504711863 deltay: 0.0
+log: interupted Player movement of Player with ID: 2546837428
+log: Player got Interupted in Movement, the player ID is: 2546837428
+log: Player got Teleported deltax: 3.604394797439454 deltay: 0.0
+log: interupted Player movement of Player with ID: 2546837428
+log: Player got Interupted in Movement, the player ID is: 2546837428
+log: Player got Teleported deltax: 4.348521901265485 deltay: 0.0
+log: interupted Player movement of Player with ID: 2546837428
+log: Player got Interupted in Movement, the player ID is: 2546837428
+log: Player got Teleported deltax: 4.941873682109872 deltay: 0.0
+log: interupted Player movement of Player with ID: 2546837428
+log: Player got Interupted in Movement, the player ID is: 2546837428
+log: Player got Teleported deltax: 6.414713130652672 deltay: 0.0
+log: interupted Player movement of Player with ID: 2546837428
+log: Player got Interupted in Movement, the player ID is: 2546837428
+log: Player got Teleported deltax: 4.481793066370301 deltay: 0.0
+log: interupted Player movement of Player with ID: 2546837428
+log: Player got Interupted in Movement, the player ID is: 2546837428
+log: Player got Teleported deltax: 4.201328941562679 deltay: 4.201328941562679
+log: interupted Player movement of Player with ID: 2546837428
+log: Player got Interupted in Movement, the player ID is: 2546837428
+log: Player got Teleported deltax: 4.416388960526092 deltay: 4.416388960526092
+log: interupted Player movement of Player with ID: 2546837428
+log: Player got Interupted in Movement, the player ID is: 2546837428
+log: Player got Teleported deltax: 3.3601033287413884 deltay: 3.3601033287413884
+log: interupted Player movement of Player with ID: 2546837428
+log: Player got Interupted in Movement, the player ID is: 2546837428
+log: Player got Teleported deltax: 4.156798058829736 deltay: 4.156798058829736
+log: interupted Player movement of Player with ID: 2546837428
+log: Player got Interupted in Movement, the player ID is: 2546837428
+log: Player got Teleported deltax: 4.343303359783022 deltay: 4.343303359783022
+log: interupted Player movement of Player with ID: 2546837428
+log: Player got Interupted in Movement, the player ID is: 2546837428
+log: Player got Teleported deltax: 4.243466310144868 deltay: 4.243466310144868
+log: interupted Player movement of Player with ID: 2546837428
+log: Player got Interupted in Movement, the player ID is: 2546837428
+log: Player got Teleported deltax: 4.53798925402225 deltay: 4.53798925402225
+log: interupted Player movement of Player with ID: 2546837428
+log: Player got Interupted in Movement, the player ID is: 2546837428
+log: Player got Teleported deltax: 3.4639936276653316 deltay: 3.4639936276653316
