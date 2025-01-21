@@ -1,5 +1,5 @@
 import GameObject from "../GameObject.js"
-import { font } from "../game.js"
+import { font, setSLotNumber } from "../game.js"
 import { sendCombineStacksRequest } from "../game.js"
 import InventorySlot from "./InventorySlot.js"
 import { addTestInv } from "../game.js"
@@ -135,8 +135,6 @@ export default class Inventory extends GameObject {
 
 
     event(eventString, eventObject) {
-        console.log("event gefeuert")
-        console.log(eventString)
         if (eventString == "inventory") {
             console.log("eventObject: " + eventObject.items)
 
@@ -222,12 +220,14 @@ export default class Inventory extends GameObject {
                 if (this.hotbarSlot >= 6) {
                     this.hotbarSlot = 0
                 }
+                setSLotNumber(this.hotbarSlot)
             }
             else if (eventObject > 40) {
                 this.hotbarSlot -= 1
                 if (this.hotbarSlot < 0) {
                     this.hotbarSlot = 5
                 }
+                setSLotNumber(this.hotbarSlot)
             }
         }
     }

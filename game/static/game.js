@@ -235,3 +235,7 @@ export function setHotbarSlot(stackID, slotNumber) {
     console.log("sending new Hotbarslot to Server: stackID:" + stackID + "  into slot number:" + slotNumber)
     webSocket.send(JSON.stringify({ type: "setHotbar", stackID: stackID, hotbarSlot: slotNumber }))
 }
+
+export function setSLotNumber(number) {
+    webSocket.send(JSON.stringify({ type: "setActiveSlot", slot: number.toString() }))
+}
