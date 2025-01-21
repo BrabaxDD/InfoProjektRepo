@@ -8,6 +8,8 @@ import Tree from "./tree.js"
 import { getMainPlayerID } from "./game.js";
 import Inventory from "./GUI_elements/Inventory.js";
 import { getServerID } from "./game.js"
+import Dropdown from "./GUI_elements/Dropdown.js"
+
 export default class GameSceneFactory extends GameObject {
     constructor(canvas, keys, sceneObject) {
         super(sceneObject)
@@ -29,16 +31,10 @@ export default class GameSceneFactory extends GameObject {
                 scene.addObject(button2)
 
 
-
-                //
                 //let HostTest = new ButtonGameObject(this.canvas.width/3*2-100,this.canvas.height/5 -28,200,56,"loginToServerHost",{},scene,"Login as host ((test for message))")
-                //scene.addObject(HostTest)
+              //scene.addObject(HostTest)
 
                 //console.log(button.eventObject.sceneToSwitch)
-
-
-                console.log("Fertige Scene")
-
                 break;
 
             case "optionsMenu":
@@ -55,6 +51,7 @@ export default class GameSceneFactory extends GameObject {
                 console.log("log: trying to get Tile Map with name" + getServerID() + ".txt")
                 let craftinput = new CanvasTextInput(scene, this.canvas.width - 200, this.canvas.height - 30, 200, 30, "textInputFinishedCraftField")
                 scene.addObject(craftinput)
+                
                 //let tree = new Tree(scene)
                 //scene.addObject(tree)
                 //let lotTest = new ButtonGameObject(this.canvas.width/3-100,this.canvas.height/5-28,200,56,"generateItem","erstes Item",scene,"Generate erstes Item")
@@ -65,13 +62,16 @@ export default class GameSceneFactory extends GameObject {
             case "hostOrLogin":
             case 3:
                 scene = new Scene(this.canvas, "");
-                let input = new CanvasTextInput(scene, this.canvas.width / 2 - 100, this.canvas.height / 2 - 15, 200, 30, "textInputFinishedLoginField", true)
+                let input = new CanvasTextInput(scene, this.canvas.width / 3*2 - 100, this.canvas.height / 2 - 15, 200, 30, "textInputFinishedLoginField", true)
                 scene.addObject(input)
 
                 let logBut = new ButtonGameObject(this.canvas.width / 3 - 100, this.canvas.height / 5 * 4 - 28, 200, 56, "loginToServer", {}, scene, "Login (to game)")
                 scene.addObject(logBut)
                 let logButHost = new ButtonGameObject(this.canvas.width / 3 * 2 - 100, this.canvas.height / 5 * 4 - 28, 200, 56, "loginToServerHost", {}, scene, "Host (to game)")
                 scene.addObject(logButHost)
+ 
+                let dropdown = new Dropdown(scene,["Option1","Option2","option3"],this.canvas.width / 3 - 100,this.canvas.height / 2 - 28,200, 56)
+                scene.addObject(dropdown)
         }
         console.log(scene.gameObjects)
         return scene

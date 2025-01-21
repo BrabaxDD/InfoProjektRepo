@@ -16,11 +16,15 @@ ctx.font = font
 const webSocketHost = new WebSocket('ws://' + window.location.host + '/game/server')
 const webSocket = new WebSocket('ws://' + window.location.host + '/game/login')
 let serverID = ""
-
 webSocket.onmessage = function(e) {
     const data = JSON.parse(e.data)
     //console.log("")
     //console.log(data)
+    if (data.type == "runningservers"){
+        console.log("running servers:")
+        console.log(data.servers)
+        scene.eventBus.triggerEvent("runningServers", data.servers)
+    }
 
     if (data.type == "deletedGameObject") {
 
@@ -171,6 +175,7 @@ canvas.addEventListener("mouseup", (event) => {
 
 export function switchScene(sceneToSwitch) {
     console.log("NEW SCENE")
+    getServers()
     scene = factory.buildGameScene(sceneToSwitch)
     //webSocketHost = new WebSocket('ws://' + window.location.host + '/game/server')
     //webSocket = new WebSocket('ws://' + window.location.host + '/game/login')
@@ -234,4 +239,7 @@ export function addTestInv() {
 export function setHotbarSlot(stackID, slotNumber) {
     console.log("sending new Hotbarslot to Server: stackID:" + stackID + "  into slot number:" + slotNumber)
     webSocket.send(JSON.stringify({ type: "setHotbar", stackID: stackID, hotbarSlot: slotNumber }))
+}
+export function getServers() {
+    webSocket.send(JSON.stringify({ type: "getRunningServers"}))
 }
