@@ -133,8 +133,8 @@ class World:
 
     def generate(self):
         self.serverID = self.threat.gameServerSocket.serverID
-        sizeX = 128
-        sizeY = 128
+        sizeX = 32
+        sizeY = 32
         chunksize = 32
         self.chunksx = sizeX/chunksize
         self.chunksy = sizeY/chunksize
@@ -362,9 +362,51 @@ class World:
                     Wall.Wall(self, posx + sizex, posy, posx + sizex, posy + sizey))
                 self.addGameobject(
                     Wall.Wall(self, posx, posy + sizey, posx + sizex, posy + sizey))
+
+        class Roomtree:
+            def __init__(self, type, Child1, Child2, parentDirection,weight):
+                self.type = type
+                self.Child1 = Child1
+                self.Child2 = Child2
+                self.parentDirection = parentDirection
+
+        def partition(room: Roomtree, posx, posy, sizex, sizey):
+            verticalSplit = True
+            if room.parentDirection == "north":
+                verticalSplit = False
+                generateRectWithDoor(
+                    posx, posy, sizex, sizey, sizex/2 - 16, sizex/2 + 16)
+            if room.parentDirection == "east":
+                generateRectWithDoor(
+                    posx, posy, sizex, sizey, sizey/2 - 16 + sizex, sizey/2 + 16 + sizex)
+            if room.parentDirection == "south":
+                verticalSplit = False
+                generateRectWithDoor(
+                    posx, posy, sizex, sizey, sizex/2 - 16 + sizex + sizey, sizex/2 + 16 + sizey + sizex)
+            if room.parentDirection == "west":
+                generateRectWithDoor(
+                    posx, posy, sizex, sizey, sizey/2 - 16 + sizex * 2 + sizey, sizey/2 + 16 + sizex * 2 + sizey)
+            if room.Child1 is not None:
+                if verticalSplit:
+                    room.Child1.parentDirection = "north"
+                    partition(room.Child1, posx, posy +
+                              2/2 * sizey, sizex, sizey/3)
+                else:
+                    room.Child1.parentDirection = "west"
+                    partition(room.Child1, posx +
+                              sizex/3*2, posy, sizex/3, sizey)
+            if room.Child2 is not None:
+                if verticalSplit:
+                    room.Child2.parentDirection = "south"
+                    partition(room.Child2,posx,posy,sizex,sizey/3)
+                else:
+                    room.Child2.parentDirection = "east"
+                    partition(room.Child2, posx, posy, sizex/3, sizey)
+
         tilesizey = int(sizey/32)
         tilesizex = int(sizex/32)
-        generateRectWithDoor(posx, posy, sizex, sizey, 416, 448)
+        partition(Roomtree("", Roomtree("", None, None, None),
+                  Roomtree("", None, None,None ), "west"), posx, posy, sizex, sizey)
 
 #        self.addGameobject(Wall.Wall(self, posx, posy, posx + sizex, posy))
 #        self.addGameobject(Wall.Wall(self, posx, posy, posx, posy + sizey))
