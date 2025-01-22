@@ -364,11 +364,25 @@ class World:
                     Wall.Wall(self, posx, posy + sizey, posx + sizex, posy + sizey))
 
         class Roomtree:
-            def __init__(self, type, Child1, Child2, parentDirection,weight):
+            def __init__(self, type, Child1, Child2, parentDirection, weight, parent):
                 self.type = type
                 self.Child1 = Child1
                 self.Child2 = Child2
                 self.parentDirection = parentDirection
+
+            def buildTree(self):
+                if self.type == "livingRoom":
+                    if random.random() > 0.1:
+                        self.Child1 = Roomtree(
+                            "corridor", None, None, None, 0, self)
+                    if random.random() > 0.1:
+                        self.Child2 = Roomtree(
+                            "bath", None, None, None, 0, self)
+
+                if self.Child1 is not None:
+                    self.Child1.buildTree()
+                if self.Child2 is not None:
+                    self.Child2.buildTree()
 
         def partition(room: Roomtree, posx, posy, sizex, sizey):
             verticalSplit = True
@@ -390,7 +404,7 @@ class World:
                 if verticalSplit:
                     room.Child1.parentDirection = "north"
                     partition(room.Child1, posx, posy +
-                              2/2 * sizey, sizex, sizey/3)
+                              2/3 * sizey, sizex, sizey/3)
                 else:
                     room.Child1.parentDirection = "west"
                     partition(room.Child1, posx +
@@ -398,15 +412,17 @@ class World:
             if room.Child2 is not None:
                 if verticalSplit:
                     room.Child2.parentDirection = "south"
-                    partition(room.Child2,posx,posy,sizex,sizey/3)
+                    partition(room.Child2, posx, posy, sizex, sizey/3)
                 else:
                     room.Child2.parentDirection = "east"
                     partition(room.Child2, posx, posy, sizex/3, sizey)
 
         tilesizey = int(sizey/32)
         tilesizex = int(sizex/32)
-        partition(Roomtree("", Roomtree("", None, None, None),
-                  Roomtree("", None, None,None ), "west"), posx, posy, sizex, sizey)
+        rooms = Roomtree("livingRoom", None, None, "west", 0,self)
+        rooms.buildTree()
+        # generate the Room Map
+        partition(rooms, posx, posy, sizex, sizey)
 
 #        self.addGameobject(Wall.Wall(self, posx, posy, posx + sizex, posy))
 #        self.addGameobject(Wall.Wall(self, posx, posy, posx, posy + sizey))
