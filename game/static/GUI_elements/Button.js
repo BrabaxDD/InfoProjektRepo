@@ -22,6 +22,7 @@ export default class ButtonGameObject extends GameObject {
         this.scene.eventBus.registerListner("textInputFinished", this)
         this.scene.eventBus.registerListner("textInputFinishedLoginField", this)
         this.scene.eventBus.registerListner("textInputFinishedCraftField", this)
+        this.scene.eventBus.registerListner("optionSelected", this)
         this.is_hovered = false
         this.text = text
         this.textSize = font
@@ -31,10 +32,22 @@ export default class ButtonGameObject extends GameObject {
         this.eventObject = eventObject
         this.textOfLoginField = ""
         this.textOfCraftField = ""
+        this.serverToLogin = undefined
+
+        this.isLocked = false
 
     }
+    
+    lockButton() {
+        this.isLocked = true
+    }
+
+    unlockButton() {
+        this.isLocked = false
+    }
+
     process() {
-        if (this.scene.mousex > this.posx && this.scene.mousex < this.posx + this.widhtButton &&
+        if (this.isLocked != true && this.scene.mousex > this.posx && this.scene.mousex < this.posx + this.widhtButton &&
             this.scene.mousey > this.posy && this.scene.mousey < this.posy + this.heightButton) {
             this.is_hovered = true
 
@@ -70,20 +83,14 @@ export default class ButtonGameObject extends GameObject {
             console.log(eventObject.sceneToSwitch)
         }
         if (this.eventString == "loginToServer") {
-            if (self.textOfTextField != "") {
-                loginToServer(this.textOfLoginField)
-            }
-            else {
-                loginToServer("TESTSERVER")
+            if (this.serverToLogin != undefined) {
+                loginToServer(this.serverToLogin)
             }
 
         }
         if (this.eventString == "loginToServerHost") {
             if (self.textOfTextField != "") {
                 loginToServerHost(this.textOfLoginField)
-            }
-            else {
-                loginToServerHost("TESTSERVER")
             }
         }
         if (this.eventString == "generateItem") {
@@ -124,6 +131,9 @@ export default class ButtonGameObject extends GameObject {
         }
         if (eventString == "textInputFinishedCraftField") {
             this.textOfCraftField = eventObject.storedText
+        }
+        if (eventString == "optionSelected") {
+            this.serverToLogin = eventObject
         }
 
 

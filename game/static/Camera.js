@@ -40,8 +40,5 @@ export default class Camera extends GameObject{
     }
     
     render(){
-        this.ctx.globalAlpha = 0.2;
-        this.ctx.fillRect(this.posx+5, this.posy+5, 10,10);
-        this.ctx.globalAlpha = 1;
     }
 }

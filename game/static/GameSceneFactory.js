@@ -8,6 +8,9 @@ import Tree from "./tree.js"
 import { getMainPlayerID } from "./game.js";
 import Inventory from "./GUI_elements/Inventory.js";
 import { getServerID } from "./game.js"
+import Dropdown from "./GUI_elements/Dropdown.js"
+import CreateGameMenu from "./GUI_elements/CreateGameMenu.js";
+
 export default class GameSceneFactory extends GameObject {
     constructor(canvas, keys, sceneObject) {
         super(sceneObject)
@@ -29,16 +32,10 @@ export default class GameSceneFactory extends GameObject {
                 scene.addObject(button2)
 
 
-
-                //
                 //let HostTest = new ButtonGameObject(this.canvas.width/3*2-100,this.canvas.height/5 -28,200,56,"loginToServerHost",{},scene,"Login as host ((test for message))")
-                //scene.addObject(HostTest)
+              //scene.addObject(HostTest)
 
                 //console.log(button.eventObject.sceneToSwitch)
-
-
-                console.log("Fertige Scene")
-
                 break;
 
             case "optionsMenu":
@@ -55,6 +52,7 @@ export default class GameSceneFactory extends GameObject {
                 console.log("log: trying to get Tile Map with name" + getServerID() + ".txt")
                 let craftinput = new CanvasTextInput(scene, this.canvas.width - 200, this.canvas.height - 30, 200, 30, "textInputFinishedCraftField")
                 scene.addObject(craftinput)
+                
                 //let tree = new Tree(scene)
                 //scene.addObject(tree)
                 //let lotTest = new ButtonGameObject(this.canvas.width/3-100,this.canvas.height/5-28,200,56,"generateItem","erstes Item",scene,"Generate erstes Item")
@@ -65,13 +63,18 @@ export default class GameSceneFactory extends GameObject {
             case "hostOrLogin":
             case 3:
                 scene = new Scene(this.canvas, "");
-                let input = new CanvasTextInput(scene, this.canvas.width / 2 - 100, this.canvas.height / 2 - 15, 200, 30, "textInputFinishedLoginField", true)
-                scene.addObject(input)
+                let menu = new CreateGameMenu(scene)
+                scene.addObject(menu)
+                break;
+                
+            case "waitForLogin":
+            case 4:
+                console.log("Create WaitFOrLogin")
+                scene = new Scene(this.canvas, "")
+                let but = new ButtonGameObject(this.canvas.width / 2 - 100, this.canvas.height / 3 - 28, 200, 56, "", {}, scene, "WAIT A BIT")
+                scene.addObject(but)
 
-                let logBut = new ButtonGameObject(this.canvas.width / 3 - 100, this.canvas.height / 5 * 4 - 28, 200, 56, "loginToServer", {}, scene, "Login (to game)")
-                scene.addObject(logBut)
-                let logButHost = new ButtonGameObject(this.canvas.width / 3 * 2 - 100, this.canvas.height / 5 * 4 - 28, 200, 56, "loginToServerHost", {}, scene, "Host (to game)")
-                scene.addObject(logButHost)
+                break;
         }
         console.log(scene.gameObjects)
         return scene

@@ -58,6 +58,7 @@ class gameServer(WebsocketConsumer):
                     serverID=self.serverID)
                 self.running = True
                 self.serverThreat.start()
+                self.send(text_data=json.dumps({"type":"serverReadyForPlayer"}))
                 async_to_sync(self.channel_layer.group_add)(
                     self.serverID, self.channel_name)
 
