@@ -369,15 +369,17 @@ class World:
                 self.Child1 = Child1
                 self.Child2 = Child2
                 self.parentDirection = parentDirection
+                self.weight = weight
+                self.parent = parent
 
             def buildTree(self):
                 if self.type == "livingRoom":
                     if random.random() > 0.1:
                         self.Child1 = Roomtree(
-                            "corridor", None, None, None, 0, self)
+                            "corridor", None, None, None, 1, self)
                     if random.random() > 0.1:
                         self.Child2 = Roomtree(
-                            "bath", None, None, None, 0, self)
+                            "bath", None, None, None, 1, self)
 
                 if self.Child1 is not None:
                     self.Child1.buildTree()
@@ -404,22 +406,24 @@ class World:
                 if verticalSplit:
                     room.Child1.parentDirection = "north"
                     partition(room.Child1, posx, posy +
-                              2/3 * sizey, sizex, sizey/3)
+                              0.75 * sizey + sizey * 0.25 * math.tanh(room.weight - room.Child1.weight), sizex, sizey * (1 - 0.75 - 0.25 * math.tanh(room.weight - room.Child1.weight)))
                 else:
                     room.Child1.parentDirection = "west"
                     partition(room.Child1, posx +
-                              sizex/3*2, posy, sizex/3, sizey)
+                              sizex * (0.75 + 0.25 * math.tanh(room.weight - room.Child1.weight)), posy, sizex * (1 - 0.75 - 0.25 * math.tanh(room.weight - room.Child1.weigth)), sizey)
             if room.Child2 is not None:
                 if verticalSplit:
                     room.Child2.parentDirection = "south"
-                    partition(room.Child2, posx, posy, sizex, sizey/3)
+                    partition(room.Child2, posx, posy, sizex, sizey * (1 -
+                              0.75 - 0.25 * math.tanh(room.weight - room.Child1.weight)))
                 else:
                     room.Child2.parentDirection = "east"
-                    partition(room.Child2, posx, posy, sizex/3, sizey)
+                    partition(room.Child2, posx, posy, 1 - 0.75 - 0.25 *
+                              math.tanh(room.weight - room.Child1.weigth), sizey)
 
         tilesizey = int(sizey/32)
         tilesizex = int(sizex/32)
-        rooms = Roomtree("livingRoom", None, None, "west", 0,self)
+        rooms = Roomtree("livingRoom", None, None, "west", 0, self)
         rooms.buildTree()
         # generate the Room Map
         partition(rooms, posx, posy, sizex, sizey)
