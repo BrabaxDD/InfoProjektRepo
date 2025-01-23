@@ -1,5 +1,5 @@
 import GameObject from "../GameObject.js"
-import { font, setSLotNumber } from "../game.js"
+import { font } from "../game.js"
 import { sendCombineStacksRequest } from "../game.js"
 import InventorySlot from "./InventorySlot.js"
 import { addTestInv } from "../game.js"
@@ -7,7 +7,7 @@ import ButtonGameObject from "./Button.js"
 import { sendCraftingRequest } from "../game.js"
 import EquippedInventory from "./EquippedInventory.js"
 import { setHotbarSlot } from "../game.js"
-
+import { setSLotNumber } from "../game.js"
 export default class Inventory extends GameObject {
     constructor(scene) {
         super(scene)
