@@ -75,6 +75,7 @@ export default class Dropdown extends GameObject {
                         mouseY <= optionY + this.heightDrop) {
                         this.selectedIndex = i;
                         console.log(`Option selected: ${this.options[i]}`);
+                        this.scene.eventBus.triggerEvent("optionSelected", this.options[i])
                         break;
                     }
                 }

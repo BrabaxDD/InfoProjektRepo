@@ -38,15 +38,16 @@ webSocket.onmessage = function(e) {
         scene.eventBus.triggerEvent("inventory", data.Inventory)
         return
     }
+
+
     if (data.type == "connectionRefused") {
         console.log("connectionRefused")
+        retry = true
     }
     if (data.type == "connectionAccepted") {
         console.log("connectionAccepted")
-        scene.eventBus.triggerEvent("switchScene", { sceneToSwitch: 2 })
         isStarted = true
-
-
+        scene.eventBus.triggerEvent("switchScene", { sceneToSwitch: 2 })
     }
 
     if (data.type == "position") {
@@ -66,7 +67,6 @@ webSocket.onmessage = function(e) {
     }
 
     if (data.type == "newGameObject") {
-        console.log(data)
         if (data.entityType == "Wall") {
             const W = new Wall(scene, data.ID)
             scene.addObject(W)
@@ -105,6 +105,19 @@ webSocket.onmessage = function(e) {
         scene.gameObjects[scene.playerIndex].posx = data.posx
         scene.gameObjects[scene.playerIndex].posy = data.posy
     }*/
+}
+
+webSocketHost.onmessage = function (e){
+    const data = JSON.parse(e.data)
+    switch (data.type) {
+        case "serverReadyForPlayer":
+            canConnect = true
+            retry = false
+            break;
+    
+        default:
+            break;
+    }
 }
 
 // Canvas dimensions
@@ -147,6 +160,8 @@ function gameLoop() {
         }
         frameCount += 1
     }
+    
+
     requestAnimationFrame(gameLoop); // Call the next frame
 }
 
@@ -157,6 +172,9 @@ let loginID = -100
 var frameCount = 0
 var isDelayed = false
 var isStarted = false
+let canConnect = false
+let serverToConnect = undefined
+let retry = true
 // Start the game loop
 gameLoop();
 
@@ -185,24 +203,36 @@ export function switchScene(sceneToSwitch) {
 
 function updateToServer() {
     //console.log("Server update")
+    if (scene.gameObjects[scene.playerIndex].object.constructor.name != "Player"){
+        return
+    }
     webSocket.send(JSON.stringify({ type: "action", up: scene.gameObjects[scene.playerIndex].up, down: scene.gameObjects[scene.playerIndex].down, left: scene.gameObjects[scene.playerIndex].left, right: scene.gameObjects[scene.playerIndex].right, actiontype: "movement" }))
 }
 export function getServerID() { return serverID }
-export function loginToServer(serverName) {
+export function loginToServer(serverName, loginID) {
     serverID = serverName
 
     console.log("PLAYER ID:")
     console.log(scene.mainPlayerID)
     console.log("LOGGIN IN TO SERVER: " + serverName)
-    let d = new Date()
-    loginID = Math.floor(Math.random() * 3000000001)
     webSocket.send(JSON.stringify({ type: "login", ID: loginID, serverID: serverName }))
     //    isStarted = true
 }
 
-export function loginToServerHost(serverName) {
-    console.log("SETTUING UP NEW SERVER: " + serverName)
+export async function loginToServerHost(serverName) {
+    console.log("SETTING UP NEW SERVER: " + serverName)
     webSocketHost.send(JSON.stringify({ type: "startserver", serverID: serverName }))
+    let d = new Date()
+    loginID = Math.floor(Math.random() * 3000000001)
+    scene.eventBus.triggerEvent("switchScene", { sceneToSwitch: "waitForLogin" })
+
+    while (canConnect != true) {
+        if (retry == true) {
+            console.log("Trying to connect ...")
+        }
+        await wait(1000)
+    }
+    loginToServer(serverName, loginID)
 }
 
 export function generateItem(object) {
@@ -242,4 +272,8 @@ export function setHotbarSlot(stackID, slotNumber) {
 }
 export function getServers() {
     webSocket.send(JSON.stringify({ type: "getRunningServers"}))
+}
+
+function wait(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
 }

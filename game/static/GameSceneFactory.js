@@ -9,6 +9,7 @@ import { getMainPlayerID } from "./game.js";
 import Inventory from "./GUI_elements/Inventory.js";
 import { getServerID } from "./game.js"
 import Dropdown from "./GUI_elements/Dropdown.js"
+import CreateGameMenu from "./GUI_elements/CreateGameMenu.js";
 
 export default class GameSceneFactory extends GameObject {
     constructor(canvas, keys, sceneObject) {
@@ -62,16 +63,18 @@ export default class GameSceneFactory extends GameObject {
             case "hostOrLogin":
             case 3:
                 scene = new Scene(this.canvas, "");
-                let input = new CanvasTextInput(scene, this.canvas.width / 3*2 - 100, this.canvas.height / 2 - 15, 200, 30, "textInputFinishedLoginField", true)
-                scene.addObject(input)
+                let menu = new CreateGameMenu(scene)
+                scene.addObject(menu)
+                break;
+                
+            case "waitForLogin":
+            case 4:
+                console.log("Create WaitFOrLogin")
+                scene = new Scene(this.canvas, "")
+                let but = new ButtonGameObject(this.canvas.width / 2 - 100, this.canvas.height / 3 - 28, 200, 56, "", {}, scene, "WAIT A BIT")
+                scene.addObject(but)
 
-                let logBut = new ButtonGameObject(this.canvas.width / 3 - 100, this.canvas.height / 5 * 4 - 28, 200, 56, "loginToServer", {}, scene, "Login (to game)")
-                scene.addObject(logBut)
-                let logButHost = new ButtonGameObject(this.canvas.width / 3 * 2 - 100, this.canvas.height / 5 * 4 - 28, 200, 56, "loginToServerHost", {}, scene, "Host (to game)")
-                scene.addObject(logButHost)
- 
-                let dropdown = new Dropdown(scene,["Option1","Option2","option3"],this.canvas.width / 3 - 100,this.canvas.height / 2 - 28,200, 56)
-                scene.addObject(dropdown)
+                break;
         }
         console.log(scene.gameObjects)
         return scene
