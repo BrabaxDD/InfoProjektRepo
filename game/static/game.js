@@ -203,9 +203,6 @@ export function switchScene(sceneToSwitch) {
 
 function updateToServer() {
     //console.log("Server update")
-    if (scene.gameObjects[scene.playerIndex].object.constructor.name != "Player"){
-        return
-    }
     webSocket.send(JSON.stringify({ type: "action", up: scene.gameObjects[scene.playerIndex].up, down: scene.gameObjects[scene.playerIndex].down, left: scene.gameObjects[scene.playerIndex].left, right: scene.gameObjects[scene.playerIndex].right, actiontype: "movement" }))
 }
 export function getServerID() { return serverID }
