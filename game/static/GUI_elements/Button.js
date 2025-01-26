@@ -89,7 +89,7 @@ export default class ButtonGameObject extends GameObject {
 
         }
         if (this.eventString == "loginToServerHost") {
-            if (self.textOfTextField != "") {
+            if (this.textOfLoginField != "") {
                 loginToServerHost(this.textOfLoginField)
             }
         }
@@ -109,7 +109,7 @@ export default class ButtonGameObject extends GameObject {
             this.scene.eventBus.triggerEvent("craftsticks", eventObject)
         }
         if (this.eventString == "CraftRequest") {
-            if (self.textOfTextField != "") {
+            if (this.textOfCraftField != "") {
                 this.scene.eventBus.triggerEvent("CraftRequest", { recipe: this.textOfCraftField })
             }
             else {

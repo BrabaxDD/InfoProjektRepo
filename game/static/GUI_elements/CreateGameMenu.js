@@ -13,7 +13,7 @@ export default class CreateGameMenu extends GameObject{
         
         this.inputField = new CanvasTextInput(scene, this.canvas.width / 3*2 - 100, this.canvas.height / 2 - 15, 200, 30, "textInputFinishedLoginField", true)
 
-        this.dropdownMenu = new Dropdown(scene,["Option1","Option2","option3"],this.canvas.width / 3 - 100,this.canvas.height / 2 - 28,200, 56)
+        this.dropdownMenu = new Dropdown(scene,["Option1","Option2","Option3"],this.canvas.width / 3 - 100,this.canvas.height / 2 - 28,200, 56, "Running Servers")
     }   
 
     process(){
@@ -36,11 +36,20 @@ export default class CreateGameMenu extends GameObject{
             this.ctx.fillRect(0, 0,this.canvas.width/2, this.canvas.height)
             this.ctx.globalAlpha = 1;
         }
-        if (this.dropdownMenu.isOpen == true){
+        if (this.dropdownMenu.isOpen == true && this.dropdownMenu.options.length > 0){
             this.loginButton.lockButton()
         }
         else{
             this.loginButton.unlockButton()
+        }
+        
+        if (this.hostButton.textOfLoginField == ""){
+            this.hostButton.setButtonColorSecondary("red")
+            this.hostButton.lockButton()
+        }
+        else{
+            this.hostButton.setButtonColorSecondary("yellow")
+            this.hostButton.unlockButton()
         }
         this.hostButton.render()
         this.loginButton.render()
