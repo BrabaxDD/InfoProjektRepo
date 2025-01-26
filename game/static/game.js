@@ -24,12 +24,14 @@ webSocket.onmessage = function(e) {
         console.log("running servers:")
         console.log(data.servers)
         scene.eventBus.triggerEvent("runningServers", data.servers)
+        return
     }
 
     if (data.type == "deletedGameObject") {
 
         scene.eventBus.triggerEvent("deletedGameObject", { ID: data.entityID, type: data.entityType })
         console.log(data)
+        return
     }
 
     if (data.type == "InventoryUpdate") {
@@ -43,11 +45,13 @@ webSocket.onmessage = function(e) {
     if (data.type == "connectionRefused") {
         console.log("connectionRefused")
         retry = true
+        return
     }
     if (data.type == "connectionAccepted") {
         console.log("connectionAccepted")
         isStarted = true
         scene.eventBus.triggerEvent("switchScene", { sceneToSwitch: 2 })
+        return
     }
 
     if (data.type == "position") {
@@ -86,20 +90,22 @@ webSocket.onmessage = function(e) {
         if (data.entityType == "Zombie") {
             const z = new Zombie(scene, data.ID)
             scene.addObject(z)
+            return
         }
         if (data.entityType == "Door") {
             const d = new Door(scene, data.ID)
             scene.addObject(d)
+            return
         }
         if (data.entityType == "Chest") {
             console.log("Neue Kist?")
             const c = new Chest(scene, data.ID)
             scene.addObject(c)
+            return
         }
 
     }
 
-    console.log(data)
 
     /*if(data.type == "position" && data.entityType == "Player"){
         scene.gameObjects[scene.playerIndex].posx = data.posx

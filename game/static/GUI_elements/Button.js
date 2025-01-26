@@ -84,7 +84,8 @@ export default class ButtonGameObject extends GameObject {
         }
         if (this.eventString == "loginToServer") {
             if (this.serverToLogin != undefined) {
-                loginToServer(this.serverToLogin)
+                let loginID = Math.floor(Math.random() * 3000000001)
+                loginToServer(this.serverToLogin, loginID)
             }
 
         }
