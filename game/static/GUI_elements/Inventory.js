@@ -7,7 +7,7 @@ import ButtonGameObject from "./Button.js"
 import { sendCraftingRequest } from "../game.js"
 import EquippedInventory from "./EquippedInventory.js"
 import { setHotbarSlot } from "../game.js"
-
+import { setSLotNumber } from "../game.js"
 export default class Inventory extends GameObject {
     constructor(scene) {
         super(scene)
@@ -135,8 +135,6 @@ export default class Inventory extends GameObject {
 
 
     event(eventString, eventObject) {
-        console.log("event gefeuert")
-        console.log(eventString)
         if (eventString == "inventory") {
             console.log("eventObject: " + eventObject.items)
 
@@ -222,12 +220,14 @@ export default class Inventory extends GameObject {
                 if (this.hotbarSlot >= 6) {
                     this.hotbarSlot = 0
                 }
+                setSLotNumber(this.hotbarSlot)
             }
             else if (eventObject > 40) {
                 this.hotbarSlot -= 1
                 if (this.hotbarSlot < 0) {
                     this.hotbarSlot = 5
                 }
+                setSLotNumber(this.hotbarSlot)
             }
         }
     }

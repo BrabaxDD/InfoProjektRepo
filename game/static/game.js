@@ -20,7 +20,7 @@ webSocket.onmessage = function(e) {
     const data = JSON.parse(e.data)
     //console.log("")
     //console.log(data)
-    if (data.type == "runningservers"){
+    if (data.type == "runningservers") {
         console.log("running servers:")
         console.log(data.servers)
         scene.eventBus.triggerEvent("runningServers", data.servers)
@@ -107,14 +107,14 @@ webSocket.onmessage = function(e) {
     }*/
 }
 
-webSocketHost.onmessage = function (e){
+webSocketHost.onmessage = function(e) {
     const data = JSON.parse(e.data)
     switch (data.type) {
         case "serverReadyForPlayer":
             canConnect = true
             retry = false
             break;
-    
+
         default:
             break;
     }
@@ -160,7 +160,7 @@ function gameLoop() {
         }
         frameCount += 1
     }
-    
+
 
     requestAnimationFrame(gameLoop); // Call the next frame
 }
@@ -268,9 +268,11 @@ export function setHotbarSlot(stackID, slotNumber) {
     webSocket.send(JSON.stringify({ type: "setHotbar", stackID: stackID, hotbarSlot: slotNumber }))
 }
 export function getServers() {
-    webSocket.send(JSON.stringify({ type: "getRunningServers"}))
+    webSocket.send(JSON.stringify({ type: "getRunningServers" }))
 }
-
+export function setSLotNumber(number) {
+    webSocket.send(JSON.stringify({ type: "setActiveSlot", slot: number }))
+}
 function wait(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
