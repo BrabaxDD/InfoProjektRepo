@@ -1,8 +1,7 @@
 import GameObject from "./GameObject.js"
-import { hit } from "./game.js"
+import { hit, settings } from "./game.js"
 import { addTestInv } from "./game.js"
 import Inventory from "./GUI_elements/Inventory.js"
-import { font } from "./game.js"
 import { interact } from "./game.js"
 
 
@@ -32,8 +31,8 @@ export default class Player extends GameObject {
         this.hp = 999999
 
         
-        this.inventory = new Inventory(this.scene)
-        this.scene.addObject(this.inventory)
+        //this.inventory = new Inventory(this.scene)
+        //this.scene.addObject(this.inventory)
         
         console.log("my ID: ", this.playerID, " serverPlayerID: ", this.scene.mainPlayerID)
     }
@@ -89,7 +88,7 @@ export default class Player extends GameObject {
     }
 
     render() {
-        this.ctx.fillStyle = "blue";
+        this.ctx.fillStyle = settings.playerColor;
         this.ctx.fillRect(this.posx - (this.scene.camera.posx - this.scene.camera.cameraWidth / 2), this.posy - (this.scene.camera.posy - this.scene.camera.cameraHeight / 2), this.width, this.height);
 
 
@@ -104,14 +103,14 @@ export default class Player extends GameObject {
             const xHealth = heightHealth/2
             const yHealth = heightHealth/2
 
-            this.ctx.fillStyle = "green";
+            this.ctx.fillStyle = settings.primaryColor;
             this.ctx.globalAlpha = 0.4;
             this.ctx.fillRect(xHealth, yHealth, widthHealth, heightHealth);
             this.ctx.globalAlpha = 1;
 
             this.ctx.fillStyle = 'black';
 
-            this.ctx.font = font;
+            this.ctx.font = settings.font;
             this.ctx.textBaseline = 'middle';
             this.ctx.fillText(healthString, xHealth + widthHealth / 2, yHealth + heightHealth / 2);
         }

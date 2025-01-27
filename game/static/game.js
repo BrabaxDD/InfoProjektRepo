@@ -9,6 +9,7 @@ import Door from './Door.js';
 import Chest from './Chest.js';
 
 export const font = "20px Arial"
+export let settings = undefined
 
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
@@ -130,8 +131,18 @@ webSocketHost.onmessage = function(e) {
 const canvasWidth = canvas.width;
 const canvasHeight = canvas.height;
 
+//Startup Game
+starupGame()
 
-
+let factory = undefined
+let scene = undefined
+let loginID = undefined
+var frameCount = undefined
+var isDelayed = undefined
+var isStarted = undefined
+let canConnect = undefined
+let serverToConnect = undefined
+let retry = undefined
 
 window.addEventListener('keydown', (e) => {
     //keys[e.key] = true;
@@ -171,18 +182,21 @@ function gameLoop() {
     requestAnimationFrame(gameLoop); // Call the next frame
 }
 
+async function starupGame() {
+     settings = await loadSettings()
+    factory = new GameSceneFactory(canvas, null)
+    scene = factory.buildGameScene("mainMenu")
+    loginID = -100
+    frameCount = 0
+    isDelayed = false
+    isStarted = false
+    canConnect = false
+    serverToConnect = undefined
+    retry = true
+    // Start the game loop
+    gameLoop();
+}
 
-let factory = new GameSceneFactory(canvas, null)
-let scene = factory.buildGameScene("mainMenu")
-let loginID = -100
-var frameCount = 0
-var isDelayed = false
-var isStarted = false
-let canConnect = false
-let serverToConnect = undefined
-let retry = true
-// Start the game loop
-gameLoop();
 
 
 
@@ -197,6 +211,30 @@ canvas.addEventListener("mouseup", (event) => {
     scene.eventBus.triggerEvent("mouseDown", { status: false })
 });
 
+async function loadSettings() {
+    try {
+        const response = await fetch(`/static/settings/settings.txt`);
+        if (!response.ok) throw new Error("Network response was not ok");
+
+        const settingsText = await response.text();
+        const settings = settingsText
+            .trim() // Remove any leading/trailing whitespace
+            .split("\n") // Split into lines
+            .reduce((acc, line) => {
+                const [key, value] = line.split(":").map(part => part.trim()); // Split by colon and trim whitespace
+                if (key && value) {
+                    acc[key] = value; // Add key-value pair to the result object
+                }
+                return acc;
+            }, {}); // Initialize an empty object to accumulate results
+
+        console.log("Settings:", settings);
+        return settings;
+    } catch (error) {
+        console.error("Error loading settings file:", error);
+        return null;
+    }
+}
 export function switchScene(sceneToSwitch) {
     console.log("NEW SCENE")
     getServers()
@@ -212,6 +250,12 @@ function updateToServer() {
     webSocket.send(JSON.stringify({ type: "action", up: scene.gameObjects[scene.playerIndex].up, down: scene.gameObjects[scene.playerIndex].down, left: scene.gameObjects[scene.playerIndex].left, right: scene.gameObjects[scene.playerIndex].right, actiontype: "movement" }))
 }
 export function getServerID() { return serverID }
+
+function updateDOMServerName(name){
+    const textBox = document.querySelector('.text-box');
+    textBox.innerHTML = `<p>Current Server: ${name}</p>`;
+}
+
 export function loginToServer(serverName, loginID) {
     serverID = serverName
 
@@ -219,6 +263,7 @@ export function loginToServer(serverName, loginID) {
     console.log(scene.mainPlayerID)
     console.log("LOGGIN IN TO SERVER: " + serverName)
     webSocket.send(JSON.stringify({ type: "login", ID: loginID, serverID: serverName }))
+    updateDOMServerName(serverName)
     //    isStarted = true
 }
 

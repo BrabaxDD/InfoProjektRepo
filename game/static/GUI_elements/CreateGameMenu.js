@@ -2,6 +2,7 @@ import GameObject from "../GameObject.js";
 import ButtonGameObject from "./Button.js";
 import Dropdown from "./Dropdown.js";
 import CanvasTextInput from "./TextInput.js";
+import { settings } from "../game.js";
 
 export default class CreateGameMenu extends GameObject{
     constructor(scene){
@@ -48,7 +49,7 @@ export default class CreateGameMenu extends GameObject{
             this.hostButton.lockButton()
         }
         else{
-            this.hostButton.setButtonColorSecondary("yellow")
+            this.hostButton.setButtonColorSecondary(settings.secondaryColor)
             this.hostButton.unlockButton()
         }
         this.hostButton.render()

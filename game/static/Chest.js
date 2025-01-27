@@ -1,5 +1,4 @@
 import GameObject from "./GameObject.js"
-import { font } from "./game.js"
 
 export default class Chest extends GameObject {
     constructor(scene, ID) {

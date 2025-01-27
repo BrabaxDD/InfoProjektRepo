@@ -2,7 +2,7 @@ import GameObject from "../GameObject.js"
 import { loginToServer } from "../game.js"
 import { loginToServerHost } from "../game.js"
 import { generateItem } from "../game.js"
-import { font } from "../game.js"
+import { settings } from "../game.js"
 import Inventory from "./Inventory.js"
 
 export default class ButtonGameObject extends GameObject {
@@ -25,10 +25,11 @@ export default class ButtonGameObject extends GameObject {
         this.scene.eventBus.registerListner("optionSelected", this)
         this.is_hovered = false
         this.text = text
-        this.textSize = font
+        this.textSize = settings.font
         this.textColor = "black"
-        this.ButtonPrimaryColor = "green"
-        this.ButtonScondaryColor = "yellow"
+        this.ButtonPrimaryColor = settings.primaryColor
+        this.ButtonScondaryColor = settings.secondaryColor
+        console.log(this.ButtonPrimaryColor)
         this.eventObject = eventObject
         this.textOfLoginField = ""
         this.textOfCraftField = ""

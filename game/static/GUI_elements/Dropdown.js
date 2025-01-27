@@ -1,5 +1,5 @@
 
-import { font } from "../game.js"
+import { settings } from "../game.js"
 import GameObject from "../GameObject.js"
 
 
@@ -29,33 +29,22 @@ export default class Dropdown extends GameObject {
 
     // draw the dropdown menu
     render() {
-        // draw main dropdown button
-        this.ctx.fillStyle = "#f0f0ff";
-        this.ctx.fillRect(this.posx, this.posy, this.widthDrop, this.heightDrop);
-        this.ctx.strokeStyle = "#000";
-        this.ctx.strokeRect(this.posx, this.posy, this.widthDrop, this.heightDrop);
-
-        this.ctx.fillStyle = "#000";
-        this.ctx.font = font;
-        this.ctx.textBaseline = "middle";
-
-        const text = this.selectedIndex >= 0 ? this.options[this.selectedIndex] : this.defaultText;
-        this.ctx.fillText(text, this.posx + this.widthDrop / 2, this.posy + this.heightDrop / 2);
+        
 
         if (this.isOpen) {
             // draw dropdown options
             for (let i = 0; i < this.options.length; i++) {
                 const optiony = this.posy + (i + 1) * this.heightDrop + this.offsetY;
-                if (optiony >= this.posy + this.heightDrop) {
+                if (optiony >= this.posy ) {
                     //highlight hovered button
                     if (this.scene.mousex >= this.posx &&
                         this.scene.mousex <= this.posx + this.widthDrop &&
                         this.scene.mousey >= optiony &&
                         this.scene.mousey <= optiony + this.heightDrop) {
-                        this.ctx.fillStyle = "#f0f0ff"
+                        this.ctx.fillStyle = settings.dropDownPrimaryColor
                     }
                     else {
-                        this.ctx.fillStyle = "#f0f0f0"
+                        this.ctx.fillStyle = settings.dropDownSecondaryColor
                     }
                     this.ctx.fillRect(this.posx, optiony, this.widthDrop, this.heightDrop);
                     this.ctx.strokeStyle = "#000";
@@ -65,6 +54,19 @@ export default class Dropdown extends GameObject {
                 }
             }
         }
+
+        // draw main dropdown button
+        this.ctx.fillStyle = settings.dropDownPrimaryColor;
+        this.ctx.fillRect(this.posx, this.posy, this.widthDrop, this.heightDrop);
+        this.ctx.strokeStyle = "#000";
+        this.ctx.strokeRect(this.posx, this.posy, this.widthDrop, this.heightDrop);
+
+        this.ctx.fillStyle = "#000";
+        this.ctx.font = settings.font;
+        this.ctx.textBaseline = "middle";
+
+        const text = this.selectedIndex >= 0 ? this.options[this.selectedIndex] : this.defaultText;
+        this.ctx.fillText(text, this.posx + this.widthDrop / 2, this.posy + this.heightDrop / 2);
     }
 
     process() { }
@@ -99,7 +101,7 @@ export default class Dropdown extends GameObject {
                 // Check if an option was clicked
                 for (let i = 0; i < this.options.length; i++) {
                     const optionY = this.posy + (i + 1) * this.heightDrop + this.offsetY;
-                    if (optionY > this.posy + this.heightDrop &&
+                    if (optionY > this.posy - this.heightDrop/2 &&
                         mousex >= this.posx &&
                         mousex <= this.posx + this.widthDrop &&
                         mouseY >= optionY &&

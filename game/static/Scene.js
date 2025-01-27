@@ -3,6 +3,8 @@ import SceneSwitcher from "./SceneSwitcher.js"
 import TileMap from "./images/TileMap.js"
 import ImageLoader from "./images/ImageLoader.js"
 import Camera from "./Camera.js"
+import Inventory from "./GUI_elements/Inventory.js"
+import { settings } from "./game.js"
 
 export default class Scene {
     constructor(canvasObjectScene, mapName) {
@@ -28,6 +30,7 @@ export default class Scene {
         this.eventBus.registerListner("keydown", this)
         this.eventBus.registerListner("mouseDown", this)
         this.eventBus.registerListner("deletedGameObject", this)
+        this.eventBus.registerListner("createInv", this)
 
         this.canvas.addEventListener('mousemove', (event) => {
             // Get the bounding rectangle of the canvas
@@ -41,6 +44,8 @@ export default class Scene {
         this.keys = {}; // Object to track key states
         this.mouseDown = false
         this.mouseJustDown = false
+
+        this.playerInv = undefined
     }
 
     addObject(object) {
@@ -78,6 +83,7 @@ export default class Scene {
             //}
 
         }
+
     }
 
     process() {
@@ -127,6 +133,10 @@ export default class Scene {
     }
 
     event(eventString, eventObject) {
+        if (eventString == "createInv"){
+            const inv = new Inventory(this)
+            this.addObject(inv)
+        }
         if (eventString == "keydown") {
             this.keys[eventObject.key] = eventObject.status;
         }

@@ -1,0 +1,81 @@
+@layer demo {
+    .highlighted-text-shadow {
+      text-shadow:
+        /* regular text-shadow */
+        0 .15ch 15px var(--shadow),
+        /* text-shadow highlight */
+        0 -2px 0 var(--highlight);
+    }
+  }
+  
+  @layer demo.support {
+    :root {
+      --hue: 320; /* change me */
+      --bg: oklch(35% .3 var(--hue));
+      --text: oklch(85% .1 var(--hue));
+      --shadow: oklch(25% .2 var(--hue));
+      --highlight: oklch(98% .05 var(--hue));
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+    }
+  
+    html {
+      block-size: 100%;
+      background-color: var(--bg);
+      color: var(--text);
+    }
+  
+    body {
+      min-block-size: 100%;
+      font-family: system-ui, sans-serif;
+  
+      display: grid;
+      place-content: center;
+      gap: 10vh;
+    }
+    
+    h1 {
+      font-size: 15vi;
+      letter-spacing: -.15ch;
+      line-height: .75;
+    }
+    
+    small {
+      max-inline-size: 30ch;
+    }
+  }
+
+  
+  canvas {
+    border: 1px solid black;
+    display: block;
+    margin: auto;
+}
+
+/* Container to arrange elements */
+.container {
+  display: flex; /* Arrange child elements horizontally */
+  align-items: center; /* Center items vertically */
+  justify-content: flex-start; /* Align items to the left */
+  padding: 10px;
+}
+
+/* Style for the text box */
+.text-box {
+  border: 1px solid black; /* Add a border to the box */
+  padding: 10px; /* Add space inside the box */
+  margin-right: 20px; /* Space between the box and the canvas */
+  background-color: #f0f0f000; /* Light gray background */
+  max-width: 200px; /* Optional: limit the width of the box */
+  align-self: flex-start; /* Align the text box to the top of the container */
+}
+
+/* Style for the canvas */
+canvas {
+  border: 1px solid black; /* Add a border to the canvas */
+  display: block; /* Ensure it's treated as a block-level element */
+  margin: auto; /* Center within the container space */
+}

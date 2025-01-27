@@ -1,5 +1,5 @@
 import GameObject from "../GameObject.js"
-import { font } from "../game.js"
+import { settings } from "../game.js"
 import { sendCombineStacksRequest } from "../game.js"
 import InventorySlot from "./InventorySlot.js"
 import { addTestInv } from "../game.js"
@@ -44,7 +44,7 @@ export default class Inventory extends GameObject {
             }
         );
 
-        this.textSize = font
+        this.textSize = settings.font
 
         this.imageSize = 64
 
@@ -373,15 +373,15 @@ export default class Inventory extends GameObject {
     render() {
         if (this.isVisible) {
             if (!this.isHovered) {
-                this.ctx.fillStyle = "green";
+                this.ctx.fillStyle = settings.primaryColor;
             }
             else {
-                this.ctx.fillStyle = "yellow"
+                this.ctx.fillStyle = settings.secondaryColor;
             }
             this.ctx.globalAlpha = 0.4;
             this.ctx.fillRect(this.posx, this.posy, this.invWidth, this.invHeight);
             this.ctx.globalAlpha = 1;
-            this.ctx.fillStyle = "red";
+            this.ctx.fillStyle = settings.inventoryTopColor;
             this.ctx.globalAlpha = 0.4;
             this.ctx.fillRect(this.posx, this.posy - this.textBoderSize, this.invWidth, this.textBoderSize);
             this.ctx.globalAlpha = 1;
@@ -401,12 +401,12 @@ export default class Inventory extends GameObject {
             this.craftButton.render()
 
             if (this.getSelected().length != 1) {
-                this.splitButton.setButtonColorPrimary("grey")
-                this.equipButton.setButtonColorPrimary("grey")
+                this.splitButton.setButtonColorPrimary(settings.buttonsLockedColor)
+                this.equipButton.setButtonColorPrimary(settings.buttonsLockedColor)
             }
             else {
-                this.splitButton.setButtonColorPrimary("green")
-                this.equipButton.setButtonColorPrimary("green")
+                this.splitButton.setButtonColorPrimary(settings.primaryColor)
+                this.equipButton.setButtonColorPrimary(settings.primaryColor)
             }
             this.splitButton.render()
             this.equipButton.render()
@@ -416,7 +416,7 @@ export default class Inventory extends GameObject {
 
         //render hotbar
         this.ctx.globalAlpha = 0.4;
-        this.ctx.fillStyle = "green";
+        this.ctx.fillStyle = settings.primaryColor;
         this.ctx.fillRect(this.canvas.width / 2 - this.hotbarWidth / 2, this.canvas.height - this.hotbarHeight, this.hotbarWidth, this.hotbarHeight)
         this.ctx.globalAlpha = 1;
 
@@ -428,7 +428,7 @@ export default class Inventory extends GameObject {
             this.hotbarButtons[i].render()
         }
 
-        this.ctx.fillStyle = "yellow"
+        this.ctx.fillStyle = settings.secondaryColor
         this.ctx.strokeRect(this.hotbarButtons[this.hotbarSlot].posx - 5, this.hotbarButtons[this.hotbarSlot].posy - 5, this.imageSize + 10, this.imageSize + 10);
     }
 

@@ -1,5 +1,5 @@
 import GameObject from "../GameObject.js"
-import { font } from "../game.js"
+import { settings } from "../game.js"
 import { sendCombineStacksRequest } from "../game.js"
 import InventorySlot from "./InventorySlot.js"
 import { addTestInv } from "../game.js"
@@ -36,7 +36,7 @@ export default class EquippedInventory extends GameObject {
 
     render() {
         this.ctx.globalAlpha = 0.4;
-        this.ctx.fillSytle = "green"
+        this.ctx.fillSytle = settings.primaryColor
         this.ctx.fillRect(this.posx, this.posy, this.invWidth, this.invHeight);
         this.ctx.globalAlpha = 1;
 
