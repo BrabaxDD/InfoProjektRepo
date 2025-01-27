@@ -13,3 +13,12 @@ wallColor : #000000
 cullinDistance : 600
 
 font : 20px Arial
+
+forwardKey : w
+leftKey : a
+rightKey : d
+backKey : s
+
+invKey : e
+hitKey : h
+interactKey : g

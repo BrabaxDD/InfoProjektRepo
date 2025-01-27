@@ -38,7 +38,7 @@ export default class Player extends GameObject {
     }
 
     process() {
-        if (this.scene.keys['ArrowUp']) {
+        if (this.scene.keys[settings.forwardKey]) {
             this.up = true
             if (this.posy > 0) { }
             //this.posy -= this.speed; // Move up
@@ -47,7 +47,7 @@ export default class Player extends GameObject {
         }
 
 
-        if (this.scene.keys['ArrowDown']) {
+        if (this.scene.keys[settings.backKey]) {
             this.down = true
             if (this.posy < this.canvas.height - this.height) {
                 //this.posy += this.speed; // Move down
@@ -56,14 +56,14 @@ export default class Player extends GameObject {
             this.down = false
         }
 
-        if (this.scene.keys['ArrowLeft']) {
+        if (this.scene.keys[settings.leftKey]) {
             this.left = true
             if (this.posx > 0) {
                 //this.posx -= this.speed; // Move left
             }
         } else { this.left = false }
 
-        if (this.scene.keys['ArrowRight']) {
+        if (this.scene.keys[settings.rightKey]) {
             this.right = true
             if (this.posx < this.canvas.width - this.width) {
                 //this.posx += this.speed; // Move right
@@ -73,12 +73,12 @@ export default class Player extends GameObject {
             this.right = false
         }
 
-        if (this.scene.keys['h'] == true && this.onCooldown <= 0) {
+        if (this.scene.keys[settings.hitKey] == true && this.onCooldown <= 0) {
             hit()
             //addTestInv()
             this.onCooldown = 10
         }
-        if (this.scene.keys['g'] == true) {
+        if (this.scene.keys[settings.interactKey] == true) {
             interact()
         }
 

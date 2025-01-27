@@ -454,15 +454,15 @@ export default class Inventory extends GameObject {
         else {
             this.isHovered = false
         }
-        if (this.scene.keys["e"] == true) {
+        if (this.scene.keys[settings.invKey] == true) {
             this.isVisible = true
         }
         else {
             this.isVisible = false
         }
-        if (this.scene.keys["t"] == true) {
+        /*if (this.scene.keys["t"] == true) {
             addTestInv()
-        }
+        }*/
 
         if (this.isVisible) {
             //update Positions
