@@ -10,6 +10,7 @@ import Inventory from "./GUI_elements/Inventory.js";
 import { getServerID } from "./game.js"
 import Dropdown from "./GUI_elements/Dropdown.js"
 import CreateGameMenu from "./GUI_elements/CreateGameMenu.js";
+import CraftingMenu from "./GUI_elements/CraftingMenu.js";
 
 export default class GameSceneFactory extends GameObject {
     constructor(canvas, keys, sceneObject) {
@@ -31,11 +32,19 @@ export default class GameSceneFactory extends GameObject {
                 let button2 = new ButtonGameObject(this.canvas.width / 2 - 100, this.canvas.height / 3 * 2 - 28, 200, 56, "switchScene", { sceneToSwitch: "optionsMenu" }, scene, "Options")
                 scene.addObject(button2)
 
+                const recipes = [
+                                                { name: "Wood", image: "wooden-stick.png" },
+                                                { name: "Stone Axe (not working)", image: "stone-axe.png" },
+                                                { name: "Iron Sword (not working)", image: "iron-sword.png" },
+                                            ];
+                const inv = new CraftingMenu(scene,50, 50, recipes)
+                scene.addObject(inv)
 
                 //let HostTest = new ButtonGameObject(this.canvas.width/3*2-100,this.canvas.height/5 -28,200,56,"loginToServerHost",{},scene,"Login as host ((test for message))")
               //scene.addObject(HostTest)
 
                 //console.log(button.eventObject.sceneToSwitch)
+
                 break;
 
             case "optionsMenu":
@@ -53,6 +62,7 @@ export default class GameSceneFactory extends GameObject {
                 let craftinput = new CanvasTextInput(scene, this.canvas.width - 200, this.canvas.height - 30, 200, 30, "textInputFinishedCraftField")
                 scene.addObject(craftinput)
                 scene.eventBus.triggerEvent("createInv")
+                scene.eventBus.triggerEvent("createCraftMenu")
                 
                 //let tree = new Tree(scene)
                 //scene.addObject(tree)

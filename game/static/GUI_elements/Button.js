@@ -117,6 +117,12 @@ export default class ButtonGameObject extends GameObject {
             else {
             }
         }
+        if (this.eventString == "increaseQuantity"){
+            this.scene.eventBus.triggerEvent("increaseQuantity", eventObject)
+        }
+        if (this.eventString == "decreaseQuantity"){
+            this.scene.eventBus.triggerEvent("decreaseQuantity", eventObject)
+        }
         if (this.eventString == "equipItem") {
             this.scene.eventBus.triggerEvent("equipItem", eventObject)
         }

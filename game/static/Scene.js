@@ -5,6 +5,7 @@ import ImageLoader from "./images/ImageLoader.js"
 import Camera from "./Camera.js"
 import Inventory from "./GUI_elements/Inventory.js"
 import { settings } from "./game.js"
+import CraftingMenu from "./GUI_elements/CraftingMenu.js"
 
 export default class Scene {
     constructor(canvasObjectScene, mapName) {
@@ -31,6 +32,7 @@ export default class Scene {
         this.eventBus.registerListner("mouseDown", this)
         this.eventBus.registerListner("deletedGameObject", this)
         this.eventBus.registerListner("createInv", this)
+        this.eventBus.registerListner("createCraftMenu", this)
 
         this.canvas.addEventListener('mousemove', (event) => {
             // Get the bounding rectangle of the canvas
@@ -46,6 +48,7 @@ export default class Scene {
         this.mouseJustDown = false
 
         this.playerInv = undefined
+        this.craftMenu = undefined
     }
 
     addObject(object) {
@@ -79,9 +82,20 @@ export default class Scene {
         let len = this.gameObjects.length;
         for (let i = 0; i < len; i++) {
             //if (i != this.playerIndex && i!= this.tileMapIndex){
+            if (this.gameObjects[i] === this.inv || this.gameObjects[i] === this.craftMenu) {
+                continue
+            }
             this.gameObjects[i].render();
             //}
 
+        }
+
+        if (this.playerInv != undefined) {
+            this.playerInv.render()
+        }
+
+        if (this.craftMenu != undefined) {
+            this.craftMenu.render()
         }
 
     }
@@ -133,9 +147,19 @@ export default class Scene {
     }
 
     event(eventString, eventObject) {
-        if (eventString == "createInv"){
-            const inv = new Inventory(this)
-            this.addObject(inv)
+        if (eventString == "createInv") {
+            this.playerInv = new Inventory(this)
+            this.addObject(this.playerInv)
+
+        }
+        if (eventString == "createCraftMenu") {
+            const recipes = [
+                { name: "Wood", image: "wooden-stick.png" },
+                { name: "Stone Axe", image: "stone-axe.png" },
+                { name: "Iron Sword", image: "iron-sword.png" },
+            ];
+            this.craftMenu = new CraftingMenu(this, 50, 50, recipes)
+            this.addObject(this.craftMenu)
         }
         if (eventString == "keydown") {
             this.keys[eventObject.key] = eventObject.status;

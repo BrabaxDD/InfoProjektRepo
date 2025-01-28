@@ -22,3 +22,4 @@ backKey : s
 invKey : e
 hitKey : h
 interactKey : g
+craftMenuKey : c
