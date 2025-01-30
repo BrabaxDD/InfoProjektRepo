@@ -1,5 +1,7 @@
 primaryColor : #3CAEA3
 secondaryColor : #20639B
+primaryColorSelected :rgb(30, 109, 101)
+alertColor :rgb(247, 143, 25)
 dropDownPrimaryColor :rgb(101, 101, 211)
 dropDownSecondaryColor :rgb(60, 60, 197)
 inventoryTopColor : #F6D55C

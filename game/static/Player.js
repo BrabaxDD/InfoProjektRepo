@@ -85,6 +85,10 @@ export default class Player extends GameObject {
         if (this.onCooldown >= 0){
             this.onCooldown -= 1
         }
+
+        if (this.scene.keys["t"] == true) {
+            this.scene.eventBus.triggerEvent("alert", {text:"Player triggered alert"})
+        }
     }
 
     render() {

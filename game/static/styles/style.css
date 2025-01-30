@@ -55,27 +55,41 @@
     margin: auto;
 }
 
-/* Container to arrange elements */
-.container {
-  display: flex; /* Arrange child elements horizontally */
-  align-items: center; /* Center items vertically */
-  justify-content: flex-start; /* Align items to the left */
-  padding: 10px;
-}
+    /* Main container (Two-column layout) */
+    .container {
+      display: flex;
+      justify-content: center; /* Centers content horizontally */
+      align-items: center; /* Aligns items in the center vertically */
+      height: 100vh; /* Full screen height */
+      padding: 20px;
+  }
 
-/* Style for the text box */
-.text-box {
-  border: 1px solid black; /* Add a border to the box */
-  padding: 10px; /* Add space inside the box */
-  margin-right: 20px; /* Space between the box and the canvas */
-  background-color: #f0f0f000; /* Light gray background */
-  max-width: 200px; /* Optional: limit the width of the box */
-  align-self: flex-start; /* Align the text box to the top of the container */
-}
+  /* Stacks text boxes vertically */
+  .text-box-container {
+      display: flex;
+      flex-direction: column;
+      margin-right: 20px; /* Space between text and canvas */
+  }
 
-/* Style for the canvas */
-canvas {
-  border: 1px solid black; /* Add a border to the canvas */
-  display: block; /* Ensure it's treated as a block-level element */
-  margin: auto; /* Center within the container space */
-}
+  /* Individual text boxes */
+  .text-box {
+      background-color: #91636300;
+      padding: 10px;
+      margin-bottom: 20px; /* Space between text boxes */
+      border-radius: 5px;
+      width: 250px; /* Fixed width for alignment */
+      text-align: center;
+  }
+
+  /* Keeps the canvas centered to the right */
+  .canvas-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-grow: 1;
+  }
+
+  /* Makes the canvas responsive */
+  canvas {
+      max-width: 100%;
+  }

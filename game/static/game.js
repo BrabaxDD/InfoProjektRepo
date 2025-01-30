@@ -45,6 +45,8 @@ webSocket.onmessage = function(e) {
 
     if (data.type == "connectionRefused") {
         console.log("connectionRefused")
+        scene.eventBus.triggerEvent("alert", {text: "Connection to Server refused"})
+        updateDOMConnectionStatus("Connection Failed")
         retry = true
         return
     }
@@ -52,6 +54,7 @@ webSocket.onmessage = function(e) {
         console.log("connectionAccepted")
         isStarted = true
         scene.eventBus.triggerEvent("switchScene", { sceneToSwitch: 2 })
+        updateDOMConnectionStatus("Connected")
         return
     }
 
@@ -247,13 +250,31 @@ export function switchScene(sceneToSwitch) {
 
 function updateToServer() {
     //console.log("Server update")
-    webSocket.send(JSON.stringify({ type: "action", up: scene.gameObjects[scene.playerIndex].up, down: scene.gameObjects[scene.playerIndex].down, left: scene.gameObjects[scene.playerIndex].left, right: scene.gameObjects[scene.playerIndex].right, actiontype: "movement" }))
+    if (!webSocket.readyState == webSocket.OPEN){
+        updateDOMConnectionStatus("Disconnected")
+        return
+    }
+    
+    webSocket.send(JSON.stringify({ type: "action", 
+        up: scene.gameObjects[scene.playerIndex].up,
+        down: scene.gameObjects[scene.playerIndex].down,
+        left: scene.gameObjects[scene.playerIndex].left,
+        right: scene.gameObjects[scene.playerIndex].right,
+        actiontype: "movement" }))
+    
+        
+
 }
 export function getServerID() { return serverID }
 
 function updateDOMServerName(name){
-    const textBox = document.querySelector('.text-box');
+    const textBox = document.querySelectorAll('.text-box')[0];
     textBox.innerHTML = `<p>Current Server: ${name}</p>`;
+}
+
+function updateDOMConnectionStatus(status){
+    const textBox = document.querySelectorAll('.text-box')[1];
+    textBox.innerHTML = `<p>Current Status of connection: ${status}</p>`;
 }
 
 export function loginToServer(serverName, loginID) {
@@ -327,3 +348,8 @@ export function setSLotNumber(number) {
 function wait(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
+/*window.addEventListener("error", function (e) {
+    alert("Error occurred: " + e.error.message);
+    scene.eventBus.triggerEvent("alert", { text: e.error.message })
+    return false;
+ })*/

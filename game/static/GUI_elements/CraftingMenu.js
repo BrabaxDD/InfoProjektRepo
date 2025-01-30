@@ -24,7 +24,7 @@ export default class CraftingMenu {
 
         this.recipeButtons = [];
         this.craftButton = new ButtonGameObject(
-            400, 300, 100, 50, "CraftRequest", {}, this.scene, "Craft"
+            this.posx + this.menuWidth/2 - 50, this.posy + this.menuHeight - 50, 100, 50, "CraftRequest", {}, this.scene, "Craft"
         );
         this.quantityButtons = {
             increase: new ButtonGameObject(this.posx+(200-50), this.posy, 50, 50, "increaseQuantity", {}, this.scene, "+"),
@@ -32,6 +32,8 @@ export default class CraftingMenu {
         };
 
         this.setupRecipeButtons();
+
+        this.selectedButton = undefined
     }
 
     setupRecipeButtons() {
@@ -92,10 +94,10 @@ export default class CraftingMenu {
             // Render craft button
             this.craftButton.render();
 
-            // Render selected recipe
+            /* Render selected recipe
             if (this.selectedRecipe) {
                 ctx.fillText(`Selected: ${this.selectedRecipe.name}`, 250, 50);
-            }
+            }*/
         }
     }
 
@@ -103,14 +105,33 @@ export default class CraftingMenu {
         if (eventString === "click_on_canvas") {
             this.recipeButtons.forEach(button => {
                 if (button.is_hovered) {
-                    this.selectedRecipe = button.eventObject;
+                    if (this.selectedButton == undefined){
+                        button.setButtonColorPrimary(settings.primaryColorSelected)
+                        this.selectedButton = button
+                        this.selectedRecipe = button.eventObject;
+                    }
+                    else if (this.selectedButton == button) {
+                        button.setButtonColorPrimary(settings.primaryColor)
+                        this.selectedButton = undefined
+                        this.selectedRecipe = undefined
+                    }
+                    else if (this.selectedButton != button){
+                        this.selectedButton.setButtonColorPrimary(settings.primaryColor)
+                        button.setButtonColorPrimary(settings.primaryColorSelected)
+                        this.selectedButton = button
+                        this.selectedRecipe = button.eventObject;
+                    }
                 }
             });
 
-            if (this.craftButton.is_hovered && this.selectedRecipe) {
-                console.log(`Crafting ${this.craftQuantity} of ${this.selectedRecipe.name}`);
-                for (let i = 0; i<this.craftQuantity; i++){
-                    this.scene.eventBus.triggerEvent("CraftRequest", { recipe: this.selectedRecipe.name })
+            if (this.craftButton.is_hovered) {
+                if (this.selectedRecipe){
+                    console.log(`Crafting ${this.craftQuantity} of ${this.selectedRecipe.name}`);
+                    for (let i = 0; i<this.craftQuantity; i++){
+                        this.scene.eventBus.triggerEvent("CraftRequest", { recipe: this.selectedRecipe.name })
+                    }
+                }else{
+                     console.log(`Nothing selected to craft`)
                 }
             }
         }

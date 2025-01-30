@@ -6,11 +6,13 @@ import Camera from "./Camera.js"
 import Inventory from "./GUI_elements/Inventory.js"
 import { settings } from "./game.js"
 import CraftingMenu from "./GUI_elements/CraftingMenu.js"
+import ErrorHandler from "./ErrorHandler.js"
 
 export default class Scene {
     constructor(canvasObjectScene, mapName) {
         this.eventBus = new EventBus()
         this.sceneSwitcher = new SceneSwitcher(this)
+        this.errorHandler = new ErrorHandler(this)
         this.gameObjects = []
         this.toAdd = []
         this.toDelete = []
@@ -33,6 +35,7 @@ export default class Scene {
         this.eventBus.registerListner("deletedGameObject", this)
         this.eventBus.registerListner("createInv", this)
         this.eventBus.registerListner("createCraftMenu", this)
+        this.eventBus.registerListner("eventBoxClicked", this)
 
         this.canvas.addEventListener('mousemove', (event) => {
             // Get the bounding rectangle of the canvas
@@ -61,7 +64,7 @@ export default class Scene {
             console.log(object)
             console.log(object.playerID)
             console.log("Main Player ID: " + this.mainPlayerID + "  Player Index in Game objects: " + this.playerIndex)
-            console.log(this.gameObjects)
+            //console.log(this.gameObjects)
             this.camera.setLockedPlayer(object)
         }
     }
@@ -112,7 +115,7 @@ export default class Scene {
             this.gameObjects = this.gameObjects.filter(el =>
                 this.toDelete.indexOf(el) < 0
             );
-            console.log(this.gameObjects)
+           // console.log(this.gameObjects)
             this.toDelete = [];
 
             const length = this.gameObjects.length
@@ -121,7 +124,7 @@ export default class Scene {
                     this.playerIndex = i
                 }
             }
-            console.log(this.gameObjects)
+            //console.log(this.gameObjects)
         }
 
         let len_add = this.toAdd.length
@@ -175,18 +178,21 @@ export default class Scene {
         }
         if (eventString == "deletedGameObject") {
             console.log("Trying to Delete Object: " + eventObject.ID + "  " + eventObject.type)
-            console.log(eventObject)
+            //console.log(eventObject)
             const length = this.gameObjects.length
             for (let i = 0; i <= length; i++) {
                 if (this.gameObjects[i].ID === eventObject.ID) {
-                    console.log("OBJECT TO DELETE: ID: ", eventObject.ID, " Type: ", eventObject.type)
-                    console.log("OBJECT THAT IS DELETED: Typ: " + this.gameObjects[i].constructor.name)
+                    //console.log("OBJECT TO DELETE: ID: ", eventObject.ID, " Type: ", eventObject.type)
+                    //console.log("OBJECT THAT IS DELETED: Typ: " + this.gameObjects[i].constructor.name)
                     this.removeObject(this.gameObjects[i])
-                    console.log(this.gameObjects[i])
+                    //console.log(this.gameObjects[i])
                     break
                 }
             }
 
+        }
+        if (eventString == "eventBoxClicked"){
+            this.removeObject(eventObject.box)
         }
     }
 

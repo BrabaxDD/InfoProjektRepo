@@ -59,8 +59,6 @@ export default class GameSceneFactory extends GameObject {
             case 2:
                 scene = new Scene(this.canvas, getServerID() + ".txt");
                 console.log("log: trying to get Tile Map with name" + getServerID() + ".txt")
-                let craftinput = new CanvasTextInput(scene, this.canvas.width - 200, this.canvas.height - 30, 200, 30, "textInputFinishedCraftField")
-                scene.addObject(craftinput)
                 scene.eventBus.triggerEvent("createInv")
                 scene.eventBus.triggerEvent("createCraftMenu")
                 
