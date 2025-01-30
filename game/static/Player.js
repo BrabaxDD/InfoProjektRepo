@@ -1,8 +1,7 @@
 import GameObject from "./GameObject.js"
-import { hit, settings } from "./game.js"
-import { addTestInv } from "./game.js"
+import { settings } from "./game.js"
 import Inventory from "./GUI_elements/Inventory.js"
-import { interact } from "./game.js"
+import { websocketObject } from "./game.js"
 
 
 export default class Player extends GameObject {
@@ -74,12 +73,12 @@ export default class Player extends GameObject {
         }
 
         if (this.scene.keys[settings.hitKey] == true && this.onCooldown <= 0) {
-            hit()
+            websocketObject.hit()
             //addTestInv()
             this.onCooldown = 10
         }
         if (this.scene.keys[settings.interactKey] == true) {
-            interact()
+            websocketObject.interact()
         }
 
         if (this.onCooldown >= 0){

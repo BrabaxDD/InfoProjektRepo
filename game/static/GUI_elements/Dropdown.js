@@ -1,5 +1,5 @@
 
-import { settings } from "../game.js"
+import { settings, websocketObject } from "../game.js"
 import GameObject from "../GameObject.js"
 
 
@@ -12,7 +12,6 @@ export default class Dropdown extends GameObject {
         this.scene.eventBus.registerListner("click_on_canvas", this)
         this.scene.eventBus.registerListner("runningServers", this)
         this.scene.eventBus.registerListner("wheel", this)
-
 
         this.options = options; 
         this.defaultText = defaultText
@@ -73,11 +72,14 @@ export default class Dropdown extends GameObject {
 
     // handle click events
     event(eventString, eventObject) {
+        console.log(eventString)
         if (eventString == "runningServers") {
+            console.log("Caught running servers")
             this.options = eventObject
         }
 
         if (eventString == "wheel") {
+            
             if (!this.isOpen) {
                 return
             }

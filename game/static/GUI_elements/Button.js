@@ -1,9 +1,7 @@
 import GameObject from "../GameObject.js"
-import { loginToServer } from "../game.js"
-import { loginToServerHost } from "../game.js"
-import { generateItem } from "../game.js"
 import { settings } from "../game.js"
 import Inventory from "./Inventory.js"
+import { websocketObject} from "../game.js"
 
 export default class ButtonGameObject extends GameObject {
     constructor(posx, posy, widthButton, heightButton, eventString, eventObject, scene, text) {
@@ -29,7 +27,6 @@ export default class ButtonGameObject extends GameObject {
         this.textColor = "black"
         this.ButtonPrimaryColor = settings.primaryColor
         this.ButtonScondaryColor = settings.secondaryColor
-        console.log(this.ButtonPrimaryColor)
         this.eventObject = eventObject
         this.textOfLoginField = ""
         this.textOfCraftField = ""
@@ -86,17 +83,17 @@ export default class ButtonGameObject extends GameObject {
         if (this.eventString == "loginToServer") {
             if (this.serverToLogin != undefined) {
                 let loginID = Math.floor(Math.random() * 3000000001)
-                loginToServer(this.serverToLogin, loginID)
+                websocketObject.loginToServer(this.serverToLogin, loginID)
             }
 
         }
         if (this.eventString == "loginToServerHost") {
             if (this.textOfLoginField != "") {
-                loginToServerHost(this.textOfLoginField)
+                websocketObject.loginToServerHost(this.textOfLoginField)
             }
         }
         if (this.eventString == "generateItem") {
-            generateItem(eventObject)
+            websocketObject.generateItem(eventObject)
         }
         if (this.eventString == "combineStacks") {
             this.scene.eventBus.triggerEvent("combineStacks", eventObject)

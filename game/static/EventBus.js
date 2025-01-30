@@ -8,6 +8,9 @@ export default class EventBus {
         } else {
             this.listners[eventString] = [listnerObject]
         }
+        if (eventString == "runningServers"){
+            console.log("ON HAWDM")
+        }
     }
     triggerEvent(eventString, eventObject) {
         if (eventString in this.listners) {

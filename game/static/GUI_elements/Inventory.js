@@ -1,13 +1,10 @@
 import GameObject from "../GameObject.js"
 import { settings } from "../game.js"
-import { sendCombineStacksRequest } from "../game.js"
 import InventorySlot from "./InventorySlot.js"
-import { addTestInv } from "../game.js"
 import ButtonGameObject from "./Button.js"
-import { sendCraftingRequest } from "../game.js"
 import EquippedInventory from "./EquippedInventory.js"
-import { setHotbarSlot } from "../game.js"
-import { setSLotNumber } from "../game.js"
+import { websocketObject } from "../game.js"
+
 export default class Inventory extends GameObject {
     constructor(scene) {
         super(scene)
@@ -212,7 +209,7 @@ export default class Inventory extends GameObject {
 
             console.log(sel)
             console.log("Das war sel")
-            setHotbarSlot(sel[0].itemStack.stackID, this.hotbarSlot)
+            websocketObject.setHotbarSlot(sel[0].itemStack.stackID, this.hotbarSlot)
         }
         if (eventString == "wheel") {
             if (eventObject < 40) {
@@ -220,19 +217,19 @@ export default class Inventory extends GameObject {
                 if (this.hotbarSlot >= 6) {
                     this.hotbarSlot = 0
                 }
-                setSLotNumber(this.hotbarSlot)
+                websocketObject.setSLotNumber(this.hotbarSlot)
             }
             else if (eventObject > 40) {
                 this.hotbarSlot -= 1
                 if (this.hotbarSlot < 0) {
                     this.hotbarSlot = 5
                 }
-                setSLotNumber(this.hotbarSlot)
+                websocketObject.setSLotNumber(this.hotbarSlot)
             }
         }
     }
     craft(recipe) {
-        sendCraftingRequest(recipe)
+        websocketObject.sendCraftingRequest(recipe)
     }
 
     //regenerates the inventory slot buttons according to the content of the inv 
@@ -342,7 +339,7 @@ export default class Inventory extends GameObject {
         len = selected.length
         if (selected.length == 2) {
             console.log(selected)
-            sendCombineStacksRequest(selected[0].itemStack.stackID, selected[1].itemStack.stackID)
+            websocketObject.sendCombineStacksRequest(selected[0].itemStack.stackID, selected[1].itemStack.stackID)
         }
 
 

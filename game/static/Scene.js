@@ -23,6 +23,8 @@ export default class Scene {
         this.camera = new Camera(this)
 
 
+        this.eventBus.registerListner("keydown", this)
+
         // Initialize the image loader
         this.imageLoader = new ImageLoader();
 

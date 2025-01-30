@@ -1,10 +1,7 @@
 import GameObject from "../GameObject.js"
 import { settings } from "../game.js"
-import { sendCombineStacksRequest } from "../game.js"
 import InventorySlot from "./InventorySlot.js"
-import { addTestInv } from "../game.js"
 import ButtonGameObject from "./Button.js"
-import { sendCraftingRequest } from "../game.js"
 
 export default class EquippedInventory extends GameObject {
     constructor(scene, inv, posx, posy) {

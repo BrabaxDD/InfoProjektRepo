@@ -5,13 +5,12 @@ import GameObject from "./GameObject.js";
 import CanvasTextInput from "./GUI_elements/TextInput.js";
 import TileMap from "./images/TileMap.js";
 import Tree from "./tree.js"
-import { getMainPlayerID } from "./game.js";
+import { websocketObject } from "./game.js";
 import Inventory from "./GUI_elements/Inventory.js";
-import { getServerID } from "./game.js"
 import Dropdown from "./GUI_elements/Dropdown.js"
 import CreateGameMenu from "./GUI_elements/CreateGameMenu.js";
 import CraftingMenu from "./GUI_elements/CraftingMenu.js";
-
+import WebsocketGameObjectClient from "./WebsocketGameObject.js";
 export default class GameSceneFactory extends GameObject {
     constructor(canvas, keys, sceneObject) {
         super(sceneObject)
@@ -57,8 +56,8 @@ export default class GameSceneFactory extends GameObject {
 
             case "game":
             case 2:
-                scene = new Scene(this.canvas, getServerID() + ".txt");
-                console.log("log: trying to get Tile Map with name" + getServerID() + ".txt")
+                scene = new Scene(this.canvas, websocketObject.getServerID() + ".txt");
+                console.log("log: trying to get Tile Map with name" + websocketObject.getServerID() + ".txt")
                 scene.eventBus.triggerEvent("createInv")
                 scene.eventBus.triggerEvent("createCraftMenu")
                 
