@@ -122,6 +122,14 @@ export default class WebsocketGameObjectClient {
 
 
         }
+
+        this.webSocket.onclose = (event) => {
+            this.scene.eventBus.triggerEvent("alert", {text:"Connection To Server Disrupted"})
+            DOM.updateDOMConnectionStatus("Connection Failed")
+            console.log('WebSocket closed:', event);
+            console.log(`Code: ${event.code}, Reason: ${event.reason}`);
+        };
+
         this.webSocketHost.onmessage =  (e) => {
             const data = JSON.parse(e.data)
             switch (data.type) {
@@ -134,6 +142,13 @@ export default class WebsocketGameObjectClient {
                     break;
             }
         }
+
+        this.webSocketHost.onclose = (event) => {
+            this.scene.eventBus.triggerEvent("alert", {text:"Connection To Amind Socket Disrupted"})
+            DOM.updateDOMConnectionStatus("Connection Failed")
+            console.log('WebSocket closed:', event);
+            console.log(`Code: ${event.code}, Reason: ${event.reason}`);
+        };
     }
 
     updateToServer() {

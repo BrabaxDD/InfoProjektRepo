@@ -11,7 +11,7 @@ export default class ErrorHandler extends GameObject{
 
     event(eventString, eventObject){
         if (eventString == "alert"){
-            let b = new AlertBox(this.scene, this.scene.canvas.width/2 - 100 , this.scene.canvas.height/2 - 100 , 200, 200, eventObject.text)
+            let b = new AlertBox(this.scene, this.scene.canvas.width/2 - 200 , this.scene.canvas.height/2 - 100 , 400, 200, eventObject.text)
             this.scene.addObject(b)
         }
 

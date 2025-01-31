@@ -32,9 +32,10 @@ export default class AlertBox extends GameObject{
 
     render(){
         this.ctx.fillStyle = settings.alertColor;
-        this.ctx.globalAlpha = 0.4;
-        this.ctx.fillRect(this.posx, this.posy, this.widthBox, this.heightBox);
         this.ctx.globalAlpha = 1;
+        this.ctx.fillRect(this.posx, this.posy, this.widthBox, this.heightBox);
+        this.ctx.fillStyle = "black";
+        this.ctx.strokeRect(this.posx, this.posy, this.widthBox, this.heightBox);
 
         this.ctx.fillStyle = "black";
         this.ctx.textBaseline = 'middle';
