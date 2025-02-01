@@ -72,6 +72,16 @@ export default class ButtonGameObject extends GameObject {
 
         this.ctx.fillText(this.text, this.posx + (this.widhtButton / 2), this.posy + (this.heightButton / 2));
         //this.ctx.strokeText(text, this.posx+(this.widhtButton / 2), this.posy+(this.heightButton / 2));
+
+        //Pop up next to recipie selection
+        if (this.eventString == "selectRecipe" && this.is_hovered) {
+            this.ctx.fillStyle = this.ButtonPrimaryColor;
+            this.ctx.fillRect(this.posx + this.widhtButton, this.posy - this.heightButton / 2 , this.widhtButton, 2*this.heightButton)
+            this.ctx.strokeStyle = this.textColor;
+            this.ctx.fillStyle = this.textColor;
+            this.ctx.fillText(this.eventObject.requires, this.posx + (3*this.widhtButton / 2), this.posy );
+            this.ctx.fillText("-> "+this.eventObject.produces, this.posx + (3*this.widhtButton / 2), this.posy + (this.heightButton));
+        }
     }
 
     buttonPresed(eventObject) {

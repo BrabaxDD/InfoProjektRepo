@@ -156,7 +156,7 @@ export default class Scene {
         }
         if (eventString == "createCraftMenu") {
             const recipes = [
-                { name: "Wood", image: "wooden-stick.png" },
+                { name: "Wood", image: "wooden-stick.png", requires:"7 Sticks", produces: "3 Wood"},
                 { name: "Stone Axe", image: "stone-axe.png" },
                 { name: "Iron Sword", image: "iron-sword.png" },
             ];
