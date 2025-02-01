@@ -75,8 +75,7 @@ export default class Inventory extends GameObject {
         this.combineSelectedButton = new ButtonGameObject(this.posx, this.posy + this.invHeight, this.invWidth, 40, "combineStacks", {}, this.scene, "COMBINE SELECTED")
         this.selectAllButton = new ButtonGameObject(this.posx, this.posy + this.invHeight + 40, this.invWidth, 40, "selectAll", {}, this.scene, "ALL")
         this.splitButton = new ButtonGameObject(this.posx, this.posy + this.invHeight + 80, this.invWidth, 40, "splitStack", {}, this.scene, "SPLIT SELECTED STACK")
-        this.craftButton = new ButtonGameObject(this.posx, this.posy + this.invHeight + 120, this.invWidth, 40, "CraftRequest", {}, this.scene, "Craft")
-        this.equipButton = new ButtonGameObject(this.posx, this.posy + this.invHeight + 160, this.invWidth, 40, "equipItem", {}, this.scene, "To Hotbar")
+        this.equipButton = new ButtonGameObject(this.posx, this.posy + this.invHeight + 120, this.invWidth, 40, "equipItem", {}, this.scene, "To Hotbar")
     }
 
 
@@ -94,11 +93,9 @@ export default class Inventory extends GameObject {
         };
 
         this.images = await this.loadAllImages(this.imagesIndex)
-        console.log(this.images)
         this.updateButtons(this.content)
 
         this.equippedinv = new EquippedInventory(this.scene, this, this.posx + this.invWidth, this.posy - this.textBoderSize)
-        console.log(this.images);
 
     }
 
@@ -125,7 +122,6 @@ export default class Inventory extends GameObject {
         // Wait for all the images to be loaded
         await Promise.all(loadPromises);
 
-        console.log(images);
 
         return images
     }
@@ -133,9 +129,6 @@ export default class Inventory extends GameObject {
 
     event(eventString, eventObject) {
         if (eventString == "inventory") {
-            console.log("eventObject: " + eventObject.items)
-
-
             this.content = eventObject.items.filter(el =>
                 eventObject.hotbar.indexOf(el) < 0
             );
@@ -150,8 +143,6 @@ export default class Inventory extends GameObject {
                 }
             }
 
-            console.log(this.content)
-            console.log(this.hotbar)
 
             this.content = eventObject.items
 
@@ -178,10 +169,11 @@ export default class Inventory extends GameObject {
                 this.splitStack(sel[0].itemStack)
             }
         }
+        /*
         if (eventString == "craftsticks") {
             this.craft("Sticks")
             console.log("attempting to craft sticks")
-        }
+        }*/
         if (eventString == "CraftRequest") {
             this.craft(eventObject.recipe)
             console.log("attempting to craft: " + eventObject.recipe)
@@ -201,14 +193,8 @@ export default class Inventory extends GameObject {
             this.content = this.content.filter(el =>
                 this.hotbar.indexOf(el) < 0
             );
-            console.log(this.content)
-            console.log("Das war Content")
-            console.log(this.hotbar)
-            console.log("Das War die Hotbar")
             this.updateButtons()
 
-            console.log(sel)
-            console.log("Das war sel")
             websocketObject.setHotbarSlot(sel[0].itemStack.stackID, this.hotbarSlot)
         }
         if (eventString == "wheel") {
@@ -256,8 +242,6 @@ export default class Inventory extends GameObject {
                 image = this.images[c]
             }
             this.hotbarButtons[i] = new InventorySlot(this.scene, this.canvas.width / 2 - this.hotbarWidth / 2 + this.borderWidth + this.imageSize * i + this.bufferSize * (i), this.canvas.height - (this.imageSize + this.bufferSize), this.imageSize, image, this.hotbar[i])
-            console.log(this.hotbarButtons[i])
-            console.log("Neuer Hotbar buton plaziert")
         }
     }
 
@@ -279,21 +263,16 @@ export default class Inventory extends GameObject {
         this.splitButton.posx = this.posx
         this.splitButton.posy = this.posy + this.invHeight + 80
 
-        this.craftButton.posx = this.posx
-        this.craftButton.posy = this.posy + this.invHeight + 120
-
         this.equipButton.posx = this.posx
-        this.equipButton.posy = this.posy + this.invHeight + 160
+        this.equipButton.posy = this.posy + this.invHeight + 120
 
         this.equippedinv.posx = this.posx + this.invWidth
         this.equippedinv.posy = this.posy
     }
 
     printInventory() {
-        let leng = this.content.length
-        for (let i = 0; i <= leng; i++) {
-            console.log(this.content[i])
-        }
+        console.log(this.content)
+        console.log(this.hotbar)
     }
 
     areButtonsHovered() {
@@ -338,7 +317,6 @@ export default class Inventory extends GameObject {
         let s = {}
         len = selected.length
         if (selected.length == 2) {
-            console.log(selected)
             websocketObject.sendCombineStacksRequest(selected[0].itemStack.stackID, selected[1].itemStack.stackID)
         }
 
@@ -350,13 +328,10 @@ export default class Inventory extends GameObject {
                 s[selected[i].itemStack.itemID] = selected[i].itemStack.size
             }
         }
-        console.log(s)
-        console.log(buttonsCopy)
         len = s.length
 
         const keys = Object.keys(s)
         keys.forEach(element => {
-            console.log(keys)
             this.content.push({ itemID: element, size: s[element], tags: {} })
 
         });
@@ -395,7 +370,6 @@ export default class Inventory extends GameObject {
 
             this.combineSelectedButton.render()
             this.selectAllButton.render()
-            this.craftButton.render()
 
             if (this.getSelected().length != 1) {
                 this.splitButton.setButtonColorPrimary(settings.buttonsLockedColor)
@@ -477,7 +451,6 @@ export default class Inventory extends GameObject {
             this.combineSelectedButton.process()
             this.selectAllButton.process()
             this.splitButton.process()
-            this.craftButton.process()
             this.equipButton.process()
         }
     }

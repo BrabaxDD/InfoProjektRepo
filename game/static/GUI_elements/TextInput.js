@@ -49,7 +49,6 @@ export default class CanvasTextInput extends GameObject{
 
         if (event.key === 'Enter') {
             this.storedText = this.inputText; 
-            console.log('Stored Text:', this.storedText);
             //this.inputText = ''; 
             this.scene.eventBus.triggerEvent(this.eventString,{storedText:this.storedText})
         } else if (event.key === 'Backspace') {

@@ -63,8 +63,6 @@ export default class Scene {
             this.mainPlayerID = object.playerID
             this.eventBus.triggerEvent("playerSet", this.mainPlayerID)
             this.playerIndex = this.gameObjects.length + this.toAdd.length - 1
-            console.log(object)
-            console.log(object.playerID)
             console.log("Main Player ID: " + this.mainPlayerID + "  Player Index in Game objects: " + this.playerIndex)
             //console.log(this.gameObjects)
             this.camera.setLockedPlayer(object)
@@ -113,7 +111,6 @@ export default class Scene {
 
 
         if (this.toDelete.length != 0) {
-            console.log(this.toDelete)
             this.gameObjects = this.gameObjects.filter(el =>
                 this.toDelete.indexOf(el) < 0
             );
@@ -179,7 +176,6 @@ export default class Scene {
 
         }
         if (eventString == "deletedGameObject") {
-            console.log("Trying to Delete Object: " + eventObject.ID + "  " + eventObject.type)
             //console.log(eventObject)
             const length = this.gameObjects.length
             for (let i = 0; i <= length; i++) {

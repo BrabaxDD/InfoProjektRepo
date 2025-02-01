@@ -78,7 +78,6 @@ export default class ButtonGameObject extends GameObject {
         //this.scene.eventBus.triggerEvent("test",null)
         if (this.eventString == "switchScene") {
             this.scene.eventBus.triggerEvent("switchScene", eventObject)
-            console.log(eventObject.sceneToSwitch)
         }
         if (this.eventString == "loginToServer") {
             if (this.serverToLogin != undefined) {

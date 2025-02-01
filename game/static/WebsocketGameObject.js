@@ -22,18 +22,11 @@ export default class WebsocketGameObjectClient {
     }
 
     setScene(scene) {
-        console.log(scene);
         this.scene = scene;
-        console.log("diese Scene: " + this.scene);
-        console.log("EventBus der Scene:")
-        console.log(this.scene.eventBus)
         this.webSocket.onmessage = (e) => {
             const data = JSON.parse(e.data)
-            //console.log("")
             if (data.type == "runningservers") {
-                console.log("running servers:")
-                console.log(data.servers)
-                console.log(this.scene)
+                console.log("running servers: " + data.servers)
                 this.scene.eventBus.triggerEvent("runningServers", data.servers)
                 return
             }
@@ -41,13 +34,10 @@ export default class WebsocketGameObjectClient {
             if (data.type == "deletedGameObject") {
 
                 this.scene.eventBus.triggerEvent("deletedGameObject", { ID: data.entityID, type: data.entityType })
-                console.log(data)
                 return
             }
 
             if (data.type == "InventoryUpdate") {
-                console.log(e)
-                console.log(data)
                 this.scene.eventBus.triggerEvent("inventory", data.Inventory)
                 return
             }
@@ -57,7 +47,6 @@ export default class WebsocketGameObjectClient {
                 console.log("connectionRefused")
                 this.scene.eventBus.triggerEvent("alert", { text: "Connection to Server refused" })
                 DOM.updateDOMConnectionStatus("Connection Failed")
-                this.scene.eventBus.triggerEvent("alert", {text:"Connection failed"})
                 return
             }
             if (data.type == "connectionAccepted") {
@@ -75,12 +64,11 @@ export default class WebsocketGameObjectClient {
 
             if (data.type == "healthUpdate") {
                 this.scene.eventBus.triggerEvent("healthUpdate", { type: data.entityType, ID: data.ID, HP: data.HP })
-                console.log("Health update IST DAAAA " + data.HP)
+                console.log("Health Update Received: " + data.HP)
                 return
             }
             if (data.type == "wallInformation") {
                 this.scene.eventBus.triggerEvent("wallInformation", { wallID: data.wallID, posx2: data.posx2, posy2: data.posy2, thickness: data.thickness })
-
                 return
             }
 
@@ -112,7 +100,6 @@ export default class WebsocketGameObjectClient {
                     return
                 }
                 if (data.entityType == "Chest") {
-                    console.log("Neue Kist?")
                     const c = new Chest(scene, data.ID)
                     this.scene.addObject(c)
                     return
@@ -135,7 +122,6 @@ export default class WebsocketGameObjectClient {
             switch (data.type) {
                 case "serverReadyForPlayer":
                     this.canConnect = true
-                    console.log(this.canConnect)
                     break;
 
                 default:
@@ -144,7 +130,7 @@ export default class WebsocketGameObjectClient {
         }
 
         this.webSocketHost.onclose = (event) => {
-            this.scene.eventBus.triggerEvent("alert", {text:"Connection To Amind Socket Disrupted"})
+            this.scene.eventBus.triggerEvent("alert", {text:"Connection To Admin Socket Disrupted"})
             DOM.updateDOMConnectionStatus("Connection Failed")
             console.log('WebSocket closed:', event);
             console.log(`Code: ${event.code}, Reason: ${event.reason}`);
@@ -152,7 +138,6 @@ export default class WebsocketGameObjectClient {
     }
 
     updateToServer() {
-        //console.log("Server update")
         if (!this.webSocket.readyState == this.webSocket.OPEN){
             DOM.updateDOMConnectionStatus("Disconnected")
             return
@@ -178,9 +163,7 @@ export default class WebsocketGameObjectClient {
     loginToServer(serverName, loginID) {
         this.serverID = serverName
     
-        console.log("PLAYER ID:")
-        console.log(this.scene.mainPlayerID)
-        console.log("LOGGIN IN TO SERVER: " + serverName)
+        console.log("PLAYER ID: " + this.scene.mainPlayerID + "  LOGGIN IN TO SERVER: " + serverName)
         this.webSocket.send(JSON.stringify({ type: "login", ID: loginID, serverID: this.serverID }))
         DOM.updateDOMServerName(serverName)
         //    isStarted = true
@@ -196,7 +179,6 @@ export default class WebsocketGameObjectClient {
         while (this.canConnect == false) {
                 console.log("Trying to connect ...")
             await this.wait(1000)
-            console.log("Can connect?" + this.canConnect)
         }
         this.loginToServer(serverName, this.loginID)
     }
@@ -224,8 +206,6 @@ export default class WebsocketGameObjectClient {
     interact() {
         console.log("interact")
         this.webSocket.send(JSON.stringify({ type: "action", actiontype: "interact" }))
-    
-    
     }
     addTestInv() {
         this.scene.eventBus.triggerEvent("inventory", { "items": [{ "size": 99, "itemID": "Stick", "tags": [] }, { itemID: "Stick", size: 3, tags: {} }, { itemID: 2, size: 5, tags: {} }, { itemID: "Stick", size: 5, tags: {} }, { itemID: "Stick", size: 8, tags: {} }, { "size": 99, "itemID": "Stick", "tags": [] }, { itemID: "Stick", size: 3, tags: {} }, { itemID: 2, size: 5, tags: {} }, { itemID: "Stick", size: 5, tags: {} }, { itemID: "Stick", size: 8, tags: {} }] })

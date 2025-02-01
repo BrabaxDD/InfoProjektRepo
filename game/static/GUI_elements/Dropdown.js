@@ -72,9 +72,7 @@ export default class Dropdown extends GameObject {
 
     // handle click events
     event(eventString, eventObject) {
-        console.log(eventString)
         if (eventString == "runningServers") {
-            console.log("Caught running servers")
             this.options = eventObject
         }
 
@@ -123,7 +121,6 @@ export default class Dropdown extends GameObject {
 
                 ) {
                     this.isOpen = true;
-                    console.log("THTHAAHT")
                 }
             }
 

@@ -21,7 +21,6 @@ export default class Chest extends GameObject {
                 console.error(`Error preloading tile image: ${fileName}`, error);
             }
         );
-        console.log("Neue Kist wir generiert ")
     }
 
     render() {
@@ -51,7 +50,6 @@ export default class Chest extends GameObject {
             this.posy = eventObject.posy
             if (this.isToRender == false) {
                 this.isToRender = true
-                console.log("Chest can now be seen")
             }
         }
     }

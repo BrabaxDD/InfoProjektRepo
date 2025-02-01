@@ -124,8 +124,6 @@ export default class Player extends GameObject {
             this.posy = eventObject.posy
         }
         if (eventString == "healthUpdate" && eventObject.type == "Player" && eventObject.ID == this.playerID) {
-            console.log("HEALTH UUPDATATET" + eventObject.HP)
-            console.log(eventObject)
             this.hp = eventObject.HP
         }
     }

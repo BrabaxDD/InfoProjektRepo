@@ -123,10 +123,8 @@ async function loadSettings() {
 
 export function switchScene(sceneToSwitch) {
     websocketObject.getServers()
-    console.log("NEW SCENE")
     scene = factory.buildGameScene(sceneToSwitch)
     websocketObject.setScene(scene)
-    console.log("Nach der neuen szeene")
     //webSocketHost = new WebSocket('ws://' + window.location.host + '/game/server')
     //webSocket = new WebSocket('ws://' + window.location.host + '/game/login')
 

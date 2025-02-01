@@ -24,7 +24,6 @@ export default class EquippedInventory extends GameObject {
         let image = this.parentInventory.dummyItem
 
         let c = this.focusedStack.itemID; // Get the item ID
-        console.log("parentINV: " + this.parentInventory)
         if (this.parentInventory.images[c]) {
             image = this.parentInventory.images[c];
         }

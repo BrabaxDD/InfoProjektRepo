@@ -57,7 +57,6 @@ export default class GameSceneFactory extends GameObject {
             case "game":
             case 2:
                 scene = new Scene(this.canvas, websocketObject.getServerID() + ".txt");
-                console.log("log: trying to get Tile Map with name" + websocketObject.getServerID() + ".txt")
                 scene.eventBus.triggerEvent("createInv")
                 scene.eventBus.triggerEvent("createCraftMenu")
                 
@@ -77,14 +76,13 @@ export default class GameSceneFactory extends GameObject {
                 
             case "waitForLogin":
             case 4:
-                console.log("Create WaitFOrLogin")
                 scene = new Scene(this.canvas, "")
                 let but = new ButtonGameObject(this.canvas.width / 2 - 100, this.canvas.height / 3 - 28, 200, 56, "", {}, scene, "WAIT A BIT")
                 scene.addObject(but)
 
                 break;
         }
-        console.log(scene.gameObjects)
+        //console.log(scene.gameObjects)
         return scene
     }
 

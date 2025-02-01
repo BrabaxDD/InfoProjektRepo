@@ -18,7 +18,6 @@ export default class InventorySlot extends GameObject {
 
         this.isSelected = false
         this.itemStack = itemStack
-        console.log(this.image)
     }
 
     process() {
@@ -64,7 +63,6 @@ export default class InventorySlot extends GameObject {
 
     event(eventString, eventObject) {
         if (eventString == "click_on_canvas" && this.isHovered) {
-            console.log("clicked on itemstack: " + this.itemStack)
             this.isSelected = !this.isSelected
         }
     }

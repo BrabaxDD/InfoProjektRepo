@@ -130,9 +130,9 @@ export default class CraftingMenu {
                     for (let i = 0; i<this.craftQuantity; i++){
                         this.scene.eventBus.triggerEvent("CraftRequest", { recipe: this.selectedRecipe.name })
                     }
-                }else{
+                }/*else{
                      console.log(`Nothing selected to craft`)
-                }
+                }*/
             }
         }
 
