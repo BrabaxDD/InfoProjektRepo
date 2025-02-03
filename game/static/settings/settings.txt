@@ -6,7 +6,7 @@ dropDownPrimaryColor :rgb(101, 101, 211)
 dropDownSecondaryColor :rgb(60, 60, 197)
 inventoryTopColor : #F6D55C
 buttonsLockedColor : #CCCCCC
-invStackSizeColor :rgb(224, 118, 56) 
+invStackSizeColor :hsl(22, 73.00%, 54.90%) 
 textInputFocusedColor : #1A319F
 textInputUnFocusedColor : #000000
 playerColor : blue
@@ -15,6 +15,8 @@ wallColor : #000000
 cullinDistance : 600
 
 font : 20px Arial
+textLineHeight : 20
+textBoxColor :hsl(108, 54.60%, 38.00%)
 
 forwardKey : w
 leftKey : a

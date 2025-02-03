@@ -88,6 +88,7 @@ async function starupGame() {
     websocketObject = new WebsocketGameObjectClient(undefined)
     factory = new GameSceneFactory(canvas, null)
     scene = factory.buildGameScene("mainMenu")
+    DOM.updateDOMControls()
 
     
     // Start the game loop

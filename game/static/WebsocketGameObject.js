@@ -111,13 +111,13 @@ export default class WebsocketGameObjectClient {
         }
 
         this.webSocket.onclose = (event) => {
-            this.scene.eventBus.triggerEvent("alert", {text:"Connection To Server Disrupted"})
+            this.scene.eventBus.triggerEvent("alert", { text: "Connection To Server Disrupted" })
             DOM.updateDOMConnectionStatus("Connection Failed")
             console.log('WebSocket closed:', event);
             console.log(`Code: ${event.code}, Reason: ${event.reason}`);
         };
 
-        this.webSocketHost.onmessage =  (e) => {
+        this.webSocketHost.onmessage = (e) => {
             const data = JSON.parse(e.data)
             switch (data.type) {
                 case "serverReadyForPlayer":
@@ -130,7 +130,7 @@ export default class WebsocketGameObjectClient {
         }
 
         this.webSocketHost.onclose = (event) => {
-            this.scene.eventBus.triggerEvent("alert", {text:"Connection To Admin Socket Disrupted"})
+            this.scene.eventBus.triggerEvent("alert", { text: "Connection To Admin Socket Disrupted" })
             DOM.updateDOMConnectionStatus("Connection Failed")
             console.log('WebSocket closed:', event);
             console.log(`Code: ${event.code}, Reason: ${event.reason}`);
@@ -138,51 +138,53 @@ export default class WebsocketGameObjectClient {
     }
 
     updateToServer() {
-        if (!this.webSocket.readyState == this.webSocket.OPEN){
+        if (!this.webSocket.readyState == this.webSocket.OPEN) {
             DOM.updateDOMConnectionStatus("Disconnected")
             return
         }
-        
-        this.webSocket.send(JSON.stringify({ type: "action", 
+
+        this.webSocket.send(JSON.stringify({
+            type: "action",
             up: this.scene.gameObjects[this.scene.playerIndex].up,
             down: this.scene.gameObjects[this.scene.playerIndex].down,
             left: this.scene.gameObjects[this.scene.playerIndex].left,
             right: this.scene.gameObjects[this.scene.playerIndex].right,
-            actiontype: "movement" }))
-        
-            
-    
+            actiontype: "movement"
+        }))
+
+
+
     }
 
     getServerID() { return this.serverID }
-    
+
     sleep(ms) {
         return new Promise(resolve => setTimeout(resolve, ms));
     }
 
     loginToServer(serverName, loginID) {
         this.serverID = serverName
-    
+
         console.log("PLAYER ID: " + this.scene.mainPlayerID + "  LOGGIN IN TO SERVER: " + serverName)
         this.webSocket.send(JSON.stringify({ type: "login", ID: loginID, serverID: this.serverID }))
         DOM.updateDOMServerName(serverName)
         //    isStarted = true
     }
-    
+
     async loginToServerHost(serverName) {
         console.log("SETTING UP NEW SERVER: " + serverName)
         this.webSocketHost.send(JSON.stringify({ type: "startserver", serverID: serverName }))
         let d = new Date()
         this.loginID = Math.floor(Math.random() * 3000000001)
         this.scene.eventBus.triggerEvent("switchScene", { sceneToSwitch: "waitForLogin" })
-    
+
         while (this.canConnect == false) {
-                console.log("Trying to connect ...")
+            console.log("Trying to connect ...")
             await this.wait(1000)
         }
         this.loginToServer(serverName, this.loginID)
     }
-    
+
     generateItem(object) {
         console.log("Generating Item: " + object)
         this.webSocket.send(JSON.stringify({ type: "generateItem", itemID: object }))
@@ -194,11 +196,11 @@ export default class WebsocketGameObjectClient {
     sendCraftingRequest(recipe) {
         this.webSocket.send(JSON.stringify({ type: "craft", recipe: recipe }))
     }
-    
+
     getMainPlayerID() {
         return this.scene.mainPlayerID
     }
-    
+
     hit() {
         console.log("HIT")
         this.webSocket.send(JSON.stringify({ type: "action", actiontype: "hit", direction: 100 }))
@@ -210,7 +212,7 @@ export default class WebsocketGameObjectClient {
     addTestInv() {
         this.scene.eventBus.triggerEvent("inventory", { "items": [{ "size": 99, "itemID": "Stick", "tags": [] }, { itemID: "Stick", size: 3, tags: {} }, { itemID: 2, size: 5, tags: {} }, { itemID: "Stick", size: 5, tags: {} }, { itemID: "Stick", size: 8, tags: {} }, { "size": 99, "itemID": "Stick", "tags": [] }, { itemID: "Stick", size: 3, tags: {} }, { itemID: 2, size: 5, tags: {} }, { itemID: "Stick", size: 5, tags: {} }, { itemID: "Stick", size: 8, tags: {} }] })
     }
-    
+
     setHotbarSlot(stackID, slotNumber) {
         console.log("sending new Hotbarslot to Server: stackID:" + stackID + "  into slot number:" + slotNumber)
         this.webSocket.send(JSON.stringify({ type: "setHotbar", stackID: stackID, hotbarSlot: slotNumber }))

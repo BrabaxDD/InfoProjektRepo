@@ -56,6 +56,9 @@ export default class Dropdown extends GameObject {
 
         // draw main dropdown button
         this.ctx.fillStyle = settings.dropDownPrimaryColor;
+        if (this.isHovered){
+            this.ctx.fillStyle = settings.dropDownSecondaryColor;
+        }
         this.ctx.fillRect(this.posx, this.posy, this.widthDrop, this.heightDrop);
         this.ctx.strokeStyle = "#000";
         this.ctx.strokeRect(this.posx, this.posy, this.widthDrop, this.heightDrop);
@@ -68,7 +71,16 @@ export default class Dropdown extends GameObject {
         this.ctx.fillText(text, this.posx + this.widthDrop / 2, this.posy + this.heightDrop / 2);
     }
 
-    process() { }
+    process() { 
+        if (this.scene.mousex > this.posx && this.scene.mousex < this.posx + this.widthDrop &&
+            this.scene.mousey > this.posy && this.scene.mousey < this.posy + this.heightDrop) {
+            this.isHovered = true
+
+        }
+        else {
+            this.isHovered = false
+        }
+    }
 
     // handle click events
     event(eventString, eventObject) {
