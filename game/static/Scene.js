@@ -9,10 +9,11 @@ import CraftingMenu from "./GUI_elements/CraftingMenu.js"
 import ErrorHandler from "./ErrorHandler.js"
 
 export default class Scene {
-    constructor(canvasObjectScene, mapName) {
+    constructor(canvasObjectScene, mapName, audioHandler) {
         this.eventBus = new EventBus()
         this.sceneSwitcher = new SceneSwitcher(this)
         this.errorHandler = new ErrorHandler(this)
+        this.audioHandler = audioHandler
         this.gameObjects = []
         this.toAdd = []
         this.toDelete = []
@@ -38,6 +39,7 @@ export default class Scene {
         this.eventBus.registerListner("createInv", this)
         this.eventBus.registerListner("createCraftMenu", this)
         this.eventBus.registerListner("eventBoxClicked", this)
+        this.eventBus.registerListner("buttonPressed", this)
 
         this.canvas.addEventListener('mousemove', (event) => {
             // Get the bounding rectangle of the canvas
@@ -152,8 +154,8 @@ export default class Scene {
         if (eventString == "createInv") {
             this.playerInv = new Inventory(this)
             this.addObject(this.playerInv)
-
         }
+
         if (eventString == "createCraftMenu") {
             const recipes = [
                 { name: "Wood", image: "wooden-stick.png", requires:"7 Sticks", produces: "3 Wood"},
@@ -163,9 +165,11 @@ export default class Scene {
             this.craftMenu = new CraftingMenu(this, 50, 50, recipes)
             this.addObject(this.craftMenu)
         }
+
         if (eventString == "keydown") {
             this.keys[eventObject.key] = eventObject.status;
         }
+
         if (eventString == "mouseDown") {
             if (this.mouseDown == false && eventObject.status == true) {
                 this.eventBus.triggerEvent("mouseJustDown", { status: true })
@@ -173,8 +177,8 @@ export default class Scene {
             }
 
             this.mouseDown = eventObject.status
-
         }
+
         if (eventString == "deletedGameObject") {
             //console.log(eventObject)
             const length = this.gameObjects.length
@@ -189,8 +193,14 @@ export default class Scene {
             }
 
         }
+
         if (eventString == "eventBoxClicked"){
             this.removeObject(eventObject.box)
+        }
+
+        if (eventString == "buttonPressed"){
+            this.audioHandler.play("Click")
+            console.log("Click")
         }
     }
 

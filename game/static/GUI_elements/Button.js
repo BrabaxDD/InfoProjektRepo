@@ -85,7 +85,8 @@ export default class ButtonGameObject extends GameObject {
     }
 
     buttonPresed(eventObject) {
-        //this.scene.eventBus.triggerEvent("test",null)
+        this.scene.eventBus.triggerEvent("buttonPressed")
+
         if (this.eventString == "switchScene") {
             this.scene.eventBus.triggerEvent("switchScene", eventObject)
         }
@@ -131,6 +132,9 @@ export default class ButtonGameObject extends GameObject {
         }
         if (this.eventString == "equipItem") {
             this.scene.eventBus.triggerEvent("equipItem", eventObject)
+        }
+        if (this.eventString == "refreshServers"){
+            websocketObject.getServers()
         }
 
     }

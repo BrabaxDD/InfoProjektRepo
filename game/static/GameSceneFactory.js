@@ -12,9 +12,10 @@ import CreateGameMenu from "./GUI_elements/CreateGameMenu.js";
 import CraftingMenu from "./GUI_elements/CraftingMenu.js";
 import WebsocketGameObjectClient from "./WebsocketGameObject.js";
 export default class GameSceneFactory extends GameObject {
-    constructor(canvas, keys, sceneObject) {
+    constructor(canvas, keys, sceneObject, audioHandler) {
         super(sceneObject)
         this.canvas = canvas
+        this.audioHandler = audioHandler
         this.keys = keys
 
     }
@@ -24,7 +25,7 @@ export default class GameSceneFactory extends GameObject {
         switch (wichSceneToRender) {
             case "mainMenu":
             case 0:
-                scene = new Scene(this.canvas, "");
+                scene = new Scene(this.canvas, "",this.audioHandler);
                 let button = new ButtonGameObject(this.canvas.width / 2 - 100, this.canvas.height / 3 - 28, 200, 56, "switchScene", { sceneToSwitch: "hostOrLogin" }, scene, "Play")
                 scene.addObject(button)
 
@@ -48,7 +49,7 @@ export default class GameSceneFactory extends GameObject {
 
             case "optionsMenu":
             case 1:
-                scene = new Scene(this.canvas, "");
+                scene = new Scene(this.canvas, "",this.audioHandler);
                 let b2 = new ButtonGameObject(this.canvas.width / 2 - 100, this.canvas.height / 3 * 2 - 28, 200, 56, "switchScene", { sceneToSwitch: 0 }, scene, "Back To Main Menu")
                 scene.addObject(b2)
 
@@ -56,7 +57,7 @@ export default class GameSceneFactory extends GameObject {
 
             case "game":
             case 2:
-                scene = new Scene(this.canvas, websocketObject.getServerID() + ".txt");
+                scene = new Scene(this.canvas, websocketObject.getServerID() + ".txt",this.audioHandler);
                 scene.eventBus.triggerEvent("createInv")
                 scene.eventBus.triggerEvent("createCraftMenu")
                 
@@ -69,20 +70,27 @@ export default class GameSceneFactory extends GameObject {
 
             case "hostOrLogin":
             case 3:
-                scene = new Scene(this.canvas, "");
+                scene = new Scene(this.canvas, "",this.audioHandler);
+
+                let b3 = new ButtonGameObject(10, 10, 200, 56, "switchScene", { sceneToSwitch: 0 }, scene, "Back To Main Menu")
+                scene.addObject(b3)
+
+                let b4 =  new ButtonGameObject(this.canvas.width / 4 + 110, this.canvas.height / 2 - 28, 56, 56, "refreshServers", {}, scene, "\\")
+                scene.addObject(b4)
+
                 let menu = new CreateGameMenu(scene)
                 scene.addObject(menu)
                 break;
                 
             case "waitForLogin":
-            case 4:
-                scene = new Scene(this.canvas, "")
-                let but = new ButtonGameObject(this.canvas.width / 2 - 100, this.canvas.height / 3 - 28, 200, 56, "", {}, scene, "WAIT A BIT")
-                scene.addObject(but)
+                case 4:
+                    scene = new Scene(this.canvas, "",this.audioHandler)
+                    let but = new ButtonGameObject(this.canvas.width / 2 - 100, this.canvas.height / 3 - 28, 200, 56, "", {}, scene, "WAIT A BIT")
+                    scene.addObject(but)
 
                 break;
+                //console.log(scene.gameObjects)
         }
-        //console.log(scene.gameObjects)
         return scene
     }
 

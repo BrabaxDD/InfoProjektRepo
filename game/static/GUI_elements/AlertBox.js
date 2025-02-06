@@ -48,6 +48,7 @@ export default class AlertBox extends GameObject{
         if (eventString == "click_on_canvas"){
             if(this.isHovered){
                  this.scene.eventBus.triggerEvent("eventBoxClicked", {box:this})
+                 this.scene.eventBus.triggerEvent("buttonPressed")
             }
         }
     }

@@ -9,6 +9,7 @@ import Wall from "./Wall.js";
 import Door from './Door.js';
 import Chest from './Chest.js';
 import DOMHandler from './DOMHandler.js';
+import AudioHandler from './sounds/AudioHandler.js';
 
 export const font = "20px Arial"
 export let settings = undefined
@@ -32,6 +33,7 @@ let scene = undefined
 let frameCount = 0
 let isDelayed = false
 export const DOM = new DOMHandler()
+const audioHandler = new AudioHandler()
 let isStarted = false
 export let websocketObject = undefined
 
@@ -86,7 +88,7 @@ function gameLoop() {
 async function starupGame() {
     settings = await loadSettings()
     websocketObject = new WebsocketGameObjectClient(undefined)
-    factory = new GameSceneFactory(canvas, null)
+    factory = new GameSceneFactory(canvas, null, undefined, audioHandler)
     scene = factory.buildGameScene("mainMenu")
     DOM.updateDOMControls()
 

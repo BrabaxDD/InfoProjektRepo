@@ -7,12 +7,12 @@ export default class DOMHandler {
 
     updateDOMServerName(name) {
         const textBox = document.querySelectorAll('.text-box')[0];
-        textBox.innerHTML = `<p>Current Server: ${name}</p>`;
+        textBox.innerHTML = `<p>Current Server:<b> ${name}</b></p>`;
     }
 
     updateDOMConnectionStatus(status) {
         const textBox = document.querySelectorAll('.text-box')[1];
-        textBox.innerHTML = `<p>Current Status of connection: ${status}</p>`;
+        textBox.innerHTML = `<p>Current Status of connection: <b>${status}</b></p>`;
     }
 
     updateDOMControls() {

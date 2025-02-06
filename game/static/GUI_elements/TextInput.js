@@ -30,6 +30,7 @@ export default class CanvasTextInput extends GameObject{
             if (this.scene.mousex >  this.posx && this.scene.mousex < this.posx + this.widthBox && 
                 this.scene.mousey >  this.posy && this.scene.mousey < this.posy + this.heightBox){
                 this.isFocused = true;
+                this.scene.eventBus.triggerEvent("buttonPressed")
                 
             } 
             else{

@@ -22,6 +22,7 @@ export default class CreateGameMenu extends GameObject{
 
         this.describeHost = new TextBox(this.scene, this.canvas.width/4*3-100, this.canvas.height/4, 200,
             "To Create and Join to a new Server Enter a name into the text field below and press \"Host\"")
+
     }   
 
     process(){

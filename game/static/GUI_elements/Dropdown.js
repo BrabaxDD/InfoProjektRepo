@@ -121,6 +121,7 @@ export default class Dropdown extends GameObject {
                         this.selectedIndex = i;
                         console.log(`Option selected: ${this.options[i]}`);
                         this.scene.eventBus.triggerEvent("optionSelected", this.options[i])
+                        this.scene.eventBus.triggerEvent("buttonPressed")
                         break;
                     }
                 }
@@ -133,6 +134,7 @@ export default class Dropdown extends GameObject {
 
                 ) {
                     this.isOpen = true;
+                    this.scene.eventBus.triggerEvent("buttonPressed")
                 }
             }
 
