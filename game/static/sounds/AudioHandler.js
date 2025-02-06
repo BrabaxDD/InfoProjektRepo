@@ -1,16 +1,18 @@
 export default class AudioHandler {
     constructor() {
         this.cache = new Map();
+        this.onLoop = false
         this.allAudios = {
             Ruby: "Ruby_22.wav",
-            Click: "click.wav"
+            Click: "click.wav",
+            Walk : "GrassFootsteps.wav"
         };
 
         this.loadAllSounds().then(() => {
             console.log("All sounds loaded!");
 
             console.log(this.allAudios)
-        
+
             // Play a sound when ready
             this.play(this.allAudios.Ruby)
         }).catch(error => {
@@ -27,8 +29,25 @@ export default class AudioHandler {
         } else {
             console.error(`Audio not found: ${name}`);
         }
+        return audio
     }
-    
+
+    async loop(name) {
+        this.onLoop = true
+        audio = this.play(name)
+        while (this.onLoop) {
+            await new Promise((resolve) => {
+                audio.onended = () => {
+                    resolve()  // Resolve the promise when the audio ends
+                    audio = this.play(name)
+                };
+            })
+        }
+        if (!this.onLoop){
+            audio.stop()
+        }
+    }
+
 
     loadAllSounds() {
         return Promise.all(
@@ -62,5 +81,9 @@ export default class AudioHandler {
 
     getAudio(name) {
         return this.cache.get(name) || null;
+    }
+
+    stopLoop(){
+        this.onLoop = false
     }
 }

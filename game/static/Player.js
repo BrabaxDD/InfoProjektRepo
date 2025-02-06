@@ -26,6 +26,7 @@ export default class Player extends GameObject {
         this.right = false
         this.playerID = playerID
         this.onCooldown = 0
+        this.isMoving = false
 
         this.hp = 999999
 
@@ -37,8 +38,14 @@ export default class Player extends GameObject {
     }
 
     process() {
+        if (!this.scene.keys[settings.rightKey] && !this.scene.keys[settings.forwardKey] &&!this.scene.keys[settings.backKey] && !this.scene.keys[settings.leftKey]) {
+            this.isMoving = false
+            this.scene.eventBus.triggerEvent("stopWalkingLoop")
+        }
+
         if (this.scene.keys[settings.forwardKey]) {
             this.up = true
+            this.isMoving = true
             if (this.posy > 0) { }
             //this.posy -= this.speed; // Move up
         } else {
@@ -48,6 +55,7 @@ export default class Player extends GameObject {
 
         if (this.scene.keys[settings.backKey]) {
             this.down = true
+            this.isMoving = true
             if (this.posy < this.canvas.height - this.height) {
                 //this.posy += this.speed; // Move down
             }
@@ -57,6 +65,7 @@ export default class Player extends GameObject {
 
         if (this.scene.keys[settings.leftKey]) {
             this.left = true
+            this.isMoving = true
             if (this.posx > 0) {
                 //this.posx -= this.speed; // Move left
             }
@@ -64,6 +73,7 @@ export default class Player extends GameObject {
 
         if (this.scene.keys[settings.rightKey]) {
             this.right = true
+            this.isMoving = true
             if (this.posx < this.canvas.width - this.width) {
                 //this.posx += this.speed; // Move right
             }
@@ -87,6 +97,10 @@ export default class Player extends GameObject {
 
         if (this.scene.keys["t"] == true) {
             this.scene.eventBus.triggerEvent("alert", {text:"Player triggered alert"})
+        }
+
+        if(this.isMoving){
+            this.scene.eventBus.triggerEvent("startWalkingLoop")
         }
     }
 

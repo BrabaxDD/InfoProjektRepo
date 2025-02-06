@@ -40,6 +40,8 @@ export default class Scene {
         this.eventBus.registerListner("createCraftMenu", this)
         this.eventBus.registerListner("eventBoxClicked", this)
         this.eventBus.registerListner("buttonPressed", this)
+        this.eventBus.registerListner("startWalkingLoop", this)
+        this.eventBus.registerListner("stopWalkingLoop", this)
 
         this.canvas.addEventListener('mousemove', (event) => {
             // Get the bounding rectangle of the canvas
@@ -201,6 +203,14 @@ export default class Scene {
         if (eventString == "buttonPressed"){
             this.audioHandler.play("Click")
             console.log("Click")
+        }
+
+        if (eventObject == "startWalkingLoop"){
+            this.audioHandler.loop(Walk)
+        }
+
+        if (eventObject == "stopWalkingLoop"){
+            this.audioHandler.stopLoop()
         }
     }
 
