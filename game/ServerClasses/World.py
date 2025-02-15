@@ -303,6 +303,8 @@ class World:
             Wall.Wall(self, 0, sizeY*32 - 1, sizeX*32, sizeY*32))
         self.addGameobject(
             Wall.Wall(self, sizeX*32 - 1, 0, sizeX*32, sizeY*32))
+        
+        self.addGameobject(zombie.Zombie(self, 500,500))
 
         print("log: World Generation Done")
 

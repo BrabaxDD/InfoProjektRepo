@@ -39,7 +39,7 @@ export default class Scene {
         this.eventBus.registerListner("createInv", this)
         this.eventBus.registerListner("createCraftMenu", this)
         this.eventBus.registerListner("eventBoxClicked", this)
-        this.eventBus.registerListner("buttonPressed", this)
+        this.eventBus.registerListner("playSound", this)
         this.eventBus.registerListner("startWalkingLoop", this)
         this.eventBus.registerListner("stopWalkingLoop", this)
 
@@ -200,9 +200,8 @@ export default class Scene {
             this.removeObject(eventObject.box)
         }
 
-        if (eventString == "buttonPressed"){
-            this.audioHandler.play("Click")
-            console.log("Click")
+        if (eventString == "playSound"){
+            this.audioHandler.play(eventObject)
         }
 
         if (eventObject == "startWalkingLoop"){

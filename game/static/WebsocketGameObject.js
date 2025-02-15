@@ -45,7 +45,8 @@ export default class WebsocketGameObjectClient {
 
             if (data.type == "connectionRefused") {
                 console.log("connectionRefused")
-                this.scene.eventBus.triggerEvent("alert", { text: "Connection to Server refused" })
+                this.scene.eventBus.triggerEvent("alert",
+                     { text: "Connection to Server refused, if this error occurs, try opening the website in another tab and try to login onto the server" })
                 DOM.updateDOMConnectionStatus("Connection Failed")
                 return
             }

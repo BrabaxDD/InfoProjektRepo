@@ -84,6 +84,7 @@ export default class Player extends GameObject {
 
         if (this.scene.keys[settings.hitKey] == true && this.onCooldown <= 0) {
             websocketObject.hit()
+            this.scene.eventBus.triggerEvent("playSound", "Hit")
             //addTestInv()
             this.onCooldown = 10
         }

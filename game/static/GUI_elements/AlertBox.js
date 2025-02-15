@@ -17,6 +17,11 @@ export default class AlertBox extends GameObject{
         this.heightBox = heig
 
         this.text = text
+
+        this.lineheight = settings.textLineHeight
+
+        this.text = this.updateWidth(text, widt - 20)
+        this.textHeigt = this.calculateHeight()
     }
 
     process(){
@@ -41,7 +46,8 @@ export default class AlertBox extends GameObject{
         this.ctx.fillStyle = "black";
         this.ctx.textBaseline = 'middle';
         this.ctx.font = settings.font;
-        this.ctx.fillText(this.text, this.posx + this.widthBox/2 , this.posy + this.heightBox/2);
+        for (var i = 0; i<this.text.length; i++)
+            this.ctx.fillText(this.text[i], this.posx + (this.widthBox-20)/2, this.posy+ this.heightBox/2+ (i*this.lineheight) );
     }
 
     event(eventString, eventObject){
@@ -51,5 +57,31 @@ export default class AlertBox extends GameObject{
                  this.scene.eventBus.triggerEvent("buttonPressed")
             }
         }
+    }
+
+    updateWidth(str, maxWidth) {
+        
+        let result = '';
+        let currentLine = '';
+        
+        for (let word of str.split(' ')) {
+            let testLine = currentLine.length > 0 ? currentLine + ' ' + word : word;
+            let textWidth = this.ctx.measureText(testLine).width;
+            
+            if (textWidth > maxWidth) {
+                result += (result.length > 0 ? '\n' : '') + currentLine;
+                currentLine = word;
+            } else {
+                currentLine = testLine;
+            }
+        }
+        
+        result += (result.length > 0 ? '\n' : '') + currentLine;
+        console.log(result)
+        return result.split('\n');
+    }
+
+    calculateHeight(){
+        return this.text.length * this.lineheight
     }
 }

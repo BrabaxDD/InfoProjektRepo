@@ -85,7 +85,7 @@ export default class ButtonGameObject extends GameObject {
     }
 
     buttonPresed(eventObject) {
-        this.scene.eventBus.triggerEvent("buttonPressed")
+        this.scene.eventBus.triggerEvent("playSound", "Click")
 
         if (this.eventString == "switchScene") {
             this.scene.eventBus.triggerEvent("switchScene", eventObject)

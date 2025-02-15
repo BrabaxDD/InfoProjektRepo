@@ -5,7 +5,8 @@ export default class AudioHandler {
         this.allAudios = {
             Ruby: "Ruby_22.wav",
             Click: "click.wav",
-            Walk : "GrassFootsteps.wav"
+            Walk : "GrassFootsteps.wav",
+            Hit: "Hit.wav"
         };
 
         this.loadAllSounds().then(() => {

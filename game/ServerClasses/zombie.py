@@ -8,10 +8,10 @@ import random
 
 
 class Zombie(GameObject.GameObject):
-    def __init__(self, world):
+    def __init__(self, world ,posx, posy):
         ID = uuid.uuid4().int
         ID = ID % 4001001001
-        super().__init__(world, posx=1, posy=1, ID=ID, entityType="Zombie")
+        super().__init__(world, posx, posy, ID=ID, entityType="Zombie")
         self.world.eventBus.registerListner(self, "playerPositionUpdate")
         self.world.eventBus.registerListner(self, "playerHit")
         self.world.eventBus.registerListner(self, "zombieForbiddenMovement")
@@ -37,15 +37,15 @@ class Zombie(GameObject.GameObject):
             pass
         else:
             self.newPositon(((self.nearestPlayerPosx - self.posx) /
-                             self.nearestPlayerDistance * self.velocity) + self.posx, ((self.nearestPlayerPosy - self.posy) /
-                                                                                       self.nearestPlayerDistance * self.velocity) + self.posy)
+                         self.nearestPlayerDistance * self.velocity) + self.posx, ((self.nearestPlayerPosy - self.posy) /
+                                                                                   self.nearestPlayerDistance * self.velocity) + self.posy)
 #            self.posx += delta * ((self.nearestPlayerPosx - self.posx) /
 #                                  self.nearestPlayerDistance * self.velocity)
 #            self.posy += delta * ((self.nearestPlayerPosy - self.posy) /
 #                                  self.nearestPlayerDistance * self.velocity)
             self.world.eventBus.event("zombiePositionUpdate", {
                                       "zombieID": self.ID, "posx": self.posx, "posy": self.posy})
-        if self.nearestPlayerDistance < 400 and self.timesincelasthit > 1:
+        if self.nearestPlayerDistance < 50 and self.timesincelasthit > 1:
             self.timesincelasthit = 0
             self.world.eventBus.event("zombieHit",
                                       {"PlayerID": self.nearestPlayerID, "Damage": 50, "Zombie": self})
@@ -86,6 +86,10 @@ class Zombie(GameObject.GameObject):
             posx = action["posx"]
             posy = action["posy"]
             ID = action["ID"]
+            
+            self.nearestPlayerID = ID
+            self.nearestPlayerPosx = posx
+            self.nearestPlayerPosy = posy
             distance = sqrt((posx - self.posx)**2 + (posy - self.posy)**2)
             self.playerDistances[ID] = distance
             for key in self.playerDistances:
