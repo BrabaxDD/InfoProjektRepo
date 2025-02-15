@@ -1,43 +1,24 @@
 import GameSceneFactory from './GameSceneFactory.js';
 import WebsocketGameObjectClient from "./WebsocketGameObject.js"
-import Player from './Player.js';
-import Scene from './Scene.js';
-import SceneSwitcher from './SceneSwitcher.js';
-import Tree from './tree.js';
-import Zombie from "./zombie.js";
-import Wall from "./Wall.js";
-import Door from './Door.js';
-import Chest from './Chest.js';
 import DOMHandler from './DOMHandler.js';
 import AudioHandler from './sounds/AudioHandler.js';
 
-export const font = "20px Arial"
+export const DOM = new DOMHandler()
 export let settings = undefined
+export let websocketObject = undefined
 
+const audioHandler = new AudioHandler()
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
-ctx.font = font
-let serverID = ""
-
-
-// Canvas dimensions
-const canvasWidth = canvas.width;
-const canvasHeight = canvas.height;
-
-//Startup Game
-starupGame()
-
-let factory = undefined
-let scene = undefined
 
 let frameCount = 0
 let isDelayed = false
-export const DOM = new DOMHandler()
-const audioHandler = new AudioHandler()
+let factory = undefined
 let isStarted = false
-export let websocketObject = undefined
+let scene = undefined
 
 
+//Define all Listeners For the DOM
 window.addEventListener('keydown', (e) => {
     //keys[e.key] = true;
     scene.eventBus.triggerEvent("keydown", { key: e.key, status: true })
@@ -52,37 +33,26 @@ window.addEventListener("wheel", (e) => {
     scene.eventBus.triggerEvent("wheel", e.wheelDelta)
 })
 
-canvas.addEventListener('click', (event) => {
+canvas.addEventListener('click', () => {
     scene.eventBus.triggerEvent("click_on_canvas")
 });
 
-canvas.addEventListener("mousedown", (event) => {
+canvas.addEventListener("mousedown", () => {
     scene.eventBus.triggerEvent("mouseDown", { status: true })
 });
-canvas.addEventListener("mouseup", (event) => {
+canvas.addEventListener("mouseup", () => {
     scene.eventBus.triggerEvent("mouseDown", { status: false })
 });
 
+export function switchScene(sceneToSwitch) {
+    websocketObject.getServers()
+    scene = factory.buildGameScene(sceneToSwitch)
+    websocketObject.setScene(scene)
 
-function gameLoop() {
-    ctx.clearRect(0, 0, canvasWidth, canvasHeight); // Clear the canvas
-    scene.process()
-    scene.render()
-    if (isStarted) {
-        if (isDelayed == true) {
-            if (frameCount >= 1) {
-                websocketObject.updateToServer()
-                frameCount = 0
-            }
-        }
-        if (frameCount >= 10) {
-            isDelayed = true
-        }
-        frameCount += 1
-    }
+}
 
-
-    requestAnimationFrame(gameLoop); // Call the next frame
+export function start() {
+    isStarted = true
 }
 
 async function starupGame() {
@@ -92,12 +62,9 @@ async function starupGame() {
     scene = factory.buildGameScene("mainMenu")
     DOM.updateDOMControls()
 
-    
     // Start the game loop
     gameLoop();
 }
-
-
 
 async function loadSettings() {
     try {
@@ -117,6 +84,7 @@ async function loadSettings() {
             }, {}); // Initialize an empty object to accumulate results
 
         console.log("Settings:", settings);
+        ctx.font = settings.font
         return settings;
     } catch (error) {
         console.error("Error loading settings file:", error);
@@ -124,26 +92,26 @@ async function loadSettings() {
     }
 }
 
-export function switchScene(sceneToSwitch) {
-    websocketObject.getServers()
-    scene = factory.buildGameScene(sceneToSwitch)
-    websocketObject.setScene(scene)
-    //webSocketHost = new WebSocket('ws://' + window.location.host + '/game/server')
-    //webSocket = new WebSocket('ws://' + window.location.host + '/game/login')
+function gameLoop() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear the canvas
+    scene.process()
+    scene.render()
+    if (isStarted) {
+        if (frameCount >= 1) {
+            websocketObject.updateToServer()
+            frameCount = 0
+        }
 
+        frameCount += 1
+    }
+
+    requestAnimationFrame(gameLoop); // Call the next frame
 }
 
-export function start(){
-    isStarted = true
-}
+
+
+//Startup Game
+starupGame()
 
 
 
-
-
-
-/*window.addEventListener("error", function (e) {
-    alert("Error occurred: " + e.error.message);
-    scene.eventBus.triggerEvent("alert", { text: e.error.message })
-    return false;
- })*/

@@ -1,8 +1,8 @@
 import GameObject from "./GameObject.js"
-import Inventory from "./GUI_elements/Inventory.js"
+import { settings } from "./game.js"
 
 export default class Zombie extends GameObject {
-    constructor(scene, ID) {
+    constructor(scene, ID, HP) {
         super(scene)
         this.canvas = this.scene.canvas
         this.ctx = this.scene.canvas.getContext("2d")
@@ -15,13 +15,13 @@ export default class Zombie extends GameObject {
         if (eventString == "position" && eventObject.type == "Zombie" && eventObject.ID == this.ID) {
             this.posx = eventObject.posx
             this.posy = eventObject.posy
+            this.HP = eventObject.HP
         }
     }
 
     render(){
         this.ctx.fillStyle = "green";
         this.ctx.fillRect(this.posx - (this.scene.camera.posx - this.scene.camera.cameraWidth/2) , this.posy - (this.scene.camera.posy- this.scene.camera.cameraHeight/2), 40, 40);
-        
     }
     process(){}
 

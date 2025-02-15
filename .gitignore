@@ -2,3 +2,4 @@ logs/
 venv/
 game/static/images/TileMaps/
 **/__pycache__/
+*.pyc

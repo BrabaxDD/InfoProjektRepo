@@ -43,49 +43,67 @@ class Obstacle(GameObject.GameObject):
             posx = action["posx"]
             posy = action["posy"]
             zombieID = action["zombieID"]
+
             if zombieID in self.lastZombiePosx and zombieID in self.lastZombiePosy:
                 collision = self.do_intersect(
                     (posx, posy),
-                    (self.lastZombiePosx[zombieID],
-                     self.lastZombiePosy[zombieID]),
-                    (self.posx, self.posy), (self.posx2, self.posy2))
+                    (self.lastZombiePosx[zombieID], self.lastZombiePosy[zombieID]),
+                    (self.posx, self.posy), (self.posx2, self.posy2)
+                )
+
                 if collision:
-                    print(
-                        "log: interupted Zombie movement of Player with ID: " + str(zombieID))
-                    self.world.eventBus.event("zombieForbiddenMovement",
-                                              {"zombieID": zombieID, "lastPosx": self.lastZombiePosx[zombieID], "lastPosy": self.lastZombiePosy[zombieID]})
-                else:
-                    self.lastZombiePosx[zombieID] = posx
-                    self.lastZombiePosy[zombieID] = posy
+                    if (posx, posy) == (self.lastZombiePosx[zombieID], self.lastZombiePosy[zombieID]):
+                        return 
+                    
+                    print(f"log: interrupted Zombie movement of ID: {zombieID}")
+                    self.world.eventBus.event("zombieForbiddenMovement", {
+                        "zombieID": zombieID, 
+                        "lastPosx": self.lastZombiePosx[zombieID], 
+                        "lastPosy": self.lastZombiePosy[zombieID]
+                    })
+                    
+                    return 
+               
+                self.lastZombiePosx[zombieID] = posx
+                self.lastZombiePosy[zombieID] = posy
+
             else:
                 self.lastZombiePosx[zombieID] = posx
                 self.lastZombiePosy[zombieID] = posy
 
-            pass
-
-        if eventString == "playerPositionUpdate":
+        elif eventString == "playerPositionUpdate":
             posx = action["posx"]
             posy = action["posy"]
             playerID = action["ID"]
+
             if playerID in self.lastPlayerPosx and playerID in self.lastPlayerPosy:
                 collision = self.do_intersect(
                     (posx, posy),
-                    (self.lastPlayerPosx[playerID],
-                     self.lastPlayerPosy[playerID]),
-                    (self.posx, self.posy), (self.posx2, self.posy2))
+                    (self.lastPlayerPosx[playerID], self.lastPlayerPosy[playerID]),
+                    (self.posx, self.posy), (self.posx2, self.posy2)
+                )
+
                 if collision:
-                    print(
-                        "log: interupted Player movement of Player with ID: " + str(playerID))
-                    self.world.eventBus.event("playerForbiddenMovement",
-                                              {"playerID": playerID, "lastPosx": self.lastPlayerPosx[playerID], "lastPosy": self.lastPlayerPosy[playerID]})
-                else:
-                    self.lastPlayerPosx[playerID] = posx
-                    self.lastPlayerPosy[playerID] = posy
+                    if (posx, posy) == (self.lastPlayerPosx[playerID], self.lastPlayerPosy[playerID]):
+                        return  
+                    
+                    print(f"log: interrupted Player movement of ID: {playerID}")
+                    self.world.eventBus.event("playerForbiddenMovement", {
+                        "playerID": playerID, 
+                        "lastPosx": self.lastPlayerPosx[playerID], 
+                        "lastPosy": self.lastPlayerPosy[playerID]
+                    })
+
+                    return  
+
+                    
+                self.lastPlayerPosx[playerID] = posx
+                self.lastPlayerPosy[playerID] = posy
+
             else:
                 self.lastPlayerPosx[playerID] = posx
                 self.lastPlayerPosy[playerID] = posy
 
-            pass
 
 
 # Code von CHATGPT
