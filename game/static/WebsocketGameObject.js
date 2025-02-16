@@ -25,6 +25,11 @@ export default class WebsocketGameObjectClient {
         this.scene = scene;
         this.webSocket.onmessage = (e) => {
             const data = JSON.parse(e.data)
+            
+            if(data.type == "playerDead"){
+                this.scene.eventBus.triggerEvent("playerDead", {})
+            }
+
             if (data.type == "runningservers") {
                 console.log("running servers: " + data.servers)
                 this.scene.eventBus.triggerEvent("runningServers", data.servers)
@@ -223,6 +228,10 @@ export default class WebsocketGameObjectClient {
     }
     setSLotNumber(number) {
         this.webSocket.send(JSON.stringify({ type: "setActiveSlot", slot: number }))
+    }
+    respawn(){
+        this.webSocket.send(JSON.stringify({type: "respawn"}))
+        this.scene.eventBus.triggerEvent("respawn",{})
     }
 
     wait(ms) {

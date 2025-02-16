@@ -11,6 +11,7 @@ textInputFocusedColor : #1A319F
 textInputUnFocusedColor : #000000
 playerColor : blue
 wallColor : #000000 
+respawnScreenColor :#fd1b1b
 
 cullinDistance : 600
 

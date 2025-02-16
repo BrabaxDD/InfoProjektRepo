@@ -79,7 +79,7 @@ class gamePlayerSocketConsumer(WebsocketConsumer):
         if messageType == "setActiveSlot":
             slot = text_data_json["slot"]
             print("log: git Request to change active Slot from player: " +
-                  str(self.player_ID) + " to Slot number: " + slot)
+                  str(self.player_ID) + " to Slot number: " + str(slot))
             async_to_sync(self.channel_layer.group_send)(self.serverID, {
                 "type": "setActiveSlot", "playerID": self.player_ID, "slot": slot})
         if messageType == "combineStacks":

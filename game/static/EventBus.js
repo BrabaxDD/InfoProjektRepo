@@ -17,6 +17,8 @@ export default class EventBus {
                 }
             } catch (error) {
                 console.error(error);
+                console.error("eventString: " + eventString)
+                console.error("eventObject: "+ eventObject)
             }
         }
     }

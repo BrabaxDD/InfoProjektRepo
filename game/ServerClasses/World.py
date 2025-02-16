@@ -428,8 +428,10 @@ class World:
         rooms = Roomtree("livingRoom", None, None, "west", 0, self)
         rooms.buildTree()
         # generate the Room Map
-        partition(rooms, posx, posy, sizex, sizey)
-
+        try:
+            partition(rooms, posx, posy, sizex, sizey)
+        except:
+            print("ERROR WHILE Generating Houses")
 #        self.addGameobject(Wall.Wall(self, posx, posy, posx + sizex, posy))
 #        self.addGameobject(Wall.Wall(self, posx, posy, posx, posy + sizey))
 #        self.addGameobject(Wall.Wall(self, posx + sizex,

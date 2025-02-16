@@ -136,6 +136,9 @@ export default class ButtonGameObject extends GameObject {
         if (this.eventString == "refreshServers"){
             websocketObject.getServers()
         }
+        if (this.eventString == "respawn"){
+            websocketObject.respawn()
+        }
 
     }
 

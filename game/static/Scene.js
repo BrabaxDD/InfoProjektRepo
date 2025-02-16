@@ -7,6 +7,7 @@ import Inventory from "./GUI_elements/Inventory.js"
 import { settings } from "./game.js"
 import CraftingMenu from "./GUI_elements/CraftingMenu.js"
 import ErrorHandler from "./ErrorHandler.js"
+import RespawnScreen from "./GUI_elements/RespawnScreen.js"
 
 export default class Scene {
     constructor(canvasObjectScene, mapName, audioHandler) {
@@ -24,8 +25,6 @@ export default class Scene {
         this.camera = new Camera(this)
 
 
-        this.eventBus.registerListner("keydown", this)
-
         // Initialize the image loader
         this.imageLoader = new ImageLoader();
 
@@ -42,6 +41,8 @@ export default class Scene {
         this.eventBus.registerListner("playSound", this)
         this.eventBus.registerListner("startWalkingLoop", this)
         this.eventBus.registerListner("stopWalkingLoop", this)
+        this.eventBus.registerListner("playerDead", this)
+        this.eventBus.registerListner("respawn", this)
 
         this.canvas.addEventListener('mousemove', (event) => {
             // Get the bounding rectangle of the canvas
@@ -58,6 +59,9 @@ export default class Scene {
 
         this.playerInv = undefined
         this.craftMenu = undefined
+
+        this.playerDead = false
+        this.respawnMenu = new RespawnScreen(this)
     }
 
     addObject(object) {
@@ -81,6 +85,10 @@ export default class Scene {
 
     render() {
         //console.log(this.gameObjects)
+        if (this.playerDead){
+            this.respawnMenu.render()
+            return
+        }
         this.map.render()
 
         this.camera.render()
@@ -108,6 +116,10 @@ export default class Scene {
     }
 
     process() {
+        if (this.playerDead){
+            this.respawnMenu.process()
+            return
+        }
         let len = this.gameObjects.length
         for (let i = 0; i < len; i++) {
             this.gameObjects[i].process();
@@ -210,6 +222,13 @@ export default class Scene {
 
         if (eventObject == "stopWalkingLoop"){
             this.audioHandler.stopLoop()
+        }
+
+        if (eventString == "playerDead"){
+            this.playerDead = true
+        }
+        if (eventString == "respawn"){
+            this.playerDead = false
         }
     }
 

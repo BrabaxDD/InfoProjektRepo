@@ -7,7 +7,6 @@ export default class TextBox extends GameObject {
 
         this.canvas = this.scene.canvas
         this.ctx = this.scene.canvas.getContext("2d")
-        this.scene.eventBus.registerListner("position", this)
 
         this.textColor = settings.textBoxColor
         this.posx = x
