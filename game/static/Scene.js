@@ -226,9 +226,11 @@ export default class Scene {
 
         if (eventString == "playerDead"){
             this.playerDead = true
+            this.respawnMenu.respawnButton.unlockButton()
         }
         if (eventString == "respawn"){
             this.playerDead = false
+            this.respawnMenu.respawnButton.lockButton()
         }
     }
 

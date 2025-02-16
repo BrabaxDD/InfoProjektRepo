@@ -62,7 +62,7 @@ class gamePlayerSocketConsumer(WebsocketConsumer):
                     }
                 )
             elif actiontype == "hit":
-                print("log: received mesage to hit" + str(time.time()))
+                #print("log: received mesage to hit " + str(time.time()))
                 direction = text_data_json["direction"]
                 async_to_sync(self.channel_layer.group_send)(self.serverID, {
                     "type": "hitRequestFromClient", "direction": direction, "ID": self.player_ID})
@@ -159,8 +159,8 @@ class gamePlayerSocketConsumer(WebsocketConsumer):
         playerID = event["ID"]
         if playerID == self.player_ID:
             print("log: updating Player Inventory with player ID: " + str(self.player_ID) +
-                  "for server with ID: " + str(self.serverID) + "and with content: ")
-            print(event["Inventory"])
+                  "for server with ID: " + str(self.serverID))# + "and with content: ")
+            #print(event["Inventory"])
             self.send(text_data=json.dumps({"type": "InventoryUpdate",
                                             "ID": event["ID"], "Inventory":   json.loads(event["Inventory"])}))
 

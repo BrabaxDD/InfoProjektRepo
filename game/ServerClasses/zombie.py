@@ -24,18 +24,23 @@ class Zombie(GameObject.GameObject):
         self.nearestPlayerDistance = float("inf")
         self.lastAttackedPlayerID = None  # Keep track of last hit player
         self.playerDistances = {}
+        self.isDeleted = False
+        
 
     def deleteSelf(self):
         self.world.eventBus.deRegisterListner(self, "playerHit")
         self.world.eventBus.deRegisterListner(self, "playerPositionUpdate")
         self.world.eventBus.deRegisterListner(self, "zombieForbiddenMovement")
         super().deleteSelf()
+        self.isDeleted = True
 
     def broadcast(self):
         self.world.broadcastPosition(self.ID, self.posx, self.posy, "Zombie")
 
     def process(self, delta):
         self.timesincelasthit += delta
+        if self.isDeleted:
+            return
 
         # If no near player, don't move
         if self.nearestPlayerDistance >= 1000:
@@ -45,7 +50,11 @@ class Zombie(GameObject.GameObject):
         if self.lastAttackedPlayerID is not None:
             self.nearestPlayerID = self.lastAttackedPlayerID
             self.nearestPlayerDistance = self.playerDistances.get(self.nearestPlayerID, float("inf"))
-        
+
+            # If the player moves out of range, reset targeting
+            if self.nearestPlayerDistance >= 1000:
+                self.lastAttackedPlayerID = None  # Allow retargeting
+
         # Move towards the nearest player
         if self.nearestPlayerID and self.nearestPlayerDistance >= 4:
             dx = self.nearestPlayerPosx - self.posx
@@ -67,6 +76,7 @@ class Zombie(GameObject.GameObject):
             self.world.eventBus.event("zombieHit", {
                 "PlayerID": self.nearestPlayerID, "Damage": 50, "Zombie": self
             })
+            print("zombie Hits the player")
 
     def event(self, eventString, action):
         if eventString == "playerPositionUpdate":

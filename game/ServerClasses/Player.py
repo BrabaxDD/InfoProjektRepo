@@ -39,8 +39,11 @@ class Player(GameObject.GameObject):
 
     def respawn(self):
         self.broadcastRespawn()
-        self.newPositon(0, 0)
-        self.Inventory = Inventory()
+        self.newPositon(20, 20)
+        self.Inventory = Inventory.Inventory()
+        ID = uuid.uuid4().int
+        ID = ID % 4001001001
+        self.addItemToInv(ItemsStack.ItemStack("FirstAidKit", 5, ID))
         self.world.broadcastPlayerInventoryUpdate(self.ID, self.Inventory)
         self.setHealth(300)
         self.dead = False
@@ -261,10 +264,10 @@ class Player(GameObject.GameObject):
             if eventString == "playerForbiddenMovement":
                 playerID = action["playerID"]
                 if playerID == self.ID:
-                    print(
-                        "log: Player got Interupted in Movement, the player ID is: " + str(self.ID))
-                    print("log: Player got Teleported deltax: " + str(self.posx -
-                          action["lastPosx"]) + " deltay: " + str(self.posy - action["lastPosy"]))
+                    #print(
+                    #    "log: Player got Interupted in Movement, the player ID is: " + str(self.ID))
+                    #print("log: Player got Teleported deltax: " + str(self.posx -
+                    #      action["lastPosx"]) + " deltay: " + str(self.posy - action["lastPosy"]))
                     self.newPositon(
                         newPosx=action["lastPosx"], newPosy=action["lastPosy"])
             if eventString == "stackCombinationRequest":

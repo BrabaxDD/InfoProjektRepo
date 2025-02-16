@@ -55,7 +55,7 @@ class Obstacle(GameObject.GameObject):
                     if (posx, posy) == (self.lastZombiePosx[zombieID], self.lastZombiePosy[zombieID]):
                         return 
                     
-                    print(f"log: interrupted Zombie movement of ID: {zombieID}")
+                    #print(f"log: interrupted Zombie movement of ID: {zombieID}")
                     self.world.eventBus.event("zombieForbiddenMovement", {
                         "zombieID": zombieID, 
                         "lastPosx": self.lastZombiePosx[zombieID], 
@@ -87,7 +87,7 @@ class Obstacle(GameObject.GameObject):
                     if (posx, posy) == (self.lastPlayerPosx[playerID], self.lastPlayerPosy[playerID]):
                         return  
                     
-                    print(f"log: interrupted Player movement of ID: {playerID}")
+                    #print(f"log: interrupted Player movement of ID: {playerID}")
                     self.world.eventBus.event("playerForbiddenMovement", {
                         "playerID": playerID, 
                         "lastPosx": self.lastPlayerPosx[playerID], 

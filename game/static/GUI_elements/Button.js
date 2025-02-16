@@ -21,6 +21,7 @@ export default class ButtonGameObject extends GameObject {
         this.scene.eventBus.registerListner("textInputFinishedLoginField", this)
         this.scene.eventBus.registerListner("textInputFinishedCraftField", this)
         this.scene.eventBus.registerListner("optionSelected", this)
+        this.scene.eventBus.registerListner("respawn", this)
         this.is_hovered = false
         this.text = text
         this.textSize = settings.font
@@ -137,6 +138,7 @@ export default class ButtonGameObject extends GameObject {
             websocketObject.getServers()
         }
         if (this.eventString == "respawn"){
+            console.log("respawn")
             websocketObject.respawn()
         }
 
@@ -155,6 +157,9 @@ export default class ButtonGameObject extends GameObject {
         }
         if (eventString == "optionSelected") {
             this.serverToLogin = eventObject
+        }
+        if (eventString == "respawn") {
+            this.is_hovered = false
         }
 
 

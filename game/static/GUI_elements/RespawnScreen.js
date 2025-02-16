@@ -12,7 +12,7 @@ export default class RespawnScreen extends GameObject{
 
         this.textBox = new TextBox(this.scene,this.canvas.width/2,this.canvas/3,this.canvas.width/3, "YOU DIED")
 
-        this.respawnButton = new ButtonGameObject(this.canvas.width/2, this.canvas.height/3*2, 200,56, "respawn", {}, this.scene, "RESPAWN")
+        this.respawnButton = new ButtonGameObject(this.canvas.width/2-100, this.canvas.height/3*2-28, 200,56, "respawn", {}, this.scene, "RESPAWN")
     }
 
     process(){
@@ -27,7 +27,7 @@ export default class RespawnScreen extends GameObject{
         this.ctx.globalAlpha = 1;
         this.ctx.fillStyle = "black";
         
-        this.textBox.render()
         this.respawnButton.render()
+        this.textBox.render()
     }
 }

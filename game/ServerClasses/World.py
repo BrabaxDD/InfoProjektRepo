@@ -36,15 +36,11 @@ class World:
             chunkkoordToIterate.append(((x-1) % self.chunksx, y))
             chunkkoordToIterate.append(((x+1) % self.chunksx, y))
             chunkkoordToIterate.append((x, (y+1) % self.chunksy))
-            chunkkoordToIterate.append(
-                ((x-1) % self.chunksx, (y+1) % self.chunksy))
-            chunkkoordToIterate.append(
-                ((x+1) % self.chunksx, (y+1) % self.chunksy))
+            chunkkoordToIterate.append(((x-1) % self.chunksx, (y+1) % self.chunksy))
+            chunkkoordToIterate.append(((x+1) % self.chunksx, (y+1) % self.chunksy))
             chunkkoordToIterate.append((x, (y-1) % self.chunksy))
-            chunkkoordToIterate.append(
-                ((x-1) % self.chunksx, (y-1) % self.chunksy))
-            chunkkoordToIterate.append(
-                ((x+1) % self.chunksx, (y-1) % self.chunksy))
+            chunkkoordToIterate.append(((x-1) % self.chunksx, (y-1) % self.chunksy))
+            chunkkoordToIterate.append(((x+1) % self.chunksx, (y-1) % self.chunksy))
         chunkkoordToIterate = list(set(chunkkoordToIterate))
         objectsToProcess = []
         for chunkCoord in chunkkoordToIterate:
@@ -68,15 +64,11 @@ class World:
             chunkkoordToIterate.append(((x-1) % self.chunksx, y))
             chunkkoordToIterate.append(((x+1) % self.chunksx, y))
             chunkkoordToIterate.append((x, (y+1) % self.chunksy))
-            chunkkoordToIterate.append(
-                ((x-1) % self.chunksx, (y+1) % self.chunksy))
-            chunkkoordToIterate.append(
-                ((x+1) % self.chunksx, (y+1) % self.chunksy))
+            chunkkoordToIterate.append(((x-1) % self.chunksx, (y+1) % self.chunksy))
+            chunkkoordToIterate.append(((x+1) % self.chunksx, (y+1) % self.chunksy))
             chunkkoordToIterate.append((x, (y-1) % self.chunksy))
-            chunkkoordToIterate.append(
-                ((x-1) % self.chunksx, (y-1) % self.chunksy))
-            chunkkoordToIterate.append(
-                ((x+1) % self.chunksx, (y-1) % self.chunksy))
+            chunkkoordToIterate.append(((x-1) % self.chunksx, (y-1) % self.chunksy))
+            chunkkoordToIterate.append(((x+1) % self.chunksx, (y-1) % self.chunksy))
         chunkkoordToIterate = list(set(chunkkoordToIterate))
         objectsToBroadcast = []
         for chunkCoord in chunkkoordToIterate:
@@ -123,7 +115,9 @@ class World:
 
     def deleteGameObject(self, gameObject):
         self.broadcastDeletedGameObject(gameObject.entityType, gameObject.ID)
+        print("Deleting Object: " + str(gameObject.__class__))
         self.objects.remove(gameObject)
+        print(self.objects)
 
     def broadcastWallInformation(self, posx2, posy2, thickness, wallID):
         self.threat.broadcastWallInformation(posx2, posy2, thickness, wallID)
