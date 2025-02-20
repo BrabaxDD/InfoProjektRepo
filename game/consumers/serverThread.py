@@ -7,13 +7,13 @@ from game.ServerClasses.Player import Player
 from game.ServerClasses import Tree
 
 
-class serverThreat(threading.Thread):
+class serverThread(threading.Thread):
     def __init__(self, thread_name, thread_ID, gameServerSocket: gameServer):
         threading.Thread.__init__(self)
         self.thread_name = thread_name
         self.thread_ID = thread_ID
         self.gameServerSocket: gameServer = gameServerSocket
-        print("server Worker Threat started with ID: " +
+        print("server Worker Thread started with ID: " +
               self.gameServerSocket.serverID)
 
         self.firstplayer = False
@@ -78,6 +78,9 @@ class serverThreat(threading.Thread):
     def broadcastWallInformation(self, posx2, posy2, thickness, ID):
         self.gameServerSocket.broadcastWallInformation(
             posx2=posx2, posy2=posy2, thickness=thickness, wallID=ID)
+        
+    def brodcastZombieTryHit(self, dir):
+        pass
 
     def requestItemStackCombination(self, stackID1, stackID2, playerID):
         self.world.eventBus.event("stackCombinationRequest",
@@ -95,3 +98,6 @@ class serverThreat(threading.Thread):
     def setHotbarRequest(self, playerID, hotbarSlot, stackID):
         self.world.eventBus.event("setHotbarRequest", {
                                   "playerID": playerID, "HotbarSlot": hotbarSlot, "stackID": stackID})
+        
+    def broadcastTestMessage(self):
+        self.gameServerSocket.testMessage()

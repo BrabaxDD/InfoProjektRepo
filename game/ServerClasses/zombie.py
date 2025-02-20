@@ -25,6 +25,8 @@ class Zombie(GameObject.GameObject):
         self.lastAttackedPlayerID = None  # Keep track of last hit player
         self.playerDistances = {}
         self.isDeleted = False
+
+        self.world.thread.broadcastTestMessage()
         
 
     def deleteSelf(self):
@@ -35,7 +37,7 @@ class Zombie(GameObject.GameObject):
         self.isDeleted = True
 
     def broadcast(self):
-        self.world.broadcastPosition(self.ID, self.posx, self.posy, "Zombie")
+        self.world.thread.broadcastPosition(self.ID, self.posx, self.posy, "Zombie")
 
     def process(self, delta):
         self.timesincelasthit += delta

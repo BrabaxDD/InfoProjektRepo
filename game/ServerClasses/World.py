@@ -9,20 +9,19 @@ import time
 import perlin_noise
 import queue
 import math
-from multiprocessing.dummy import Pool as ThreatPool
+from multiprocessing.dummy import Pool as ThreadPool
 import itertools
 
 
 class World:
-    def __init__(self, threat):
+    def __init__(self, thread):
         self.eventBus = EventBus.EventBus()
         self.objects = []
-        self.threat = threat
+        self.thread = thread
         self.broadCastGameObjectTodo = []
         self.eventBus.registerListner(self, "objectMove")
         self.biomeMap = None
         self.playerChunks = {0: (0, 0)}
-
         pass
 
     def process(self, delta):
@@ -47,7 +46,7 @@ class World:
             chunk = self.chunks[chunkCoord]
             objectsToProcess = objectsToProcess + chunk
 
-        pool = ThreatPool(8)
+        pool = ThreadPool(8)
         results = pool.starmap(helperPorcess, zip(
             objectsToProcess, itertools.repeat(delta)))
 
@@ -74,59 +73,44 @@ class World:
         for chunkCoord in chunkkoordToIterate:
             chunk = self.chunks[chunkCoord]
             objectsToBroadcast = objectsToBroadcast + chunk
-        pool = ThreatPool(8)
+        pool = ThreadPool(8)
         results = pool.map(helperBroadcast, objectsToBroadcast)
 #            for gameObject in chunk:
 #                gameObject.broadcast()
 
     def initialBroadcast(self):
         for obj in self.broadCastGameObjectTodo:
-            self.threat.gameServerSocket.broadcastNewObject(
+            self.thread.gameServerSocket.broadcastNewObject(
                 obj.entityType, obj.ID)
-
-    def broadcastPosition(self, ID, posx, posy, entityType):
-        self.threat.broadcastPosition(ID, posx, posy, entityType)
-
-    def broadcastPlayerInventoryUpdate(self, ID, Inventory):
-        self.threat.broadcastPlayerInventoryUpdate(ID, Inventory)
 
     def addGameobject(self, obj):
         self.objects.append(obj)
-        if self.threat.generated:
-            self.threat.gameServerSocket.broadcastNewObject(
+        if self.thread.generated:
+            self.thread.gameServerSocket.broadcastNewObject(
                 obj.entityType, obj.ID)
         else:
             self.broadCastGameObjectTodo.append(obj)
         self.chunks[(int(obj.posx/1024), int(obj.posy/1024))].append(obj)
 
-    def broadcastHealth(self, ID, HP, entityType):
-        self.threat.broadcastHealthUpdate(ID, entityType, HP)
-        pass
-
     # do everything the world needs to do if a new player logs in
     def loginNewPlayer(self, playerID):
         for obj in self.objects:
             if obj.ID != playerID:
-                self.threat.broadcastLoginInformation(
+                self.thread.broadcastLoginInformation(
                     entityID=obj.ID, entityType=obj.entityType, playerID=playerID)
 
-    def broadcastDeletedGameObject(self, entityType, entityID):
-        self.threat.broadcastDeletedGameObject(entityType, entityID)
-
     def deleteGameObject(self, gameObject):
-        self.broadcastDeletedGameObject(gameObject.entityType, gameObject.ID)
+        self.thread.broadcastDeletedGameObject(gameObject.entityType, gameObject.ID)
         print("Deleting Object: " + str(gameObject.__class__))
         self.objects.remove(gameObject)
         print(self.objects)
 
-    def broadcastWallInformation(self, posx2, posy2, thickness, wallID):
-        self.threat.broadcastWallInformation(posx2, posy2, thickness, wallID)
 # Ein Tile der Tile Map ist 32 Pixel groß
 # Ein Chunk ist 32
 # Ein Biom besteht aus mehreren Chunks
 
     def generate(self):
-        self.serverID = self.threat.gameServerSocket.serverID
+        self.serverID = self.thread.gameServerSocket.serverID
         sizeX = 32
         sizeY = 32
         chunksize = 32

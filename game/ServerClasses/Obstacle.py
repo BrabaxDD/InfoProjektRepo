@@ -33,9 +33,9 @@ class Obstacle(GameObject.GameObject):
     def broadcast(self):
         if self.time > self.nextUpdate:
             self.nextUpdate += 10
-            self.world.broadcastPosition(
+            self.world.thread.broadcastPosition(
                 self.ID, self.posx, self.posy, self.entityType)
-            self.world.broadcastWallInformation(
+            self.world.thread.broadcastWallInformation(
                 self.posx2, self.posy2, self.thickness, self.ID)
 
     def event(self, eventString, action):

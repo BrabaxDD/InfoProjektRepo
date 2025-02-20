@@ -30,9 +30,9 @@ class Door(Obstacle.Obstacle):
                 print("log: the new second coordinates after door  has been interacted with are: " +
                       str(self.posx2) + " " + str(self.posy2))
 
-                self.world.broadcastPosition(
+                self.world.thread.broadcastPosition(
                     self.ID, self.posx, self.posy, self.entityType)
-                self.world.broadcastWallInformation(
+                self.world.thread.broadcastWallInformation(
                     self.posx2, self.posy2, self.thickness, self.ID)
 
         if eventString == "zombiePositionUpdate":

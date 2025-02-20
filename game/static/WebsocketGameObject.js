@@ -25,94 +25,91 @@ export default class WebsocketGameObjectClient {
         this.scene = scene;
         this.webSocket.onmessage = (e) => {
             const data = JSON.parse(e.data)
-            
-            if(data.type == "playerDead"){
-                this.scene.eventBus.triggerEvent("playerDead", {})
+
+            switch (data.type) {
+                case "playerDead":
+                    this.scene.eventBus.triggerEvent("playerDead", {})
+                    break;
+
+                case "runningservers":
+                    console.log("running servers: " + data.servers)
+                    this.scene.eventBus.triggerEvent("runningServers", data.servers)
+                    break;
+
+                case "deletedGameObject":
+                    this.scene.eventBus.triggerEvent("deletedGameObject", { ID: data.entityID, type: data.entityType })
+                    break
+
+                case "InventoryUpdate":
+                    this.scene.eventBus.triggerEvent("inventory", data.Inventory)
+                    break
+
+                case "connectionRefused":
+                    console.log("connectionRefused")
+                    this.scene.eventBus.triggerEvent("alert",
+                        { text: "Connection to Server refused, if this error occurs, try opening the website in another tab and try to login onto the server" })
+                    DOM.updateDOMConnectionStatus("Connection Failed")
+                    break
+
+                case "connectionAccepted":
+                    console.log("connectionAccepted")
+                    start()
+                    this.scene.eventBus.triggerEvent("switchScene", { sceneToSwitch: 2 })
+                    DOM.updateDOMConnectionStatus("Connected")
+                    break
+
+                case "position":
+                    this.scene.eventBus.triggerEvent("position", { type: data.entityType, ID: data.ID, posx: data.posx, posy: data.posy })
+                    break
+
+                case "healthUpdate":
+                    this.scene.eventBus.triggerEvent("healthUpdate", { type: data.entityType, ID: data.ID, HP: data.HP })
+                    console.log("Health Update Received: " + data.HP)
+                    break
+
+                case "wallInformation":
+                    this.scene.eventBus.triggerEvent("wallInformation", { wallID: data.wallID, posx2: data.posx2, posy2: data.posy2, thickness: data.thickness })
+                    break
+
+                case "newGameObject":
+                    if (data.entityType == "Wall") {
+                        const W = new Wall(scene, data.ID)
+                        this.scene.addObject(W)
+                        return
+                    }
+
+                    if (data.entityType == "Tree") {
+                        const t = new Tree(scene, data.ID)
+                        this.scene.addObject(t)
+                        return
+                    }
+                    if (data.entityType == "Player") {
+                        let player = new Player(100, 100, 20, 20, 'blue', 5, scene, data.ID)
+                        this.scene.addObject(player)
+                        return
+                    }
+                    if (data.entityType == "Zombie") {
+                        const z = new Zombie(scene, data.ID)
+                        this.scene.addObject(z)
+                        return
+                    }
+                    if (data.entityType == "Door") {
+                        const d = new Door(scene, data.ID)
+                        this.scene.addObject(d)
+                        return
+                    }
+                    if (data.entityType == "Chest") {
+                        const c = new Chest(scene, data.ID)
+                        this.scene.addObject(c)
+                        return
+                    }
+                    break
+
+
+                default:
+                    console.log(data)
+                    break;
             }
-
-            if (data.type == "runningservers") {
-                console.log("running servers: " + data.servers)
-                this.scene.eventBus.triggerEvent("runningServers", data.servers)
-                return
-            }
-
-            if (data.type == "deletedGameObject") {
-
-                this.scene.eventBus.triggerEvent("deletedGameObject", { ID: data.entityID, type: data.entityType })
-                return
-            }
-
-            if (data.type == "InventoryUpdate") {
-                this.scene.eventBus.triggerEvent("inventory", data.Inventory)
-                return
-            }
-
-
-            if (data.type == "connectionRefused") {
-                console.log("connectionRefused")
-                this.scene.eventBus.triggerEvent("alert",
-                     { text: "Connection to Server refused, if this error occurs, try opening the website in another tab and try to login onto the server" })
-                DOM.updateDOMConnectionStatus("Connection Failed")
-                return
-            }
-            if (data.type == "connectionAccepted") {
-                console.log("connectionAccepted")
-                start()
-                this.scene.eventBus.triggerEvent("switchScene", { sceneToSwitch: 2 })
-                DOM.updateDOMConnectionStatus("Connected")
-                return
-            }
-
-            if (data.type == "position") {
-                this.scene.eventBus.triggerEvent("position", { type: data.entityType, ID: data.ID, posx: data.posx, posy: data.posy })
-                return
-            }
-
-            if (data.type == "healthUpdate") {
-                this.scene.eventBus.triggerEvent("healthUpdate", { type: data.entityType, ID: data.ID, HP: data.HP })
-                console.log("Health Update Received: " + data.HP)
-                return
-            }
-            if (data.type == "wallInformation") {
-                this.scene.eventBus.triggerEvent("wallInformation", { wallID: data.wallID, posx2: data.posx2, posy2: data.posy2, thickness: data.thickness })
-                return
-            }
-
-            if (data.type == "newGameObject") {
-                if (data.entityType == "Wall") {
-                    const W = new Wall(scene, data.ID)
-                    this.scene.addObject(W)
-                    return
-                }
-
-                if (data.entityType == "Tree") {
-                    const t = new Tree(scene, data.ID)
-                    this.scene.addObject(t)
-                    return
-                }
-                if (data.entityType == "Player") {
-                    let player = new Player(100, 100, 20, 20, 'blue', 5, scene, data.ID)
-                    this.scene.addObject(player)
-                    return
-                }
-                if (data.entityType == "Zombie") {
-                    const z = new Zombie(scene, data.ID)
-                    this.scene.addObject(z)
-                    return
-                }
-                if (data.entityType == "Door") {
-                    const d = new Door(scene, data.ID)
-                    this.scene.addObject(d)
-                    return
-                }
-                if (data.entityType == "Chest") {
-                    const c = new Chest(scene, data.ID)
-                    this.scene.addObject(c)
-                    return
-                }
-
-            }
-
 
         }
 
@@ -131,6 +128,7 @@ export default class WebsocketGameObjectClient {
                     break;
 
                 default:
+                    console.log(data)
                     break;
             }
         }
@@ -229,9 +227,9 @@ export default class WebsocketGameObjectClient {
     setSLotNumber(number) {
         this.webSocket.send(JSON.stringify({ type: "setActiveSlot", slot: number }))
     }
-    respawn(){
-        this.webSocket.send(JSON.stringify({type: "respawn"}))
-        this.scene.eventBus.triggerEvent("respawn",{})
+    respawn() {
+        this.webSocket.send(JSON.stringify({ type: "respawn" }))
+        this.scene.eventBus.triggerEvent("respawn", {})
     }
 
     wait(ms) {

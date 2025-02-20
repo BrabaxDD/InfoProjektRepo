@@ -30,7 +30,7 @@ class Wall(Obstacle.Obstacle):
 #    def broadcast(self):
 #        self.world.broadcastPosition(
 #            self.ID, self.posx, self.posy, self.entityType)
-#        self.world.broadcastWallInformation(
+#        self.world.thread.broadcastWallInformation(
 #            self.posx2, self.posy2, self.thickness, self.ID)
 #        pass
 #

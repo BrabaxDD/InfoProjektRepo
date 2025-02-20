@@ -44,7 +44,7 @@ class Player(GameObject.GameObject):
         ID = uuid.uuid4().int
         ID = ID % 4001001001
         self.addItemToInv(ItemsStack.ItemStack("FirstAidKit", 5, ID))
-        self.world.broadcastPlayerInventoryUpdate(self.ID, self.Inventory)
+        self.world.thread.broadcastPlayerInventoryUpdate(self.ID, self.Inventory)
         self.setHealth(300)
         self.dead = False
 
@@ -57,13 +57,13 @@ class Player(GameObject.GameObject):
     def setHealth(self, HP):
         if HP <= 0:
             self.dead = True
-            self.world.threat.gameServerSocket.broadcastDeadPlayer(self.ID)
+            self.world.thread.gameServerSocket.broadcastDeadPlayer(self.ID)
         self.HP = HP
-        self.world.broadcastHealth(self.ID, self.HP, "Player")
+        self.world.thread.broadcastHealthUpdate(self.ID, "Player",self.HP)
 
     def broadcastInit(self):
-        self.world.broadcastHealth(self.ID, self.HP, "Player")
-        self.world.broadcastPlayerInventoryUpdate(self.ID, self.Inventory)
+        self.world.thread.broadcastHealthUpdate(self.ID, "Player", self.HP)
+        self.world.thread.broadcastPlayerInventoryUpdate(self.ID, self.Inventory)
 
     def process(self, delta):
         if not self.dead:
@@ -93,7 +93,7 @@ class Player(GameObject.GameObject):
 
     def broadcast(self):
         if not self.dead:
-            self.world.broadcastPosition(
+            self.world.thread.broadcastPosition(
                 self.ID, self.posx, self.posy, "Player")
 
     def treeHit(self, tree):
@@ -103,15 +103,15 @@ class Player(GameObject.GameObject):
 
     def addItemToInv(self, itemStack):
         self.Inventory.addItem(itemStack)
-        self.world.broadcastPlayerInventoryUpdate(self.ID, self.Inventory)
+        self.world.thread.broadcastPlayerInventoryUpdate(self.ID, self.Inventory)
 
     def removeItemFromInv(self, stackID):
         self.Inventory.removeItem(stackID)
-        self.world.broadcastPlayerInventoryUpdate(self.ID, self.Inventory)
+        self.world.thread.broadcastPlayerInventoryUpdate(self.ID, self.Inventory)
 
     def changeStackSize(self, stack, newSize):
         stack.size = newSize
-        self.world.broadcastPlayerInventoryUpdate(self.ID, self.Inventory)
+        self.world.thread.broadcastPlayerInventoryUpdate(self.ID, self.Inventory)
 
     # später mit einer liste von items und mengen sodass alles gemeinsam abgebrochen wrid
     def consumeMultipleItems(self, itemAmounts):
@@ -260,7 +260,7 @@ class Player(GameObject.GameObject):
             if eventString == "zombieHit":
                 if action["PlayerID"] == self.ID:
                     self.setHealth(self.HP - action["Damage"])
-                    self.world.broadcastHealth(self.ID, self.HP, "Player")
+                    self.world.thread.broadcastHealthUpdate(self.ID, "Player", self.HP)
             if eventString == "playerForbiddenMovement":
                 playerID = action["playerID"]
                 if playerID == self.ID:
@@ -300,7 +300,7 @@ class Player(GameObject.GameObject):
                             self.removeItemFromInv(str(item1.stackID))
                             self.removeItemFromInv(str(item2.stackID))
                             self.addItemToInv(newItem)
-                self.world.broadcastPlayerInventoryUpdate(
+                self.world.thread.broadcastPlayerInventoryUpdate(
                     self.ID, self.Inventory)
             if eventString == "playerRequestInteraction":
                 if self.interactioCooldown < 0:

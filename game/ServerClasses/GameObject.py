@@ -21,10 +21,10 @@ class GameObject:
         if self.isStatic:
             if self.time > self.nextUpdate:
                 self.nextUpdate += 10
-                self.world.broadcastPosition(
+                self.world.thread.broadcastPosition(
                     self.ID, self.posx, self.posy, self.entityType)
         else:
-            self.world.broadcastPosition(
+            self.world.thread.broadcastPosition(
                 self.ID, self.posx, self.posy, self.entityType)
         pass
 

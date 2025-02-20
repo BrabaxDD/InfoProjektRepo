@@ -20,14 +20,14 @@ class gamePlayerSocketConsumer(WebsocketConsumer):
     def disconnect(self, close_code):
         pass
         async_to_sync(self.channel_layer.group_discard)(
-            self.serverID, self.channel_name)
+            f"server_{self.serverID}", self.channel_name)
 
     def receive(self, text_data):
         text_data_json = json.loads(text_data)
         messageType = text_data_json["type"]
         if messageType == "respawn":
             async_to_sync(self.channel_layer.group_send)(
-                self.serverID,
+                f"server_{self.serverID}",
                 {
                     "type": "respawnPlayerChannels",
                     "playerID": self.player_ID,
@@ -51,7 +51,7 @@ class gamePlayerSocketConsumer(WebsocketConsumer):
                 right = text_data_json["right"]
 
                 async_to_sync(self.channel_layer.group_send)(
-                    self.serverID,
+                    f"server_{self.serverID}",
                     {
                         "type": "action",
                         "ID": self.player_ID,
@@ -64,23 +64,23 @@ class gamePlayerSocketConsumer(WebsocketConsumer):
             elif actiontype == "hit":
                 #print("log: received mesage to hit " + str(time.time()))
                 direction = text_data_json["direction"]
-                async_to_sync(self.channel_layer.group_send)(self.serverID, {
+                async_to_sync(self.channel_layer.group_send)(f"server_{self.serverID}", {
                     "type": "hitRequestFromClient", "direction": direction, "ID": self.player_ID})
             elif actiontype == "interact":
                 print("log: Player with ID " +
                       str(self.player_ID) + " is trying to interact")
-                async_to_sync(self.channel_layer.group_send)(self.serverID, {
+                async_to_sync(self.channel_layer.group_send)(f"server_{self.serverID}", {
                     "type": "interactionRequestFromClient", "playerID": self.player_ID})
         if messageType == "setHotbar":
             stackID = text_data_json["stackID"]
             hotbarSlot = text_data_json["hotbarSlot"]
-            async_to_sync(self.channel_layer.group_send)(self.serverID, {"type": "setHotbar",
+            async_to_sync(self.channel_layer.group_send)(f"server_{self.serverID}", {"type": "setHotbar",
                                                                          "playerID": self.player_ID, "stackID": stackID, "hotbarSlot": hotbarSlot})
         if messageType == "setActiveSlot":
             slot = text_data_json["slot"]
             print("log: git Request to change active Slot from player: " +
                   str(self.player_ID) + " to Slot number: " + str(slot))
-            async_to_sync(self.channel_layer.group_send)(self.serverID, {
+            async_to_sync(self.channel_layer.group_send)(f"server_{self.serverID}", {
                 "type": "setActiveSlot", "playerID": self.player_ID, "slot": slot})
         if messageType == "combineStacks":
             print("log: got request to combine stacks with the following content")
@@ -88,7 +88,7 @@ class gamePlayerSocketConsumer(WebsocketConsumer):
             if "stackID1" in text_data_json and "stackID2" in text_data_json:
                 stackID1 = text_data_json["stackID1"]
                 stackDI2 = text_data_json["stackID2"]
-                async_to_sync(self.channel_layer.group_send)(self.serverID, {
+                async_to_sync(self.channel_layer.group_send)(f"server_{self.serverID}", {
                     "type": "combineStacksRequest",
                     "stackID1": stackID1,
                     "stackID2": stackDI2,
@@ -99,7 +99,7 @@ class gamePlayerSocketConsumer(WebsocketConsumer):
         if messageType == "craft":
             print("log: got request to craft with the following content from client with ID: " + str(self.player_ID))
             recipe = text_data_json["recipe"]
-            async_to_sync(self.channel_layer.group_send)(self.serverID, {
+            async_to_sync(self.channel_layer.group_send)(f"server_{self.serverID}", {
                 "type": "craftChannel",
                 "playerID": self.player_ID,
                 "recipe": recipe
@@ -111,11 +111,10 @@ class gamePlayerSocketConsumer(WebsocketConsumer):
             ID = text_data_json["ID"]
             serverID = text_data_json["serverID"]
             self.serverID = serverID
-            async_to_sync(self.channel_layer.group_add)(
-                self.serverID, self.channel_name)
+            
+            async_to_sync(self.channel_layer.group_add)(f"player_{self.serverID}", self.channel_name)
             self.player_ID = ID
-            async_to_sync(self.channel_layer.group_send)(
-                self.serverID, {"type": "login", "ID": ID})
+            async_to_sync(self.channel_layer.group_send)(f"server_{self.serverID}", {"type": "login", "ID": ID})
             servers = runningServers.objects.all()
             serversSer = []
 #            self.send(text_data=json.dumps({"type":"loginSucessfull"}))
@@ -123,7 +122,7 @@ class gamePlayerSocketConsumer(WebsocketConsumer):
         if messageType == "generateItem":
             itemID = text_data_json["itemID"]
             async_to_sync(self.channel_layer.group_send)(
-                self.serverID, {"type": "generateItem", "itemID": itemID, "ID": self.player_ID})
+                f"server_{self.serverID}", {"type": "generateItem", "itemID": itemID, "ID": self.player_ID})
             print("log: Got generateItem Request from client with ID: " + self.player_ID +
                   "giving it to server with ID: " + self.serverID + "giving it to server with ID: " + self.serverID + " the content is: ")
             print(text_data_json)
@@ -146,14 +145,10 @@ class gamePlayerSocketConsumer(WebsocketConsumer):
             "entityType": entityType
         }))
 
-    def generateItem(self, event):
-        pass
-
-    def login(self, event):
-        pass
-
-    def action(self, event):
-        pass
+    def zombieTryHit(self, event):
+        self.send(text_data=json.dumps({"type": "zombieTryHit",
+                                        "ID": event["ID"], "direction": event["direction"] }))
+    
 
     def inventoryUpdate(self, event):
         playerID = event["ID"]
@@ -210,12 +205,6 @@ class gamePlayerSocketConsumer(WebsocketConsumer):
             {"type": "wallInformation", "posx2": posx2, "posy2": posy2, "thickness": thickness, "wallID": wallID}))
         pass
 
-    def combineStacksRequest(self, event):
-        pass
-
-    def craftChannel(self, event):
-        pass
-
     def connectionRefused(self, event):
         playerID = event["playerID"]
         if playerID == self.player_ID:
@@ -232,19 +221,11 @@ class gamePlayerSocketConsumer(WebsocketConsumer):
             self.send(text_data=json.dumps({"type": "connectionAccepted"}))
         pass
 
-    def interactionRequestFromClient(self, event):
-        pass
-
-    def setHotbar(self, event):
-        pass
-
-    def setActiveSlot(self, event):
-        pass
-
     def deadPlayerChannel(self, event):
         playerID = event["playerID"]
         if playerID == self.player_ID:
             self.send(text_data=json.dumps({"type": "playerDead"}))
+    def testMessageSocket(self, event):
+        print("TestMessagePart2")
+        self.send(text_data=json.dumps({"type": "test","text": event}))
 
-    def respawnPlayerChannels(self, event):
-        pass
