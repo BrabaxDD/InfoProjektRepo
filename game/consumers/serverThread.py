@@ -100,4 +100,4 @@ class serverThread(threading.Thread):
                                   "playerID": playerID, "HotbarSlot": hotbarSlot, "stackID": stackID})
         
     def broadcastTestMessage(self):
-        self.gameServerSocket.testMessage()
+        self.gameServerSocket.testMessage("HEY TEXT")

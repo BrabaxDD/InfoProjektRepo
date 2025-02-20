@@ -12,7 +12,9 @@ class Chest(GameObject.GameObject):
         self.world.eventBus.registerListner(self, "playerInteraction")
         self.content = []
         self.possibleItems = {0: "Apple",
-                              1: "Wood", 2: "FirstAidKit", 3: "Scrap"}
+                              1: "Wood", 
+                              2: "FirstAidKit",
+                              3: "Scrap"}
         self.generateContent()
         self.looted = False
         self.isStatic = True

@@ -26,8 +26,7 @@ class gameServer(WebsocketConsumer):
         serverDB.delete()
 
     def receive(self, text_data):
-        print("log: received package to server websocket with ID " +
-              str(self.serverID) + " and the following content:")
+        print("log: received package to server websocket with ID " +str(self.serverID) + " and the following content:")
         print(text_data)
 
         data_json = json.loads(text_data)
@@ -50,15 +49,17 @@ class gameServer(WebsocketConsumer):
 
     def respondToLogin(self, accepted, playerID):
         if accepted:
-            async_to_sync(self.channel_layer.group_send)(f"player_{self.serverID}", {
-                "type": "connectionAccepted", "playerID": playerID})
+            async_to_sync(self.channel_layer.group_send)(f"player_{self.serverID}", 
+                                                         {"type": "connectionAccepted",
+                                                          "playerID": playerID})
         else:
-            async_to_sync(self.channel_layer.group_send)(f"player_{self.serverID}", {
-                "type": "connectionRefused", "playerID": playerID})
-
+            async_to_sync(self.channel_layer.group_send)(f"player_{self.serverID}", 
+                                                         {"type": "connectionRefused",
+                                                          "playerID": playerID})
 
     def getRunning(self):
         return self.running
+    
     '''Hier kommen die async_to_sync funktionen hin. Das type:feld bezeichnet die Funktion,
     die sowohl in dieser Klasse, als auch in dem gamePlayerSocket ausgeführt werden. Das liegt 
     (glaube ich) an den group_send, weil die Gruppe falsch eingstellt ist.'''
@@ -72,68 +73,66 @@ class gameServer(WebsocketConsumer):
     def broadcastDeadPlayer(self, playerID):
         async_to_sync(self.channel_layer.group_send)(f"player_{self.serverID}",
                                                      {"type": "deadPlayerChannel",
-                                                      "playerID": playerID,
-                                                      }
-                                                     )
+                                                     "playerID": playerID,
+                                                     })
 
     def updatePosition(self, ID, posx, posy, entityType):
-        async_to_sync(self.channel_layer.group_send)(
-            f"player_{self.serverID}",
-            {"type": "position",
-             "ID": ID,
-             "posx": posx,
-             "posy": posy,
-             "entityType": entityType})
+        async_to_sync(self.channel_layer.group_send)(f"player_{self.serverID}",
+                                                     {"type": "position",
+                                                      "ID": ID,
+                                                      "posx": posx,
+                                                      "posy": posy,
+                                                      "entityType": entityType})
 
     def updateInventory(self, ID, Invetory):
         async_to_sync(self.channel_layer.group_send)(f"player_{self.serverID}",
                                                      {"type": "inventoryUpdate",
-                                                      "ID": ID,
-                                                      "Inventory": json.dumps(Invetory, default=jsonSerializer.asDict)
-                                                      }
-                                                     )
+                                                     "ID": ID,
+                                                     "Inventory": json.dumps(Invetory, default=jsonSerializer.asDict)
+                                                     })
 
     def updateHealth(self, ID, entityType, HP):
-        async_to_sync(self.channel_layer.group_send)(f"player_{self.serverID}", {
-            "type": "healthUpdate", "ID": ID, "entityType": entityType, "HP": HP})
+        async_to_sync(self.channel_layer.group_send)(f"player_{self.serverID}",
+                                                     {"type": "healthUpdate",
+                                                      "ID": ID,
+                                                      "entityType": entityType,
+                                                      "HP": HP})
 
     def broadcastNewObject(self, entityType, ID):
-        async_to_sync(self.channel_layer.group_send)(f"player_{self.serverID}", {
-            "type": "newGameObject", "ID": ID, "entityType": entityType})
+        async_to_sync(self.channel_layer.group_send)(f"player_{self.serverID}",
+                                                     {"type": "newGameObject",
+                                                      "ID": ID,
+                                                      "entityType": entityType})
 
     # send new game Object information only to new player
     def passLoginInformation(self, playerID, entityType, entityID):
-        async_to_sync(self.channel_layer.group_send)(f"player_{self.serverID}", {
-            "type": "passLoginInformationChannel",
-            "playerID": playerID,
-            "entityType": entityType,
-            "entityID": entityID
-        })
+        async_to_sync(self.channel_layer.group_send)(f"player_{self.serverID}",
+                                                     {"type": "passLoginInformationChannel",
+                                                      "playerID": playerID,
+                                                      "entityType": entityType,
+                                                      "entityID": entityID})
 
     def broadcastGameObjectDeleted(self, entityType, entityID):
-        async_to_sync(self.channel_layer.group_send)(f"player_{self.serverID}", {
-            "type": "broadcastGameObjectDeletedChannel",
-            "entityType": entityType,
-            "entityID": entityID,
-        })
+        async_to_sync(self.channel_layer.group_send)(f"player_{self.serverID}",
+                                                     {"type": "broadcastGameObjectDeletedChannel",
+                                                      "entityType": entityType,
+                                                      "entityID": entityID})
 
 
     def broadcastWallInformation(self, posx2, posy2, thickness, wallID):
-        async_to_sync(self.channel_layer.group_send)(f"player_{self.serverID}", {
-            "type": "broadcastWallInformationChannel",
-            "posx2": posx2,
-            "posy2": posy2,
-            "thickness": thickness,
-            "wallID": wallID
-        })
+        async_to_sync(self.channel_layer.group_send)(f"player_{self.serverID}",
+                                                     {"type": "broadcastWallInformationChannel",
+                                                      "posx2": posx2,
+                                                      "posy2": posy2,
+                                                      "thickness": thickness,
+                                                      "wallID": wallID})
 
-    def testMessage(self):
+    def testMessage(self,text):
         print("Sending Test message")
-        async_to_sync(self.channel_layer.group_send)(f"player_{self.serverID}", {
-            "type": "testMessageSocket",
-            "text": "WOW,TEXT!"
-        })
-
+        async_to_sync(self.channel_layer.group_send)(f"player_{self.serverID}",
+                                                     {"type": "testMessage",
+                                                     "text": text,
+                                                     })
 
 
     '''Ab hier sind praktisch Funktionen, die nach innen / ins backend gehen und vom gamePlayerSocket ausgelöst werden.
@@ -162,8 +161,7 @@ class gameServer(WebsocketConsumer):
         stackID1 = event["stackID1"]
         stackID2 = event["stackID2"]
         playerID = event["playerID"]
-        self.serverThread.requestItemStackCombination(
-            stackID1, stackID2, playerID)
+        self.serverThread.requestItemStackCombination(stackID1, stackID2, playerID)
         pass
 
     def craftChannel(self, event):
@@ -187,13 +185,14 @@ class gameServer(WebsocketConsumer):
     def setActiveSlot(self, event):
         playerID = event["playerID"]
         slot = event["slot"]
-        self.serverThread.world.eventBus.event(
-            "setActiveSlot", {"playerID": playerID, "slot": slot})
+        self.serverThread.world.eventBus.event("setActiveSlot",
+                                               {"playerID": playerID,
+                                                "slot": slot})
         pass
 
     def respawnPlayerChannels(self, event):
         playerID = event["playerID"]
-        self.serverThread.world.eventBus.event(
-            "respawnPlayer", {"playerID": playerID})
+        self.serverThread.world.eventBus.event("respawnPlayer",
+                                               {"playerID": playerID})
 
 

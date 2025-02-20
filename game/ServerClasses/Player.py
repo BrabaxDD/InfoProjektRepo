@@ -85,11 +85,17 @@ class Player(GameObject.GameObject):
 
     def newPositon(self, newPosx, newPosy):
         self.world.eventBus.event("objectMove", {
-                                  "lastposx": self.posx, "lastposy": self.posy, "posx": newPosx, "posy": newPosy, "gameObject": self})
+                                  "lastposx": self.posx,
+                                  "lastposy": self.posy,
+                                  "posx": newPosx, 
+                                  "posy": newPosy,
+                                  "gameObject": self})
         self.posx = newPosx
         self.posy = newPosy
         self.world.eventBus.event("playerPositionUpdate",
-                                  {"posx": self.posx, "posy": self.posy, "ID": self.ID})
+                                  {"posx": self.posx, 
+                                   "posy": self.posy,
+                                   "ID": self.ID})
 
     def broadcast(self):
         if not self.dead:
@@ -135,8 +141,7 @@ class Player(GameObject.GameObject):
                 elif stack.size < needed:
                     self.removeItemFromInv(stackID=stack.stackID)
                     needed -= stack.size
-            print("log: beim Konsumieren von Items von Spieler: " +
-                  str(self.ID) + " ist etwas schiefgegangen")
+            print("log: beim Konsumieren von Items von Spieler: " + str(self.ID) + " ist etwas schiefgegangen")
             return False
 
 #    def stackCombinationRequest(self, action):
@@ -225,23 +230,22 @@ class Player(GameObject.GameObject):
                 playerID = action["playerID"]
                 if playerID == self.ID:
                     recipe = action["recipe"]
-                    print("log: player with ID: " + str(self.ID) +
-                          " trys to craft the recipe: " + recipe)
+                    print("log: player with ID: " + str(self.ID) +" trys to craft the recipe: " + recipe)
                     match recipe:
                         case "Wood":
-                            print("log: Player with ID: " + str(self.ID) +
-                                  " is attempting to craft sticks")
+                            print("log: Player with ID: " + str(self.ID) + " is attempting to craft sticks")
                             if self.consumeMultipleItems([("Stick", 7)]):
                                 ID = uuid.uuid4().int
                                 ID = ID % 4001001001
-                                self.addItemToInv(
-                                    ItemsStack.ItemStack("Wood", 3, ID))
+                                self.addItemToInv(ItemsStack.ItemStack("Wood", 3, ID))
+                                
             if eventString == "playerAction":
                 if action["ID"] == self.ID:
                     self.up = action["up"]
                     self.down = action["down"]
                     self.right = action["right"]
                     self.left = action["left"]
+                    
             if eventString == "setHotbarRequest":
                 playerID = action["playerID"]
                 if playerID == self.ID:
@@ -256,7 +260,10 @@ class Player(GameObject.GameObject):
                     if time.perf_counter() - self.lastHit > 0.5:
                         self.lastHit = time.perf_counter()
                         self.world.eventBus.event("playerHit",
-                                                  {"ID": self.ID, "dmg": dmg, "Player": self, "direction": action["direction"]})
+                                                  {"ID": self.ID,
+                                                   "dmg": dmg, 
+                                                   "Player": self,
+                                                   "direction": action["direction"]})
             if eventString == "zombieHit":
                 if action["PlayerID"] == self.ID:
                     self.setHealth(self.HP - action["Damage"])
@@ -270,13 +277,13 @@ class Player(GameObject.GameObject):
                     #      action["lastPosx"]) + " deltay: " + str(self.posy - action["lastPosy"]))
                     self.newPositon(
                         newPosx=action["lastPosx"], newPosy=action["lastPosy"])
+                    
             if eventString == "stackCombinationRequest":
                 playerID = action["playerID"]
                 if playerID == self.ID:
                     stackID1 = action["stackID1"]
                     stackID2 = action["stackID2"]
-                    print("log: trying to combine stackst the ID are: " +
-                          str(stackID1) + " " + str(stackID2))
+                    print("log: trying to combine stackst the ID are: " +str(stackID1) + " " + str(stackID2))
                     item1 = None
                     item2 = None
                     for itemStack in self.Inventory.items:
@@ -295,13 +302,12 @@ class Player(GameObject.GameObject):
                             print(json.dumps(item1, default=jsonSerializer.asDict))
                             print(json.dumps(item2, default=jsonSerializer.asDict))
                             print("log: the new item is: ")
-                            print(json.dumps(
-                                newItem, default=jsonSerializer.asDict))
+                            print(json.dumps(newItem, default=jsonSerializer.asDict))
                             self.removeItemFromInv(str(item1.stackID))
                             self.removeItemFromInv(str(item2.stackID))
                             self.addItemToInv(newItem)
-                self.world.thread.broadcastPlayerInventoryUpdate(
-                    self.ID, self.Inventory)
+                self.world.thread.broadcastPlayerInventoryUpdate(self.ID, self.Inventory)
+                
             if eventString == "playerRequestInteraction":
                 if self.interactioCooldown < 0:
                     playerID = action["playerID"]
@@ -309,7 +315,8 @@ class Player(GameObject.GameObject):
                     if playerID == self.ID:
                         if self.Inventory.hotbar[self.Inventory.activeSlot] is None:
                             self.world.eventBus.event("playerInteraction",
-                                                      {"playerID": self.ID, "player": self})
+                                                      {"playerID": self.ID,
+                                                       "player": self})
                             pass
                         else:
                             match self.Inventory.hotbar[self.Inventory.activeSlot].itemID:

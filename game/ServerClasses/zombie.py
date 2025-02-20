@@ -26,7 +26,6 @@ class Zombie(GameObject.GameObject):
         self.playerDistances = {}
         self.isDeleted = False
 
-        self.world.thread.broadcastTestMessage()
         
 
     def deleteSelf(self):
@@ -67,17 +66,21 @@ class Zombie(GameObject.GameObject):
             self.newPositon(self.posx + movex, self.posy + movey)
 
             # Broadcast the new position after movement
-            self.world.eventBus.event("zombiePositionUpdate", {
-                "zombieID": self.ID, "posx": self.posx, "posy": self.posy
-            })
+            self.world.eventBus.event("zombiePositionUpdate", 
+                                      {"zombieID": self.ID,
+                                       "posx": self.posx,
+                                       "posy": self.posy
+                                       })
 
         # If the player is within attack range, attack the player
         if self.nearestPlayerDistance < 50 and self.timesincelasthit > 1.5:
             self.timesincelasthit = 0
             self.lastAttackedPlayerID = self.nearestPlayerID  # Store last hit player
-            self.world.eventBus.event("zombieHit", {
-                "PlayerID": self.nearestPlayerID, "Damage": 50, "Zombie": self
-            })
+            self.world.eventBus.event("zombieHit",
+                                      {"PlayerID": self.nearestPlayerID,
+                                       "Damage": 50,
+                                       "Zombie": self
+                                       })
             print("zombie Hits the player")
 
     def event(self, eventString, action):
